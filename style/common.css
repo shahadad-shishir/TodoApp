@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -256,3 +257,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--secondary-min8);
 }
+
