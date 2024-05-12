@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App - Add Task</title>
+  <link rel="stylesheet" href="../assets/fontawesome-icons/css/all.min.css">
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/task.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="angle js-back-btn">
+        <i class="fa-solid fa-angle-left"></i>
+      </div>
+      <div class="text">Task Details</div>
+      <div class="user">
+        <div><i class="fa-solid fa-user user-icon"></i></div>
+        <span class="tooltip">User</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="cart">
+        <h2 class="heading">Task: <span>Demo Task</span></h2>
+        <table>
+          <tbody>
+            <tr id="emoji">
+              <th>Emoji:</th>
+              <td><i>none</i></td>
+            </tr>
+            <tr id="id">
+              <th>ID:</th>
+              <td></td>
+            </tr>
+            <tr id="description">
+              <th>Description:</th>
+              <td></td>
+            </tr>
+            <tr id="color">
+              <th>Color:</th>
+              <td>
+                <!-- <span></span> #B624FF -->
+              </td>
+            </tr>
+            <tr id="created">
+              <th>Created:</th>
+              <td></td>
+            </tr>
+            <tr id="deadline">
+              <th>Task deadline:</th>
+              <td></td>
+            </tr>
+            <tr id="done">
+              <th>Done:</th>
+              <td>
+                <!-- <i class="fa-solid fa-check"></i> true -->
+              </td>
+            </tr>
+            <tr id="pinned">
+              <th>Pinned:</th>
+              <td>
+                <!-- <i class="fa-solid fa-xmark"></i>false -->
+              </td>
+            </tr>
+            <tr id="category">
+              <th>Category:</th>
+              <td>
+                <ul>
+                  <!-- <li>
+                    <span class="emoji">🏢</span>
+                    Home
+                  </li> -->
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <nav class="nav-bar">
+      <a href="/index.html">
+        <button class="tasks selected">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Tasks</span>
+        </button>
+      </a>
+      <a href="">
+        <button class="categories">
+          <i class="fa-solid fa-shapes"></i>
+          <span>Categories</span>
+        </button>
+      </a>
+      <button class="add js-add-btn">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      <a href="">
+        <button class="transfer">
+          <i class="fa-solid fa-download"></i>
+          <span>Transfer</span>
+        </button>
+      </a>
+      <a href="">
+        <button class="categories">
+          <i class="fa-solid fa-user"></i>
+          <span>Profile</span>
+        </button>
+      </a>
+    </nav>
+  </div>
+
+  <script type="module" src="../src/task/task.js"></script>
+</body>
+</html>

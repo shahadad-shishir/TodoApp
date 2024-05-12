@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --primary-color: #F3F8FF;
+  --secondary-color: #7E30E1;
+  --text-color: rgb(16, 23, 39);
+  --add-anim-clr1: rgba(126, 48, 255, 0.698);
+  --add-anim-clr2: rgba(126, 48, 255, 0);
+  --secondary-min1: rgba(126, 48, 255, 0.1);
+  --secondary-min2: rgba(126, 48, 255, 0.2);
+  --secondary-min8: rgba(126, 48, 255, 0.8);
+
+  --categories-item1: #47F667;
+  --categories-item2: #4B9CFD;
+  --categories-item3: #E861FC;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--primary-color);
+  letter-spacing: 0.02em;
+  transition: filter 0.3s;
+}
+
+.container {
+  width: 70%;
+  /* height: 100vh; */
+  margin: 0 auto;
+  position: relative;
+  max-width: 900px;
+  color: var(--text-color);
+}
+
+.user div{
+  background-color: rgb(116, 116, 116);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.15s linear;
+}
+
+.user div:hover {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.user-icon {
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+}
+
+.user {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  padding: 9px 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  bottom: -50px;
+  transition: opacity 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.user:hover span {
+  opacity: 1;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 10px 32px;
+  border-radius: 24px 24px 0px 0px;
+  background: rgba(237, 238, 246, 0.784);
+  backdrop-filter: blur(20px);
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  animation: navBarAnim 0.5s;
+}
+
+.nav-bar button {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: #101727;
+  font-size: 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-bar button span {
+  font-size: 14px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.nav-bar .add {
+  font-size: 25px;
+  border: 2.5px solid var(--secondary-color);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  /* animation: 1.2s ease 0s infinite normal none running addAnim; */
+}
+
+.nav-bar button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  background-color: var(--secondary-min2);
+  width: 100px;
+  height: 45px;
+  border-radius: 10px;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.nav-bar .add:after {
+  top: -1px;
+  height: 55px;
+}
+
+.nav-bar button:hover:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-bar .add:hover {
+  animation: none;
+}
+.nav-bar button.selected {
+  color: var(--secondary-color);
+}
+
+.nav-bar a {
+  text-decoration: none;
+}
+
+
+
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@keyframes navBarAnim {
+  0% {
+    bottom: -100px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes addAnim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: var(--add-anim-clr1) 0px 0px 0px 0px;
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: var(--add-anim-clr2) 0px 0px 0px 14px;
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: var(--add-anim-clr2) 0px 0px 0px 0px;
+  }
+}
+
+
+@media only screen and (max-width: 1025px) {
+  .container {
+    width: 93%;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .nav-bar {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .nav-bar button:hover:after {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 314px) {
+  .nav-bar .add {
+    font-size: 17px;
+    width: 45px;
+    height: 45px;
+  }
+  .nav-bar button {
+    font-size: 18px;
+  }
+  .nav-bar button span {
+    font-size: 12px;
+  }
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-min8);
+}

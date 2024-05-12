@@ -1,0 +1,176 @@
+.header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  margin: 0 10%;
+  height: 60px;
+}
+
+.header .angle {
+  font-size: 25px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 22px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.header .angle:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.header .text {
+  flex: 1;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: rgba(0, 0, 0, 0.408) 0px 0px 24px;
+}
+
+.main {
+  margin-bottom: 130px;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  border-radius: 32px;
+  margin: 100px auto 0px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 24px 2px;
+  padding: 30px 25px 20px;
+}
+
+.heading {
+  text-align: center;
+  font-size: 28px;
+}
+
+table {
+  margin-top: 30px;
+  text-align: left;
+}
+
+th {
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+td {
+  font-size: 17px;
+}
+
+table, td, tr{
+  border-bottom: 2px solid rgba(217, 217, 217, 0.737);
+  border-collapse: collapse;
+  padding: 10px 0;
+}
+
+table, td, tr:last-child {
+  border: 0;
+}
+
+#color td{
+  display: flex;
+  align-items: center;
+}
+
+#color span {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#done td, #pinned td {
+  display: flex;
+  align-items: center;
+}
+
+#done i, #pinned i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+
+#category ul {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+#category li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  list-style: none;
+  background-color: #7E30E1;
+  color: #fff;
+  padding: 6px 13px;
+  border-radius: 20px;
+}
+
+#category li .emoji {
+  font-size: 17px;
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 1025px) {
+  .header {
+    margin: 0;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .cart {
+    padding: 24px;
+    width: 70%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cart {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 329px) {
+  .heading {
+    font-size: 20px;
+  }
+  .header {
+    padding: 8px 8px;
+  }
+  .header .text {
+    font-size: 24px;
+  }
+  .user div {
+    width: 40px;
+    height: 40px;
+  }
+  .user i {
+    font-size: 18px;
+  }
+  .header .angle {
+    font-size: 20px;
+  }
+
+  table #id td {
+    word-break: break-all;
+  }
+}
