@@ -18,6 +18,7 @@ const addBtnIcon = document.querySelector('.add-btn .icon');
 const ctgryFilter = document.querySelector('.main .categories');
 const navAddBtn = document.querySelector('.nav-bar .add');
 const addBtns = document.querySelectorAll('.js-add-btn');
+const addBtn = document.querySelector('.add-btn');
 const taskContainer = document.querySelector('.tasks-container');
 const taskOptions = document.querySelector('.task-options');
 const editTask = document.querySelector('.edit-task');
@@ -309,9 +310,12 @@ function showTaskOptions(taskId) {
   disableScroll();
 
   mngTaskOptnSize();
+
+  addBtn.style.display = 'none';
 }
 
 function hideTaskOptions(taskId) {
+  addBtn.style.display = 'block';
   removeBlur(taskId);
 
   const screenWidth = window.innerWidth;
@@ -505,6 +509,7 @@ const nmLabel = document.querySelector('.name label');
 const desLabel = document.querySelector('.description label');
 const nmCount = document.querySelector('span.nm-count');
 const desCount = document.querySelector('span.des-count');
+const emojiPicker = document.querySelector('.emoji-picker');
 
 editBtn.addEventListener('click', () => {
   const taskId = taskOptions.dataset.taskId;
@@ -535,6 +540,7 @@ function showEditTask() {
 }
 
 function hideEditTask() {
+  emojiPicker.classList.remove('picker-active');
   blurBg.classList.remove('visible');
   editTask.classList.remove('active');
   enableScroll();

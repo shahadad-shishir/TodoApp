@@ -35,7 +35,6 @@ body {
 
 .container {
   width: 70%;
-  /* height: 100vh; */
   margin: 0 auto;
   position: relative;
   max-width: 900px;
@@ -79,6 +78,10 @@ body {
   transition: opacity 0.5s;
   opacity: 0;
   pointer-events: none;
+}
+
+.user .tooltip {
+  right: -6px;
 }
 
 .user:hover span {
@@ -224,17 +227,17 @@ body {
   }
 }
 
-@media only screen and (max-width: 314px) {
+@media only screen and (max-width: 500px) {
   .nav-bar .add {
-    font-size: 17px;
-    width: 45px;
-    height: 45px;
+    font-size: 15px;
+    width: 40px;
+    height: 40px;
   }
   .nav-bar button {
-    font-size: 18px;
+    font-size: 14px;
   }
   .nav-bar button span {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
