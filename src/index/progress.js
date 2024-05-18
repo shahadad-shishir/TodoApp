@@ -29,6 +29,7 @@ function mngText(totalTask, doneTask, percent, taskData) {
   if (doneTask == 0) {
     complete.innerText = `You have ${totalTask} tasks to complete.`;
     completeMsg.innerText = 'No tasks completed yet. Keep going!';
+    return;
   } else {
     complete.innerText = `You've completed ${doneTask} out of ${totalTask} tasks.`;
   }
@@ -39,20 +40,11 @@ function mngText(totalTask, doneTask, percent, taskData) {
     completeMsg.innerText = "You're making good progress.";
   }
 
-  if (percent == 50) {
-    completeMsg.innerText = "You're halfway there! Keep it up!";
+  if (percent >= 50 && percent < 65) {
+    completeMsg.innerText = "You're more than halfway there! Keep it up!";
   } else if (percent > 64 && percent != 100) {
     completeMsg.innerText = "You're almost there! Keep it up!";
   } else if (percent == 100) {
     completeMsg.innerText = "Congratulations! All tasks completed!";
   }
 }
-
-
-/*const now = new Date();
-let totalDueTask = [];
-taskData.forEach(task => {
-  if (task.deadline < now) {
-    totalDueTask.push(task.name);
-  }
-}); */

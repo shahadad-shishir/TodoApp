@@ -424,6 +424,11 @@ function mngDltConfirm(condition) {
   if (condition) {
     const taskId = taskOptions.dataset.taskId;
     const {name, description, category} = getTaskData(taskId).task;
+
+    nmEl.innerHTML = '';
+    desEl.innerHTML = '';
+    ctgryEl.innerHTML = '';
+
     if (name) {
       nmEl.innerHTML = `<b>Task Name: </b><span>${name}</span>`;
     }
@@ -510,6 +515,8 @@ const desLabel = document.querySelector('.description label');
 const nmCount = document.querySelector('span.nm-count');
 const desCount = document.querySelector('span.des-count');
 const emojiPicker = document.querySelector('.emoji-picker');
+const selectClr = document.querySelector('.select-color');
+const ctgrySelectedTxt = document.querySelector('.select p');
 
 editBtn.addEventListener('click', () => {
   const taskId = taskOptions.dataset.taskId;
@@ -540,6 +547,8 @@ function showEditTask() {
 }
 
 function hideEditTask() {
+  ctgrySelectedTxt.innerHTML = '';
+  selectClr.classList.remove('active');
   emojiPicker.classList.remove('picker-active');
   blurBg.classList.remove('visible');
   editTask.classList.remove('active');
@@ -684,7 +693,10 @@ function enableScroll() {
 }
 
 function disableScroll() {
-  document.body.style.paddingRight = '8px';
+  const isMobile = navigator.userAgentData.mobile;
+  if (!isMobile) {
+    document.body.style.paddingRight = '8px';
+  }
   document.body.style.overflowY = 'hidden';
 }
 
@@ -754,25 +766,26 @@ function mngHighliting(searchTxt) {
     if (highlightedNm || highlightedDes) {
       foundTasks += 1;
     }
-
-    if (foundTasks > 0) {
-      searchResult.style.display = 'flex';
-      srcRsltCount.style.display = 'flex';
-      srcRsltEmpty.style.display = 'none';
-      searchBtn.style.color = 'white';
-    } else if (foundTasks == 0) {
-      srcRsltCount.style.display = 'none';
-      srcRsltEmpty.style.display = 'flex';
-      mngAnim(srcRsltEmpty, 'opacityAnim', 1);
-      searchBtn.style.color = 'red';
-    }
-
-    if (foundTasks == 1) {
-      srcRsltCount.innerText = 'Found 1 task'
-    } else {
-      srcRsltCount.innerText = `Found ${foundTasks} tasks`;
-    }
   });
+
+  if (foundTasks > 0) {
+    searchResult.style.display = 'flex';
+    srcRsltCount.style.display = 'flex';
+    srcRsltEmpty.style.display = 'none';
+    searchBtn.style.color = 'white';
+  } else if (foundTasks == 0) {
+    srcRsltCount.style.display = 'none';
+    searchResult.style.display = 'flex';
+    srcRsltEmpty.style.display = 'flex';
+    mngAnim(srcRsltEmpty, 'opacityAnim', 1);
+    searchBtn.style.color = 'red';
+  }
+
+  if (foundTasks == 1) {
+    srcRsltCount.innerText = 'Found 1 task'
+  } else {
+    srcRsltCount.innerText = `Found ${foundTasks} tasks`;
+  }
 }
 
 function highlightText(originalTxt, searchTxt) {
@@ -820,3 +833,4 @@ window.addEventListener('resize', () => {
 
   mngTaskOptnSize();
 });
+
