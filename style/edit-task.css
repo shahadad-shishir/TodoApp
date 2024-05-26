@@ -6,7 +6,7 @@
   transform: translate(-50%, -50%);
   background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.87);
-  max-height: calc(100vh - 64px);
+  max-height: 90%;
   padding: 12px;
   border-radius: 20px;
   display: flex;

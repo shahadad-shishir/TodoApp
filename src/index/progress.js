@@ -40,7 +40,9 @@ function mngText(totalTask, doneTask, percent, taskData) {
     completeMsg.innerText = "You're making good progress.";
   }
 
-  if (percent >= 50 && percent < 65) {
+  if (percent == 50) {
+    completeMsg.innerText = "You're halfway there! Keep it up!";
+  } else if (percent > 50 && percent < 65) {
     completeMsg.innerText = "You're more than halfway there! Keep it up!";
   } else if (percent > 64 && percent != 100) {
     completeMsg.innerText = "You're almost there! Keep it up!";

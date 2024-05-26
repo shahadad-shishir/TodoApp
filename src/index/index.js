@@ -361,15 +361,26 @@ let clickPosition;
 let difference;
 
 taskOptions.addEventListener('mousedown', e => {
-  if (taskOptions.classList.contains('full')) {
+  const isMobile = navigator.userAgentData.mobile;
+  if (taskOptions.classList.contains('full') && !isMobile) {
     difference = 0;
     isMouseDown = true;
     clickPosition = e.pageY;
   }
 });
 
+taskOptions.addEventListener('touchstart', e => {
+  const isMobile = navigator.userAgentData.mobile;
+  if (isMobile) {
+    difference = 0;
+    isMouseDown = true;
+    clickPosition = e.touches[0].pageY;
+  }
+});
+
 taskOptions.addEventListener('mousemove', e => {
-  if (isMouseDown) {
+  const isMobile = navigator.userAgentData.mobile;
+  if (isMouseDown && !isMobile) {
     difference = e.pageY - clickPosition + 10;
     if (difference > -1) {
       taskOptions.style.top = difference + 'px';
@@ -377,7 +388,33 @@ taskOptions.addEventListener('mousemove', e => {
   }
 }); 
 
+taskOptions.addEventListener('touchmove', e => {
+  const isMobile = navigator.userAgentData.mobile;
+  if (isMouseDown && isMobile) {
+    difference = e.touches[0].pageY - clickPosition + 10;
+    if (difference > -1) {
+      taskOptions.style.top = difference + 'px';
+    }
+  }
+});
+
 taskOptions.addEventListener('mouseup', () => {
+  const isMobile = navigator.userAgentData.mobile;
+  if (isMobile) {
+    return;
+  } else {
+    mouseUp();
+  }
+}); 
+
+taskOptions.addEventListener('touchend', () => {
+  const isMobile = navigator.userAgentData.mobile;
+  if (isMobile) {
+    mouseUp();
+  }
+}); 
+
+function mouseUp() {
   isMouseDown = false;
 
   const screenWidth = window.innerWidth;
@@ -391,7 +428,7 @@ taskOptions.addEventListener('mouseup', () => {
       clearTimeout(timeoutId);
     }, 500);
   }
-}); 
+}
 
 function rmvFullTaskOptn() {
   taskOptions.style.animation = 'optionsAnimDown .4s ease';
