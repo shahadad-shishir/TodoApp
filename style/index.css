@@ -860,6 +860,9 @@ span.highlighted-text {
     border-radius: 15px;
     align-items: normal;
   }
+  .categories .x-btn {
+    font-size: 15px;
+  }
 
   .task .pinned {
     font-size: 12px;
