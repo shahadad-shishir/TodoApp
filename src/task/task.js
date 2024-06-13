@@ -40,9 +40,10 @@ function renderTaskData() {
   colorEl.prepend(clrSpan);
 
   createdEl.innerText = formateDate(createDate);
-  deadlineEl.innerText = formateDate(deadline);
 
-
+  if (deadline) {
+    deadlineEl.innerText = formateDate(deadline);
+  }
 
   const createIcon = type => {
     const i = document.createElement('i');
