@@ -1,3 +1,5 @@
+  import { generateRandomId } from "./utils/number.js";
+
   export const taskData = JSON.parse(localStorage.getItem('taskData')) || [
     /*{
       id: '',
@@ -138,10 +140,12 @@
     updateStorage();
   }
 
-  export function dublicateThistask(data, id) {
-    const {name, emoji, description, color, deadline, category} = data;   
-    addTask(emoji, name, description, deadline, category, color, id);
+  export function dublicateAtask(taskId) {
+    const {name, emoji, description, color, deadline, category} = getTaskData(taskId).task;
+    const newId = generateRandomId();
+    addTask(emoji, name, description, deadline, category, color, newId);
   }
+  
 
   function updateStorage() {
     const data = JSON.stringify(taskData);

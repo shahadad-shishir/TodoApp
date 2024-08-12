@@ -1,13 +1,15 @@
+import { taskData } from "../data/tasks.js";
+
 const circle = document.querySelector('.progress .draw-circle');
 const percentEl = document.querySelector('.circle-container .number');
 const complete = document.querySelector('.progress .details h3');
 const completeMsg = document.querySelector('.progress .details p');
 const dueTask = document.querySelector('.progress .details div span');
 
-export function handleProgress(taskData) {
-  const totalTask = taskData.length;
+export function handleProgress() {
+  const totalTask = taskData.tasks.length;
   let doneTask = 0;
-  taskData.forEach(task => {
+  taskData.tasks.forEach(task => {
     if (task.done) {
       doneTask += 1;
     }
@@ -25,7 +27,7 @@ function drawCircle(percent) {
   circle.style.strokeDashoffset = value;
 }
 
-function mngText(totalTask, doneTask, percent, taskData) {
+function mngText(totalTask, doneTask, percent) {
   if (doneTask == 0) {
     complete.innerText = `You have ${totalTask} tasks to complete.`;
     completeMsg.innerText = 'No tasks completed yet. Keep going!';

@@ -1,45 +1,6 @@
-.header {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 10;
-  padding: 8px 20px;
-  background-color: var(--primary-color);
-  margin: 0 10%;
-  height: 60px;
-}
-
-.header .angle {
-  font-size: 25px;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  padding: 22px;
-  cursor: pointer;
-  transition: background-color 0.15s;
-}
-
-.header .angle:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-.header .text {
-  flex: 1;
-  text-align: center;
-  font-size: 28px;
-  font-weight: 600;
-  text-shadow: rgba(0, 0, 0, 0.408) 0px 0px 24px;
-}
-
-.main {
-  margin-bottom: 130px;
-}
+@import url('./common/common.css');
+@import url('./common/header.css');
+@import url('./common/navbar.css');
 
 .card {
   display: flex;
@@ -128,12 +89,6 @@ table, td, tr:last-child {
   margin-right: 5px;
 }
 
-@media only screen and (max-width: 1025px) {
-  .header {
-    margin: 0;
-  }
-}
-
 
 @media (min-width: 768px) {
   .card {
@@ -149,24 +104,6 @@ table, td, tr:last-child {
 }
 
 @media only screen and (max-width: 500px) {
-  .header {
-    padding: 8px 6px;
-  }
-  .header .text {
-    font-size: 20px;
-  }
-  .user div {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-  }
-  .user i {
-    font-size: 18px;
-  }
-  .header .angle {
-    font-size: 20px;
-  }
-
   .card .heading {
     font-size: 17px;
   }

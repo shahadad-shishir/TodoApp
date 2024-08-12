@@ -1,131 +1,124 @@
-  const colorData = {
-    allColors: ['#7E30E1','#B624FF', '#FF69B4', '#FB34FF', '#FF22B4', '#C6A7FF', '#7ACCFA', '#4A9DFF', '#5061FF', '#50B5CB', '#3DFF7F', '#3AE836', '#B7FF42', '#FFEA28', '#FF9518', '#FFC3A0', '#FF5018', '#FF2F2F'],
-    selectedColor: '#7E30E1'
-  }
-
-  const selectColor = document.querySelector('.select-color');
-  const colorOptions = document.querySelector('.color-selector .color-options');
-  const colorCode = document.querySelector('.color-selector .color-code');
-  const selectedClrEl = document.querySelector('.selected-color .color');
-  const colorPicker = document.querySelector('.color-picker span');
-  const colorInput = document.querySelector('.color-picker input');
-  const randomClrBtn = document.querySelector('.color-picker #random-color');
-  const formEmojiIcon = document.querySelector('.form .emoji .icon');
-
-  export function handleColor() {
-    renderColors(colorData);
-    addListeners();
-  }
+const clrData = {
+  allColors: ['#ff69b4', '#fb34ff', '#ff22b4', '#c6a7ff', '#7accfa', '#4a9dff', '#5061ff', '#50b5cb', '#3ae836', '#b7ff42', '#ffea28', '#ff9518', '#ffc3a0', '#ff5018', '#3dff7f', '#ff2f2f', '#b624ff', '#7e30e1']
+}
 
 
-  function renderColors(colorData) {
-    colorData.allColors.forEach(color => {
-      const btn = document.createElement('button');
-      btn.style.backgroundColor = color;
+const selectedClr = document.querySelector('.selected-clr');
+const angleIcon = document.querySelector('.selected-clr .right i');
+const selectClr = document.querySelector('.select-clr');
+const clrOptions = document.querySelector('#color-picker .clr-options');
+const clrCode = document.querySelector('#color-picker .clr-code');
+const selectedClrEl = document.querySelector('.selected-clr .color');
+const clrPicker = document.querySelector('#color-picker .picker span');
+const clrInput = document.querySelector('#color-picker .picker input');
+const randomClrBtn = document.querySelector('#random-clr');
+const formEmojiIcon = document.querySelector('#emoji-picker .emoji');
 
-      colorOptions.appendChild(btn);
+export const colorPicker = {
+  getReady() {
+    this.renderColors();
 
-      addShadow(btn, color);
-
-      btn.addEventListener('click', () => {
-        cngSelectedClr(btn, color);
-      });
-
-      
-      if (color === colorData.selectedColor) {
-        addCheckIcon(btn);
-      }
+    clrInput.addEventListener('input', () => {
+      const pickedClr = clrInput.value;
+      this.cngAllElementsClr(pickedClr);
+      this.removeCheckIcon();
     });
 
-    cngAllElementsClr();
-  }
+    randomClrBtn.addEventListener('click', () => {
+      const randomClr = this.getRandomClr();   
+      this.cngAllElementsClr(randomClr);
+      this.removeCheckIcon();
+    });
 
-
-  function cngSelectedClr(btn, color) {
-    removeCheckIcon();
-    addCheckIcon(btn);
-
-    updateClrdata(color);
-    cngAllElementsClr();
-  }
-
-  function addCheckIcon(btn) {
-    const checkIcon = document.createElement('i');
-    checkIcon.classList.add('fa-solid', 'fa-check');
-    btn.appendChild(checkIcon);
-  }
-
-  function removeCheckIcon() {
-    const allcolorBtns = document.querySelectorAll('.color-options button');
-    for (let btn of allcolorBtns) {
-      if (btn.children[0]) {
-        btn.children[0].remove();
+    selectedClr.addEventListener('click', () => {
+      if (selectClr.classList.contains('active')) {
+        this.close();
+      } else {
+        this.open();
       }
-    }
-  }
+    });
+  },
 
-  function cngAllElementsClr() {
-    const color = colorData.selectedColor;
-    colorCode.style.backgroundColor = color;
-    colorCode.innerText = color;
-    selectedClrEl.style.background = color;
-    colorPicker.style.backgroundColor = color;
-    addShadow(colorPicker, color);
-    colorPicker.style.backgroundColor = color;
-    addShadow(colorPicker, color);
-    formEmojiIcon.style.backgroundColor = color;
+  renderColors() {
+    clrData.allColors.forEach(color => {
+      const btn = document.createElement('button');
+      btn.dataset.id = color;
+      btn.classList.add('clr-btn');
+      btn.style.backgroundColor = color;
+      clrOptions.prepend(btn);
+      this.addShadowOnHover(btn, color);
 
-    colorInput.value = color;
-  }
+      btn.addEventListener('click', () => {
+        this.selectThisClr(color);
+      });
+    });
+  },
 
-  function addShadow(el, clr) {
+  addShadowOnHover(el, clr) {
     el.addEventListener('mouseover', () => {
       el.style.boxShadow = `${clr} 0px 0px 12px`;
     });
     el.addEventListener('mouseout', () => {
       el.style.boxShadow = '';
     });
-  }
+  },
 
-  function addListeners() {
-    colorInput.addEventListener('input', () => {
-      const pickedClr = colorInput.value;
-      updateClrdata(pickedClr);
-      cngAllElementsClr(pickedClr);
-      removeCheckIcon();
-    });
-    
-    randomClrBtn.addEventListener('click', () => {
-      const randomClr = getRandomClr();
-    
-      updateClrdata(randomClr);
-      cngAllElementsClr(randomClr);
-      removeCheckIcon();
-    });
-  }
+  selectThisClr(color) {
+    this.removeCheckIcon();
+    const clrBtn = document.querySelector(`.clr-btn[data-id='${color}']`);
+    this.addCheckIcon(clrBtn);
+    this.cngAllElementsClr(color);
+  },
 
-  function getRandomClr() {
+  removeCheckIcon() {
+    const allcolorBtns = document.querySelectorAll('.clr-options .clr-btn');
+    for (let btn of allcolorBtns) {
+      if (btn.children[0]) {
+        btn.children[0].remove();
+      }
+    }
+  },
+
+  addCheckIcon(btn) {
+    const checkIcon = document.createElement('i');
+    checkIcon.classList.add('fa-solid', 'fa-check');
+    btn.appendChild(checkIcon);
+  },
+
+  cngAllElementsClr(color) {
+    clrCode.style.backgroundColor = color;
+    clrCode.innerText = color.toUpperCase();
+    selectedClrEl.style.background = color;
+    clrPicker.style.backgroundColor = color;
+    this.addShadowOnHover(clrPicker, color);
+    formEmojiIcon.style.backgroundColor = color;
+    clrInput.value = color;
+  },
+
+  getRandomClr() {
     const letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+  },
+
+  open() {    
+    angleIcon.classList.add('rotate');  
+    selectClr.classList.add('active');
+    selectClr.style.height = clrOptions.clientHeight + clrCode.clientHeight + 82 + 'px';
+    selectedClrEl.style.display = 'none';
+  },
+
+  close() {
+    angleIcon.classList.remove('rotate');  
+    selectClr.classList.remove('active');
+    selectClr.style.height = '0px';
+    selectedClrEl.style.display = 'initial';
+  },
+
+  getSelectedClr() {
+    return clrInput.value;
   }
-
-  document.querySelector('.selected-color').addEventListener('click', () => {
-    const angleIcon = document.querySelector('.selected-color .right i');
-    angleIcon.classList.toggle('rotate');
-
-    selectColor.classList.toggle('active');
-
-    if (selectColor.classList.contains('active')) {
-      selectedClrEl.style.display = 'none';
-    } else {
-      selectedClrEl.style.display = 'initial';
-    }
-  });
-
-  function updateClrdata(color) {
-    colorData.selectedColor = color;
-  }
+};

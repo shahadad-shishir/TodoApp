@@ -1,12 +1,25 @@
+@import url('../common/common.css');
+@import url('../common/navbar.css');
+@import url('../common/sidebar.css');
+@import url('../common/popup.css');
+@import url('./edit-task/edit-task.css');
+
 .container {
   display: flex;
   flex-direction: column;
 }
 
-.header{
+.container {
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  max-width: 900px;
+  color: var(--text-color);
+}
+
+.header {
   color: var(--text-color);
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-top: 10px;
 }
@@ -26,6 +39,50 @@
   font-weight: 600;
   color: rgba(16, 23, 39, 0.7);
   height: 34px;
+}
+
+.user div{
+  background-color: rgb(116, 116, 116);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.15s linear;
+}
+
+.user div:hover {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.user-icon {
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+}
+
+.user {
+  position: relative;
+  padding-right: 0 !important;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(255, 255, 255);
+  font-size: 13px;
+  padding: 9px 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  bottom: -50px;
+  transition: opacity 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.user .tooltip {
+  right: -6px;
 }
 
 .main {
@@ -228,6 +285,7 @@ main .categories {
   font-weight: 600;
   padding: 8px 20px;
   border-radius: 15px;
+  color: rgb(240, 240, 240);
   cursor: pointer;
   white-space: nowrap;
 }
@@ -275,7 +333,6 @@ main .categories {
   width: 80%;
   margin-top: 30px;
   row-gap: 20px;
-  margin-bottom: 130px;
 }
 
 .task {
@@ -410,7 +467,7 @@ main .categories {
   font-weight: 600;
   padding: 1px 17px;
   border-radius: 15px;
-  color: var(--text-color);
+  color: rgb(240, 240, 240);
   font-size: 13px;
   border: 2px solid rgb(240, 240, 240);
   cursor: pointer;
@@ -443,62 +500,18 @@ main .categories {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-.task-options {
+.menubar {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  width: 210px;
-  border-radius: 15px;
   position: fixed;
-  z-index: 11;
-  bottom: 15px;
-  right: 160px;
+  z-index: 12;
   opacity: 0;
-  transform-origin: left;
-  transition: opacity 0.2s ease, transform 0.2s ease;
   visibility: hidden;
 }
 
-.task-options .options {
-  padding: 15px 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.task-options .options div {
-  display: flex;
-  align-items: center;
-  margin: 0 12px;
-  padding: 14px 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.15s;
-  font-size: 16px;
-  letter-spacing: 0em;
-}
-
-.task-options .options div:hover {
-  background-color: rgb(240, 240, 240);
-}
-
-.task-options div i {
-  font-size: 18px;
-  margin-right: 15px;
-}
-
-.task-options .break {
-  margin: 8px 3px;
-  border-top: 1px solid rgb(224, 224, 224);
-}
-
-.task-options .options div:last-child {
-  color: red;
-}
-
-/*task options full display*/
-
-.task-options .top {
-  display: none;
+.menubar .top {
+  display: block;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -510,41 +523,111 @@ main .categories {
 
 }
 
-.task-options.full .top hr {
+.menubar .options {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.menubar .options div {
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+  padding: 14px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  font-size: 16px;
+  letter-spacing: 0em;
+}
+
+.menubar .options div:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.menubar div i {
+  font-size: 18px;
+  margin-right: 15px;
+}
+
+.menubar .break {
+  margin: 8px 3px;
+  border-top: 1px solid rgb(224, 224, 224);
+}
+
+.menubar .options div:last-child {
+  color: red;
+}
+
+/*For small menubar in large screen*/
+.menubar.small {
+  width: 210px;
+  border-radius: 15px;
+  bottom: 15px;
+  right: 160px;
+  transform-origin: left;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menubar.small .top {
+  display: none;
+}
+
+#s-menubar-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  z-index: 11;
+  background-color: transparent;
+}
+
+/* For full size menubar in small screen */
+.menubar.large {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 100%;
+  width: 100%;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.menubar.large .top {
+  display: block;
+}
+
+.menubar.large .top hr {
   border-top: 6px solid #cfcfcf;
   border-radius: 10px;
   width: 60px;
   margin: 10px  auto 20px;
 }
 
-.task-options.full {
+#l-menubar-bg {
+  position: absolute;
   left: 0;
   right: 0;
-  width: 100%;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  /* animation: optionsAnim 1s ease; */
-  bottom: 0;
-  top: 0;
+  top: -10px;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  cursor: pointer;
 }
 
-.task-options.fullTop {
-  top: 0;
+.menubar .options::-webkit-scrollbar-thumb {
+  background-color: #ddd !important;
+  border-radius: 10px;
 }
 
-.optionsAnimDown {
-  animation: optionsAnimDown 1s ease;
+.menubar .options::-webkit-scrollbar-thumb:hover {
+  background-color: #dcd6d6;
 }
 
-.task-options.full .top {
-  display: block;
-}
 
-.task-options.full .options {
-  overflow-y: auto;
-}
-
-.task-options.active {
+.menubar.active {
   visibility: visible;
 }
 
@@ -552,16 +635,17 @@ main .categories {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: -10px;
   z-index: 11;
   filter: brightness(50%);
   backdrop-filter: blur(6px);
-  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.blur-bg.visible {
+/* .blur-bg.visible {
   visibility: visible;
-}
+} */
 
 span.highlighted-text {
   background-color: rgb(104, 41, 239);
@@ -645,40 +729,6 @@ span.highlighted-text {
   background-color: rgba(255, 49, 49, 0.04);
 }
 
-.popup {
-  display: none; /*flex*/
-  flex-direction: column;
-  row-gap: 15px;
-  width: 250px;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 11;
-}
-
-.popup .msg-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background-color: rgb(20, 20, 49);
-  color: rgb(240, 240, 240);
-  padding: 20px;
-  border-radius: 20px;
-  /* animation: popupAddAnim .3s ease; */
-}
-
-.popup i {
-  font-size: 20px;
-  margin-right: 8px;
-  animation: popupIconAnim 0.1s ease 0.2s;
-}
-
-.popup .dlt i {
-  color: var(--secondary-color);
-}
-
 
 @keyframes popupAddAnim {
   0% {
@@ -732,49 +782,37 @@ span.highlighted-text {
 }
 
 
-@keyframes optionsAnim {
+@keyframes largeMenuOpen {
   0% {
-    bottom: -540px;
+    bottom: -105%;
     top: 100%;
   }
 
   100% {
     bottom: 0;
-    top: 0;
+    top: auto;
   }
 }
 
-@keyframes optionsAnimDown {
+@keyframes largeMenuDown {
   100% {
-    bottom: -540px;
+    bottom: -105%;
     top: 100%;
   }
 }
 
-@keyframes optionsAnimUp {
-  100% {
-    bottom: 0;
-    top: 0;
+
+@media only screen and (max-width: 1025px) {
+  .container {
+    width: 93%;
   }
 }
-
-@keyframes opacityAnim {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-
 
 @media only screen and (max-width: 1019px) {
   .add-btn {
     right: 4%;
   }
-  .task-options {
+  .menubar {
     right: 50px;
   }
 }
@@ -801,16 +839,9 @@ span.highlighted-text {
   .tasks-container {
     width: 100%;
   }
-  .popup {
-    bottom: 110px;
-  }
 }
 
 @media only screen and (max-width: 500px) {
-  body {
-    overflow-x: hidden;
-  }
-
   .message h2 img {
     width: 20px;
     margin-right: 1px;
@@ -827,7 +858,7 @@ span.highlighted-text {
     height: 40px;
   }
   .user-icon {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .progress {
@@ -858,7 +889,6 @@ span.highlighted-text {
   .categories div {
     padding: 5px 13px;
     border-radius: 15px;
-    align-items: normal;
   }
   .categories .x-btn {
     font-size: 15px;
@@ -932,13 +962,13 @@ span.highlighted-text {
     height: 280px;
   }
 
-  .task-options .top {
+  .menubar .top {
     font-size: 15px;
   }
-  .task-options div i {
+  .menubar div i {
     font-size: 15px;
   }
-  .task-options .options div {
+  .menubar .options div {
     font-size: 14px;
   }
 
@@ -965,18 +995,10 @@ span.highlighted-text {
   .delete-confirm .btns {
     margin-top: 15px;
   }
-
-  .popup i {
-    font-size: 16px;
-  }
-  .popup .msg {
-    font-size: 13px;
-  }
-  .popup .msg-area {
-    padding: 17px;
-    border-radius: 16px;
-    width: 75%;
-    margin: 0 auto;
-  }
 }
 
+@media only screen and (min-width: 501px) {
+  .user:hover span {
+    opacity: 1;
+  }  
+}

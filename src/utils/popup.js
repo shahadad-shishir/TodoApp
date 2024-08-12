@@ -1,49 +1,82 @@
-const popup = document.querySelector('.popup');
+export const popup = {
+  getReady() {
+    const popupEl = document.createElement('div');
+    popupEl.id = 'popup';
+    document.body.prepend(popupEl);
+    this.popupEl = popupEl;
 
-export function mngPopup(reason, value) {
-  console.log(reason, value)
-  const msgArea = document.createElement('div');
-  msgArea.classList.add('msg-area');
+  },
 
-  if (reason === 'dlt') {
-    msgArea.classList.add('dlt');
+  popupEl: undefined,
+
+  showSuccess(msg) {
+    const template = this.createOne(msg, 'circle-check', 'var(--secondary-color)');
+    this.render(template);
+  },
+
+  showError(msg) {
+    const template = this.createOne(msg, 'circle-xmark', 'rgb(255, 49, 49)', 'rgb(255, 49, 49)');
+    this.render(template);
+  },
+
+  createOne(text, icon, mainClr, txtClr, bgClr) {
+    const msgArea = document.createElement('div');
+    msgArea.classList.add('msg-area');
+    msgArea.style.border = `2px solid ${mainClr}`;
+    if (bgClr) {
+      msgArea.style.backgroundColor = bgClr;
+    }
+
     const i = document.createElement('i');
-    i.classList.add('fa-solid', 'fa-circle-check');
+    i.classList.add('fa-solid', `fa-${icon}`);
+    i.style.color = mainClr;
+
     const msg = document.createElement('span');
     msg.classList.add('msg');
-    msg.innerHTML = `Deleted Task - ${value}`;
+    if (txtClr) {
+      msg.style.color = txtClr;
+    }
+    msg.innerHTML = text;
     msgArea.appendChild(i);
     msgArea.appendChild(msg);
-  } else if (reason === 'noNm') {
-    msgArea.classList.add('noNm');
-    const i = document.createElement('i');
-    i.classList.add('fa-solid', 'fa-circle-xmark');
-    const msg = document.createElement('span');
-    msg.classList.add('msg');
-    msg.innerHTML = 'Task name is required.';
-    msgArea.appendChild(i);
-    msgArea.appendChild(msg);
-  }
 
-  popup.appendChild(msgArea);
-  
-  popup.style.display = 'flex';
-  msgArea.style.animation = 'popupAddAnim 0.3s ease';
-  const timeoutId1 = setTimeout(() => {
-    msgArea.style.removeProperty('animation');
-    clearTimeout(timeoutId1);
-  }, 300)
+    return msgArea;
+  },
 
-  const rmvPopup = () => {
+  render(msgArea) {
+    this.popupEl.appendChild(msgArea);
+    this.popupEl.style.visibility = 'visible';
+    msgArea.style.animation = 'popupAddAnim 0.3s ease';
+    const timeoutId1 = setTimeout(() => {
+      msgArea.style.removeProperty('animation');
+      clearTimeout(timeoutId1);
+    }, 300)
+    this.vibrate();
+
+    const timeoutId2 = setTimeout(() => {
+      if (msgArea) {
+        this.rmvPopup(msgArea);
+      }
+      clearTimeout(timeoutId2);
+    }, 4000)
+
+    msgArea.addEventListener('click', () => {
+      this.rmvPopup(msgArea);
+    });
+  },
+
+  rmvPopup(msgArea) {
     msgArea.style.animation = 'popupRmvAnim 0.23s ease';
     const timeoutId = setTimeout(() => {
       msgArea.remove();
+      if (this.popupEl.innerHTML === '') {
+        this.popupEl.style.visibility = 'hidden';
+      }
       clearTimeout(timeoutId);
     }, 200)
-  }
+  },
 
-  const timeoutId2 = setTimeout(() => {
-    rmvPopup();
-    clearTimeout(timeoutId2);
-  }, 4000)
-}
+  vibrate() {
+    window.navigator.vibrate([130, 50, 60]);
+  }
+};

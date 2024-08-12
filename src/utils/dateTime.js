@@ -1,4 +1,5 @@
-  export function formateDateTime(date) {
+export const dateTime = {
+  formateDateTime(date) {
     const dateObj = {};
     const justDate = date.toLocaleDateString();
     const time = date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
@@ -6,9 +7,9 @@
     dateObj.date = justDate;
     dateObj.time = time;
     return dateObj;
-  }
+  },
 
-  export function getDay(date) {
+  getDay(date) {
     const today =  new Date();
     const yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
@@ -24,40 +25,39 @@
     } else {
       return undefined;
     }
-  }
+  },
 
-  export function getDaysDiff(date) {
+  getDaysDiff(date) {
     const today = new Date();
     const different = Math.ceil((date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
     return different;
-  }
+  },
 
-
-  export function getHoursDiff(date) {
+  getHoursDiff(date) {
     const today = new Date();
     const different = ((date.getTime() - today.getTime()) / (1000 * 60 * 60));
     return different;
-  }
+  },
 
-  export function getMinutesDiff(date) {
+  getMinutesDiff(date) {
     const today = new Date();
     const different = ((date.getTime() - today.getTime()) / (1000 * 60));
     return different;
-  }
+  },
 
-  export function getWeekDay(date) {
+  getWeekDay(date) {
     const day = date.toLocaleDateString(undefined, {weekday: 'long'});
     return day;
-  }
+  },
 
-  export function getRemainingHours() {
+  getRemainingHours() {
     const d = new Date();
     const h = d.getHours();
     const hours = 24 - h;
     return hours;
-  }
+  },
 
-  export function getGreeting() {
+  getGreeting() {
     const now = new Date();
     const hour = now.getHours();
 
@@ -72,5 +72,5 @@
     } else {
         return "Good night!";
     }
-  }
-
+  },
+};

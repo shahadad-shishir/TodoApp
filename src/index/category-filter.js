@@ -1,7 +1,10 @@
+import { taskData } from "../data/tasks.js";
+import { ctgryData } from "../data/categories.js";
+
 const categories = document.querySelector('.main .categories');
 const srcRsltCount = document.querySelector('.search-result .count');
 
-export function mngCategoryFilter(taskData, getCategoryData) {
+export function mngCategoryFilter() {
   let allCategories = [];
 
   const addCategories = task => {
@@ -10,7 +13,7 @@ export function mngCategoryFilter(taskData, getCategoryData) {
     allCategories = added;
   }
 
-  taskData.forEach(task => {
+  taskData.tasks.forEach(task => {
     const taskId = task.id;
     const taskEl = document.querySelector(`.task[data-id='${taskId}']`);
     if (taskEl.style.display !== 'none') {
@@ -19,7 +22,7 @@ export function mngCategoryFilter(taskData, getCategoryData) {
   });
 
   const createCategory = id => {
-    const category = getCategoryData(id);
+    const category = ctgryData.getCtgry(id);
     const {name, emoji, color} = category;
 
     const div = document.createElement('div');
@@ -56,7 +59,7 @@ export function mngCategoryFilter(taskData, getCategoryData) {
     categories.appendChild(category);
   });
 
-  addEventListener(taskData);
+  addEventListener(taskData.tasks);
 }
 
 function addEventListener(taskData) {

@@ -1,22 +1,57 @@
-  const dropdown = document.querySelector(".dropdown");
-  const selectedArea = document.querySelector('.dropdown .selected-area');
-  const dropdownSelect = document.querySelector('.dropdown .select');
-  const dropdownBtnIcon = document.querySelector(".dropdown button i")
-  const selectedText = document.querySelector('.select p');
-  const selectUl = document.querySelector('.select ul');
-  const selectedUl = document.querySelector('.dropdown .selected-area ul');
-  const header = document.querySelector(".header");
-  
-  //NB: single category = li(list)
-  //I have used list(category) as it is small word
+import { ctgryData } from '../data/categories.js'
+import { scroll } from '../utils/shortcut.js'
+import { string } from '../utils/string.js';
 
-  export function handleCategory(categoryData) {
-    renderCategories(categoryData)
-    addListeners();
-  }
+const selected = document.querySelector('#ctgry-selector .selected');
+const select = document.querySelector('#ctgry-selector .select');
+const arrowIcon = document.querySelector("#ctgry-selector .arrow-icon")
+const selectP = document.querySelector('.select p');
+const selectUl = document.querySelector('.select ul');
+const selectedUl = document.querySelector('#ctgry-selector .selected ul');
 
-  function renderCategories(categoryData) {
-    categoryData.forEach(category => {
+export const ctgrySelector = {
+  getReady() {
+    selected.addEventListener('click', ()=> {   
+      if (select.classList.contains('visible')) {
+        this.close();
+      } else {
+        this.open();      
+      }
+    });
+  },
+
+  open() {
+    arrowIcon.classList.add('rotate');
+    select.classList.add('visible');
+    scroll.disable();
+    this.addBg();
+  },
+
+  close() {
+    arrowIcon.classList.remove('rotate');
+    select.classList.remove('visible');
+    scroll.enable();
+    this.rmvBg();
+  },
+
+  addBg() {
+    const bg = document.createElement('div');
+    bg.id = 'ctgry-selector-bg';
+    bg.addEventListener('click', ()=> {
+      this.close();
+    })
+    document.body.prepend(bg);
+  },
+
+  rmvBg() {
+    document.querySelector('#ctgry-selector-bg').remove();
+  },
+
+  renderCategories() {
+    selectUl.innerHTML = '';
+    selectedUl.innerHTML = '';
+
+    ctgryData.categories.forEach(category => {
       const {id, name, emoji, color} = category;
 
       const i = document.createElement('i');
@@ -33,76 +68,46 @@
       li.appendChild(emojiSpan);
       li.appendChild(nameSpan);
       selectUl.appendChild(li);
-    });
-  }
 
-  function addListeners() {
-    selectedArea.addEventListener('click', ()=> {   
-      if (dropdownSelect.classList.contains('select-visible')) {
-        removeDropdown();
-      } else {
-        showDropdown();
-      }
-    });
-    
-    document.body.addEventListener('click', e => {
-      if (!dropdown.contains(e.target) && 
-      dropdownSelect.classList.contains('select-visible')) {
-        removeDropdown();
-      }
-    })
-    
-    const selectList = document.querySelectorAll('.dropdown .select li');
-    for (let list of selectList) {
-      list.addEventListener('click', () => {
-        if (!list.children[0].classList.contains('initial')) {
-          selectACategory(list);
+      li.addEventListener('click', () => {
+        if (!i.classList.contains('initial')) {
+          this.selectACategory(i, id);
         } else {
-          unselectACategory(list);
+          this.unselectACategory(i, id);
         }
       });
-    }  
-  }
+    });
+  },
 
-  function showDropdown() {
-    dropdownBtnIcon.classList.add('rotate-icon');
-    dropdownSelect.classList.add('select-visible');
-
-    document.body.style.paddingRight = '8px';
-    header.style.paddingRight = '27px';
-    document.body.style.overflowY = 'hidden';
-  }
-
-  function removeDropdown() {
-    dropdownBtnIcon.classList.remove('rotate-icon');
-    dropdownSelect.classList.remove('select-visible');
-
-    document.body.style.overflowY = 'scroll';
-    document.body.style.paddingRight = '0px';
-    header.style.paddingRight = '20px';
-  }
-
-  function selectACategory(list) {
-    const totalSelectedList = document.querySelectorAll('.dropdown .select i.initial').length;  
-
-    if (totalSelectedList > 2) {
-      alert('You can not add more than 3 categories');
+  selectACategory(i, id) {
+    const totalSelected= document.querySelectorAll('#ctgry-selector .select i.initial').length;   
+    if (totalSelected == 3) {
       return;
     }  
+    
+    i.classList.add('initial');
+    selectedUl.appendChild(this.createAselectedCtgry(id));
+    this.updateSelectedText();
+    if (totalSelected == 2) {
+      this.disableCtgry();
+    }
+  },
 
-    list.children[0].classList.add('initial');
-    const id = list.dataset.id;
-    const name = list.children[2].innerText;
-    const emoji = list.children[1].innerText;
-    const color = list.style.backgroundColor;
-    const li = createAselectedList(id, name, emoji, color);
-    selectedUl.appendChild(li);
+  unselectACategory(i, id) {
+    i.classList.remove('initial');
+    document.querySelectorAll('#ctgry-selector .selected ul li')
+      .forEach(ctgry => {
+        if (ctgry.dataset.id == id) {
+          ctgry.remove();
+          return;
+        }
+      });
+    this.updateSelectedText();
+    this.enableCtgry();
+  },
 
-    updateSelectedText();
-    disableList();
-  }
-
-  function createAselectedList(id, name, emoji, color) {
+  createAselectedCtgry(id) {
+    const {name, color, emoji} = ctgryData.getCtgry(id);
     const li = document.createElement('li');
     li.style.backgroundColor = color;
     li.dataset.id = id;
@@ -116,74 +121,50 @@
     li.appendChild(nameSpan);
 
     return li;
-  }
+  },
 
-  function disableList() {
-    const totalSelectedList = document.querySelectorAll('.dropdown .select i.initial').length;
-    
-    if (totalSelectedList == 3) {
-      const allSelectList = document.querySelectorAll(".select ul li");
-      allSelectList.forEach(list => {
-        if (!list.children[0].classList.contains('initial')) {
-          list.style.opacity = '0.6';
-          list.style.cursor = 'no-drop';
-        }
-      });
-    }
-  }
-
-  function unselectACategory(list) {
-    const text = list.children[2].innerText;
-    const allSelectedList = document.querySelectorAll(".selected-area ul li");
-
-    allSelectedList.forEach(li => {
-      if (li.children[1].innerText === text) {
-        li.remove();
-        list.children[0].classList.remove('initial');
-      }
-    });
-
-    const allSelectList = document.querySelectorAll(".select li");
-    allSelectList.forEach(li => {
-      if (!li.children[0].classList.contains('initial')) {
-        li.style.opacity = '1';
-        li.style.cursor = 'pointer';
-      }
-    });
-
-    updateSelectedText();
-  }
-
-
-  function updateSelectedText() {
+  updateSelectedText() {
     const text = [];
 
-    for (let list of selectedUl.children) {
-      text.push(list.children[1].innerText);
+    for (let ctgry of selectedUl.children) {
+      text.push(ctgry.children[1].innerText);
     }
-    
+
     if (text.length === 0) {
-      selectedText.innerText = '';
-    } else if (text.length === 1) {
-      selectedText.innerText = `Selected ${text[0]}`;
-    } else if (text.length === 2) {
-      const modifiedText = text.join(' and ');
-      selectedText.innerText = `Selected ${modifiedText}`;
-    } else if (text.length === 3) {
-      const lastElement = text.pop();
-
-      const modifiedText = text.join(', ') + (' and ') + lastElement;
-      selectedText.innerText = `Selected ${modifiedText}`;
+      selectP.innerText = '';
+    } else {
+      selectP.innerText = `Selected ${string.combineStrings(text)}`;
     }
-  }
+  },
 
-  export function getCategoryId() {
-    const id = [];
-    const allSelectedList = document.querySelectorAll(".selected-area ul li");
-    allSelectedList.forEach(list => {
-      const categoryId = list.dataset.id;
-      id.push(categoryId);
+  disableCtgry() {
+    const allCtgry = document.querySelectorAll(".select ul li");
+    allCtgry.forEach(ctgry => {
+      if (!ctgry.children[0].classList.contains('initial')) {
+        ctgry.style.opacity = '0.6';
+        ctgry.style.cursor = 'no-drop';
+      }
     });
+  },
 
-    return id;
+  enableCtgry() {
+    const allCtgry = document.querySelectorAll(".select li");
+    allCtgry.forEach(ctgry => {
+      if (!ctgry.children[0].classList.contains('initial')) {
+        ctgry.style.opacity = '1';
+        ctgry.style.cursor = 'pointer';
+      }
+    });
+  },
+
+  getAllSelected() {
+    const ids = [];
+    const allSelected = document.querySelectorAll(".selected ul li");
+    allSelected.forEach(ctgry => {
+      const id = ctgry.dataset.id;
+      ids.push(id);
+    });
+  
+    return ids;
   }
+};

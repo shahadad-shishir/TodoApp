@@ -1,0 +1,257 @@
+#sidebar {
+  width: 370px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 24px 0 0;
+  position: fixed;
+  z-index: 999;
+  right: -400px;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  transition: right 0.3s ease-out;
+}
+
+#sidebar.active {
+  right: 0;
+}
+
+#sidebar-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  z-index: 11;
+  backdrop-filter: brightness(60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 60px 0 36px;
+  cursor: pointer;
+}
+
+#sidebar .app-name {
+  display: flex;
+  justify-content: center;
+  margin-top: -25px;
+}
+
+#sidebar .app-name span {
+  color: var(--secondary-color);
+  margin-right: 5px;
+}
+
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px 18px 18px;
+  row-gap: 10px;
+}
+
+#sidebar li {
+  list-style: none;
+  color: var(--text-color);
+  padding: 18px 12px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#sidebar li:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+#sidebar li span.nm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#sidebar li svg {
+  width: 27px;
+  margin-right: 15px;
+  margin-left: -3px;
+}
+
+#sidebar li i {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.sidebar-tasks {
+  justify-content: space-between;
+  position: relative;
+}
+
+#sidebar .sidebar-tasks svg {
+  width: 23px;
+}
+
+#sidebar .task-count {
+  background-color: var(--secondary-min2);
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 13px;
+  height: 23px;
+  width: 30px;
+  border-radius: 13px;
+  align-items: center;
+  justify-content: center;
+  display: none; /*flex*/
+}
+
+.sidebar-tooltip {
+  background-color: #f0f0f0;
+  color: var(--text-color);
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 12px;
+  position: absolute;
+  bottom: -30px;
+  right: -17px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+#sidebar .task-count:hover .sidebar-tooltip {
+  opacity: 1;
+}
+
+.sidebar-github i {
+  transition: transform 0.25s ease;
+}
+
+.sidebar-github:hover i {
+  transform: rotateY(360deg);
+}
+
+.sidebar-issue i {
+  transition: transform 0.25s ease;
+}
+
+.sidebar-issue:hover i {
+  transform: rotate(30deg) scale(0.9);
+}
+
+.sidebar-logout {
+  color: red!important;
+}
+
+.sidebar-settings {
+  margin-bottom: 5px;
+  background-color: rgb(16, 23, 39);
+  color: rgb(240, 240, 240) !important;
+}
+
+.sidebar-settings:hover {
+  background-color: rgba(16, 23, 39, 0.698) !important;
+}
+
+.sidebar-settings i {
+  transition: transform 0.5s ease;
+}
+
+.sidebar-settings:hover i {
+  transform: rotate(180deg);
+}
+
+.sidebar-user {
+  background-color: #ddd;
+  margin: 5px 0;
+}
+
+.sidebar-user div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-right: 10px;
+  color: #fff;
+  background-color: #BDBDBD;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.sidebar-user .user-name {
+  font-weight: 600;
+}
+
+.sidebar-break {
+  border-top: 1px solid rgb(224,224,224);
+}
+
+#sidebar .creator {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #81858E;
+  font-size: 12px;
+}
+
+
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #dcd6d6;
+}
+
+@media only screen and (max-width: 812px) {
+  #sidebar {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 612px) {
+  #sidebar {
+    width: 280px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #sidebar {
+    width: 240px;
+  }
+  #sidebar .app-name {
+    font-size: 20px;
+  }
+  #sidebar li {
+    font-size: 13px;
+  }
+  #sidebar .sidebar-tasks svg {
+    width: 17px;
+  }
+  #sidebar li svg {
+    width: 20px;
+    margin-right: 8px;
+    margin-left: 0px;
+  }
+  #sidebar .task-count {
+    font-size: 12px;
+    height: 18px;
+    width: 24px;
+    border-radius: 11px;
+  }
+  #sidebar li i {
+    font-size: 17px;
+    margin-right: 9px;
+  }
+
+  .sidebar-user div {
+    font-size: 25px;
+    height: 35px;
+    width: 35px;
+  }
+  #sidebar .creator {
+    font-size: 11px;
+  }
+}

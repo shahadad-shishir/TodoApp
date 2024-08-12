@@ -1,5 +1,8 @@
-import { getCategoryData, getTaskData } from "../data.js";
-import { formateDateTime } from "../utils/dateTime.js";
+import { taskData } from "../data/tasks.js"
+import { ctgryData } from "../data/categories.js"
+import { dateTime } from "../utils/dateTime.js";
+import { header } from "./header.js";
+import { navbar } from "./navbar.js";
 
 const heading = document.querySelector('.heading span');
 const emojiEl = document.querySelector('#emoji td');
@@ -12,7 +15,8 @@ const doneEl = document.querySelector('#done td');
 const pinnedEl = document.querySelector('#pinned td');
 const categoryEl = document.querySelector('#category ul');
 
-
+header.getReady();
+navbar.getReady();
 renderTaskData();
 
 document.querySelector('.js-back-btn')
@@ -22,8 +26,7 @@ document.querySelector('.js-back-btn')
 
 function renderTaskData() {
   const taskId = getIdFromUrl('id');
-  const taskData = getTaskData(taskId).task;
-  let {name, emoji, id, description, color, createDate, deadline, done, pinned, category} = taskData;
+  let {name, emoji, id, description, color, createDate, deadline, done, pinned, category} = taskData.getTask(taskId);
   
   heading.innerText = name;
 
@@ -74,7 +77,7 @@ function renderTaskData() {
 
   const addCategory = () => {
     category.forEach(id => {
-      const dataObj = getCategoryData(id);
+      const dataObj = ctgryData.getCtgry(id);
       const {name, emoji, color} = dataObj;
       const li = document.createElement('li');
       li.style.backgroundColor = color;
@@ -97,7 +100,6 @@ function getIdFromUrl(value) {
 function formateDate(createDate) {
   //3/13/2024, 11:37:17 AM
   createDate = new Date(createDate);
-  const {date, time} = formateDateTime(createDate);
-
+  const {date, time} = dateTime.formateDateTime(createDate);
   return `${date}, ${time}`;
 }

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('../../assets/fontawesome-icons/css/all.min.css');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --primary-color: #F3F8FF;
+  --secondary-color: #7E30E1;
+  --text-color: rgb(16, 23, 39);
+  --add-anim-clr1: rgba(126, 48, 255, 0.698);
+  --add-anim-clr2: rgba(126, 48, 255, 0);
+  --secondary-min1: rgba(126, 48, 255, 0.1);
+  --secondary-min2: rgba(126, 48, 255, 0.2);
+  --secondary-min6: rgba(126, 48, 255, 0.6);
+  --secondary-min8: rgba(126, 48, 255, 0.8);
+
+  --categories-item1: #47F667;
+  --categories-item2: #4B9CFD;
+  --categories-item3: #E861FC;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--primary-color);
+  letter-spacing: 0.02em;
+  transition: filter 0.3s;
+  overflow-x: hidden;
+}
+
+.main {
+  width: 70%;
+  margin: 0 auto;
+  max-width: 900px;
+  color: var(--text-color);
+  margin-bottom: 100px;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-min8);
+}
+
+@keyframes addAnim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: var(--add-anim-clr1) 0px 0px 0px 0px;
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: var(--add-anim-clr2) 0px 0px 0px 14px;
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: var(--add-anim-clr2) 0px 0px 0px 0px;
+  }
+}
+
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityAnimRvrs {
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@media only screen and (max-width: 1025px) {
+  .main {
+    width: 93%;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .main {
+    margin-bottom: 220px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .main {
+    margin-bottom: 180px;
+  }
+
+  html, body {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  body {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
