@@ -1,9 +1,7 @@
 import { dateTime } from "../utils/dateTime.js";
 import { sidebar } from "../sidebar.js";
 
-const quote =  document.querySelector('.header .quote');
-const greetingEl =  document.querySelector('.header .greeting');
-const userIcon = document.querySelector('header .user');
+let quote, greetingEl, userIcon;
 
 const quotes = [
   'Stay organized, stay ahead.',
@@ -25,9 +23,12 @@ const quotes = [
 
 export const header = {
   getReady() {
+    quote = document.querySelector('.header .quote');
+    greetingEl =  document.querySelector('.header .greeting');
+    userIcon = document.querySelector('.header .user');
+
     this.renderQuotes();
     this.renderGreeting();
-
     sidebar.getReady();
     userIcon.addEventListener('click', () => {
       sidebar.open();

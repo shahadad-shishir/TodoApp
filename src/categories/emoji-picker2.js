@@ -1,11 +1,14 @@
 import { editCtgry } from "./old-categories/edit/edit.js";
 
-const emojiIcon = document.querySelector('.EP2 .emoji');
-const picker = document.querySelector('.EP2 .picker');
-const removeEmoji = document.querySelector('.EP2 .remove-emoji');
+let emojiIcon, picker, removeEmoji;
 
 export const emojiPicker2 = {
   getReady() {
+
+    emojiIcon = document.querySelector('.EP2 .emoji');
+    picker = document.querySelector('.EP2 .picker');
+    removeEmoji = document.querySelector('.EP2 .remove-emoji');
+
     emojiIcon.addEventListener('click', () => {
       if (picker.classList.contains('active')) {
         this.close();

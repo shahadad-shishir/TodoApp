@@ -1,12 +1,13 @@
 import { taskData } from "../data/tasks.js";
 
-const circle = document.querySelector('.progress .draw-circle');
-const percentEl = document.querySelector('.circle-container .number');
-const complete = document.querySelector('.progress .details h3');
-const completeMsg = document.querySelector('.progress .details p');
-const dueTask = document.querySelector('.progress .details div span');
+let circle, percentEl, complete, completeMsg;
 
 export function handleProgress() {
+  circle = document.querySelector('.progress .draw-circle');
+  percentEl = document.querySelector('.circle-container .number');
+  complete = document.querySelector('.progress .details h3');
+  completeMsg = document.querySelector('.progress .details p');
+
   const totalTask = taskData.tasks.length;
   let doneTask = 0;
   taskData.tasks.forEach(task => {

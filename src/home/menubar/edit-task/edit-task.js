@@ -4,30 +4,32 @@ import { ctgrySelector } from "./category-selector.js";
 import { colorPicker } from "./color-picker.js";
 import { emojiPicker } from "./emoji-picker.js";
 import { taskContainer, renderTask } from "../../task.js";
-import { searchResult, dismisSearch } from "../../search.js";
+import { searchResult, search } from "../../search.js";
 import { mngCategoryFilter } from "../../category-filter.js";
 import { popup } from "../../../utils/popup.js";
 
-const saveBtn = document.querySelector('.edit-task #save-btn');
-const editTaskEl = document.querySelector('.edit-task');
-const editTaskBg = document.querySelector('#editTask-bg');
-const cancelBtn = document.querySelector('.edit-task #cancel-btn');
-const nameInput = document.querySelector('#name-input');
-const desInput = document.querySelector('#description');
-const dateInput = document.querySelector('#date-input');
-const nm = document.querySelector('.edit-task .name');
-const des = document.querySelector('.edit-task .description');
-const nmLabel = document.querySelector('.name label');
-const desLabel = document.querySelector('.description label');
-const nmCount = document.querySelector('span.nm-count');
-const desCount = document.querySelector('span.des-count');
-const ctgrySelectedTxt = document.querySelector('.select p');
+let saveBtn, editTaskEl, editTaskBg, cancelBtn, nameInput, desInput, dateInput, nm, des, nmLabel, desLabel, nmCount, desCount, ctgrySelectedTxt;
 
 export const editTask = {
   taskId: undefined,
   oldData: undefined,
 
   getReady() {
+    saveBtn = document.querySelector('.edit-task #save-btn');
+    editTaskEl = document.querySelector('.edit-task');
+    editTaskBg = document.querySelector('#editTask-bg');
+    cancelBtn = document.querySelector('.edit-task #cancel-btn');
+    nameInput = document.querySelector('#name-input');
+    desInput = document.querySelector('#description');
+    dateInput = document.querySelector('#date-input');
+    nm = document.querySelector('.edit-task .name');
+    des = document.querySelector('.edit-task .description');
+    nmLabel = document.querySelector('.name label');
+    desLabel = document.querySelector('.description label');
+    nmCount = document.querySelector('span.nm-count');
+    desCount = document.querySelector('span.des-count');
+    ctgrySelectedTxt = document.querySelector('.select p');
+
     editTaskBg.addEventListener('click', () => {
       this.hideEditTask();
     });
@@ -120,7 +122,7 @@ export const editTask = {
     renderTask();
     mngCategoryFilter();
     if (searchResult.style.display === 'flex') {
-      dismisSearch();
+      search.dismiss();
     }
 
     const msg = `Task <b>${name}</b> updated.`;

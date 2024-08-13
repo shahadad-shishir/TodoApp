@@ -1,10 +1,12 @@
 import { taskData } from "../data/tasks.js";
 import { ctgryData } from "../data/categories.js";
 
-const categories = document.querySelector('.main .categories');
-const srcRsltCount = document.querySelector('.search-result .count');
+let categories, srcRsltCount;
 
 export function mngCategoryFilter() {
+  categories = document.querySelector('.main .categories');
+  srcRsltCount = document.querySelector('.search-result .count');
+
   let allCategories = [];
 
   const addCategories = task => {

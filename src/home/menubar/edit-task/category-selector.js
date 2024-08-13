@@ -2,16 +2,18 @@ import { ctgryData } from '../../../data/categories.js'
 import { string } from '../../../utils/string.js';
 import { editTask } from './edit-task.js';
 
-const selector = document.querySelector("#ctgry-selector");
-const selected = document.querySelector('#ctgry-selector .selected');
-const select = document.querySelector('#ctgry-selector .select');
-const arrowIcon = document.querySelector("#ctgry-selector .arrow-icon")
-const selectP = document.querySelector('.select p');
-const selectUl = document.querySelector('.select ul');
-const selectedUl = document.querySelector('#ctgry-selector .selected ul');
+let selector, selected, select, arrowIcon, selectP, selectUl, selectedUl;
 
 export const ctgrySelector = {
   getReady() {
+    selector = document.querySelector("#ctgry-selector");
+    selected = document.querySelector('#ctgry-selector .selected');
+    select = document.querySelector('#ctgry-selector .select');
+    arrowIcon = document.querySelector("#ctgry-selector .arrow-icon")
+    selectP = document.querySelector('.select p');
+    selectUl = document.querySelector('.select ul');
+    selectedUl = document.querySelector('#ctgry-selector .selected ul');
+
     selected.addEventListener('click', ()=> {   
       if (select.classList.contains('visible')) {
         this.close();

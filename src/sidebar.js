@@ -1,52 +1,70 @@
 import { scroll } from "./utils/shortcut.js";
 import { taskData } from "./data/tasks.js";
+import { navigateTo } from "./route.js";
 
-const sidebarEl = document.querySelector('#sidebar');
-const sidebarHeader = document.querySelector('.sidebar-header');
-const sidebarBg = document.querySelector('#sidebar-bg');
-const tasks = document.querySelector('.sidebar-tasks');
-const taskCount = document.querySelector('#sidebar .task-count');
-const countNum = document.querySelector('#sidebar .task-count-number');
-const tooltipNum = document.querySelector('.sidebar-tooltip span');
-const add = document.querySelector('.sidebar-add');
-const purge = document.querySelector('.sidebar-purge');
-const ctgry = document.querySelector('.sidebar-ctgry');
-const transfer = document.querySelector('.sidebar-transfer');
-const github = document.querySelector('.sidebar-github');
-const issue = document.querySelector('.sidebar-issue');
-const logout = document.querySelector('.sidebar-logout');
-const settings = document.querySelector('.sidebar-settings');
-const user = document.querySelector('.sidebar-user');
+let sidebarEl, sidebarHeader, sidebarBg, tasks, taskCount, countNum, tooltipNum, add, purge, ctgry, transfer, github, issue, logout, settings, user;
+
 
  export const sidebar = {
   getReady() {
+    sidebarEl = document.querySelector('#sidebar');
+    sidebarHeader = document.querySelector('.sidebar-header');
+    sidebarBg = document.querySelector('#sidebar-bg');
+    tasks = document.querySelector('.sidebar-tasks');
+    taskCount = document.querySelector('#sidebar .task-count');
+    countNum = document.querySelector('#sidebar .task-count-number');
+    tooltipNum = document.querySelector('.sidebar-tooltip span');
+    add = document.querySelector('.sidebar-add');
+    purge = document.querySelector('.sidebar-purge');
+    ctgry = document.querySelector('.sidebar-ctgry');
+    transfer = document.querySelector('.sidebar-transfer');
+    github = document.querySelector('.sidebar-github');
+    issue = document.querySelector('.sidebar-issue');
+    logout = document.querySelector('.sidebar-logout');
+    settings = document.querySelector('.sidebar-settings');
+    user = document.querySelector('.sidebar-user');
+
     sidebarBg.addEventListener('click', () => {
       this.close();
     });
     sidebarHeader.addEventListener('click', () => {
       this.close();
     });
-
     tasks.addEventListener('click', () => {
+      if (location.pathname !== '/') {
+        navigateTo('/');
+      }
       this.close();
     });
     add.addEventListener('click', () => {
-      window.location.href = '../pages/add-task.html';
+      if (location.pathname !== '/add-task') {
+        navigateTo('/add-task');
+      }
+      this.close();
     });
     purge.addEventListener('click', () => {
-      window.location.href = '../pages/purge.html';
+      // if (location.pathname !== '/purge') {
+      //   navigateTo('/purge');
+      // }
+      this.close();
     });
     ctgry.addEventListener('click', () => {
-      window.location.href = '../pages/categories.html';
+      if (location.pathname !== '/categories') {
+        navigateTo('/categories');
+      }
+      this.close();
     });
     transfer.addEventListener('click', () => {
-      window.location.href = '../pages/transfer.html';
+      if (location.pathname !== '/transfer') {
+        navigateTo('/transfer');
+      }
+      this.close();
     });
     github.addEventListener('click', () => {
-      window.location.href = '#';
+      window.open('https://github.com/shahadad-shishir/TodoApp');
     });
     issue.addEventListener('click', () => {
-      window.location.href = '#';
+      window.open('https://github.com/shahadad-shishir/TodoApp/issues/new')
     });
     logout.addEventListener('click', () => {
       
@@ -55,7 +73,10 @@ const user = document.querySelector('.sidebar-user');
       
     });
     user.addEventListener('click', () => {
-      window.location.href = '../pages/profile.html';
+      if (location.pathname !== '/profile') {
+        navigateTo('/profile');
+      }
+      this.close();
     });
   },
 

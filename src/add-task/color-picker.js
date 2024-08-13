@@ -2,20 +2,21 @@ const clrData = {
   allColors: ['#ff69b4', '#fb34ff', '#ff22b4', '#c6a7ff', '#7accfa', '#4a9dff', '#5061ff', '#50b5cb', '#3ae836', '#b7ff42', '#ffea28', '#ff9518', '#ffc3a0', '#ff5018', '#3dff7f', '#ff2f2f', '#b624ff', '#7e30e1']
 }
 
-
-const selectedClr = document.querySelector('.selected-clr');
-const angleIcon = document.querySelector('.selected-clr .right i');
-const selectClr = document.querySelector('.select-clr');
-const clrOptions = document.querySelector('#color-picker .clr-options');
-const clrCode = document.querySelector('#color-picker .clr-code');
-const selectedClrEl = document.querySelector('.selected-clr .color');
-const clrPicker = document.querySelector('#color-picker .picker span');
-const clrInput = document.querySelector('#color-picker .picker input');
-const randomClrBtn = document.querySelector('#random-clr');
-const formEmojiIcon = document.querySelector('#emoji-picker .emoji');
+let selectedClr, angleIcon, selectClr, clrOptions, clrCode, selectedClrEl, clrPicker, clrInput, randomClrBtn, formEmojiIcon;
 
 export const colorPicker = {
   getReady() {
+    selectedClr = document.querySelector('.selected-clr');
+    angleIcon = document.querySelector('.selected-clr .right i');
+    selectClr = document.querySelector('.select-clr');
+    clrOptions = document.querySelector('#color-picker .clr-options');
+    clrCode = document.querySelector('#color-picker .clr-code');
+    selectedClrEl = document.querySelector('.selected-clr .color');
+    clrPicker = document.querySelector('#color-picker .picker span');
+    clrInput = document.querySelector('#color-picker .picker input');
+    randomClrBtn = document.querySelector('#random-clr');
+    formEmojiIcon = document.querySelector('#emoji-picker .emoji');
+
     this.renderColors();
 
     clrInput.addEventListener('input', () => {

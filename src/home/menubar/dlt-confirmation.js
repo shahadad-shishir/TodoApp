@@ -5,18 +5,20 @@ import { mngAnim } from "../../utils/shortcut.js";
 import { string } from "../../utils/string.js";
 import { menubar } from "./menubar.js";
 
-const dltConfirm = document.querySelector('.delete-confirm');
-const cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
-const dltBtn = document.querySelector('.delete-confirm #dlt-btn');
-const nmEl = document.querySelector('.delete-confirm .nm');
-const desEl = document.querySelector('.delete-confirm .des');
-const ctgryEl = document.querySelector('.delete-confirm .ctgry');
-const blurBg = document.querySelector('.blur-bg');
+let dltConfirm, cnclBtn, dltBtn, nmEl, desEl, ctgryEl, blurBg;
 
 export const dltCnfrm = {
   taskId: undefined,
 
   getReady() {
+    dltConfirm = document.querySelector('.delete-confirm');
+    cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
+    dltBtn = document.querySelector('.delete-confirm #dlt-btn');
+    nmEl = document.querySelector('.delete-confirm .nm');
+    desEl = document.querySelector('.delete-confirm .des');
+    ctgryEl = document.querySelector('.delete-confirm .ctgry');
+    blurBg = document.querySelector('.blur-bg');
+
     blurBg.addEventListener('click', () => {
       this.close();
     });

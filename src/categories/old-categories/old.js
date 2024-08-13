@@ -3,10 +3,12 @@ import { taskData } from "../../data/tasks.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
 import { editCtgry } from "./edit/edit.js";
 
-const oldEl = document.querySelector('.old-categories');
+let oldEl;
 
 export const oldCategories = {
   getReady() {
+    oldEl = document.querySelector('.old-categories');
+
     this.render();
     editCtgry.getReady();
     dltCnfrm.getReady();

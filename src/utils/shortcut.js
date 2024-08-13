@@ -1,5 +1,4 @@
-const userIcon = document.querySelector('.user');
-const navBar = document.querySelector('#navbar');
+let userIcon, navBar;
 
 export const scroll = {
   enable: function () {
@@ -10,6 +9,9 @@ export const scroll = {
   },
   
   disable: function () {
+    userIcon = document.querySelector('.user');
+    navBar = document.querySelector('#navbar');
+    
     const isMobile = navigator.userAgentData.mobile;
     if (!isMobile) {
       document.body.style.paddingRight = '8px';
@@ -54,4 +56,10 @@ export function arraysEqual(arr1, arr2) {
   }
 
   return true;
+}
+
+export async function getHtml(url) {
+  const response = await fetch(url);
+  const html = await response.text();
+  return html;
 }

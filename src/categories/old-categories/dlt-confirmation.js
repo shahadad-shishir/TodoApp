@@ -4,16 +4,18 @@ import { taskData } from "../../data/tasks.js";
 import { oldCategories } from "./old.js";
 import { popup } from "../../utils/popup.js";
 
-const dltConfirm = document.querySelector('.delete-confirm');
-const cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
-const dltBtn = document.querySelector('.delete-confirm #dlt-btn');
-const nm = document.querySelector('.delete-confirm h3 b');
-const bg = document.querySelector('#dlt-bg');
+let dltConfirm, cnclBtn, dltBtn, nm, bg;
 
 export const dltCnfrm = {
   ctgryId: undefined,
 
   getReady() {
+    dltConfirm = document.querySelector('.delete-confirm');
+    cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
+    dltBtn = document.querySelector('.delete-confirm #dlt-btn');
+    nm = document.querySelector('.delete-confirm h3 b');
+    bg = document.querySelector('#dlt-bg');
+
     bg.addEventListener('click', () => {
       this.close();
     });

@@ -1,6 +1,6 @@
-@import url('./common/common.css');
-@import url('./common/header.css');
-@import url('./common/navbar.css');
+.main {
+  margin-bottom: 30px;
+}
 
 .card {
   display: flex;

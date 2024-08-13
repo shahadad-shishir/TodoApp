@@ -5,21 +5,22 @@ import { colorPicker2 } from "../../color-picker2.js";
 import { emojiPicker2 } from "../../emoji-picker2.js";
 import { oldCategories } from "../old.js";
 
-
-const editEl = document.querySelector('.edit-category');
-const bg = document.querySelector('#editCtgry-bg');
-const cancelBtn = document.querySelector('#edit-cancel-btn');
-const saveBtn = document.querySelector('#edit-save-btn');
-const nm = document.querySelector('.edit-name');
-const nmLabel = document.querySelector('.edit-label1');
-const nmInput = document.querySelector('.edit-category input');
-const nmCount = document.querySelector('.edit-nm-count');
+let editEl, bg, cancelBtn, saveBtn, nm, nmLabel, nmInput, nmCount;
 
 export const editCtgry = {
   ctgryId: undefined,
   oldData: undefined,
   
   getReady() {
+    editEl = document.querySelector('.edit-category');
+    bg = document.querySelector('#editCtgry-bg');
+    cancelBtn = document.querySelector('#edit-cancel-btn');
+    saveBtn = document.querySelector('#edit-save-btn');
+    nm = document.querySelector('.edit-name');
+    nmLabel = document.querySelector('.edit-label1');
+    nmInput = document.querySelector('.edit-category input');
+    nmCount = document.querySelector('.edit-nm-count');
+
     bg.addEventListener('click', () => {
       this.hide();
     });

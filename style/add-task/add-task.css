@@ -1,7 +1,3 @@
-@import url('../common/common.css');
-@import url('../common/header.css');
-@import url('../common/navbar.css');
-@import url('../common/popup.css');
 @import url('./emoji-picker.css');
 @import url('./color-picker.css');
 @import url('./ctgry-selector.css');

@@ -1,9 +1,11 @@
-const emojiIcon = document.querySelector('#emoji-picker .emoji');
-const picker = document.querySelector('#emoji-picker .picker');
-const removeEmoji = document.querySelector('.remove-emoji');
+let emojiIcon, picker, removeEmoji;
 
 export const emojiPicker = {
   getReady() {
+    emojiIcon = document.querySelector('#emoji-picker .emoji');
+    picker = document.querySelector('#emoji-picker .picker');
+    removeEmoji = document.querySelector('.remove-emoji');
+
     emojiIcon.addEventListener('click', () => {
       if (picker.classList.contains('active')) {
         this.close();

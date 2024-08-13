@@ -1,14 +1,17 @@
 import { taskData } from "../data/tasks.js";
+import { navigateTo } from "../route.js";
 
-const tasks = document.querySelector('#navbar .tasks');
-const categories = document.querySelector('#navbar .categories');
-const addBtn = document.querySelector('#navbar .add');
-const transfer = document.querySelector('#navbar .transfer');
-const profile = document.querySelector('#navbar .profile');
-const count = document.querySelector('#navbar .count');
+let tasks, categories, addBtn, transfer, profile, count;
 
 export const navbar = {
   getReady: function() {
+    tasks = document.querySelector('#navbar .tasks');
+    categories = document.querySelector('#navbar .categories');
+    addBtn = document.querySelector('#navbar .add');
+    transfer = document.querySelector('#navbar .transfer');
+    profile = document.querySelector('#navbar .profile');
+    count = document.querySelector('#navbar .count');
+
     tasks.addEventListener('click', () => {
       this.scrollToTop();
     });
@@ -18,7 +21,7 @@ export const navbar = {
     });
     
     addBtn.addEventListener('click', () => {
-      window.location.href = './pages/add-task.html';
+      navigateTo('/add-task');
     });
 
     transfer.addEventListener('click', () => {

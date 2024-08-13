@@ -2,27 +2,30 @@ import { taskData } from "../../data/tasks.js";
 import { scroll, mngAnim } from "../../utils/shortcut.js";
 import { mngCategoryFilter } from "../category-filter.js";
 import { handleProgress } from "../progress.js";
-import { dismisSearch,searchResult } from "../search.js";
+import { search, searchResult } from "../search.js";
 import { renderTask } from "../task.js";
 import { editTask } from "./edit-task/edit-task.js";
 import { popup } from "../../utils/popup.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
+import { navigateTo, routes } from "../../route.js";
 
-const menubarEl = document.querySelector('.menubar');
-const SmenubarBg = document.querySelector('#s-menubar-bg');
-const lMenubarBg = document.querySelector('#l-menubar-bg');
-const doneBtn = document.querySelector('#mark-done');
-const pinBtn = document.querySelector('#pin');
-const detailsBtn = document.querySelector('#details');
-const editBtn = document.querySelector('#edit');
-const dublicate = document.querySelector('#dublicate');
-const deleteBtn = document.querySelector('#delete');
+let menubarEl, SmenubarBg, lMenubarBg, doneBtn, pinBtn, detailsBtn, editBtn, dublicate, deleteBtn;
 
 export const menubar = {
   taskId: undefined,
   distanceFromTop: undefined,
 
-  getReady() {
+  getReady() {   
+    menubarEl = document.querySelector('.menubar');
+    SmenubarBg = document.querySelector('#s-menubar-bg');
+    lMenubarBg = document.querySelector('#l-menubar-bg');
+    doneBtn = document.querySelector('#mark-done');
+    pinBtn = document.querySelector('#pin');
+    detailsBtn = document.querySelector('#details');
+    editBtn = document.querySelector('#edit');
+    dublicate = document.querySelector('#dublicate');
+    deleteBtn = document.querySelector('#delete');
+
     editTask.getReady();
     dltCnfrm.getReady();
     popup.getReady();
@@ -50,7 +53,8 @@ export const menubar = {
     });
 
     detailsBtn.addEventListener('click', () => {
-      window.location.href = 'pages/task.html?id='+ this.taskId;
+      routes['/task'].data.taskId = this.taskId;
+      navigateTo('/task');
     });
 
     editBtn.addEventListener('click', () => {   
@@ -277,7 +281,7 @@ export const menubar = {
     handleProgress();
     mngCategoryFilter();
     if (searchResult.style.display === 'flex') {
-      dismisSearch();
+      search.dismiss();
     }
   }
 };

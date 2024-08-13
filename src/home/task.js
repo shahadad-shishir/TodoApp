@@ -3,15 +3,18 @@ import { taskData } from "../data/tasks.js";
 import { ctgryData } from "../data/categories.js";
 import { menubar } from "./menubar/menubar.js";
 
-export const taskContainer = document.querySelector('.tasks-container');
-const emptyTask = document.querySelector('.empty-task');
-const progress = document.querySelector('.main .progress');
-const searchBar = document.querySelector('.main .search-bar');
-const addBtnIcon = document.querySelector('.add-btn .icon');
-const ctgryFilter = document.querySelector('.main .categories');
-const navAddBtn = document.querySelector('#navbar .add');
+export let taskContainer;
+let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;
 
 export function renderTask() {
+  taskContainer = document.querySelector('.tasks-container');
+  emptyTask = document.querySelector('.empty-task');
+  progress = document.querySelector('.main .progress');
+  searchBar = document.querySelector('.main .search-bar');
+  addBtnIcon = document.querySelector('.add-btn .icon');
+  ctgryFilter = document.querySelector('.main .categories');
+  navAddBtn = document.querySelector('#navbar .add');
+
   taskContainer.innerHTML = '';
 
   if (taskData.tasks.length == 0) {
