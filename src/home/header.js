@@ -21,7 +21,7 @@ const quotes = [
   'Be efficient, be productive.'
 ];
 
-export const header = {
+export const homeHeader = {
   getReady() {
     quote = document.querySelector('.header .quote');
     greetingEl =  document.querySelector('.header .greeting');
@@ -36,10 +36,14 @@ export const header = {
   },
 
   renderQuotes() {
+    if (this.intervalId) {
+      return;
+    }
+
     const day = dateTime.getWeekDay(new Date());
     const hours = dateTime.getRemainingHours();
-
-    setInterval(() => {
+    
+    this.intervalId = setInterval(() => {
       quote.style.animation = 'quoteAnim .5s ease';
       const random = Math.ceil(Math.random() * quotes.length - 1);
 
@@ -56,7 +60,16 @@ export const header = {
         clearTimeout(timeoutId);
       }, 600)
     }, 5000);
-  }, 
+  },
+
+  intervalId: undefined,
+
+  clearHeaderInterval() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
+  },
 
   renderGreeting() {
     const greeting = dateTime.getGreeting();

@@ -11,9 +11,8 @@ export const scroll = {
   disable: function () {
     userIcon = document.querySelector('.user');
     navBar = document.querySelector('#navbar');
-    
-    const isMobile = navigator.userAgentData.mobile;
-    if (!isMobile) {
+
+    if (window.innerWidth > 500) {
       document.body.style.paddingRight = '8px';
 
       if (window.innerWidth < 1026) {

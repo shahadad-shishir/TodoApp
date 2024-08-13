@@ -1,5 +1,5 @@
 import { renderTask } from "./task.js";
-import { header} from "./header.js";
+import { homeHeader} from "./header.js";
 import { handleProgress } from "./progress.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { search } from "./search.js";
@@ -7,7 +7,7 @@ import { menubar } from "./menubar/menubar.js";
 import { navigateTo } from "../route.js";
 
 export function loadHome() {
-  header.getReady();
+  homeHeader.getReady();
   renderTask();
   handleProgress();
   search.getReady();

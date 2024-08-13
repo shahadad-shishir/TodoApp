@@ -6,6 +6,10 @@ import { loadTransfer} from "./transfer/transfer.js"
 import { loadProfile} from "./profile/profile.js"
 import { headerEl, header } from "./header.js";
 import { navbar } from "./navbar.js";
+import { homeHeader } from "./home/header.js"
+
+const loading = document.querySelector('.loading');
+const root = document.querySelector('#root');
 
 
 export const routes = {
@@ -61,6 +65,9 @@ export const routes = {
 }
 
 export function navigateTo(pathname) {
+  root.style.visibility = 'hidden';
+  loading.style.display = 'flex';
+  root.style.opacity = 0;
   routes.lastPathname = location.pathname;
   const route = routes[pathname] || routes['/'];
   history.pushState(null, null,  pathname);
@@ -68,18 +75,16 @@ export function navigateTo(pathname) {
   loadContent(route);
 }
 
-
-const root = document.querySelector('#root');
 async function loadContent(route) {
   const htmlUrl = route.html;
   const cssUrl = route.css;
 
-  root.style.visibility = 'hidden';
-
   try {
     await loadCSS(cssUrl);
     await loadHTML(htmlUrl);
+    loading.style.display = 'none';
     root.style.visibility = 'visible';
+    root.style.opacity = 1;
     route.loadJs();  
   } catch (error) {
     console.error('Error during initialization:', error);
@@ -128,4 +133,5 @@ function handleRouteCng(pathname, title, heading) {
   }
 
   navbar.selectPage(pathname);
+  homeHeader.clearHeaderInterval();
 }
