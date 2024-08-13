@@ -56,9 +56,3 @@ export function arraysEqual(arr1, arr2) {
 
   return true;
 }
-
-export async function getHtml(url) {
-  const response = await fetch(url);
-  const html = await response.text();
-  return html;
-}

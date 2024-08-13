@@ -53,6 +53,7 @@ export const menubar = {
     });
 
     detailsBtn.addEventListener('click', () => {
+      this.hideMenu();
       routes['/task'].data.taskId = this.taskId;
       navigateTo('/task');
     });

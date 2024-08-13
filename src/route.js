@@ -1,3 +1,9 @@
+import { homeHtml } from "./pages/home.js"
+import { addTaskHtml } from "./pages/add-task.js"
+import { categoriesHtml } from "./pages/categories.js"
+import { taskHtml } from "./pages/task.js"
+import { transferHtml } from "./pages/transfer.js"
+import { profileHtml } from "./pages/profile.js"
 import { loadHome } from "./home/home.js"
 import { loadAddTask } from "./add-task/add-task.js"
 import { loadCategories } from "./categories/categories.js"
@@ -14,14 +20,14 @@ const root = document.querySelector('#root');
 
 export const routes = {
   '/': {
-    html: './pages/home.html',
+    html: homeHtml,
     css: './style/home/home.css',
     loadJs: loadHome,
     title: 'Todo App',
   },
 
   '/add-task': {
-    html: './pages/add-task.html',
+    html: addTaskHtml,
     css: './style/add-task/add-task.css',
     loadJs: loadAddTask,
     heading: 'Add New Task',
@@ -29,7 +35,7 @@ export const routes = {
   },
 
   '/categories': {
-    html: './pages/categories.html',
+    html: categoriesHtml,
     css: 'style/categories/categories.css',
     loadJs: loadCategories,
     heading: 'Categories',
@@ -37,7 +43,7 @@ export const routes = {
   },
 
   '/task': {
-    html: './pages/task.html',
+    html: taskHtml,
     css: 'style/task/task.css',
     loadJs: loadTask,
     data: {},
@@ -46,7 +52,7 @@ export const routes = {
   },
 
   '/transfer': {
-    html: './pages/transfer.html',
+    html: transferHtml,
     css: 'style/transfer/transfer.css',
     loadJs: loadTransfer,
     heading: 'Transfer Tasks',
@@ -54,7 +60,7 @@ export const routes = {
   },
 
   '/profile': {
-    html: './pages/profile.html',
+    html: profileHtml,
     css: 'style/profile/profile.css',
     loadJs: loadProfile,
     heading: 'User Profile',
@@ -76,12 +82,9 @@ export function navigateTo(pathname) {
 }
 
 async function loadContent(route) {
-  const htmlUrl = route.html;
-  const cssUrl = route.css;
-
   try {
-    await loadCSS(cssUrl);
-    await loadHTML(htmlUrl);
+    await loadCSS(route.css);
+    root.innerHTML = route.html;
     loading.style.display = 'none';
     root.style.visibility = 'visible';
     root.style.opacity = 1;
@@ -105,17 +108,6 @@ function loadCSS(url) {
       link.onerror = () => reject(new Error(`Failed to load CSS: ${url}`));
       document.head.appendChild(link);
   });
-}
-
-async function loadHTML(url) {
-  try {
-    const response =  await fetch(url);
-    const html = await response.text();
-    const bodyContent = new DOMParser().parseFromString(html, 'text/html').body.innerHTML;
-    root.innerHTML = bodyContent;
-  } catch (error) {
-    console.error('Failed to load HTML: ', error);
-  }
 }
 
 function handleRouteCng(pathname, title, heading) {

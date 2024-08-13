@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title></title>
-</head>
-<body>
+export const taskHtml = 
+`
   <main class="main">
     <div class="card">
       <h2 class="heading">Task: <span>Demo Task</span></h2>
@@ -62,6 +58,4 @@
       </table>
     </div>
   </main>
-</body>
-
-</html>
+`;

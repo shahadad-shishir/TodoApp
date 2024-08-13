@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title></title>
-</head>
-<body>
+export const addTaskHtml = 
+`
   <main class="main">
     <div class="form" id="form">
       <div id="emoji-picker">
@@ -113,32 +109,4 @@
       </div>
     </div>
   </main>
-
-  <nav id="navbar">
-    <button class="tasks">
-      <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="TaskAltIcon"><path d="M22 5.18 10.59 16.6l-4.24-4.24 1.41-1.41 2.83 2.83 10-10zm-2.21 5.04c.13.57.21 1.17.21 1.78 0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8c1.58 0 3.04.46 4.28 1.25l1.44-1.44C16.1 2.67 14.13 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-1.19-.22-2.33-.6-3.39z"></path></svg>
-      <span>Tasks</span>
-      <span class="count">2</span>
-    </button>
-
-    <button class="categories">
-      <i class="fa-solid fa-shapes"></i>
-      <span>Categories</span>
-    </button>
-
-    <button class="add selected">
-      <i class="fa-solid fa-plus"></i>
-    </button>
-
-    <button class="transfer">
-      <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="GetAppRoundedIcon"><path d="M16.59 9H15V4c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v5H7.41c-.89 0-1.34 1.08-.71 1.71l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.63-.63.19-1.71-.7-1.71M5 19c0 .55.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1H6c-.55 0-1 .45-1 1"></path></svg>
-      <span>Transfer</span>
-    </button>
-
-    <button class="profile">
-      <i class="fa-solid fa-user"></i>
-      <span>Profile</span>
-    </button>
-  </nav>
-</body>
-</html>
+`;

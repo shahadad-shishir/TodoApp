@@ -49,10 +49,6 @@
   transition: box-shadow 0.15s linear;
 }
 
-.user div:hover {
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
-}
-
 .user-icon {
   font-size: 25px;
   color: rgb(255, 255, 255);
@@ -994,7 +990,10 @@ span.highlighted-text {
 }
 
 @media only screen and (min-width: 501px) {
+  .user div:hover {
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  }
   .user:hover span {
     opacity: 1;
-  }  
+  }
 }
