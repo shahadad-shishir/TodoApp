@@ -10,7 +10,7 @@ let dltConfirm, cnclBtn, dltBtn, nmEl, desEl, ctgryEl, blurBg;
 export const dltCnfrm = {
   taskId: undefined,
 
-  getReady() {
+  init() {
     dltConfirm = document.querySelector('.delete-confirm');
     cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
     dltBtn = document.querySelector('.delete-confirm #dlt-btn');

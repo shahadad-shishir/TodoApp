@@ -11,10 +11,10 @@ export function loadCategories() {
   const nmCount = document.querySelector('.new-ctgry .nm-count');
   const createBtn = document.querySelector('.new-ctgry #create-btn');
 
-  emojiPicker1.getReady();
-  colorPicker1.getReady();
+  emojiPicker1.init();
+  colorPicker1.init();
   colorPicker1.selectThisClr('#7e30e1');
-  oldCategories.getReady();
+  oldCategories.init();
 
   createBtn.addEventListener('click', () => {
     if (createBtn.classList.contains('enable')) {

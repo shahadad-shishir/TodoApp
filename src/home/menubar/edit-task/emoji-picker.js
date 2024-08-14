@@ -3,7 +3,7 @@ import { editTask } from "./edit-task.js";
 let emojiIcon, picker, removeEmoji;
 
 export const emojiPicker = {
-  getReady() {
+  init() {
     emojiIcon = document.querySelector('#emoji-picker .emoji');
     picker = document.querySelector('#emoji-picker .picker');
     removeEmoji = document.querySelector('.remove-emoji');

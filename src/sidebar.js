@@ -6,7 +6,7 @@ let sidebarEl, sidebarHeader, sidebarBg, tasks, taskCount, countNum, tooltipNum,
 
 
  export const sidebar = {
-  getReady() {
+  init() {
     sidebarEl = document.querySelector('#sidebar');
     sidebarHeader = document.querySelector('.sidebar-header');
     sidebarBg = document.querySelector('#sidebar-bg');

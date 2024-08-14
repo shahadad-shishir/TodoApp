@@ -3,9 +3,9 @@ import { header } from "./header.js";
 import { navbar } from "./navbar.js";
 import { sidebar } from "./sidebar.js";
 
-header.getReady();
-navbar.getReady();
-sidebar.getReady();
+header.init();
+navbar.init();
+sidebar.init();
 
 navigateTo(location.pathname);
 

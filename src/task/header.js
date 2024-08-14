@@ -1,7 +1,7 @@
 const backBtn = document.querySelector('.js-back-btn');
 
 export const header = {
-  getReady() {   
+  init() {   
     backBtn.addEventListener('click', () => {
       window.history.back();
     });

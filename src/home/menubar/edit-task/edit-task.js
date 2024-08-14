@@ -14,7 +14,7 @@ export const editTask = {
   taskId: undefined,
   oldData: undefined,
 
-  getReady() {
+  init() {
     saveBtn = document.querySelector('.edit-task #save-btn');
     editTaskEl = document.querySelector('.edit-task');
     editTaskBg = document.querySelector('#editTask-bg');
@@ -62,9 +62,9 @@ export const editTask = {
       }
     });
 
-    emojiPicker.getReady();
-    ctgrySelector.getReady();
-    colorPicker.getReady();
+    emojiPicker.init();
+    ctgrySelector.init();
+    colorPicker.init();
   },
 
   showEditTask(taskId) {

@@ -22,14 +22,14 @@ const quotes = [
 ];
 
 export const homeHeader = {
-  getReady() {
+  init() {
     quote = document.querySelector('.header .quote');
     greetingEl =  document.querySelector('.header .greeting');
     userIcon = document.querySelector('.header .user');
 
     this.renderQuotes();
     this.renderGreeting();
-    sidebar.getReady();
+    sidebar.init();
     userIcon.addEventListener('click', () => {
       sidebar.open();
     });

@@ -20,10 +20,10 @@
     const createBtn =  document.querySelector('#create-btn');
     const modifyCtgry = document.querySelector('.modify-category');
   
-    emojiPicker.getReady();
-    ctgrySelector.getReady();
+    emojiPicker.init();
+    ctgrySelector.init();
     ctgrySelector.renderCategories();
-    colorPicker.getReady();
+    colorPicker.init();
     colorPicker.selectThisClr('#7e30e1'); 
 
     modifyCtgry.addEventListener('click', () => {

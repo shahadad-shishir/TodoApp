@@ -5,7 +5,7 @@ const clrData = {
 let selectedClr, angleIcon, selectClr, clrOptions, clrCode, selectedClrEl, clrPicker, clrInput, randomClrBtn, formEmojiIcon;
 
 export const colorPicker1 = {
-  getReady() {
+  init() {
     selectedClr = document.querySelector('.CP1 .selected-clr');
     angleIcon = document.querySelector('.CP1 .selected-clr .right i');
     selectClr = document.querySelector('.CP1 .select-clr');

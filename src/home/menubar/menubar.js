@@ -15,7 +15,7 @@ export const menubar = {
   taskId: undefined,
   distanceFromTop: undefined,
 
-  getReady() {   
+  init() {   
     menubarEl = document.querySelector('.menubar');
     SmenubarBg = document.querySelector('#s-menubar-bg');
     lMenubarBg = document.querySelector('#l-menubar-bg');
@@ -26,9 +26,9 @@ export const menubar = {
     dublicate = document.querySelector('#dublicate');
     deleteBtn = document.querySelector('#delete');
 
-    editTask.getReady();
-    dltCnfrm.getReady();
-    popup.getReady();
+    editTask.init();
+    dltCnfrm.init();
+    popup.init();
 
     SmenubarBg.addEventListener('click', () => {
       this.hideSmenu();

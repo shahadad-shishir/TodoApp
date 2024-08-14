@@ -7,7 +7,7 @@ const headerText = document.querySelector('#header .text');
 const userIcon = document.querySelector('#header .user');
 
 export const header = {
-  getReady() {
+  init() {
     backBtn.addEventListener('click', () => {
       if (routes.lastPathname !== location.pathname) {
         navigateTo(routes.lastPathname);

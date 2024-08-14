@@ -11,7 +11,7 @@ export const editCtgry = {
   ctgryId: undefined,
   oldData: undefined,
   
-  getReady() {
+  init() {
     editEl = document.querySelector('.edit-category');
     bg = document.querySelector('#editCtgry-bg');
     cancelBtn = document.querySelector('#edit-cancel-btn');
@@ -40,8 +40,8 @@ export const editCtgry = {
       }
     });
 
-    colorPicker2.getReady();
-    emojiPicker2.getReady();
+    colorPicker2.init();
+    emojiPicker2.init();
   },
 
   show(id) {

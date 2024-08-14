@@ -3,7 +3,7 @@ import { editCtgry } from "./old-categories/edit/edit.js";
 let emojiIcon, picker, removeEmoji;
 
 export const emojiPicker2 = {
-  getReady() {
+  init() {
 
     emojiIcon = document.querySelector('.EP2 .emoji');
     picker = document.querySelector('.EP2 .picker');

@@ -7,7 +7,7 @@ let searchInput, searchBtn, srcRsltCount, srcRsltEmpty;
 export let searchResult;
 
 export const search = {
-  getReady() {
+  init() {
     searchInput = document.querySelector('#search-input');
     searchBtn = document.querySelector('.search-bar button');
     searchResult = document.querySelector('.search-result');

@@ -5,7 +5,7 @@ import { editTask } from './edit-task.js';
 let selector, selected, select, arrowIcon, selectP, selectUl, selectedUl;
 
 export const ctgrySelector = {
-  getReady() {
+  init() {
     selector = document.querySelector("#ctgry-selector");
     selected = document.querySelector('#ctgry-selector .selected');
     select = document.querySelector('#ctgry-selector .select');

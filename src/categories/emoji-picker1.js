@@ -1,7 +1,7 @@
 let emojiIcon, picker, removeEmoji;
 
 export const emojiPicker1 = {
-  getReady() {
+  init() {
     emojiIcon = document.querySelector('.EP1 .emoji');
     picker = document.querySelector('.EP1 .picker');
     removeEmoji = document.querySelector('.EP1 .remove-emoji');

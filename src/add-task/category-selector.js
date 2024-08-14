@@ -5,7 +5,7 @@ import { string } from '../utils/string.js';
 let selector, selected, select, arrowIcon, selectP, selectUl, selectedUl;
 
 export const ctgrySelector = {
-  getReady() {
+  init() {
     selected = document.querySelector('#ctgry-selector .selected');
     select = document.querySelector('#ctgry-selector .select');
     arrowIcon = document.querySelector("#ctgry-selector .arrow-icon")

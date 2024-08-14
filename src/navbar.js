@@ -4,7 +4,7 @@ import { navigateTo } from "./route.js";
 let tasks, categories, addBtn, transfer, profile, count;
 
 export const navbar = {
-  getReady() {
+  init() {
     tasks = document.querySelector('#navbar .tasks');
     categories = document.querySelector('#navbar .categories');
     addBtn = document.querySelector('#navbar .add');

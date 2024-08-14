@@ -6,12 +6,12 @@ import { editCtgry } from "./edit/edit.js";
 let oldEl;
 
 export const oldCategories = {
-  getReady() {
+  init() {
     oldEl = document.querySelector('.old-categories');
 
     this.render();
-    editCtgry.getReady();
-    dltCnfrm.getReady();
+    editCtgry.init();
+    dltCnfrm.init();
   },
 
   render() {

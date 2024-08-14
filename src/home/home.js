@@ -7,12 +7,12 @@ import { menubar } from "./menubar/menubar.js";
 import { navigateTo } from "../route.js";
 
 export function loadHome() {
-  homeHeader.getReady();
+  homeHeader.init();
   renderTask();
   handleProgress();
-  search.getReady();
+  search.init();
   mngCategoryFilter();
-  menubar.getReady();
+  menubar.init();
 
   const addBtn = document.querySelector('.add-btn');
   addBtn.addEventListener('click', () => {

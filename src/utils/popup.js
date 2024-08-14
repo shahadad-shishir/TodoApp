@@ -1,5 +1,5 @@
 export const popup = {
-  getReady() {
+  init() {
     const popupEl = document.createElement('div');
     popupEl.id = 'popup';
     document.body.prepend(popupEl);

@@ -8,7 +8,7 @@ const profile = document.querySelector('#navbar .profile');
 const count = document.querySelector('#navbar .count');
 
 export const navbar = {
-  getReady() {
+  init() {
     this.showNotDoneTask();
     tasks.addEventListener('click', () => {
       window.location.href = '../index.html';
