@@ -1,5 +1,5 @@
 import { renderTask } from "./task.js";
-import { homeHeader} from "./header.js";
+import { homeHeader} from "./homeHeader.js";
 import { handleProgress } from "./progress.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { search } from "./search.js";

@@ -10,9 +10,10 @@ import { loadCategories } from "./categories/categories.js"
 import { loadTask} from "./task/task.js"
 import { loadTransfer} from "./transfer/transfer.js"
 import { loadProfile} from "./profile/profile.js"
-import { headerEl, header } from "./header.js";
+import { header } from "./header.js";
+import { homeHeader } from "./home/homeHeader.js"
 import { navbar } from "./navbar.js";
-import { homeHeader } from "./home/header.js"
+
 
 const loading = document.querySelector('.loading');
 const root = document.querySelector('#root');
@@ -115,15 +116,15 @@ function handleRouteCng(pathname, title, heading) {
 
   if (pathname !== '/' && pathname !== '/index.html') {
     titleEl.innerText = title;
-    headerEl.style.display = 'flex';
+    header.show();
     header.cngHeading(heading);
     navbar.showNotDoneTask();
+    homeHeader.clearInterval();
   } else {
     titleEl.innerText = title;
-    headerEl.style.display = 'none';
+    header.hide();
     navbar.hideNotDoneTask();
   }
 
   navbar.selectPage(pathname);
-  homeHeader.clearHeaderInterval();
 }
