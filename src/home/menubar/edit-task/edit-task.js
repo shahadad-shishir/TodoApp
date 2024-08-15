@@ -1,7 +1,7 @@
 import { arraysEqual, scroll } from "../../../utils/shortcut.js";
 import { taskData } from "../../../data/tasks.js";
 import { ctgrySelector } from "./category-selector.js";
-import { colorPicker } from "./color-picker.js";
+import { ColorPicker } from "../../../color-picker/color-picker.js";
 import { emojiPicker } from "./emoji-picker.js";
 import { taskContainer, renderTask } from "../../task.js";
 import { searchResult, search } from "../../search.js";
@@ -12,7 +12,6 @@ let saveBtn, editTaskEl, editTaskBg, cancelBtn, nameInput, desInput, dateInput, 
 
 export const editTask = {
   taskId: undefined,
-  oldData: undefined,
 
   init() {
     saveBtn = document.querySelector('.edit-task #save-btn');
@@ -29,6 +28,7 @@ export const editTask = {
     nmCount = document.querySelector('span.nm-count');
     desCount = document.querySelector('span.des-count');
     ctgrySelectedTxt = document.querySelector('.select p');
+    this.formEmojiIcon = document.querySelector('#emoji-picker .emoji');
 
     editTaskBg.addEventListener('click', () => {
       this.hideEditTask();
@@ -40,16 +40,16 @@ export const editTask = {
 
     nameInput.addEventListener('input', () => {
       this.mngNmCount();
-      this.mngSaveBtn();
+      this.updateSaveBtnState();
     });
 
     desInput.addEventListener('input', () => {
       this.mngDesCount();
-      this.mngSaveBtn();
+      this.updateSaveBtnState();
     });
 
     dateInput.addEventListener('input', () => {
-      this.mngSaveBtn();
+      this.updateSaveBtnState();
     });
 
     cancelBtn.addEventListener('click', () => {
@@ -64,7 +64,12 @@ export const editTask = {
 
     emojiPicker.init();
     ctgrySelector.init();
-    colorPicker.init();
+
+    const handleClrCng = (clr) => {
+      this.formEmojiIcon.style.backgroundColor = clr;
+      this.updateSaveBtnState();
+    }
+    this.colorPicker = new ColorPicker('#color-picker', handleClrCng);
   },
 
   showEditTask(taskId) {
@@ -76,12 +81,12 @@ export const editTask = {
     editTaskBg.style.opacity = 1;
     scroll.disable();
     this.showEditableData();
-    this.mngSaveBtn();
+    this.updateSaveBtnState();
   },
 
   hideEditTask() {
     ctgrySelectedTxt.innerHTML = '';
-    colorPicker.close();
+    this.colorPicker.close();
     emojiPicker.close();
 
     editTaskBg.style.height = 0;
@@ -105,7 +110,7 @@ export const editTask = {
     }
     dateInput.value = deadline;
 
-    colorPicker.selectThisClr(color);
+    this.colorPicker.selectThisClr(color);
     ctgrySelector.renderCategories(category);
 
     if (emoji) {
@@ -136,7 +141,7 @@ export const editTask = {
     data.description = desInput.value;
     data.deadline = dateInput.value;
     data.category = ctgrySelector.getAllSelected();
-    data.color = colorPicker.getSelectedClr();
+    data.color = this.colorPicker.getSelectedClr();
     return data;
   },
 
@@ -186,7 +191,7 @@ export const editTask = {
     }
   },
 
-  mngSaveBtn() {
+  updateSaveBtnState() {
     const {name, emoji, description, color, deadline, category} = this.getNewData();
 
     const oldNm = this.oldData.name;

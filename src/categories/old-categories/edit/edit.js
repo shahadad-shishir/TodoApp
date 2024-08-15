@@ -1,7 +1,7 @@
 import { ctgryData } from "../../../data/categories.js";
 import { popup } from "../../../utils/popup.js";
 import { scroll } from "../../../utils/shortcut.js";
-import { colorPicker2 } from "../../color-picker2.js";
+import { ColorPicker } from "../../../color-picker/color-picker.js";
 import { emojiPicker2 } from "../../emoji-picker2.js";
 import { oldCategories } from "../old.js";
 
@@ -20,6 +20,7 @@ export const editCtgry = {
     nmLabel = document.querySelector('.edit-label1');
     nmInput = document.querySelector('.edit-category input');
     nmCount = document.querySelector('.edit-nm-count');
+    this.formEmojiIcon = document.querySelector('.EP2 .emoji');
 
     bg.addEventListener('click', () => {
       this.hide();
@@ -27,7 +28,7 @@ export const editCtgry = {
     
     nmInput.addEventListener('input', () => {
       this.mngNmCount();
-      this.mngSaveBtn();
+      this.updateSaveBtnState();
     });
 
     cancelBtn.addEventListener('click', () => {
@@ -40,7 +41,11 @@ export const editCtgry = {
       }
     });
 
-    colorPicker2.init();
+    const handleClrCng = (clr) => {
+      this.formEmojiIcon.style.backgroundColor = clr;
+      this.updateSaveBtnState();
+    }
+    this.colorPicker = new ColorPicker('#color-picker.CP2', handleClrCng);
     emojiPicker2.init();
   },
 
@@ -52,11 +57,11 @@ export const editCtgry = {
     bg.style.opacity = 1;
     scroll.disable();
     this.showEditableData();
-    this.mngSaveBtn();
+    this.updateSaveBtnState();
   },
 
   hide() {
-    colorPicker2.close();
+    this.colorPicker.close();
     emojiPicker2.close();
 
     bg.style.height = 0;
@@ -72,7 +77,7 @@ export const editCtgry = {
     nmCount.style.display = 'block';
     nmCount.innerHTML = `${nmInput.value.length}/20`;
 
-    colorPicker2.selectThisClr(color);
+    this.colorPicker.selectThisClr(color);
     if (emoji) {
       emojiPicker2.selectEmoji(emoji);
     } else {
@@ -105,7 +110,7 @@ export const editCtgry = {
   saveEditedData() {
     const emoji = emojiPicker2.getEmoji();
     const name = nmInput.value;
-    const color = colorPicker2.getSelectedClr();
+    const color = this.colorPicker.getSelectedClr();
   
     ctgryData.update(this.ctgryId, name, emoji, color);
     this.hide();
@@ -114,14 +119,14 @@ export const editCtgry = {
     popup.showSuccess(msg)
   },
 
-  mngSaveBtn() {
+  updateSaveBtnState() {
     const oldNm = this.oldData.name;
     const oldEmj = this.oldData.emoji;
     const oldClr = this.oldData.color;
 
     const emoji = emojiPicker2.getEmoji();
     const name = nmInput.value;
-    const color = colorPicker2.getSelectedClr();
+    const color = this.colorPicker.getSelectedClr();
 
     if ((oldNm !== name || oldEmj !== emoji || oldClr !== color) & name.length < 21) {
       saveBtn.classList.add('enable');

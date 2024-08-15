@@ -1,0 +1,120 @@
+export class ColorPicker {
+  allColors = ['#ff69b4', '#fb34ff', '#ff22b4', '#c6a7ff', '#7accfa', '#4a9dff', '#5061ff', '#50b5cb', '#3ae836', '#b7ff42', '#ffea28', '#ff9518', '#ffc3a0', '#ff5018', '#3dff7f', '#ff2f2f', '#b624ff', '#7e30e1'];
+
+  constructor(pickerElSelector, handleClrCng) {
+    this.init(pickerElSelector);
+    if(handleClrCng) {
+      this.handleClrCng = handleClrCng;
+    }
+  }
+
+  init(pickerElSelector) {
+    const pickerEl = document.querySelector(pickerElSelector);
+    this.selectedClr = pickerEl.querySelector('.selected-clr');
+    this.angleIcon = pickerEl.querySelector('.selected-clr .right i');
+    this.selectClr = pickerEl.querySelector('.select-clr');
+    this.clrOptions = pickerEl.querySelector('.clr-options');
+    this.clrCode = pickerEl.querySelector('.clr-code');
+    this.selectedClrEl = pickerEl.querySelector('.selected-clr .color');
+    this.clrPicker = pickerEl.querySelector('.picker span');
+    this.clrInput = pickerEl.querySelector('input');
+    this.randomClrBtn = pickerEl.querySelector('#random-clr');
+
+    this.renderColors();
+
+    this.clrInput.addEventListener('input', () => {
+      this.selectThisClr(this.clrInput.value);
+    });
+
+    this.randomClrBtn.addEventListener('click', () => {
+      const randomClr = () => {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
+      this.selectThisClr(randomClr());
+    });
+
+    this.selectedClr.addEventListener('click', () => {
+      if (this.selectClr.classList.contains('active')) {
+        this.close();
+      } else {
+        this.open();
+      }
+    });
+  }
+
+  renderColors() {
+    this.allColors.forEach(color => {
+      const btn = document.createElement('button');
+      btn.dataset.id = color;
+      btn.classList.add('clr-btn');
+      btn.style.backgroundColor = color;
+      this.clrOptions.prepend(btn);
+      this.addShadowOnHover(btn, color);
+
+      btn.addEventListener('click', () => {
+        this.selectThisClr(color);
+      });
+    });
+  }
+
+  addShadowOnHover(el, clr) {
+    el.addEventListener('mouseover', () => {
+      el.style.boxShadow = `${clr} 0px 0px 12px`;
+    });
+    el.addEventListener('mouseout', () => {
+      el.style.boxShadow = '';
+    });
+  }
+
+  selectThisClr(color) {
+    const checkIcon = this.clrOptions.querySelector('i.fa-check');
+    if (checkIcon) {
+      checkIcon.remove();
+    }
+      
+    this.allColors.forEach(clr => {
+      if (clr === color) {
+        const clrBtn = this.clrOptions
+          .querySelector(`.clr-btn[data-id='${color}']`);
+        const checkIcon = document.createElement('i');
+        checkIcon.classList.add('fa-solid', 'fa-check');
+        clrBtn.appendChild(checkIcon);
+        return;
+      }
+    });
+
+    this.clrCode.style.backgroundColor = color;
+    this.clrCode.innerText = color.toUpperCase();
+    this.selectedClrEl.style.background = color;
+    this.clrPicker.style.backgroundColor = color;
+    this.addShadowOnHover(this.clrPicker, color);
+    this.clrInput.value = color;
+
+    if (this.handleClrCng) {
+      this.handleClrCng(color);
+    }
+  }
+
+  open() {    
+    this.angleIcon.classList.add('rotate');  
+    this.selectClr.classList.add('active');
+    this.selectClr.style.height = this.clrOptions.clientHeight + this.clrCode.clientHeight + 82 + 'px';
+    this.selectedClrEl.style.display = 'none';
+  }
+
+  close() {
+    this.angleIcon.classList.remove('rotate');  
+    this.selectClr.classList.remove('active');
+    this.selectClr.style.height = '0px';
+    this.selectedClrEl.style.display = 'initial';
+  }
+
+  getSelectedClr() {
+    return this.clrInput.value;
+  }
+}

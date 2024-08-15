@@ -1,5 +1,5 @@
 import { emojiPicker1 } from "./emoji-picker1.js";
-import { colorPicker1 } from "./color-picker1.js";
+import { ColorPicker } from "../color-picker/color-picker.js";
 import { oldCategories } from "./old-categories/old.js";
 import { popup } from "../utils/popup.js";
 import { ctgryData } from "../data/categories.js";
@@ -10,10 +10,14 @@ export function loadCategories() {
   const nmInput = document.querySelector('.new-ctgry #name-input');
   const nmCount = document.querySelector('.new-ctgry .nm-count');
   const createBtn = document.querySelector('.new-ctgry #create-btn');
+  const formEmojiIcon = document.querySelector('.EP1 .emoji');
 
   emojiPicker1.init();
-  colorPicker1.init();
-  colorPicker1.selectThisClr('#7e30e1');
+  const handleClrCng = (clr) => {
+    formEmojiIcon.style.backgroundColor = clr;
+  }
+  const colorPicker = new ColorPicker('#color-picker.CP1', handleClrCng);
+  colorPicker.selectThisClr('#7e30e1');
   oldCategories.init();
 
   createBtn.addEventListener('click', () => {
@@ -31,12 +35,12 @@ export function loadCategories() {
     }
 
     const emoji = emojiPicker1.getEmoji();
-    const color = colorPicker1.getSelectedClr();
+    const color = colorPicker.getSelectedClr();
     ctgryData.create(nm, emoji, color);
     oldCategories.render();
     emojiPicker1.removeEmoji();
     emojiPicker1.close();
-    colorPicker1.selectThisClr('#7e30e1');
+    colorPicker.selectThisClr('#7e30e1');
     nmInput.value = '';
     if (nmCount.style.display === 'block') {
       nmCount.style.display = 'none';

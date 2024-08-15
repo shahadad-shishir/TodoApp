@@ -20,12 +20,12 @@ export const emojiPicker2 = {
     document.querySelector('.EP2 emoji-picker').addEventListener('emoji-click', e => {
       const emojiCode = e.detail.unicode;
       this.selectEmoji(emojiCode);
-      editCtgry.mngSaveBtn();
+      editCtgry.updateSaveBtnState();
     });
 
     removeEmoji.addEventListener('click', () => {
       this.removeEmoji();
-      editCtgry.mngSaveBtn();
+      editCtgry.updateSaveBtnState();
     });
   },
 

@@ -19,12 +19,12 @@ export const emojiPicker = {
     document.querySelector('emoji-picker').addEventListener('emoji-click', e => {
       const emojiCode = e.detail.unicode;
       this.selectEmoji(emojiCode);
-      editTask.mngSaveBtn();
+      editTask.updateSaveBtnState();
     });
 
     removeEmoji.addEventListener('click', () => {
       this.removeEmoji();
-      editTask.mngSaveBtn();
+      editTask.updateSaveBtnState();
     });
   },
 

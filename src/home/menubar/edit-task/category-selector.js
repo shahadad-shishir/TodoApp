@@ -80,10 +80,10 @@ export const ctgrySelector = {
       li.addEventListener('click', () => {
         if (!i.classList.contains('initial')) {
           this.selectACategory(i, id);
-          editTask.mngSaveBtn();
+          editTask.updateSaveBtnState();
         } else {
           this.unselectACategory(i, id);
-          editTask.mngSaveBtn();
+          editTask.updateSaveBtnState();
         }
       });
 

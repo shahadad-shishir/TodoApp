@@ -1,7 +1,7 @@
 
   import { emojiPicker } from "./emoji-picker.js";
   import { ctgrySelector } from "./category-selector.js";
-  import { colorPicker } from "./color-picker.js";
+  import { ColorPicker } from "../color-picker/color-picker.js";
   import { generateRandomId } from "../utils/number.js";
   import { taskData } from "../data/tasks.js"
   import { popup } from "../utils/popup.js";
@@ -23,7 +23,7 @@
     emojiPicker.init();
     ctgrySelector.init();
     ctgrySelector.renderCategories();
-    colorPicker.init();
+    const colorPicker = new ColorPicker('#color-picker');
     colorPicker.selectThisClr('#7e30e1'); 
 
     modifyCtgry.addEventListener('click', () => {
