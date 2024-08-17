@@ -1,6 +1,6 @@
 @import url('./emoji-picker.css');
 @import url('./color-picker.css');
-@import url('./ctgry-selector.css');
+@import url('../common/ctgry-selector.css');
 
 .main {
   margin-top: 15px;
@@ -185,6 +185,12 @@ span.nm-count, span.des-count {
   }
   .category {
     width: 100%;
+  }
+  #ctgry-selector {
+    width: 100%;
+  }
+  #ctgry-selector .select {
+    width: 80%;
   }
   #create-btn {
     width: 100%;

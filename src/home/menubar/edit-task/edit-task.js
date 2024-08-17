@@ -1,6 +1,6 @@
 import { arraysEqual, scroll } from "../../../utils/shortcut.js";
 import { taskData } from "../../../data/tasks.js";
-import { ctgrySelector } from "./category-selector.js";
+import { CategorySelector } from "../../../category-selector/category-selector.js";
 import { ColorPicker } from "../../../color-picker/color-picker.js";
 import { emojiPicker } from "./emoji-picker.js";
 import { taskContainer, renderTask } from "../../task.js";
@@ -8,7 +8,7 @@ import { searchResult, search } from "../../search.js";
 import { mngCategoryFilter } from "../../category-filter.js";
 import { popup } from "../../../utils/popup.js";
 
-let saveBtn, editTaskEl, editTaskBg, cancelBtn, nameInput, desInput, dateInput, nm, des, nmLabel, desLabel, nmCount, desCount, ctgrySelectedTxt;
+let saveBtn, editTaskEl, editTaskBg, cancelBtn, nameInput, desInput, dateInput, nm, des, nmLabel, desLabel, nmCount, desCount;
 
 export const editTask = {
   taskId: undefined,
@@ -27,7 +27,6 @@ export const editTask = {
     desLabel = document.querySelector('.description label');
     nmCount = document.querySelector('span.nm-count');
     desCount = document.querySelector('span.des-count');
-    ctgrySelectedTxt = document.querySelector('.select p');
     this.formEmojiIcon = document.querySelector('#emoji-picker .emoji');
 
     editTaskBg.addEventListener('click', () => {
@@ -63,13 +62,15 @@ export const editTask = {
     });
 
     emojiPicker.init();
-    ctgrySelector.init();
 
-    const handleClrCng = (clr) => {
+    this.ctgrySelector = new CategorySelector('#ctgry-selector', () => {
+      this.updateSaveBtnState();
+    });
+
+    this.colorPicker = new ColorPicker('#color-picker', (clr) => {
       this.formEmojiIcon.style.backgroundColor = clr;
       this.updateSaveBtnState();
-    }
-    this.colorPicker = new ColorPicker('#color-picker', handleClrCng);
+    });
   },
 
   showEditTask(taskId) {
@@ -85,7 +86,7 @@ export const editTask = {
   },
 
   hideEditTask() {
-    ctgrySelectedTxt.innerHTML = '';
+    this.ctgrySelector.clearText();
     this.colorPicker.close();
     emojiPicker.close();
 
@@ -111,7 +112,7 @@ export const editTask = {
     dateInput.value = deadline;
 
     this.colorPicker.selectThisClr(color);
-    ctgrySelector.renderCategories(category);
+    this.ctgrySelector.renderCategories(category);
 
     if (emoji) {
       emojiPicker.selectEmoji(emoji);
@@ -140,7 +141,7 @@ export const editTask = {
     data.name = nameInput.value;
     data.description = desInput.value;
     data.deadline = dateInput.value;
-    data.category = ctgrySelector.getAllSelected();
+    data.category = this.ctgrySelector.getAllSelected();
     data.color = this.colorPicker.getSelectedClr();
     return data;
   },

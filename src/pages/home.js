@@ -1,4 +1,5 @@
 import { clrPickerHtml } from "../color-picker/clr-picker-html.js";
+import { ctgrySelectorHtml } from "../category-selector/ctgry-selector-html.js";
 
 export const homeHtml = 
 `
@@ -152,31 +153,7 @@ export const homeHtml =
         
         <div class="category">
           <span>Category</span>
-          <div id="ctgry-selector">
-            <div class="selected">
-              <ul>
-                <!-- <li>
-                  <span class="selected-emoji">🏢</span>
-                  <span>Home</span>
-                </li> -->
-              </ul>
-              <spna class="arrow-icon">
-                <i class="fa-solid fa-angle-down"></i>
-              </spna>
-            </div>
-        
-            <div class="select">
-              <h3>Select Categories (max 3)</h3>
-              <p></p>
-              <ul>
-                <!-- <li>
-                  <i class="fa-regular fa-circle-dot"></i>
-                  <span class="select-emoji">📚️</span>
-                  <span>Home</span>
-                </li> -->
-              </ul>
-            </div>
-          </div>         
+          ${ctgrySelectorHtml()}
         </div>
 
         ${clrPickerHtml()}        

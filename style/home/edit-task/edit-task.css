@@ -1,5 +1,5 @@
 @import url('./emoji-picker.css');
-@import url('./ctgry-selector.css');
+@import url(../../common/ctgry-selector.css);
 @import url('./color-picker.css');
 
 .edit-task {
@@ -116,6 +116,33 @@ span.nm-count, span.des-count {
   letter-spacing: 0.5px;
 }
 
+#ctgry-selector {
+  width: 450px;
+}
+
+#ctgry-selector:hover {
+  border-color: rgb(34, 34, 34);
+}
+
+#ctgry-selector .selected li {
+  font-size: 14px;
+  padding: 6px 13px;
+  border-radius: 20px;
+}
+
+#ctgry-selector .select {
+  z-index: 13;
+  width: 450px;
+}
+
+#ctgry-selector-bg {
+  top: -100%;
+  bottom: -100%;
+  left: -100%;
+  right: -100%;
+  z-index: 12;
+}
+
 .edit-task .fotter {
   display: flex;
   align-items: center;
@@ -184,6 +211,12 @@ span.nm-count, span.des-count {
   .category {
     width: 80%;
   }
+  #ctgry-selector {
+    width: 100%;
+  }
+  #ctgry-selector .select {
+    width: 80%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -226,15 +259,18 @@ span.nm-count, span.des-count {
   .category {
     width: 60%;
   }
+  #ctgry-selector {
+    width: 100%;
+  }
+  #ctgry-selector .select {
+    width: 80%;
+  }
 }
 
 @media only screen and (max-width: 323px) {
   .editTask-bg.visible {
     right: -100px;
   }
-}
-
-@media only screen and (max-width: 323px) {
   .date-time, .name, .description {
     width: 53%;
   }
@@ -243,5 +279,11 @@ span.nm-count, span.des-count {
   }
   .category {
     width: 53%;
+  }
+  #ctgry-selector {
+    width: 100%;
+  }
+  #ctgry-selector .select {
+    width: 85%;
   }
 }

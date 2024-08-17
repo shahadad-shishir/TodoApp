@@ -1,24 +1,24 @@
 export class ColorPicker {
   allColors = ['#ff69b4', '#fb34ff', '#ff22b4', '#c6a7ff', '#7accfa', '#4a9dff', '#5061ff', '#50b5cb', '#3ae836', '#b7ff42', '#ffea28', '#ff9518', '#ffc3a0', '#ff5018', '#3dff7f', '#ff2f2f', '#b624ff', '#7e30e1'];
 
-  constructor(pickerElSelector, handleClrCng) {
-    this.init(pickerElSelector);
+  constructor(elSelector, handleClrCng) {
     if(handleClrCng) {
       this.handleClrCng = handleClrCng;
     }
+    this.init(elSelector);
   }
 
-  init(pickerElSelector) {
-    const pickerEl = document.querySelector(pickerElSelector);
-    this.selectedClr = pickerEl.querySelector('.selected-clr');
-    this.angleIcon = pickerEl.querySelector('.selected-clr .right i');
-    this.selectClr = pickerEl.querySelector('.select-clr');
-    this.clrOptions = pickerEl.querySelector('.clr-options');
-    this.clrCode = pickerEl.querySelector('.clr-code');
-    this.selectedClrEl = pickerEl.querySelector('.selected-clr .color');
-    this.clrPicker = pickerEl.querySelector('.picker span');
-    this.clrInput = pickerEl.querySelector('input');
-    this.randomClrBtn = pickerEl.querySelector('#random-clr');
+  init(elSelector) {
+    const el = document.querySelector(elSelector);
+    this.selectedClr = el.querySelector('.selected-clr');
+    this.angleIcon = el.querySelector('.selected-clr .right i');
+    this.selectClr = el.querySelector('.select-clr');
+    this.clrOptions = el.querySelector('.clr-options');
+    this.clrCode = el.querySelector('.clr-code');
+    this.selectedClrEl = el.querySelector('.selected-clr .color');
+    this.clrPicker = el.querySelector('.picker span');
+    this.clrInput = el.querySelector('input');
+    this.randomClrBtn = el.querySelector('#random-clr');
 
     this.renderColors();
 

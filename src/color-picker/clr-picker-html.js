@@ -1,7 +1,5 @@
 export function clrPickerHtml(className) {
-  if (!className) {
-    className = '';
-  }
+  if (!className) className = '';
   
   const html = 
   `

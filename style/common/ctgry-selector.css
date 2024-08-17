@@ -1,5 +1,5 @@
 #ctgry-selector {
-  width: 450px;
+  width: 400px;
   border-radius: 18px;
   border: 1px solid #ddd;
   margin-top: 20px;
@@ -7,7 +7,7 @@
 }
 
 #ctgry-selector:hover {
-  border-color: rgb(34, 34, 34);
+  border-color: var(--secondary-color);
 }
 
 #ctgry-selector .selected {
@@ -30,13 +30,13 @@
 #ctgry-selector .selected li {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   list-style: none;
   background-color: #7E30E1;
   color: #fff;
-  padding: 6px 13px;
-  border-radius: 20px;
+  padding: 4px 11px;
+  border-radius: 18px;
 }
 
 span.selected-emoji {
@@ -51,10 +51,10 @@ span.selected-emoji {
 
 #ctgry-selector .select {
   position: fixed;
-  z-index: 13;
+  z-index: 12;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
-  width: 450px;
+  width: 400px;
   padding: 15px;
   border-radius: 15px;
   left: 50%;
@@ -111,7 +111,7 @@ span.selected-emoji {
   display: none;
 }
 
-#ctgry-selector .select li i.initial {
+#ctgry-selector li[data-selected="true"] i{
   display: initial;
   margin-right: 5px;
 }
@@ -126,22 +126,14 @@ span.selected-emoji {
 }
 
 #ctgry-selector-bg {
+  display: none;
   position: fixed;
-  background-color: transparent;
-  top: -100%;
-  bottom: -100%;
-  left: -100%;
-  right: -100%;
-  z-index: 12;
-}
-
-@media only screen and (max-width: 610px) {
-  #ctgry-selector {
-    width: 100%;
-  }
-  #ctgry-selector .select {
-    width: 80%;
-  }
+  background: transparent;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 11;
 }
 
 @media only screen and (max-width: 500px) {
@@ -164,23 +156,5 @@ span.selected-emoji {
   #ctgry-selector .select li {
     padding: 8px 13px;
     border-radius: 15px
-  }
-}
-
-@media only screen and (max-width: 424px) {
-  #ctgry-selector {
-    width: 100%;
-  }
-  #ctgry-selector .select {
-    width: 80%;
-  }
-}
-
-@media only screen and (max-width: 323px) {
-  #ctgry-selector {
-    width: 100%;
-  }
-  #ctgry-selector .select {
-    width: 85%;
   }
 }
