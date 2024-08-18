@@ -1,4 +1,4 @@
-import { emojiPicker1 } from "./emoji-picker1.js";
+import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { oldCategories } from "./old-categories/old.js";
 import { popup } from "../utils/popup.js";
@@ -12,7 +12,7 @@ export function loadCategories() {
   const createBtn = document.querySelector('.new-ctgry #create-btn');
   const formEmojiIcon = document.querySelector('.EP1 .emoji');
 
-  emojiPicker1.init();
+  const emojiPicker = new EmojiPicker('#emoji-picker.EP1');
   const handleClrCng = (clr) => {
     formEmojiIcon.style.backgroundColor = clr;
   }
@@ -34,12 +34,12 @@ export function loadCategories() {
       return;
     }
 
-    const emoji = emojiPicker1.getEmoji();
+    const emoji = emojiPicker.getEmoji();
     const color = colorPicker.getSelectedClr();
     ctgryData.create(nm, emoji, color);
     oldCategories.render();
-    emojiPicker1.removeEmoji();
-    emojiPicker1.close();
+    emojiPicker.removeEmoji();
+    emojiPicker.close();
     colorPicker.selectThisClr('#7e30e1');
     nmInput.value = '';
     if (nmCount.style.display === 'block') {

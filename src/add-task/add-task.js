@@ -1,5 +1,5 @@
 
-  import { emojiPicker } from "./emoji-picker.js";
+  import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
   import { CategorySelector } from "../category-selector/category-selector.js";
   import { ColorPicker } from "../color-picker/color-picker.js";
   import { generateRandomId } from "../utils/number.js";
@@ -21,7 +21,7 @@
     const modifyCtgry = document.querySelector('.modify-category');
     const formEmojiIcon = document.querySelector('#emoji-picker .emoji');
   
-    emojiPicker.init();
+    const emojiPicker = new EmojiPicker('#emoji-picker');
     const ctgrySelector = new CategorySelector('#ctgry-selector');
     ctgrySelector.renderCategories();
     const colorPicker = new ColorPicker('#color-picker', (clr) => {

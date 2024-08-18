@@ -2,7 +2,7 @@ import { ctgryData } from "../../../data/categories.js";
 import { popup } from "../../../utils/popup.js";
 import { scroll } from "../../../utils/shortcut.js";
 import { ColorPicker } from "../../../color-picker/color-picker.js";
-import { emojiPicker2 } from "../../emoji-picker2.js";
+import { EmojiPicker } from "../../../emoji-picker/emoji-picker.js";
 import { oldCategories } from "../old.js";
 
 let editEl, bg, cancelBtn, saveBtn, nm, nmLabel, nmInput, nmCount;
@@ -41,12 +41,13 @@ export const editCtgry = {
       }
     });
 
-    const handleClrCng = (clr) => {
+    this.colorPicker = new ColorPicker('#color-picker.CP2', (clr) => {
       this.formEmojiIcon.style.backgroundColor = clr;
       this.updateSaveBtnState();
-    }
-    this.colorPicker = new ColorPicker('#color-picker.CP2', handleClrCng);
-    emojiPicker2.init();
+    });
+    this.emojiPicker = new EmojiPicker('#emoji-picker.EP2', () => {
+      this.updateSaveBtnState();
+    });
   },
 
   show(id) {
@@ -62,7 +63,7 @@ export const editCtgry = {
 
   hide() {
     this.colorPicker.close();
-    emojiPicker2.close();
+    this.emojiPicker.close();
 
     bg.style.height = 0;
     editEl.classList.remove('active');
@@ -79,9 +80,9 @@ export const editCtgry = {
 
     this.colorPicker.selectThisClr(color);
     if (emoji) {
-      emojiPicker2.selectEmoji(emoji);
+      this.emojiPicker.selectEmoji(emoji);
     } else {
-      emojiPicker2.removeEmoji();
+      this.emojiPicker.removeEmoji();
     }
   },
 
@@ -108,7 +109,7 @@ export const editCtgry = {
   },
 
   saveEditedData() {
-    const emoji = emojiPicker2.getEmoji();
+    const emoji = this.emojiPicker.getEmoji();
     const name = nmInput.value;
     const color = this.colorPicker.getSelectedClr();
   
@@ -124,7 +125,7 @@ export const editCtgry = {
     const oldEmj = this.oldData.emoji;
     const oldClr = this.oldData.color;
 
-    const emoji = emojiPicker2.getEmoji();
+    const emoji = this.emojiPicker.getEmoji();
     const name = nmInput.value;
     const color = this.colorPicker.getSelectedClr();
 

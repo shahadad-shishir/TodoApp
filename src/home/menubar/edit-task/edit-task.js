@@ -2,7 +2,7 @@ import { arraysEqual, scroll } from "../../../utils/shortcut.js";
 import { taskData } from "../../../data/tasks.js";
 import { CategorySelector } from "../../../category-selector/category-selector.js";
 import { ColorPicker } from "../../../color-picker/color-picker.js";
-import { emojiPicker } from "./emoji-picker.js";
+import { EmojiPicker } from "../../../emoji-picker/emoji-picker.js";
 import { taskContainer, renderTask } from "../../task.js";
 import { searchResult, search } from "../../search.js";
 import { mngCategoryFilter } from "../../category-filter.js";
@@ -61,7 +61,9 @@ export const editTask = {
       }
     });
 
-    emojiPicker.init();
+    this.emojiPicker = new EmojiPicker('#emoji-picker', () => {
+      this.updateSaveBtnState();
+    });
 
     this.ctgrySelector = new CategorySelector('#ctgry-selector', () => {
       this.updateSaveBtnState();
@@ -88,7 +90,7 @@ export const editTask = {
   hideEditTask() {
     this.ctgrySelector.clearText();
     this.colorPicker.close();
-    emojiPicker.close();
+    this.emojiPicker.close();
 
     editTaskBg.style.height = 0;
     editTaskEl.classList.remove('active');
@@ -115,9 +117,9 @@ export const editTask = {
     this.ctgrySelector.renderCategories(category);
 
     if (emoji) {
-      emojiPicker.selectEmoji(emoji);
+      this.emojiPicker.selectEmoji(emoji);
     } else {
-      emojiPicker.removeEmoji();
+      this.emojiPicker.removeEmoji();
     }
   },
 
@@ -137,7 +139,7 @@ export const editTask = {
 
   getNewData() {
     const data = {};
-    data.emoji = emojiPicker.getEmoji();
+    data.emoji = this.emojiPicker.getEmoji();
     data.name = nameInput.value;
     data.description = desInput.value;
     data.deadline = dateInput.value;
