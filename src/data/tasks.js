@@ -158,11 +158,14 @@ export const taskData = {
     return {all: allCtgryIds, done: doneCtgryIds};
   },
 
-  removeActgryFromTasks(index) {
+  removeActgryFromTasks(id) {
     this.tasks.forEach(task => {
-      if (task.category[index]) {
-        task.category.splice(index, 1);
-      }
+      task.category.forEach((ctgryId, index) => {
+        if (ctgryId === id) {
+          task.category.splice(index, 1);
+          return;
+        }
+      })
     });
 
     this.updateStorage();
