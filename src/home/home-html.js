@@ -7,7 +7,7 @@ export const homeHtml =
   <div class="container">
   <header class="header">
     <div class="message">
-      <h2><img src="assets/images/hand.png"> <span class="greeting"></span></h2>
+      <h2><img src="./assets/images/hand.png"> <span class="greeting"></span></h2>
       <p class="quote">Let's turn plans into accomplishments!</p>
     </div>
     <div class="user">
@@ -168,8 +168,6 @@ export const homeHtml =
       <button id="dlt-btn"><i class="fa-solid fa-trash"></i>Delete</button>
     </div>
   </div>
-
-
 
   <div class="dlt-bg"></div>
   <div id="editTask-bg"></div>
