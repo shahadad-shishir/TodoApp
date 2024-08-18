@@ -23,9 +23,10 @@ export const homeHeader = {
   ],
 
   init() {
-    this.quote = document.querySelector('.header .quote');
-    this.greetingEl =  document.querySelector('.header .greeting');
-    this.userIcon = document.querySelector('.header .user');
+    const el = document.querySelector('.header');
+    this.quote = el.querySelector('.quote');
+    this.greetingEl =  el.querySelector('.greeting');
+    this.userIcon = el.querySelector('.user');
 
     this.renderQuotes();
     this.renderGreeting();

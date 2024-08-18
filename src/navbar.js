@@ -1,18 +1,17 @@
 import { taskData } from "./data/tasks.js";
 import { navigateTo } from "./route.js";
 
-let tasks, categories, addBtn, transfer, profile, count;
-
 export const navbar = {
   init() {
-    tasks = document.querySelector('#navbar .tasks');
-    categories = document.querySelector('#navbar .categories');
-    addBtn = document.querySelector('#navbar .add');
-    transfer = document.querySelector('#navbar .transfer');
-    profile = document.querySelector('#navbar .profile');
-    count = document.querySelector('#navbar .count');
-
-    tasks.addEventListener('click', () => {
+    const el = document.querySelector('#navbar');
+    this.tasks = el.querySelector('.tasks');
+    this.categories = el.querySelector('.categories');
+    this.addBtn = el.querySelector('.add');
+    this.transfer = el.querySelector('.transfer');
+    this.profile = el.querySelector('.profile');
+    this.count = el.querySelector('.count');
+    
+    this.tasks.addEventListener('click', () => {
       if (location.pathname === '/') {
         this.scrollToTop();
       } else {
@@ -20,7 +19,7 @@ export const navbar = {
       }
     });
 
-    categories.addEventListener('click', () => {
+    this.categories.addEventListener('click', () => {
       if (location.pathname === '/categories') {
         this.scrollToTop();
       } else {
@@ -28,7 +27,7 @@ export const navbar = {
       }
     });
     
-    addBtn.addEventListener('click', () => {
+    this.addBtn.addEventListener('click', () => {
       if (location.pathname === '/add-task') {
         this.scrollToTop();
       } else {
@@ -36,7 +35,7 @@ export const navbar = {
       }
     });
 
-    transfer.addEventListener('click', () => {
+    this.transfer.addEventListener('click', () => {
       if (location.pathname === '/transfer') {
         this.scrollToTop();
       } else {
@@ -44,7 +43,7 @@ export const navbar = {
       }
     });
 
-    profile.addEventListener('click', () => {
+    this.profile.addEventListener('click', () => {
       if (location.pathname === '/profile') {
         this.scrollToTop();
       } else {
@@ -63,15 +62,15 @@ export const navbar = {
   showNotDoneTask() {
     const num = taskData.countNotDoneTask();
     if (num > 0) {
-      count.style.display = 'flex';
-      count.innerHTML = num;
+      this.count.style.display = 'flex';
+      this.count.innerHTML = num;
     } else {
-      count.style.display = 'none';
+      this.count.style.display = 'none';
     }
   },
 
   hideNotDoneTask() {
-    count.style.display = 'none';
+    this.count.style.display = 'none';
   },
 
   selectPage(pathname) {
@@ -83,15 +82,15 @@ export const navbar = {
     }
 
     if (pathname === '/') {
-      tasks.classList.add('selected');
+      this.tasks.classList.add('selected');
     } else if (pathname === '/add-task') {
-      addBtn.classList.add('selected');
+      this.addBtn.classList.add('selected');
     } else if (pathname === '/categories') {
-      categories.classList.add('selected');
+      this.categories.classList.add('selected');
     } else if (pathname === '/transfer') {
-      transfer.classList.add('selected');
+      this.transfer.classList.add('selected');
     } else if (pathname === '/profile') {
-      profile.classList.add('selected');
+      this.profile.classList.add('selected');
     }
   }
 };

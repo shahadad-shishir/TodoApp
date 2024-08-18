@@ -1,4 +1,6 @@
 export const popup = {
+  popupEl: undefined,
+  
   init() {
     const popupEl = document.createElement('div');
     popupEl.id = 'popup';
@@ -6,8 +8,6 @@ export const popup = {
     this.popupEl = popupEl;
 
   },
-
-  popupEl: undefined,
 
   showSuccess(msg) {
     const template = this.createOne(msg, 'circle-check', 'var(--secondary-color)');

@@ -2,39 +2,37 @@ import { taskData } from "../data/tasks.js";
 import { scroll, mngAnim } from "../utils/shortcut.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { handleProgress } from "./progress.js";
-import { search, searchResult } from "./search.js";
+import { search } from "./search.js";
 import { renderTask } from "./task.js";
 import { editTask } from "./edit-task.js";
 import { popup } from "../utils/popup.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
 import { navigateTo, routes } from "../route.js";
 
-let menubarEl, SmenubarBg, lMenubarBg, doneBtn, pinBtn, detailsBtn, editBtn, dublicate, deleteBtn;
-
 export const menubar = {
   taskId: undefined,
   distanceFromTop: undefined,
 
   init() {   
-    menubarEl = document.querySelector('.menubar');
-    SmenubarBg = document.querySelector('#s-menubar-bg');
-    lMenubarBg = document.querySelector('#l-menubar-bg');
-    doneBtn = document.querySelector('#mark-done');
-    pinBtn = document.querySelector('#pin');
-    detailsBtn = document.querySelector('#details');
-    editBtn = document.querySelector('#edit');
-    dublicate = document.querySelector('#dublicate');
-    deleteBtn = document.querySelector('#delete');
+    this.el = document.querySelector('.menubar');
+    this.SmenubarBg = document.querySelector('#s-menubar-bg');
+    this.lMenubarBg = document.querySelector('#l-menubar-bg');
+    this.doneBtn = document.querySelector('#mark-done');
+    this.pinBtn = document.querySelector('#pin');
+    this.detailsBtn = document.querySelector('#details');
+    this.editBtn = document.querySelector('#edit');
+    this.dublicate = document.querySelector('#dublicate');
+    this.deleteBtn = document.querySelector('#delete');
 
     editTask.init();
     dltCnfrm.init();
     popup.init();
 
-    SmenubarBg.addEventListener('click', () => {
+    this.SmenubarBg.addEventListener('click', () => {
       this.hideSmenu();
     });
 
-    doneBtn.addEventListener('click', () => {
+    this.doneBtn.addEventListener('click', () => {
       if (!taskData.getTask(this.taskId).done) {
         taskData.markDone(this.taskId);
       } else {
@@ -43,7 +41,7 @@ export const menubar = {
       this.renderChanges();
     });
 
-    pinBtn.addEventListener('click', () => {
+    this.pinBtn.addEventListener('click', () => {
       if (!taskData.getTask(this.taskId).pinned) {
         taskData.makePinned(this.taskId);
       } else {
@@ -52,38 +50,38 @@ export const menubar = {
       this.renderChanges();
     });
 
-    detailsBtn.addEventListener('click', () => {
+    this.detailsBtn.addEventListener('click', () => {
       this.hideMenu();
       routes['/task'].data.taskId = this.taskId;
       navigateTo('/task');
     });
 
-    editBtn.addEventListener('click', () => {   
+    this.editBtn.addEventListener('click', () => {   
       this.hideMenu();
       editTask.showEditTask(this.taskId);
     });
     
-    dublicate.addEventListener('click', () => {
+    this.dublicate.addEventListener('click', () => {
       taskData.dublicate(this.taskId);
       this.renderChanges();
       const msg = `Dublicated task - <b>${taskData.getTask(this.taskId).name}</b>`;
       popup.showSuccess(msg);
     });
 
-    deleteBtn.addEventListener('click', () => {
+    this.deleteBtn.addEventListener('click', () => {
       this.hideMenu();
       dltCnfrm.open(this.taskId);
     });
 
-    lMenubarBg.addEventListener('click', () => {
+    this.lMenubarBg.addEventListener('click', () => {
       this.hideLmenu();
     });
 
     window.addEventListener('resize', () => {
       const screenWidth = window.innerWidth;
-      if (screenWidth < 761 && menubarEl.classList.contains('small')) {
+      if (screenWidth < 761 && this.el.classList.contains('small')) {
         this.hideSmenu();
-      } else if (screenWidth > 761 && menubarEl.classList.contains('large')) {
+      } else if (screenWidth > 761 && this.el.classList.contains('large')) {
         this.hideLmenu();
       }
     });
@@ -95,50 +93,50 @@ export const menubar = {
     let difference;
 
     if (!isMobile) {
-      menubarEl.addEventListener('mousedown', e => {
-        if (menubarEl.classList.contains('large')) {
+      this.el.addEventListener('mousedown', e => {
+        if (this.el.classList.contains('large')) {
           difference = 0;
           isMouseDown = true;
           clickPosition = e.pageY;
         }
       });
-      menubarEl.addEventListener('mousemove', e => {
+      this.el.addEventListener('mousemove', e => {
         if (isMouseDown) {
           difference = (e.pageY - clickPosition);
           if (difference > -1) {
-            menubarEl.style.top = difference + this.distanceFromTop + 'px';
+            this.el.style.top = difference + this.distanceFromTop + 'px';
           }
         }
       }); 
       document.addEventListener('mouseup', () => {
         isMouseDown = false;
         const screenWidth = window.innerWidth;
-        if(screenWidth < 761 && difference > 2 && menubarEl.classList.contains('large')) {
+        if(screenWidth < 761 && difference > 2 && this.el.classList.contains('large')) {
           release();
           difference = 0;
         }
       })      
     } else {
-      menubarEl.addEventListener('touchstart', e => {
-        if (menubarEl.classList.contains('large')) {
+      this.el.addEventListener('touchstart', e => {
+        if (this.el.classList.contains('large')) {
           difference = 0;
           isMouseDown = true;
           clickPosition = e.touches[0].pageY;
         }
       });
 
-      menubarEl.addEventListener('touchmove', e => {
+      this.el.addEventListener('touchmove', e => {
         if (isMouseDown) {
           difference = e.touches[0].pageY - clickPosition + 10;
           if (difference > -1) {
-            menubarEl.style.top = difference + this.distanceFromTop + 'px';
+            this.el.style.top = difference + this.distanceFromTop + 'px';
           }
         }
       });
 
       document.addEventListener('touchend', () => {
         const screenWidth = window.innerWidth;
-        if(screenWidth < 761 && difference > 2 && menubarEl.classList.contains('large')) {
+        if(screenWidth < 761 && difference > 2 && this.el.classList.contains('large')) {
           release();
           difference = 0;
         }
@@ -149,7 +147,7 @@ export const menubar = {
       if (difference > 250) {
         menubar.hideLmenu();
       } else if (difference <= 250) {
-        menubarEl.animate(
+        menubar.el.animate(
           [
             {
               top: menubar.distanceFromTop + 'px',
@@ -160,7 +158,7 @@ export const menubar = {
         );
 
         const timeoutId = setTimeout(()=> {
-          menubarEl.style.removeProperty('top');
+          menubar.el.style.removeProperty('top');
           clearTimeout(timeoutId);
         }, 400);
       }
@@ -197,9 +195,9 @@ export const menubar = {
       }
     });
 
-    menubarEl.classList.add('active', 'small');
-    menubarEl.style.opacity = 1;
-    SmenubarBg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.el.classList.add('active', 'small');
+    this.el.style.opacity = 1;
+    this.SmenubarBg.style.height = document.body.scrollHeight + 10 + 'px';
     scroll.disable();
   },
 
@@ -209,40 +207,40 @@ export const menubar = {
         task.classList.remove('blur');
     });
 
-    menubarEl.style.opacity = 0;
-    menubarEl.style.transform = 'scale(0.5)';
+    this.el.style.opacity = 0;
+    this.el.style.transform = 'scale(0.5)';
     scroll.enable();
     const timeoutId = setTimeout(()=> {
-      menubarEl.classList.remove('active', 'small');
-      menubarEl.style.removeProperty('transform');
-      SmenubarBg.style.height = 0;
+      this.el.classList.remove('active', 'small');
+      this.el.style.removeProperty('transform');
+      this.SmenubarBg.style.height = 0;
       clearTimeout(timeoutId);
     }, 200);
   },
 
   showLmenu() {
-    menubarEl.classList.add('active', 'large');
-    this.distanceFromTop = menubarEl.getBoundingClientRect().top;
-    menubarEl.style.top = this.distanceFromTop;
-    menubarEl.style.opacity = 1;
-    mngAnim(menubarEl, 'largeMenuOpen', 0.6);
-    lMenubarBg.style.height = document.body.scrollHeight + 10 + 'px';
-    lMenubarBg.style.opacity = 1;
+    this.el.classList.add('active', 'large');
+    this.distanceFromTop = this.el.getBoundingClientRect().top;
+    this.el.style.top = this.distanceFromTop;
+    this.el.style.opacity = 1;
+    mngAnim(this.el, 'largeMenuOpen', 0.6);
+    this.lMenubarBg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.lMenubarBg.style.opacity = 1;
     scroll.disable();
   },
 
   hideLmenu() {
     scroll.enable();
-    menubarEl.style.animation = 'largeMenuDown .4s ease';
-    lMenubarBg.style.animation = 'opacityAnimRvrs .4s ease';
+    this.el.style.animation = 'largeMenuDown .4s ease';
+    this.lMenubarBg.style.animation = 'opacityAnimRvrs .4s ease';
     const timeoutId = setTimeout(()=> {
-      menubarEl.style.removeProperty('top')
-      menubarEl.style.removeProperty('animation');
-      menubarEl.classList.remove('active', 'large');
-      menubarEl.style.opacity = 0;
-      lMenubarBg.style.height = 0;
-      lMenubarBg.style.opacity = 0;
-      lMenubarBg.style.removeProperty('animation');
+      this.el.style.removeProperty('top')
+      this.el.style.removeProperty('animation');
+      this.el.classList.remove('active', 'large');
+      this.el.style.opacity = 0;
+      this.lMenubarBg.style.height = 0;
+      this.lMenubarBg.style.opacity = 0;
+      this.lMenubarBg.style.removeProperty('animation');
       clearTimeout(timeoutId);
     }, 400);
   },
@@ -281,8 +279,6 @@ export const menubar = {
     renderTask();
     handleProgress();
     mngCategoryFilter();
-    if (searchResult.style.display === 'flex') {
-      search.dismiss();
-    }
+    search.dismiss();
   }
 };

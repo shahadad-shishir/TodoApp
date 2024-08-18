@@ -151,27 +151,27 @@ export const homeHtml =
   </div>
 
   <div class="delete-confirm">
-  <h3>Are you sure you want to delete the task?</h3>
-  <div class="info">
-    <div class="nm">
-      <!-- <b>Task Name: </b><span>Demo</span> -->
+    <h3>Are you sure you want to delete the task?</h3>
+    <div class="info">
+      <div class="nm">
+        <!-- <b>Task Name: </b><span>Demo</span> -->
+      </div>
+      <div class="des">
+        <!-- <b>Task Description: </b><span>This is a description</span> -->
+      </div>
+      <div class="ctgry">
+        <!-- <b>Categories: </b><span>Home and Work</span> -->
+      </div>
     </div>
-    <div class="des">
-      <!-- <b>Task Description: </b><span>This is a description</span> -->
+    <div class="btns">
+      <button id="cncl-btn">cancel</button>
+      <button id="dlt-btn"><i class="fa-solid fa-trash"></i>Delete</button>
     </div>
-    <div class="ctgry">
-      <!-- <b>Categories: </b><span>Home and Work</span> -->
-    </div>
-  </div>
-  <div class="btns">
-    <button id="cncl-btn">cancel</button>
-    <button id="dlt-btn"><i class="fa-solid fa-trash"></i>Delete</button>
-  </div>
   </div>
 
 
 
-  <div class="blur-bg"></div>
+  <div class="dlt-bg"></div>
   <div id="editTask-bg"></div>
   <div id="s-menubar-bg"></div>
   <div id="l-menubar-bg"></div>  

@@ -4,22 +4,23 @@ import { navigateTo } from "./route.js";
 
  export const sidebar = {
   init() {
-    this.sidebarEl = document.querySelector('#sidebar');
-    this.sidebarHeader = document.querySelector('.sidebar-header');
+    const el = document.querySelector('#sidebar');
+    this.el = el;
     this.sidebarBg = document.querySelector('#sidebar-bg');
-    this.tasks = document.querySelector('.sidebar-tasks');
-    this.taskCount = document.querySelector('#sidebar .task-count');
-    this.countNum = document.querySelector('#sidebar .task-count-number');
-    this.tooltipNum = document.querySelector('.sidebar-tooltip span');
-    this.add = document.querySelector('.sidebar-add');
-    this.purge = document.querySelector('.sidebar-purge');
-    this.ctgry = document.querySelector('.sidebar-ctgry');
-    this.transfer = document.querySelector('.sidebar-transfer');
-    this.github = document.querySelector('.sidebar-github');
-    this.issue = document.querySelector('.sidebar-issue');
-    this.logout = document.querySelector('.sidebar-logout');
-    this.settings = document.querySelector('.sidebar-settings');
-    this.user = document.querySelector('.sidebar-user');
+    this.sidebarHeader = el.querySelector('.sidebar-header');
+    this.tasks = el.querySelector('.sidebar-tasks');
+    this.taskCount = el.querySelector('.task-count');
+    this.countNum = el.querySelector('.task-count-number');
+    this.tooltipNum = el.querySelector('.sidebar-tooltip span');
+    this.add = el.querySelector('.sidebar-add');
+    this.purge = el.querySelector('.sidebar-purge');
+    this.ctgry = el.querySelector('.sidebar-ctgry');
+    this.transfer = el.querySelector('.sidebar-transfer');
+    this.github = el.querySelector('.sidebar-github');
+    this.issue = el.querySelector('.sidebar-issue');
+    this.logout = el.querySelector('.sidebar-logout');
+    this.settings = el.querySelector('.sidebar-settings');
+    this.user = el.querySelector('.sidebar-user');
 
     this.sidebarBg.addEventListener('click', () => {
       this.close();
@@ -78,7 +79,7 @@ import { navigateTo } from "./route.js";
   },
 
   open() {
-    this.sidebarEl.classList.add('active');
+    this.el.classList.add('active');
     this.sidebarBg.style.height = screen.height + 10 + 'px';
     this.sidebarBg.style.opacity = 1;
     this.showNotDoneTask();
@@ -86,7 +87,7 @@ import { navigateTo } from "./route.js";
   },
 
   close() {
-    this.sidebarEl.classList.remove('active');
+    this.el.classList.remove('active');
     this.sidebarBg.style.opacity = 0;
 
     const timeoutId = setTimeout(()=> {

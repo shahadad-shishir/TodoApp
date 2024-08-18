@@ -5,29 +5,28 @@ import { mngAnim } from "../utils/shortcut.js";
 import { string } from "../utils/string.js";
 import { menubar } from "./menubar.js";
 
-let dltConfirm, cnclBtn, dltBtn, nmEl, desEl, ctgryEl, blurBg;
-
 export const dltCnfrm = {
   taskId: undefined,
 
   init() {
-    dltConfirm = document.querySelector('.delete-confirm');
-    cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
-    dltBtn = document.querySelector('.delete-confirm #dlt-btn');
-    nmEl = document.querySelector('.delete-confirm .nm');
-    desEl = document.querySelector('.delete-confirm .des');
-    ctgryEl = document.querySelector('.delete-confirm .ctgry');
-    blurBg = document.querySelector('.blur-bg');
+    const el = document.querySelector('.delete-confirm');
+    this.el = el;
+    this.cnclBtn = el.querySelector('#cncl-btn');
+    this.dltBtn = el.querySelector('#dlt-btn');
+    this.nmEl = el.querySelector('.nm');
+    this.desEl = el.querySelector('.des');
+    this.ctgryEl = el.querySelector('.ctgry');
+    this.bg = document.querySelector('.dlt-bg');
 
-    blurBg.addEventListener('click', () => {
+    this.bg.addEventListener('click', () => {
       this.close();
     });
 
-    cnclBtn.addEventListener('click', () => {
+    this.cnclBtn.addEventListener('click', () => {
       this.close();
     });
 
-    dltBtn.addEventListener('click', () => {
+    this.dltBtn.addEventListener('click', () => {
       this.close();      
       menubar.dltTask();
     });
@@ -36,32 +35,32 @@ export const dltCnfrm = {
   open(taskId) {
     this.taskId = taskId;
     this.updateData(taskId)
-    dltConfirm.style.display = 'block';
-    mngAnim(dltConfirm, 'opacityAnim', 0.3);
-    blurBg.style.height = document.body.scrollHeight + 10 + 'px';
-    blurBg.style.opacity = 1;
+    this.el.style.display = 'block';
+    mngAnim(this.el, 'opacityAnim', 0.3);
+    this.bg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.bg.style.opacity = 1;
     scroll.disable();
   },
 
   close() {
-      blurBg.style.height = 0;
-      dltConfirm.style.display = 'none';
+      this.bg.style.height = 0;
+      this.el.style.display = 'none';
       scroll.enable();
   },
 
   updateData(taskId) {
     const {name, description, category} = taskData.getTask(taskId);
 
-    nmEl.innerHTML = '';
-    desEl.innerHTML = '';
-    ctgryEl.innerHTML = '';
+    this.nmEl.innerHTML = '';
+    this.desEl.innerHTML = '';
+    this.ctgryEl.innerHTML = '';
 
     if (name) {
-      nmEl.innerHTML = `<b>Task Name: </b><span>${name}</span>`;
+      this.nmEl.innerHTML = `<b>Task Name: </b><span>${name}</span>`;
     }
 
     if (description !== '') {
-      desEl.innerHTML = `<b>Task Description: </b><span>${description}</span>`;
+      this.desEl.innerHTML = `<b>Task Description: </b><span>${description}</span>`;
     }
 
     if (category.length > 0) {
@@ -70,7 +69,7 @@ export const dltCnfrm = {
         array.push(ctgryData.getCtgry(id).name);
       });
       const ctgry = string.combineStrings(array);
-      ctgryEl.innerHTML = `<b>Categories: </b><span>${ctgry}</span>`;
+      this.ctgryEl.innerHTML = `<b>Categories: </b><span>${ctgry}</span>`;
     }
   }
 }

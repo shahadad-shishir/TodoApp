@@ -3,25 +3,22 @@ import { mngCategoryFilter } from "./category-filter.js";
 import { mngAnim } from "../utils/shortcut.js";
 import { renderTask } from "./task.js";
 
-let searchInput, searchBtn, srcRsltCount, srcRsltEmpty;
-export let searchResult;
-
 export const search = {
   init() {
-    searchInput = document.querySelector('#search-input');
-    searchBtn = document.querySelector('.search-bar button');
-    searchResult = document.querySelector('.search-result');
-    srcRsltCount = document.querySelector('.search-result .count');
-    srcRsltEmpty = document.querySelector('.search-result .empty');
+    this.searchInput = document.querySelector('#search-input');
+    this.searchBtn = document.querySelector('.search-bar button');
+    this.searchResult = document.querySelector('.search-result');
+    this.srcRsltCount = document.querySelector('.search-result .count');
+    this.srcRsltEmpty = document.querySelector('.search-result .empty');
 
-    searchInput.addEventListener('keyup', e => {
-      const searchTxt = searchInput.value;
-      searchBtn.style.display = 'flex';
+    this.searchInput.addEventListener('keyup', e => {
+      const searchTxt = this.searchInput.value;
+      this.searchBtn.style.display = 'flex';
       this.mngHighliting(searchTxt);
       mngCategoryFilter();
     });
 
-    searchBtn.addEventListener('click', () => {
+    this.searchBtn.addEventListener('click', () => {
       renderTask();
       mngCategoryFilter();
       this.dismiss();
@@ -32,8 +29,8 @@ export const search = {
     let foundTasks = 0;
 
     if (searchTxt === '') {
-      searchResult.style.display = 'none';
-      searchBtn.style.display = 'none';
+      this.searchResult.style.display = 'none';
+      this.searchBtn.style.display = 'none';
       renderTask();
       return;
     }
@@ -81,22 +78,22 @@ export const search = {
     });
 
     if (foundTasks > 0) {
-      searchResult.style.display = 'flex';
-      srcRsltCount.style.display = 'flex';
-      srcRsltEmpty.style.display = 'none';
-      searchBtn.style.color = 'white';
+      this.searchResult.style.display = 'flex';
+      this.srcRsltCount.style.display = 'flex';
+      this.srcRsltEmpty.style.display = 'none';
+      this.searchBtn.style.color = 'white';
     } else if (foundTasks == 0) {
-      srcRsltCount.style.display = 'none';
-      searchResult.style.display = 'flex';
-      srcRsltEmpty.style.display = 'flex';
-      mngAnim(srcRsltEmpty, 'opacityAnim', 1);
-      searchBtn.style.color = 'red';
+      this.srcRsltCount.style.display = 'none';
+      this.searchResult.style.display = 'flex';
+      this.srcRsltEmpty.style.display = 'flex';
+      mngAnim(this.srcRsltEmpty, 'opacityAnim', 1);
+      this.searchBtn.style.color = 'red';
     }
 
     if (foundTasks == 1) {
-      srcRsltCount.innerText = 'Found 1 task'
+      this.srcRsltCount.innerText = 'Found 1 task'
     } else {
-      srcRsltCount.innerText = `Found ${foundTasks} tasks`;
+      this.srcRsltCount.innerText = `Found ${foundTasks} tasks`;
     }
   },
 
@@ -114,8 +111,10 @@ export const search = {
   },
 
   dismiss() {
-    searchInput.value = '';
-    searchResult.style.display = 'none';
-    searchBtn.style.display = 'none';
+    if (this.searchResult.style.display === 'flex') {
+      this.searchInput.value = '';
+      this.searchResult.style.display = 'none';
+      this.searchBtn.style.display = 'none';
+    }
   }
 };

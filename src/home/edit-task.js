@@ -4,32 +4,31 @@ import { CategorySelector } from "../category-selector/category-selector.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
 import { taskContainer, renderTask } from "./task.js";
-import { searchResult, search } from "./search.js";
+import { search } from "./search.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { popup } from "../utils/popup.js";
-
-let saveBtn, editTaskEl, editTaskBg, cancelBtn, nameInput, desInput, dateInput, nm, des, nmLabel, desLabel, nmCount, desCount;
 
 export const editTask = {
   taskId: undefined,
 
   init() {
-    saveBtn = document.querySelector('.edit-task #save-btn');
-    editTaskEl = document.querySelector('.edit-task');
-    editTaskBg = document.querySelector('#editTask-bg');
-    cancelBtn = document.querySelector('.edit-task #cancel-btn');
-    nameInput = document.querySelector('#name-input');
-    desInput = document.querySelector('#description');
-    dateInput = document.querySelector('#date-input');
-    nm = document.querySelector('.edit-task .name');
-    des = document.querySelector('.edit-task .description');
-    nmLabel = document.querySelector('.name label');
-    desLabel = document.querySelector('.description label');
-    nmCount = document.querySelector('span.nm-count');
-    desCount = document.querySelector('span.des-count');
+    const el = document.querySelector('.edit-task');
+    this.el = el;
+    this.saveBtn = document.querySelector('#save-btn');
+    this.editTaskBg = document.querySelector('#editTask-bg');
+    this.cancelBtn = el.querySelector('#cancel-btn');
+    this.nameInput = el.querySelector('#name-input');
+    this.desInput = el.querySelector('#description');
+    this.dateInput = el.querySelector('#date-input');
+    this.nm = el.querySelector('.name');
+    this.des = el.querySelector('.description');
+    this.nmLabel = el.querySelector('.name label');
+    this.desLabel = el.querySelector('.description label');
+    this.nmCount = el.querySelector('span.nm-count');
+    this.desCount = el.querySelector('span.des-count');
     this.formEmojiIcon = document.querySelector('#emoji-picker .emoji');
 
-    editTaskBg.addEventListener('click', () => {
+    this.editTaskBg.addEventListener('click', () => {
       this.hideEditTask();
     });
 
@@ -37,26 +36,26 @@ export const editTask = {
       this.resize();
     });
 
-    nameInput.addEventListener('input', () => {
+    this.nameInput.addEventListener('input', () => {
       this.mngNmCount();
       this.updateSaveBtnState();
     });
 
-    desInput.addEventListener('input', () => {
+    this.desInput.addEventListener('input', () => {
       this.mngDesCount();
       this.updateSaveBtnState();
     });
 
-    dateInput.addEventListener('input', () => {
+    this.dateInput.addEventListener('input', () => {
       this.updateSaveBtnState();
     });
 
-    cancelBtn.addEventListener('click', () => {
+    this.cancelBtn.addEventListener('click', () => {
       this.hideEditTask();
     });
 
-    saveBtn.addEventListener('click', () => {
-      if (saveBtn.classList.contains('enable')) {
+    this.saveBtn.addEventListener('click', () => {
+      if (this.saveBtn.classList.contains('enable')) {
         this.saveEditedData();
       }
     });
@@ -79,9 +78,9 @@ export const editTask = {
     this.taskId = taskId;
     this.oldData = taskData.getTask(this.taskId);
     this.resize();
-    editTaskEl.classList.add('active');
-    editTaskBg.style.height = document.body.scrollHeight + 10 + 'px';
-    editTaskBg.style.opacity = 1;
+    this.el.classList.add('active');
+    this.editTaskBg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.editTaskBg.style.opacity = 1;
     scroll.disable();
     this.showEditableData();
     this.updateSaveBtnState();
@@ -92,8 +91,8 @@ export const editTask = {
     this.colorPicker.close();
     this.emojiPicker.close();
 
-    editTaskBg.style.height = 0;
-    editTaskEl.classList.remove('active');
+    this.editTaskBg.style.height = 0;
+    this.el.classList.remove('active');
     scroll.enable();
   },
 
@@ -101,17 +100,17 @@ export const editTask = {
     const data = taskData.getTask(this.taskId);
     const {name, emoji, description, color, deadline, category} = data;
     
-    nameInput.value = name;
-    nmCount.style.display = 'block';
-    nmCount.innerHTML = `${nameInput.value.length}/40`;
-    desInput.value = description;
+    this.nameInput.value = name;
+    this.nmCount.style.display = 'block';
+    this.nmCount.innerHTML = `${this.nameInput.value.length}/40`;
+    this.desInput.value = description;
     if (description !== '') {
-      desCount.style.display = 'block';
-      desCount.innerHTML = `${desInput.value.length}/250`;
+      this.desCount.style.display = 'block';
+      this.desCount.innerHTML = `${this.desInput.value.length}/250`;
     } else {
-      desCount.style.display = 'none';
+      this.desCount.style.display = 'none';
     }
-    dateInput.value = deadline;
+    this.dateInput.value = deadline;
 
     this.colorPicker.selectThisClr(color);
     this.ctgrySelector.renderCategories(category);
@@ -129,10 +128,7 @@ export const editTask = {
     this.hideEditTask();
     renderTask();
     mngCategoryFilter();
-    if (searchResult.style.display === 'flex') {
-      search.dismiss();
-    }
-
+    search.dismiss();
     const msg = `Task <b>${name}</b> updated.`;
     popup.showSuccess(msg);
   },
@@ -140,79 +136,79 @@ export const editTask = {
   getNewData() {
     const data = {};
     data.emoji = this.emojiPicker.getEmoji();
-    data.name = nameInput.value;
-    data.description = desInput.value;
-    data.deadline = dateInput.value;
+    data.name = this.nameInput.value;
+    data.description = this.desInput.value;
+    data.deadline = this.dateInput.value;
     data.category = this.ctgrySelector.getAllSelected();
     data.color = this.colorPicker.getSelectedClr();
     return data;
   },
 
   mngNmCount() {
-    const value = nameInput.value;
+    const value = this.nameInput.value;
     if (value !== '') {
-      nmCount.style.display = 'block';
+      this.nmCount.style.display = 'block';
     } else {
-      nmCount.style.display = 'none';
+      this.nmCount.style.display = 'none';
       return;
     }
 
     const length = value.length;
     if (length < 41) {
-      nmCount.style.color = 'var(--text-color)';
-      nm.style.borderColor = '#ddd';
-      nmLabel.style.color = 'rgba(0, 0, 0, 0.6)';
-      nmCount.innerHTML = `${length}/40`;
+      this.nmCount.style.color = 'var(--text-color)';
+      this.nm.style.borderColor = '#ddd';
+      this.nmLabel.style.color = 'rgba(0, 0, 0, 0.6)';
+      this.nmCount.innerHTML = `${length}/40`;
     } else {
-      nmCount.style.color = 'rgba(255, 49, 49, 0.8)';
-      nm.style.borderColor = 'rgb(255, 49, 49)';
-      nmLabel.style.color = 'rgb(255, 49, 49)';
-      nmCount.innerHTML = 'Name is too long (maximum 40 characters)';
+      this.nmCount.style.color = 'rgba(255, 49, 49, 0.8)';
+      this.nm.style.borderColor = 'rgb(255, 49, 49)';
+      this.nmLabel.style.color = 'rgb(255, 49, 49)';
+      this.nmCount.innerHTML = 'Name is too long (maximum 40 characters)';
     }
   },
 
   mngDesCount() {
-    const value = desInput.value;
+    const value = this.desInput.value;
     if (value !== '') {
-      desCount.style.display = 'block';
+      this.desCount.style.display = 'block';
     } else {
-      desCount.style.display = 'none';
+      this.desCount.style.display = 'none';
       return;
     }
 
     const length = value.length;
     if (length < 251) {
-      desCount.style.color = 'var(--text-color)';
-      des.style.borderColor = '#ddd';
-      desLabel.style.color = 'rgba(0, 0, 0, 0.6)';
-      desCount.innerHTML = `${length}/250`;
+      this.desCount.style.color = 'var(--text-color)';
+      this.des.style.borderColor = '#ddd';
+      this.desLabel.style.color = 'rgba(0, 0, 0, 0.6)';
+      this.desCount.innerHTML = `${length}/250`;
     } else {
-      desCount.style.color = 'rgba(255, 49, 49, 0.8)';
+      this.desCount.style.color = 'rgba(255, 49, 49, 0.8)';
       des.style.borderColor = 'rgb(255, 49, 49)';
-      desLabel.style.color = 'rgb(255, 49, 49)';
-      desCount.innerHTML = 'Description is too long (maximum 250 characters)';
+      this.desLabel.style.color = 'rgb(255, 49, 49)';
+      this.desCount.innerHTML = 'Description is too long (maximum 250 characters)';
     }
   },
 
   updateSaveBtnState() {
     const {name, emoji, description, color, deadline, category} = this.getNewData();
 
-    const oldNm = this.oldData.name;
+    const oldnm = this.oldData.name;
     const oldEmj = this.oldData.emoji;
     const oldClr = this.oldData.color;
     const oldDes = this.oldData.description;
     const oldDdl = this.oldData.deadline;
     const oldCtgry = this.oldData.category;
 
-    if ((oldNm !== name || oldEmj !== emoji || oldClr !== color || oldDes !== description || oldDdl !== deadline || !arraysEqual(oldCtgry, category)) && (nameInput.value.length < 41 && desInput.value.length < 251)) {
-      saveBtn.classList.add('enable');
+    if ((oldnm !== name || oldEmj !== emoji || oldClr !== color || oldDes !== description || oldDdl !== deadline || !arraysEqual(oldCtgry, category)) && (this.nameInput.value.length < 41 && this.desInput.value.length < 251)) {
+      this.saveBtn.classList.add('enable');
     } else {
-      saveBtn.classList.remove('enable');
+      this.saveBtn.classList.remove('enable');
     }
   },
 
   resize() {
     const width = taskContainer.offsetWidth;
-    editTaskEl.style.width = (width - 64) + 'px';
+    this.el.style.width = (width - 64) + 'px';
   },
 };

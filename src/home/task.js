@@ -6,7 +6,7 @@ import { menubar } from "./menubar.js";
 export let taskContainer;
 let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;
 
-export function renderTask() {
+export function initTask() {
   taskContainer = document.querySelector('.tasks-container');
   emptyTask = document.querySelector('.empty-task');
   progress = document.querySelector('.main .progress');
@@ -15,6 +15,10 @@ export function renderTask() {
   ctgryFilter = document.querySelector('.main .categories');
   navAddBtn = document.querySelector('#navbar .add');
 
+  renderTask();
+}
+
+export function renderTask() {
   taskContainer.innerHTML = '';
 
   if (taskData.tasks.length == 0) {

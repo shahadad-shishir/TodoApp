@@ -3,10 +3,13 @@ import { ctgryData } from "../data/categories.js";
 
 let categories, srcRsltCount;
 
-export function mngCategoryFilter() {
+export function initCtgryFilter() {
   categories = document.querySelector('.main .categories');
   srcRsltCount = document.querySelector('.search-result .count');
+  mngCategoryFilter();
+}
 
+export function mngCategoryFilter() {
   let allCategories = [];
 
   const addCategories = task => {
@@ -30,19 +33,12 @@ export function mngCategoryFilter() {
     const div = document.createElement('div');
     div.dataset.id = id;
     div.style.backgroundColor = color;
-    const emojiSpan = document.createElement('span');
-    emojiSpan.classList.add('category-emoji');
-    emojiSpan.innerHTML = emoji;
-    const nameSpan = document.createElement('span');
-    nameSpan.innerHTML = `<span class="category-nm">${name} (<span class="count">1</span>)</span>`;
-    const xBtn = document.createElement('span');
-    xBtn.classList.add('x-btn');
-    xBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
-    xBtn.style.display = 'none';
-    div.appendChild(emojiSpan);
-    div.appendChild(nameSpan);
-    div.appendChild(xBtn)
-
+    div.innerHTML = 
+    `
+      <span class="category-emoji">${emoji}</span>
+      <span>${name} (<span class="count">1</span>)</span>
+      <span class="x-btn"><i class="fa-solid fa-circle-xmark"></i></span>
+    `
     return div;
   }
 

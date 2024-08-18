@@ -4,27 +4,25 @@ import { taskData } from "../data/tasks.js";
 import { oldCategories } from "./old.js";
 import { popup } from "../utils/popup.js";
 
-let dltConfirm, cnclBtn, dltBtn, nm, bg;
-
 export const dltCnfrm = {
   ctgryId: undefined,
 
   init() {
-    dltConfirm = document.querySelector('.delete-confirm');
-    cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
-    dltBtn = document.querySelector('.delete-confirm #dlt-btn');
-    nm = document.querySelector('.delete-confirm h3 b');
-    bg = document.querySelector('#dlt-bg');
+    this.dltConfirm = document.querySelector('.delete-confirm');
+    this.cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
+    this.dltBtn = document.querySelector('.delete-confirm #dlt-btn');
+    this.nm = document.querySelector('.delete-confirm h3 b');
+    this.bg = document.querySelector('#dlt-bg');
 
-    bg.addEventListener('click', () => {
+    this.bg.addEventListener('click', () => {
       this.close();
     });
 
-    cnclBtn.addEventListener('click', () => {
+    this.cnclBtn.addEventListener('click', () => {
       this.close();
     });
 
-    dltBtn.addEventListener('click', () => {
+    this.dltBtn.addEventListener('click', () => {
       this.close();      
       this.dltCtgry();
     });
@@ -32,17 +30,17 @@ export const dltCnfrm = {
 
   open(ctgryId) {
     this.ctgryId = ctgryId;
-    nm.innerHTML = ctgryData.getCtgry(ctgryId).name;
-    dltConfirm.classList.add('active');
-    bg.style.height = document.body.scrollHeight + 10 + 'px';
-    bg.style.opacity = 1;
+    this.nm.innerHTML = ctgryData.getCtgry(ctgryId).name;
+    this.dltConfirm.classList.add('active');
+    this.bg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.bg.style.opacity = 1;
     scroll.disable();
   },
 
   close() {
-    bg.style.height = 0;
-    bg.style.opacity = 0;
-    dltConfirm.classList.remove('active');
+    this.bg.style.height = 0;
+    this.bg.style.opacity = 0;
+    this.dltConfirm.classList.remove('active');
     scroll.enable();
   },
 

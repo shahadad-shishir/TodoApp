@@ -2,12 +2,16 @@ import { taskData } from "../data/tasks.js";
 
 let circle, percentEl, complete, completeMsg;
 
-export function handleProgress() {
+export function initProgress() {
   circle = document.querySelector('.progress .draw-circle');
   percentEl = document.querySelector('.circle-container .number');
   complete = document.querySelector('.progress .details h3');
   completeMsg = document.querySelector('.progress .details p');
 
+  handleProgress();
+}
+
+export function handleProgress() {
   const totalTask = taskData.tasks.length;
   let doneTask = 0;
   taskData.tasks.forEach(task => {

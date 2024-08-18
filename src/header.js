@@ -3,10 +3,11 @@ import { sidebar } from "./sidebar.js";
 
 export const header = {
   init() {
-    this.backBtn = document.querySelector('.js-back-btn');
-    this.headerEl = document.querySelector('#header');
-    this.headerText = document.querySelector('#header .text');
-    this.userIcon = document.querySelector('#header .user');
+    const el = document.querySelector('#header');
+    this.el = el;
+    this.backBtn = el.querySelector('.angle');
+    this.headerText = el.querySelector('.text');
+    this.userIcon = el.querySelector('.user');
 
     this.backBtn.addEventListener('click', () => {
       if (routes.lastPathname !== location.pathname) {
@@ -23,10 +24,10 @@ export const header = {
   },
 
   show() {
-    this.headerEl.style.display = 'flex';
+    this.el.style.display = 'flex';
   },
 
   hide() {
-    this.headerEl.style.display = 'none';
+    this.el.style.display = 'none';
   }
 };
