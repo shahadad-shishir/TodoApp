@@ -1,13 +1,13 @@
-import { taskData } from "../../data/tasks.js";
-import { scroll, mngAnim } from "../../utils/shortcut.js";
-import { mngCategoryFilter } from "../category-filter.js";
-import { handleProgress } from "../progress.js";
-import { search, searchResult } from "../search.js";
-import { renderTask } from "../task.js";
-import { editTask } from "./edit-task/edit-task.js";
-import { popup } from "../../utils/popup.js";
+import { taskData } from "../data/tasks.js";
+import { scroll, mngAnim } from "../utils/shortcut.js";
+import { mngCategoryFilter } from "./category-filter.js";
+import { handleProgress } from "./progress.js";
+import { search, searchResult } from "./search.js";
+import { renderTask } from "./task.js";
+import { editTask } from "./edit-task.js";
+import { popup } from "../utils/popup.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
-import { navigateTo, routes } from "../../route.js";
+import { navigateTo, routes } from "../route.js";
 
 let menubarEl, SmenubarBg, lMenubarBg, doneBtn, pinBtn, detailsBtn, editBtn, dublicate, deleteBtn;
 

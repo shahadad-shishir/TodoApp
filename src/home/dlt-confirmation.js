@@ -1,8 +1,8 @@
-import { scroll } from "../../utils/shortcut.js";
-import { taskData } from "../../data/tasks.js";
-import { ctgryData } from "../../data/categories.js";
-import { mngAnim } from "../../utils/shortcut.js";
-import { string } from "../../utils/string.js";
+import { scroll } from "../utils/shortcut.js";
+import { taskData } from "../data/tasks.js";
+import { ctgryData } from "../data/categories.js";
+import { mngAnim } from "../utils/shortcut.js";
+import { string } from "../utils/string.js";
 import { menubar } from "./menubar.js";
 
 let dltConfirm, cnclBtn, dltBtn, nmEl, desEl, ctgryEl, blurBg;

@@ -1,12 +1,12 @@
-import { arraysEqual, scroll } from "../../../utils/shortcut.js";
-import { taskData } from "../../../data/tasks.js";
-import { CategorySelector } from "../../../category-selector/category-selector.js";
-import { ColorPicker } from "../../../color-picker/color-picker.js";
-import { EmojiPicker } from "../../../emoji-picker/emoji-picker.js";
-import { taskContainer, renderTask } from "../../task.js";
-import { searchResult, search } from "../../search.js";
-import { mngCategoryFilter } from "../../category-filter.js";
-import { popup } from "../../../utils/popup.js";
+import { arraysEqual, scroll } from "../utils/shortcut.js";
+import { taskData } from "../data/tasks.js";
+import { CategorySelector } from "../category-selector/category-selector.js";
+import { ColorPicker } from "../color-picker/color-picker.js";
+import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
+import { taskContainer, renderTask } from "./task.js";
+import { searchResult, search } from "./search.js";
+import { mngCategoryFilter } from "./category-filter.js";
+import { popup } from "../utils/popup.js";
 
 let saveBtn, editTaskEl, editTaskBg, cancelBtn, nameInput, desInput, dateInput, nm, des, nmLabel, desLabel, nmCount, desCount;
 

@@ -1,7 +1,7 @@
-import { ctgryData } from "../../data/categories.js";
-import { taskData } from "../../data/tasks.js";
+import { ctgryData } from "../data/categories.js";
+import { taskData } from "../data/tasks.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
-import { editCtgry } from "./edit/edit.js";
+import { editCtgry } from "./edit.js";
 
 let oldEl;
 

@@ -1,7 +1,7 @@
 import { dateTime } from "../utils/dateTime.js";
 import { taskData } from "../data/tasks.js";
 import { ctgryData } from "../data/categories.js";
-import { menubar } from "./menubar/menubar.js";
+import { menubar } from "./menubar.js";
 
 export let taskContainer;
 let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;

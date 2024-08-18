@@ -3,7 +3,7 @@ import { homeHeader} from "./homeHeader.js";
 import { handleProgress } from "./progress.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { search } from "./search.js";
-import { menubar } from "./menubar/menubar.js";
+import { menubar } from "./menubar.js";
 import { navigateTo } from "../route.js";
 
 export function loadHome() {

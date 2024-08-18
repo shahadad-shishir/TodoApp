@@ -1,9 +1,9 @@
-import { ctgryData } from "../../../data/categories.js";
-import { popup } from "../../../utils/popup.js";
-import { scroll } from "../../../utils/shortcut.js";
-import { ColorPicker } from "../../../color-picker/color-picker.js";
-import { EmojiPicker } from "../../../emoji-picker/emoji-picker.js";
-import { oldCategories } from "../old.js";
+import { ctgryData } from "../data/categories.js";
+import { popup } from "../utils/popup.js";
+import { scroll } from "../utils/shortcut.js";
+import { ColorPicker } from "../color-picker/color-picker.js";
+import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
+import { oldCategories } from "./old.js";
 
 let editEl, bg, cancelBtn, saveBtn, nm, nmLabel, nmInput, nmCount;
 
