@@ -3,11 +3,9 @@ import { taskData } from "../data/tasks.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
 import { editCtgry } from "./edit.js";
 
-let oldEl;
-
 export const oldCategories = {
   init() {
-    oldEl = document.querySelector('.old-categories');
+    this.el = document.querySelector('.old-categories');
 
     this.render();
     editCtgry.init();
@@ -35,7 +33,7 @@ export const oldCategories = {
       `
     });
 
-    oldEl.innerHTML = html;
+    this.el.innerHTML = html;
 
     document.querySelectorAll('.old-categories .item .edit')
       .forEach(el => {
@@ -53,7 +51,7 @@ export const oldCategories = {
       });
     });
 
-    oldEl.style.display = 'flex';
+    this.el.style.display = 'flex';
   },
 
   calculatePercent(id) {

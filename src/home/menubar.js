@@ -197,7 +197,7 @@ export const menubar = {
 
     this.el.classList.add('active', 'small');
     this.el.style.opacity = 1;
-    this.SmenubarBg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.SmenubarBg.style.bottom = 0;
     scroll.disable();
   },
 
@@ -213,7 +213,7 @@ export const menubar = {
     const timeoutId = setTimeout(()=> {
       this.el.classList.remove('active', 'small');
       this.el.style.removeProperty('transform');
-      this.SmenubarBg.style.height = 0;
+      this.SmenubarBg.style.removeProperty('bottom');
       clearTimeout(timeoutId);
     }, 200);
   },
@@ -224,7 +224,7 @@ export const menubar = {
     this.el.style.top = this.distanceFromTop;
     this.el.style.opacity = 1;
     mngAnim(this.el, 'largeMenuOpen', 0.6);
-    this.lMenubarBg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.lMenubarBg.style.bottom = 0;
     this.lMenubarBg.style.opacity = 1;
     scroll.disable();
   },
@@ -238,7 +238,7 @@ export const menubar = {
       this.el.style.removeProperty('animation');
       this.el.classList.remove('active', 'large');
       this.el.style.opacity = 0;
-      this.lMenubarBg.style.height = 0;
+      this.lMenubarBg.style.removeProperty('bottom');
       this.lMenubarBg.style.opacity = 0;
       this.lMenubarBg.style.removeProperty('animation');
       clearTimeout(timeoutId);

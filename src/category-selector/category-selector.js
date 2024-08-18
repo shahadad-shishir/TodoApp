@@ -1,5 +1,6 @@
 import { ctgryData } from '../data/categories.js'
 import { string } from '../utils/string.js';
+import { scroll } from '../utils/shortcut.js';
 
 export class CategorySelector {
   constructor(elSelector, handleSelectCtgry) {
@@ -166,3 +167,19 @@ export class CategorySelector {
     return ids;
   }
 }
+
+export class CtgrySelectorWithTglScroll extends CategorySelector {
+  constructor(elSelector, handleSelectCtgry) {
+    super(elSelector, handleSelectCtgry);
+  }
+
+  open() {
+    super.open();
+    scroll.disable();
+  }
+
+  close() {
+    super.close();
+    scroll.enable();
+  }
+} 

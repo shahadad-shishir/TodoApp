@@ -1,6 +1,6 @@
 
   import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
-  import { CategorySelector } from "../category-selector/category-selector.js";
+  import { CtgrySelectorWithTglScroll } from "../category-selector/category-selector.js";
   import { ColorPicker } from "../color-picker/color-picker.js";
   import { generateRandomId } from "../utils/number.js";
   import { taskData } from "../data/tasks.js"
@@ -22,7 +22,7 @@
     const formEmojiIcon = document.querySelector('#emoji-picker .emoji');
   
     const emojiPicker = new EmojiPicker('#emoji-picker');
-    const ctgrySelector = new CategorySelector('#ctgry-selector');
+    const ctgrySelector = new CtgrySelectorWithTglScroll('#ctgry-selector');
     ctgrySelector.renderCategories();
     const colorPicker = new ColorPicker('#color-picker', (clr) => {
       formEmojiIcon.style.backgroundColor = clr;

@@ -32,13 +32,13 @@ export const dltCnfrm = {
     this.ctgryId = ctgryId;
     this.nm.innerHTML = ctgryData.getCtgry(ctgryId).name;
     this.dltConfirm.classList.add('active');
-    this.bg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.bg.style.bottom = 0;
     this.bg.style.opacity = 1;
     scroll.disable();
   },
 
   close() {
-    this.bg.style.height = 0;
+    this.bg.style.removeProperty('bottom');
     this.bg.style.opacity = 0;
     this.dltConfirm.classList.remove('active');
     scroll.enable();

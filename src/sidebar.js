@@ -6,7 +6,7 @@ import { navigateTo } from "./route.js";
   init() {
     const el = document.querySelector('#sidebar');
     this.el = el;
-    this.sidebarBg = document.querySelector('#sidebar-bg');
+    this.bg = document.querySelector('#sidebar-bg');
     this.sidebarHeader = el.querySelector('.sidebar-header');
     this.tasks = el.querySelector('.sidebar-tasks');
     this.taskCount = el.querySelector('.task-count');
@@ -22,7 +22,7 @@ import { navigateTo } from "./route.js";
     this.settings = el.querySelector('.sidebar-settings');
     this.user = el.querySelector('.sidebar-user');
 
-    this.sidebarBg.addEventListener('click', () => {
+    this.bg.addEventListener('click', () => {
       this.close();
     });
     this.sidebarHeader.addEventListener('click', () => {
@@ -80,18 +80,18 @@ import { navigateTo } from "./route.js";
 
   open() {
     this.el.classList.add('active');
-    this.sidebarBg.style.height = screen.height + 10 + 'px';
-    this.sidebarBg.style.opacity = 1;
+    this.bg.style.bottom = 0;
+    this.bg.style.opacity = 1;
     this.showNotDoneTask();
     scroll.disable();
   },
 
   close() {
     this.el.classList.remove('active');
-    this.sidebarBg.style.opacity = 0;
+    this.bg.style.opacity = 0;
 
     const timeoutId = setTimeout(()=> {
-      this.sidebarBg.style.height = 0;
+      this.bg.style.removeProperty('bottom');
       scroll.enable();
       clearTimeout(timeoutId);
     }, 300)

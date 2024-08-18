@@ -10,8 +10,9 @@
 
 .old-categories {
   justify-content: center;
-  display: none;
-  flex-direction: column;
+  display: none; /*flex*/
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: rgba(16, 23, 39, 0.1);
   border-radius: 18px 0 0 18px;
   padding: 25px 20px;
@@ -255,7 +256,7 @@ span.nm-count{
 }
 
 #dlt-bg {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: -10px;

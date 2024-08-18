@@ -1,3 +1,5 @@
+import 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js';
+
 export class EmojiPicker {
   constructor(elSelector, handleEmojiCng) {
     if(handleEmojiCng) {

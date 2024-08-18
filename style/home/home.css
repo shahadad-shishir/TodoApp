@@ -498,7 +498,7 @@ main .categories {
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 12;
+  z-index: 14;
   opacity: 0;
   visibility: hidden;
 }
@@ -568,7 +568,7 @@ main .categories {
 }
 
 #s-menubar-bg {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: -10px;
@@ -599,7 +599,7 @@ main .categories {
 }
 
 #l-menubar-bg {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: -10px;

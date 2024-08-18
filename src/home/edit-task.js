@@ -79,7 +79,7 @@ export const editTask = {
     this.oldData = taskData.getTask(this.taskId);
     this.resize();
     this.el.classList.add('active');
-    this.editTaskBg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.editTaskBg.style.bottom = 0;
     this.editTaskBg.style.opacity = 1;
     scroll.disable();
     this.showEditableData();
@@ -91,7 +91,7 @@ export const editTask = {
     this.colorPicker.close();
     this.emojiPicker.close();
 
-    this.editTaskBg.style.height = 0;
+    this.editTaskBg.style.removeProperty('bottom');
     this.el.classList.remove('active');
     scroll.enable();
   },

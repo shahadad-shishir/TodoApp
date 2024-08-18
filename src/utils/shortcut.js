@@ -16,7 +16,7 @@ export const scroll = {
       if (window.innerWidth < 1026) {
         this.userIcon.style.paddingRight = '8px';
       } else {
-        this.suserIcon.style.paddingRight = '7px';
+        this.userIcon.style.paddingRight = '7px';
       }
       
       this.navBar.style.marginRight = '8px';
