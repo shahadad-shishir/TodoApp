@@ -154,6 +154,10 @@ span.edit-nm-count {
   transition: opacity 0.25s ease;
 }
 
+#color-picker.CP2 {
+  margin-bottom: 5px;
+}
+
 
 @media only screen and (max-width: 500px) { 
   .edit-category {

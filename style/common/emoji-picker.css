@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 #emoji-picker .emoji {
@@ -61,7 +62,7 @@
 
 #emoji-picker .picker.active {
   margin-top: 30px;
-  width: 386px;
+  width: 100%;
   height: 440px;
   padding: 20px;
   visibility: visible;
@@ -105,17 +106,7 @@ emoji-picker {
   fill: rgb(255, 49, 49);
 }
 
-
-@media only screen and (max-width: 432px) {
-  #emoji-picker .picker.active {
-    width: 275px;
-  }
-}
-
 @media only screen and (max-width: 500px) {
-  #emoji-picker {
-    margin-bottom: 10px;
-  }
   #emoji-picker .emoji {
     width: 80px;
     height: 80px;
@@ -125,7 +116,7 @@ emoji-picker {
     width: 35px;
     height: 35px;
   }
-  #emoji-picker span svg {
+  #emoji-picker .pen-icon svg {
     width: 20px;
   }
   .remove-emoji {
@@ -135,26 +126,5 @@ emoji-picker {
   .remove-emoji svg {
     width: 19px;
     margin-right: 4px;
-  }
-  #emoji-picker .picker.active {
-    width: 315px;
-  }
-}
-
-@media only screen and (max-width: 325px) {
-  #emoji-picker .picker.active {
-    width: 255px;
-  }
-}
-
-@media only screen and (max-width: 299px) {
-  #emoji-picker .picker.active {
-    width: 235px;
-  }
-}
-
-@media only screen and (max-width: 244px) {
-  #emoji-picker .picker.active {
-    width: 215px;
   }
 }

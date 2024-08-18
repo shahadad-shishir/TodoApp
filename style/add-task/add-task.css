@@ -1,25 +1,22 @@
-@import url('./emoji-picker.css');
-@import url('./color-picker.css');
-@import url('../common/ctgry-selector.css');
-
 .main {
   margin-top: 15px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .form {
-  padding-top: 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.input-area {
   width: 400px;
+  padding-top: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   row-gap: 25px;
+}
+
+.name {
+  margin-top: -25px;
 }
 
 .date-time, .name, .description {
@@ -30,7 +27,7 @@
   border-radius: 10px;
 }
 
-.input-area input, .input-area textarea{
+.form input, .form textarea{
   width: 100%;
   outline: 0;
   border: 0;
@@ -45,7 +42,7 @@ input::placeholder, textarea::placeholder{
   color: #C0C2CB;
 }
 
-.input-area .label1 {
+.form .label1 {
   position: absolute;
   z-index: 1;
   top: -8px;
@@ -72,6 +69,10 @@ span.nm-count, span.des-count {
 .category span {
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+#ctgry-selector .select{
+  width: 405px;
 }
 
 .modify-category {
@@ -107,8 +108,7 @@ span.nm-count, span.des-count {
   letter-spacing: 0.03em;
   line-height: 1.75;
   font-weight: bold;
-  width: 400px;
-  min-width: 64px;
+  width: 100%;
   padding: 16px 32px;
   border-radius: 50px;
   margin-top: 10px;
@@ -127,41 +127,11 @@ span.nm-count, span.des-count {
 }
 
 
-@keyframes popupAddAnim {
-  0% {
-    opacity: 0;
-    transform: translateY(250px) scale(0.5);
-  }
-  100% {
-    transform: translateY(0px) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes popupRmvAnim {
-  0% {
-    transform: translateY(0px) scale(1);
-  }
-  100% {
-    transform: translateY(75px) scale(0.6);
-    opacity: 0.5;
-  }
-}
-
-@keyframes popupIconAnim {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 @media only screen and (max-width: 500px) {
-  .input-area .label1 {
+  .form .label1 {
     font-size: 11px;
   }
-  .input-area input, .input-area textarea {
+  .form input, .form textarea {
      font-size: 13px;
   }
   span.nm-count, span.des-count {
@@ -173,6 +143,12 @@ span.nm-count, span.des-count {
   .category span {
     font-size: 13px;
   }
+  .modify-category {
+    font-size: 13px;
+  }
+  .modify-category i {
+    font-size: 15px;
+  }
   #create-btn {
     font-size: 19px;
     padding: 8px 32px;
@@ -180,29 +156,10 @@ span.nm-count, span.des-count {
 }
 
 @media only screen and (max-width: 432px) {
- .input-area {
+ .form {
     width: 90%;
   }
-  .category {
-    width: 100%;
-  }
-  #ctgry-selector {
-    width: 100%;
-  }
   #ctgry-selector .select {
-    width: 80%;
-  }
-  #create-btn {
-    width: 100%;
+    width: 85%;
   }
 }
-
-@media only screen and (max-width: 299px) {
-  .modify-category {
-    font-size: 13px;
-  }
-  .modify-category i {
-    font-size: 15px;
-  }
-}
-

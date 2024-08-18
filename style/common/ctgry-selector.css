@@ -1,6 +1,6 @@
 #ctgry-selector {
-  width: 400px;
-  border-radius: 18px;
+  width: 100%;
+  border-radius: 15px;
   border: 1px solid #ddd;
   margin-top: 20px;
   position: relative;
@@ -54,7 +54,7 @@ span.selected-emoji {
   z-index: 12;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
-  width: 400px;
+  width: 85%;
   padding: 15px;
   border-radius: 15px;
   left: 50%;
@@ -62,7 +62,7 @@ span.selected-emoji {
   margin-top: 23px;
   opacity: 0;
   visibility: hidden;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-51%, -50%) scale(0.8);
   transform-origin: top;
   transition: opacity 0.15s ease, transform 0.15s, visibility 0s linear 0.15s;
 }
@@ -70,7 +70,7 @@ span.selected-emoji {
 #ctgry-selector .select.visible {
   opacity: 1;
   transform-origin: top;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-51%, -50%) scale(1);
   visibility: visible;
   transition-delay: 0s;
 }
