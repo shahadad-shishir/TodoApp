@@ -1,0 +1,124 @@
+.logout-cnfrm {
+  position: fixed;
+  z-index: 12;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 20px;
+  padding: 30px;
+  width: 590px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.logout-cnfrm .header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-size: 19px;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.logout-cnfrm .header i {
+  margin-right: 10px;
+  color: rgb(105, 105, 105);
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.logout-cnfrm .info {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.logout-cnfrm .footer {
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.logout-cnfrm #cancel-btn, #logout-btn {
+  background-color: transparent;
+  border: 0;
+  margin-right: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 11px 13px;
+  border-radius: 7px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.logout-cnfrm #cancel-btn {
+  color: var(--secondary-color);
+}
+
+.logout-cnfrm #cancel-btn:hover {
+  background-color: var(--secondary-min1);
+}
+
+.logout-cnfrm #logout-btn {
+  color: rgb(255, 49, 49);
+}
+
+.logout-cnfrm #logout-btn:hover {
+  background-color: rgba(255, 49, 49, 0.1);
+}
+
+.logout-cnfrm #logout-btn i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+
+@media only screen and (max-width: 760px) {
+  .logout-cnfrm {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .logout-cnfrm {
+    width: 93%;
+  }
+  .logout-cnfrm .header {
+    font-size: 15px;
+    padding-bottom: 18px;
+  }
+  .logout-cnfrm .header i {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .logout-cnfrm .info {
+    margin-top: 18px;
+    font-size: 13px;
+  } 
+  .logout-cnfrm .footer {
+    margin-top: 40px;
+  }
+  
+  .logout-cnfrm #cancel-btn, #logout-btn {
+    margin-right: 10px;
+    font-size: 14px;
+    padding: 9px 10px;
+    border-radius: 6px;
+  }
+  .logout-cnfrm #logout-btn i {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+}
