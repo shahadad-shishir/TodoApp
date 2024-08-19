@@ -1,4 +1,4 @@
-import { ctgryData } from "../data/categories.js";
+import { ctgryData } from "../data.js";
 import { popup } from "../utils/popup.js";
 import { scroll } from "../utils/shortcut.js";
 import { ColorPicker } from "../color-picker/color-picker.js";

@@ -1,5 +1,4 @@
-import { ctgryData } from "../data/categories.js";
-import { taskData } from "../data/tasks.js";
+import { taskData, ctgryData } from "../data.js";
 import { dltCnfrm } from "./dlt-confirmation.js";
 import { editCtgry } from "./edit.js";
 
@@ -14,7 +13,7 @@ export const oldCategories = {
 
   render() {
     let html = '';
-    ctgryData.categories.forEach(ctgry => {
+    ctgryData.items.forEach(ctgry => {
       const {id, name, emoji, color} = ctgry;      
       html +=
         `

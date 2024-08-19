@@ -1,6 +1,5 @@
+import { taskData, ctgryData } from "../data.js";
 import { dateTime } from "../utils/dateTime.js";
-import { taskData } from "../data/tasks.js";
-import { ctgryData } from "../data/categories.js";
 import { menubar } from "./menubar.js";
 
 export let taskContainer;
@@ -21,14 +20,14 @@ export function initTask() {
 export function renderTask() {
   taskContainer.innerHTML = '';
 
-  if (taskData.tasks.length == 0) {
+  if (taskData.items.length == 0) {
     mngEmptyTask(true);
     return;
   } else {
     mngEmptyTask(false);
   }
 
-  taskData.tasks.forEach(task => {
+  taskData.items.forEach(task => {
     const {pinned} = task;
     const createdTask = createATask(task);
     

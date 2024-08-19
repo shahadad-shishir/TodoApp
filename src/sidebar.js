@@ -1,5 +1,5 @@
+import { taskData } from "./data.js";
 import { scroll } from "./utils/shortcut.js";
-import { taskData } from "./data/tasks.js";
 import { navigateTo } from "./route.js";
 
  export const sidebar = {

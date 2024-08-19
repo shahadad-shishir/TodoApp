@@ -1,4 +1,4 @@
-import { ctgryData } from '../data/categories.js'
+import { ctgryData } from '../data.js';
 import { string } from '../utils/string.js';
 import { scroll } from '../utils/shortcut.js';
 
@@ -50,7 +50,7 @@ export class CategorySelector {
     this.selectUl.innerHTML = '';
     this.selectedUl.innerHTML = '';
 
-    ctgryData.categories.forEach(category => {
+    ctgryData.items.forEach(category => {
       const {id, name, emoji, color} = category;
       const li = document.createElement('li');
       li.dataset.selected = 'false';

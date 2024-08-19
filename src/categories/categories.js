@@ -1,8 +1,8 @@
+import { ctgryData } from "../data.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { oldCategories } from "./old.js";
 import { popup } from "../utils/popup.js";
-import { ctgryData } from "../data/categories.js";
 
 export function loadCategories() {
   const nmEl = document.querySelector('.new-ctgry .category-name');

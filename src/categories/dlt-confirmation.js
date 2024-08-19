@@ -1,6 +1,5 @@
+import { taskData, ctgryData } from "../data.js";
 import { scroll } from "../utils/shortcut.js";
-import { ctgryData } from "../data/categories.js";
-import { taskData } from "../data/tasks.js";
 import { oldCategories } from "./old.js";
 import { popup } from "../utils/popup.js";
 

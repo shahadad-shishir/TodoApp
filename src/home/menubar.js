@@ -1,4 +1,4 @@
-import { taskData } from "../data/tasks.js";
+import { taskData } from "../data.js";
 import { scroll, mngAnim } from "../utils/shortcut.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { handleProgress } from "./progress.js";

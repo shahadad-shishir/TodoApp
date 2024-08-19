@@ -1,0 +1,270 @@
+import { generateRandomId } from "./utils/number.js";
+
+const dataFormat = {
+  name: '',
+  createdAt: new Date(),
+  profilePic: null,
+  theme: 0,
+
+  tasks: [
+    /*{
+      id: '',
+      name: '',
+      description: '',
+      deadline: '',
+      emoji: '',
+      color: '',
+      category: [],
+      done: false,
+      pinned: false,
+      createDate: '',
+    },*/
+  ],
+
+  categories: [
+    {
+      id: 1,
+      name: 'Home',
+      emoji: '🏠️',
+      color: '#b624ff',    
+    },
+    {
+      id: 2,
+      name: 'Work',
+      emoji: '🏢',
+      color: '#5061ff',    
+    },
+    {
+      id: 3,
+      name: 'Personal',
+      emoji: '👤',
+      color: '#fb34ff',    
+    },
+    {
+      id: 4,
+      name: 'Fitness',
+      emoji: '💪',
+      color: '#ffea28',    
+    },
+    {
+      id: 5,
+      name: 'Education',
+      emoji: '📚️',
+      color: '#ff9518',    
+    },
+  ],
+};
+
+const appData = JSON.parse(localStorage.getItem('todoAppData')) || dataFormat;
+
+export const taskData = {
+  items: appData.tasks,
+
+  updateStorage: updateStorage,
+
+  add(emoji, name, description, deadline, category, color, id) {
+    class Task {
+      constructor(emoji, name, description, deadline, category, color, id) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.deadline = deadline;
+        this.emoji = emoji;
+        this.color = color;
+        this.category = category;
+        this.done = false;
+        this.pinned = false;
+        this.createDate = new Date();
+      }
+    }
+    const task = new Task(emoji, name, description, deadline, category, color, id);
+    this.items.push(task);
+    this.updateStorage();
+  }, 
+
+  delete(taskId) {
+    const index = this.getIndex(taskId);
+    this.items.splice(index, 1);
+    this.updateStorage();
+    return this.getTask(taskId);
+  },
+
+  dublicate(taskId) {
+    const {name, emoji, description, color, deadline, category} = this.getTask(taskId);
+    const newId = generateRandomId();
+    this.add(emoji, name, description, deadline, category, color, newId);
+  },
+
+  update(id, emoji, name, des, deadline, category, color) {
+    const index = this.getIndex(id);
+    
+    this.items[index].id = id;
+    this.items[index].emoji = emoji;
+    this.items[index].name = name;
+    this.items[index].description = des;
+    this.items[index].deadline = deadline;
+    this.items[index].category = category;
+    this.items[index].color = color;
+
+    this.updateStorage();
+  },
+
+  markDone(taskId) {
+    this.items[this.getIndex(taskId)].done = true;
+    this.updateStorage();
+  },
+
+  markNotDone(taskId) {
+    this.items[this.getIndex(taskId)].done = false;
+    this.updateStorage();
+  },
+
+  makePinned(taskId) {
+    this.items[this.getIndex(taskId)].pinned = true;
+    this.updateStorage();
+  },
+
+  makeNotPinned(taskId) {
+    this.items[this.getIndex(taskId)].pinned = false;
+    this.updateStorage();
+  },
+
+  removeActgryFromTasks(ctgryId) {
+    this.items.forEach(task => {
+      task.category.forEach((id, index) => {
+        if (id === ctgryId) {
+          task.category.splice(index, 1);
+          return;
+        }
+      })
+    });
+
+    this.updateStorage();
+  },
+
+  getTask(taskId) {
+    let data;
+    this.items.forEach((task) => {
+      if (task.id == taskId) {
+        data = task;
+        return;
+      }
+    }); 
+    return data;                                                  
+  },
+
+  getIndex(taskId) {
+    let data;
+    this.items.forEach((task, index) => {
+      if (task.id == taskId) {
+        data = index;
+        return;
+      }
+    }); 
+    return data;
+  },
+  
+  countNotDoneTask() {
+    let count = 0;
+    this.items.forEach(task => {
+      if (!task.done) {
+        count += 1;
+      }
+    });
+    return count;
+  },
+
+  getCtgryInfo() {
+    let allCtgryIds = [];
+    let doneCtgryIds = [];
+    this.items.forEach(task => {
+      const ctgry = task.category;
+      const combined = allCtgryIds.concat(ctgry);
+      allCtgryIds = combined;
+
+      if (task.done) {
+        const combined = doneCtgryIds.concat(ctgry);
+        doneCtgryIds = combined;
+      }
+    });
+
+    let frequency = {};
+    allCtgryIds.forEach(id => {
+      if (frequency[id]) {
+        frequency[id]++;
+      } else {
+        frequency[id] = 1;
+      }
+    });
+    allCtgryIds = frequency;
+    
+    frequency = {};
+    doneCtgryIds.forEach(id => {
+      if (frequency[id]) {
+        frequency[id]++;
+      } else {
+        frequency[id] = 1;
+      }
+    });
+    doneCtgryIds = frequency;
+
+    return {all: allCtgryIds, done: doneCtgryIds};
+  },
+}
+
+export const ctgryData = {
+  items: appData.categories,
+
+  updateStorage: updateStorage,
+
+  getCtgry(ctgryId) {
+    let data;
+    this.items.forEach(category => {
+      if (category.id == ctgryId) {
+        data = category;
+        return;
+      }
+    }); 
+    return data;
+  },
+
+  getIndex(ctgryId) {
+    let data;
+    this.items.forEach((category, index) => {
+      if (category.id == ctgryId) {
+        data = index;
+        return;
+      }
+    }); 
+    return data;
+  },
+
+  update(id, name, emoji, color) {
+    const index = this.getIndex(id);
+    this.items[index].name = name;
+    this.items[index].emoji = emoji;
+    this.items[index].color = color;
+    this.updateStorage();
+  },
+
+  delete(id) {
+    const index = this.getIndex(id);
+    this.items.splice(index, 1);
+    this.updateStorage();
+  },
+
+  create(name, emoji, color) {
+    const id = generateRandomId(8);
+    const newCtgry = {id: id, name: name, emoji: emoji, color: color};
+    this.items.push(newCtgry);
+    this.updateStorage();
+  }
+}
+
+function updateStorage() {
+  appData.tasks = taskData.items;
+  appData.categories = ctgryData.items;
+
+  const jsonObj = JSON.stringify(appData);
+  localStorage.setItem('todoAppData', jsonObj);
+}

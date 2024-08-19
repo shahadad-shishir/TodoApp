@@ -1,4 +1,4 @@
-import { taskData } from "../data/tasks.js";
+import { taskData } from "../data.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { mngAnim } from "../utils/shortcut.js";
 import { renderTask } from "./task.js";
@@ -35,7 +35,7 @@ export const search = {
       return;
     }
 
-    taskData.tasks.forEach(task => {
+    taskData.items.forEach(task => {
       const id = task.id;
       const name = task.name;
       const des = task.description;

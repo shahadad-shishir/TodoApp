@@ -1,4 +1,4 @@
-import { taskData } from "../data/tasks.js";
+import { taskData } from "../data.js";
 
 let circle, percentEl, complete, completeMsg;
 
@@ -12,9 +12,9 @@ export function initProgress() {
 }
 
 export function handleProgress() {
-  const totalTask = taskData.tasks.length;
+  const totalTask = taskData.items.length;
   let doneTask = 0;
-  taskData.tasks.forEach(task => {
+  taskData.items.forEach(task => {
     if (task.done) {
       doneTask += 1;
     }

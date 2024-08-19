@@ -1,5 +1,5 @@
+import { taskData } from "../data.js";
 import { arraysEqual, scroll } from "../utils/shortcut.js";
-import { taskData } from "../data/tasks.js";
 import { CategorySelector } from "../category-selector/category-selector.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";

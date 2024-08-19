@@ -1,5 +1,4 @@
-import { taskData } from "../data/tasks.js";
-import { ctgryData } from "../data/categories.js";
+import { taskData, ctgryData } from "../data.js";
 
 let categories, srcRsltCount;
 
@@ -18,7 +17,7 @@ export function mngCategoryFilter() {
     allCategories = added;
   }
 
-  taskData.tasks.forEach(task => {
+  taskData.items.forEach(task => {
     const taskId = task.id;
     const taskEl = document.querySelector(`.task[data-id='${taskId}']`);
     if (taskEl.style.display !== 'none') {
@@ -57,7 +56,7 @@ export function mngCategoryFilter() {
     categories.appendChild(category);
   });
 
-  addEventListener(taskData.tasks);
+  addEventListener(taskData.items);
 }
 
 function addEventListener(taskData) {

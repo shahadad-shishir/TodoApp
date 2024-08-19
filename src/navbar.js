@@ -1,4 +1,4 @@
-import { taskData } from "./data/tasks.js";
+import { taskData } from "./data.js";
 import { navigateTo } from "./route.js";
 
 export const navbar = {

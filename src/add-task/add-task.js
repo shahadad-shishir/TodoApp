@@ -1,9 +1,8 @@
-
+  import { taskData } from "../data.js";
   import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
   import { CtgrySelectorWithTglScroll } from "../category-selector/category-selector.js";
   import { ColorPicker } from "../color-picker/color-picker.js";
   import { generateRandomId } from "../utils/number.js";
-  import { taskData } from "../data/tasks.js"
   import { popup } from "../utils/popup.js";
   import { navigateTo } from "../route.js";
 

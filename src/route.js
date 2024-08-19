@@ -14,10 +14,8 @@ import { header } from "./header.js";
 import { homeHeader } from "./home/homeHeader.js"
 import { navbar } from "./navbar.js";
 
-
 const loading = document.querySelector('.loading');
 const root = document.querySelector('#root');
-
 
 export const routes = {
   '/': {

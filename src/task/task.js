@@ -1,5 +1,4 @@
-import { taskData } from "../data/tasks.js"
-import { ctgryData } from "../data/categories.js"
+import { taskData, ctgryData } from "../data.js";
 import { dateTime } from "../utils/dateTime.js";
 import { routes } from "../route.js";
 
