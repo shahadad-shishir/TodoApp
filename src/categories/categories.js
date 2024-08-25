@@ -17,8 +17,9 @@ export function loadCategories() {
     formEmojiIcon.style.backgroundColor = clr;
   }
   const colorPicker = new ColorPicker('#color-picker.CP1', handleClrCng);
-  colorPicker.selectThisClr('#7e30e1');
+  colorPicker.selectThisClr('#b624ff');
   oldCategories.init();
+  popup.init();
 
   createBtn.addEventListener('click', () => {
     if (createBtn.classList.contains('enable')) {
@@ -44,8 +45,8 @@ export function loadCategories() {
     nmInput.value = '';
     if (nmCount.style.display === 'block') {
       nmCount.style.display = 'none';
-      nmEl.style.borderColor = 'var(--secondary-color)';
-      nmLabel.style.color = 'var(--secondary-color)';
+      nmEl.style.borderColor = 'var(--secondary)';
+      nmLabel.style.color = 'var(--secondary)';
     }
 
     const msg = `Added category - <b>${nm}</b>`;
@@ -67,9 +68,9 @@ export function loadCategories() {
 
     const length = value.length;
     if (length < 21) {
-      nmCount.style.color = 'var(--text-color)';
-      nmEl.style.borderColor = 'var(--secondary-color)';
-      nmLabel.style.color = 'var(--secondary-color)';
+      nmCount.style.color = 'var(--text)';
+      nmEl.style.borderColor = 'var(--secondary)';
+      nmLabel.style.color = 'var(--secondary)';
       nmCount.innerHTML = `${length}/20`;
       createBtn.classList.add('enable');
     } else {

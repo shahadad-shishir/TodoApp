@@ -155,9 +155,9 @@ export const editTask = {
 
     const length = value.length;
     if (length < 41) {
-      this.nmCount.style.color = 'var(--text-color)';
+      this.nmCount.style.color = 'var(--text)';
       this.nm.style.borderColor = '#ddd';
-      this.nmLabel.style.color = 'rgba(0, 0, 0, 0.6)';
+      this.nmLabel.style.color = 'var(--text-min6)';
       this.nmCount.innerHTML = `${length}/40`;
     } else {
       this.nmCount.style.color = 'rgba(255, 49, 49, 0.8)';
@@ -178,9 +178,9 @@ export const editTask = {
 
     const length = value.length;
     if (length < 251) {
-      this.desCount.style.color = 'var(--text-color)';
+      this.desCount.style.color = 'var(--text)';
       this.des.style.borderColor = '#ddd';
-      this.desLabel.style.color = 'rgba(0, 0, 0, 0.6)';
+      this.desLabel.style.color = 'var(--text-min6)';
       this.desCount.innerHTML = `${length}/250`;
     } else {
       this.desCount.style.color = 'rgba(255, 49, 49, 0.8)';

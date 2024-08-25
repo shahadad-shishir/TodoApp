@@ -4,8 +4,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: var(--bg);
+  color: var(--text);
   max-height: 90%;
   padding: 35px 12px 0px;
   border-radius: 20px;
@@ -48,13 +48,13 @@
 .edit-name {
   width: 100%;
   position: relative;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-brdr);
   padding: 16px 11px;
   border-radius: 15px;
 }
 
 .edit-name:hover {
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--secondary);
 }
 
 .edit-form input {
@@ -63,7 +63,7 @@
   border: 0;
   background-color: transparent;
   font-size: 17px;
-  color: var(--text-color);
+  color: var(--text);
   resize: none;
   letter-spacing: 0.03em;
 }
@@ -73,10 +73,10 @@
   z-index: 1;
   top: -8px;
   left: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg);
   padding: 0 5px;
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-min6);
   font-weight: 400;
 }
 
@@ -109,7 +109,7 @@ span.edit-nm-count {
 }
 
 #edit-cancel-btn {
-  color: var(--secondary-color);
+  color: var(--secondary);
   cursor: pointer;
 }
 
@@ -122,7 +122,7 @@ span.edit-nm-count {
 }
 
 #edit-save-btn.enable {
-  color: var(--secondary-color);
+  color: var(--secondary);
   cursor: pointer;
 }
 

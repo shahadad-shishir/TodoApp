@@ -10,7 +10,7 @@ export const popup = {
   },
 
   showSuccess(msg) {
-    const template = this.createOne(msg, 'circle-check', 'var(--secondary-color)');
+    const template = this.createOne(msg, 'circle-check', 'var(--secondary)');
     this.render(template);
   },
 

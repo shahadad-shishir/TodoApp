@@ -261,9 +261,26 @@ export const ctgryData = {
   }
 }
 
+export const userData = {
+  name: appData.name,
+  createdAt: appData.createdAt,
+  theme: appData.theme,
+
+  updateStorage: updateStorage,
+
+  cngTheme(themeId) {
+    if (themeId === this.theme) return;
+    this.theme = themeId;
+    this.updateStorage();
+  }
+}
+
 function updateStorage() {
   appData.tasks = taskData.items;
   appData.categories = ctgryData.items;
+  appData.name = userData.name;
+  appData.createdAt = userData.createdAt;
+  appData.theme = userData.theme;
 
   const jsonObj = JSON.stringify(appData);
   localStorage.setItem('todoAppData', jsonObj);

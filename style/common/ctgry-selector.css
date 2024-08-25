@@ -1,13 +1,13 @@
 #ctgry-selector {
   width: 100%;
   border-radius: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-brdr);
   margin-top: 20px;
   position: relative;
 }
 
 #ctgry-selector:hover {
-  border-color: var(--secondary-color);
+  border-color: var(--secondary);
 }
 
 #ctgry-selector .selected {
@@ -33,7 +33,7 @@
   font-size: 13px;
   font-weight: bold;
   list-style: none;
-  background-color: #7E30E1;
+  background-color: var(--secondary);
   color: #fff;
   padding: 4px 11px;
   border-radius: 18px;
@@ -52,7 +52,7 @@ span.selected-emoji {
 #ctgry-selector .select {
   position: fixed;
   z-index: 12;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
   width: 85%;
   padding: 15px;
@@ -98,7 +98,7 @@ span.selected-emoji {
   display: flex;
   align-items: center;
   font-weight: 600;
-  background-color: #7E30E1;
+  background-color: var(--secondary);
   color: #fff;
   padding: 10px 15px;
   border-radius: 15px;
@@ -109,6 +109,7 @@ span.selected-emoji {
 #ctgry-selector .select li i {
   font-size: 18px;
   display: none;
+  color: var(--text);
 }
 
 #ctgry-selector li[data-selected="true"] i{

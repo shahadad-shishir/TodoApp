@@ -1,12 +1,12 @@
 #color-picker {
   width: 100%;
   border-radius: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-brdr);
   position: relative;
 }
 
 #color-picker:hover {
-  border-color: var(--secondary-color);
+  border-color: var(--secondary);
 }
 
 #color-picker .selected-clr {
@@ -26,7 +26,7 @@
 #color-picker .selected-clr .color {
   width: 23px;
   height: 23px;
-  background-color: #7E30E1;
+  background-color: var(--secondary);
   border-radius: 7px;
   margin-right: 8px;
 }
@@ -51,7 +51,7 @@
 .select-clr .clr-code {
   color: rgb(240, 240, 240);
   font-weight: 600;
-  background-color: #7E30E1;
+  background-color: var(--secondary);
   text-align: center;
   padding: 8px 0;
   border-radius: 19px;
@@ -91,7 +91,7 @@
 }
 
 #color-picker .picker span{
-  background-color: #7E30E1;
+  background-color: var(--secondary);
   width: 45px;
   height: 45px;
   border-radius: 50%;

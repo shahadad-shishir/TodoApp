@@ -4,7 +4,7 @@
   justify-content: space-around;
   padding: 25px 10px 32px;
   border-radius: 24px 24px 0px 0px;
-  background: rgba(237, 238, 246, 0.784);
+  background: var(--primary-min8);
   backdrop-filter: blur(20px);
   display: none;
   position: fixed;
@@ -13,6 +13,7 @@
   left: 0;
   z-index: 10;
   animation: navBarAnim 0.5s ease;
+  transition: background 0.3s;
 }
 
 #navbar button {
@@ -20,7 +21,6 @@
   border: 0;
   background-color: transparent;
   cursor: pointer;
-  color: #101727;
   font-size: 23px;
   display: flex;
   flex-direction: column;
@@ -28,11 +28,13 @@
   justify-content: center;
   position: relative;
   width: 80px;
+  color: var(--text);
 }
 
 #navbar svg {
   width: 29px;
   margin-bottom: -4px;
+  fill: var(--text)
 }
 
 #navbar button span {
@@ -43,7 +45,7 @@
 
 #navbar .add {
   font-size: 25px;
-  border: 2.5px solid var(--secondary-color);
+  border: 2.5px solid var(--secondary);
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -79,11 +81,11 @@
   animation: none;
 }
 #navbar button.selected {
-  color: var(--secondary-color);
+  color: var(--secondary);
 }
 
 #navbar button.selected svg {
-  fill: var(--secondary-color);
+  fill: var(--secondary);
 }
 
 #navbar .tasks {
@@ -97,7 +99,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   color: rgb(225, 225, 225);
   width: 21px;
   height: 21px;

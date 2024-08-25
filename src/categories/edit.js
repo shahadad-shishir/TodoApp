@@ -95,9 +95,9 @@ export const editCtgry = {
 
     const length = value.length;
     if (length < 21) {
-      this.nmCount.style.color = 'var(--text-color)';
+      this.nmCount.style.color = 'var(--text)';
       this.nm.style.borderColor = '#ddd';
-      this.nmLabel.style.color = 'rgba(0, 0, 0, 0.6)';
+      this.nmLabel.style.color = 'var(--text-min6)';
       this.nmCount.innerHTML = `${length}/20`;
     } else {
       this.nmCount.style.color = 'rgba(255, 49, 49, 0.8)';

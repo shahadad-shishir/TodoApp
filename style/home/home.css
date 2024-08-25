@@ -10,11 +10,11 @@
   margin: 0 auto;
   position: relative;
   max-width: 900px;
-  color: var(--text-color);
+  color: var(--text);
 }
 
 .header {
-  color: var(--text-color);
+  color: var(--text);
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -33,12 +33,12 @@
 .message .quote {
   font-style: italic;
   font-weight: 600;
-  color: rgba(16, 23, 39, 0.7);
+  color: var(--text-min7);
   height: 34px;
 }
 
 .user div{
-  background-color: rgb(116, 116, 116);
+  background-color: var(--bg1);
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -107,7 +107,7 @@
 .add-btn .icon{
   height: 72px;
   width: 72px;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -134,7 +134,7 @@
   width: 80%;
   height: fit-content;
   padding: 24px 20px;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--secondary);
   border-radius: 24px;
   color: #fff;
   margin-top: 30px;
@@ -159,7 +159,7 @@
 }
 
 .progress circle {
-  stroke: var(--secondary-color);
+  stroke: var(--secondary);
   stroke-linecap: round;
 }
 
@@ -178,7 +178,7 @@
   stroke-dashoffset: 176;
   transition: stroke-dashoffset 0.5s ease;
   /* animation: drawCircle 0.5s ease-in-out forwards; */
-  filter: drop-shadow(var(--add-anim-clr1) 0px 0px 6px);
+  filter: drop-shadow(var(--secondary-min7) 0px 0px 6px);
 }
 
 .progress .details {
@@ -206,7 +206,7 @@
   background: rgba(9, 11, 34, 0.345);
   width: 80%;
   color: #fff;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--secondary);
   border-radius: 15px;
   padding: 0 10px 0 20px;
   font-size: 20px;
@@ -335,8 +335,8 @@ main .categories {
   width: 100%;
   padding: 20px 10px 20px 20px;
   border-radius: 20px;
-  background-color: var(--secondary-color);
-  box-shadow: var(--secondary-color) 0px 0px 128px -20px;
+  background-color: var(--secondary);
+  box-shadow: var(--secondary) 0px 0px 128px -20px;
 }
 
 .task.blur {
@@ -495,7 +495,7 @@ main .categories {
 }
 
 .menubar {
-  background-color: #fff;
+  background-color: var(--bg);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -509,7 +509,7 @@ main .categories {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  border-bottom: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid var(--input-brdr);
   margin-bottom: 10px;
   cursor: n-resize;
   word-break: break-word;
@@ -537,7 +537,7 @@ main .categories {
 }
 
 .menubar .options div:hover {
-  background-color: rgb(240, 240, 240);
+  background-color: var(--hover);
 }
 
 .menubar div i {
@@ -547,7 +547,7 @@ main .categories {
 
 .menubar .break {
   margin: 8px 3px;
-  border-top: 1px solid rgb(224, 224, 224);
+  border-top: 1px solid var(--input-brdr);
 }
 
 .menubar .options div:last-child {
@@ -654,8 +654,8 @@ span.highlighted-text {
 }
 
 .delete-confirm {
-  background-color: rgb(255, 255, 255);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: var(--bg);
+  color: var(--text);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
   position: fixed;
   top: 50%;
@@ -702,7 +702,7 @@ span.highlighted-text {
 }
 
 .delete-confirm #cncl-btn {
-  color: var(--secondary-color);
+  color: var(--secondary);
 }
 
 .delete-confirm #dlt-btn {

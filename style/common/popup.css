@@ -19,9 +19,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(240, 240, 245, 0.58);
+  background-color: var(--popup);
   backdrop-filter: blur(7px);
-  color: var(--text-color);
+  color: var(--text);
   padding: 20px 15px;
   border-radius: 20px;
   cursor: pointer;

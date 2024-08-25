@@ -8,7 +8,7 @@
 
 #emoji-picker .emoji {
   position: relative;
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   width: 93px;
   height: 93px;
   display: flex;

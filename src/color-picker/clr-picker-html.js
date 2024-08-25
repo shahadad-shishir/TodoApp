@@ -14,7 +14,7 @@ export function clrPickerHtml(className) {
         </div>
       </div>
       <div class="select-clr">
-        <span class="clr-code">#7E30E1</span>
+        <span class="clr-code">var(--secondary)</span>
         <div class="clr-options">
           <!-- <button>
             <i class="fa-solid fa-check"></i>

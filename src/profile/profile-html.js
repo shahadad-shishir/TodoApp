@@ -16,37 +16,7 @@ export const profileHtml =
         <i class="fa-solid fa-calendar-day"></i>
         <span>Registered 1 hour ago</span>
       </div>
-      <ul class="colors">
-        <li data-type="0">
-          <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v1c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-1h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2m-1 14H4c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1"></path></svg>
-
-          <span class="tooltip">System (light)</span>
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" class="border type1">
-        </li>
-        <li data-type="1" data-selected="true" class="border type1">
-          <span class="check-icon">
-            <i class="fa-solid fa-check"></i>
-          </span>
-        </li>
+      <ul class="themes">
       </ul>
       <div class="nm-input">
         <input placeholder="Change Name" type="text">

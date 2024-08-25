@@ -63,7 +63,7 @@
 }
 
 .logout-cnfrm #cancel-btn {
-  color: var(--secondary-color);
+  color: var(--secondary);
 }
 
 .logout-cnfrm #cancel-btn:hover {

@@ -74,7 +74,7 @@ table, td, tr:last-child {
   font-size: 14px;
   font-weight: bold;
   list-style: none;
-  background-color: #7E30E1;
+  background-color: var(--secondary);
   color: #fff;
   padding: 6px 13px;
   border-radius: 20px;

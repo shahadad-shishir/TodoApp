@@ -26,7 +26,7 @@
     const colorPicker = new ColorPicker('#color-picker', (clr) => {
       formEmojiIcon.style.backgroundColor = clr;
     });
-    colorPicker.selectThisClr('#7e30e1'); 
+    colorPicker.selectThisClr('#b624ff'); 
 
     modifyCtgry.addEventListener('click', () => {
       navigateTo('/categories');
@@ -76,9 +76,9 @@
   
       const length = value.length;
       if (length < 41) {
-        nmCount.style.color = 'var(--text-color)';
-        nm.style.borderColor = 'var(--secondary-color)';
-        nmLabel.style.color = 'var(--secondary-color)';
+        nmCount.style.color = 'var(--text)';
+        nm.style.borderColor = 'var(--secondary)';
+        nmLabel.style.color = 'var(--secondary)';
         nmCount.innerHTML = `${length}/40`;
       } else {
         nmCount.style.color = 'rgba(255, 49, 49, 0.8)';
@@ -99,9 +99,9 @@
   
       const length = value.length;
       if (length < 251) {
-        desCount.style.color = 'var(--text-color)';
-        des.style.borderColor = 'var(--secondary-color)';
-        desLabel.style.color = 'var(--secondary-color)';
+        desCount.style.color = 'var(--text)';
+        des.style.borderColor = 'var(--secondary)';
+        desLabel.style.color = 'var(--secondary)';
         desCount.innerHTML = `${length}/250`;
       } else {
         desCount.style.color = 'rgba(255, 49, 49, 0.8)';

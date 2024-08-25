@@ -10,31 +10,32 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-:root {
-  --primary-color: #F3F8FF;
-  --secondary-color: #7E30E1;
-  --text-color: rgb(16, 23, 39);
-  --add-anim-clr1: rgba(126, 48, 255, 0.698);
-  --add-anim-clr2: rgba(126, 48, 255, 0);
+/* :root {
+  --primary: #F3F8FF;
+  --secondary: var(--secondary); 
+  --secondary-min0: rgba(126, 48, 255, 0);
   --secondary-min1: rgba(126, 48, 255, 0.1);
   --secondary-min2: rgba(126, 48, 255, 0.2);
+  --secondary-min3: rgba(126, 48, 255, 0.3);
+  --secondary-min4: rgba(126, 48, 255, 0.4);
+  --secondary-min5: rgba(126, 48, 255, 0.5);
   --secondary-min6: rgba(126, 48, 255, 0.6);
+  --secondary-min7: rgba(126, 48, 255, 0.7);
   --secondary-min8: rgba(126, 48, 255, 0.8);
-
-  --categories-item1: #47F667;
-  --categories-item2: #4B9CFD;
-  --categories-item3: #E861FC;
-}
+  --secondary-min9: rgba(126, 48, 255, 0.9);
+  --text: rgb(16, 23, 39);
+} */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   letter-spacing: 0.02em;
   transition: filter 0.3s;
   overflow-x: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .loading {
@@ -60,7 +61,7 @@ body {
   height: 100%;
   fill: none;
   stroke-width: 8;
-  stroke: var(--secondary-color);
+  stroke: var(--secondary);
   transform: translate(5px, 5px);
   stroke-linecap: round;
   stroke-dasharray: 248;
@@ -77,7 +78,7 @@ body {
   width: 70%;
   margin: 0 auto;
   max-width: 900px;
-  color: var(--text-color);
+  color: var(--text);
   margin-bottom: 100px;
 }
 
@@ -95,11 +96,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   border-radius: 10px;
 }
 
@@ -133,17 +134,17 @@ body {
 @keyframes addAnim {
   0% {
     transform: scale(0.95);
-    box-shadow: var(--add-anim-clr1) 0px 0px 0px 0px;
+    box-shadow: var(--secondary-min7) 0px 0px 0px 0px;
   }
 
   70% {
     transform: scale(1);
-    box-shadow: var(--add-anim-clr2) 0px 0px 0px 14px;
+    box-shadow: var(--secondary-min0) 0px 0px 0px 14px;
   }
 
   100% {
     transform: scale(0.95);
-    box-shadow: var(--add-anim-clr2) 0px 0px 0px 0px;
+    box-shadow: var(--secondary-min0) 0px 0px 0px 0px;
   }
 }
 
