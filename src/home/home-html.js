@@ -11,8 +11,9 @@ export const homeHtml =
       <p class="quote">Let's turn plans into accomplishments!</p>
     </div>
     <div class="user">
-      <div><i class="fa-solid fa-user user-icon"></i></div>
-      <span class="tooltip">User</span>
+      <div class="js-profile-pic">
+      </div>
+      <span class="tooltip js-user-name">User</span>
     </div>
   </header>
 

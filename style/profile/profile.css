@@ -1,5 +1,4 @@
 @import url('../profile/cngProfile.css');
-@import url('../profile/logout-confirm.css');
 
 .main {
   margin-bottom: 0;
@@ -35,8 +34,7 @@
 }
 
 .cart .profile .letter {
-  font-size: 43px;
-  display: none;
+  font-size: 50px;
 }
 
 .cart img {
@@ -44,7 +42,6 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  display: none;
 }
 
 .cart .profile i.fa-user {
@@ -90,6 +87,7 @@
 .cart .nm {
   font-size: 18px;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 .register {
@@ -178,10 +176,6 @@ ul.themes {
   color: rgb(225, 225, 225);
 }
 
-li.theme1:hover {
-  box-shadow: rgb(182, 36, 255) 0px 0px 12px;
-}
-
 .nm-input {
   width: 100%;
 }
@@ -206,6 +200,16 @@ li.theme1:hover {
   border: 2px solid var(--secondary);
 }
 
+.nm-count{
+  text-align: left;
+  display: none; /*block*/
+  width: 100%;
+  margin-top: 6px;
+  font-size: 12px;
+  margin-left: 10px;
+  color: var(--text);
+}
+
 .save-btn {
   border: 0;
   color: #ffffff;
@@ -216,14 +220,14 @@ li.theme1:hover {
   width: 100%;
   padding: 16px 0;
   border-radius: 15px;
-  opacity: 1;
+  opacity: 0.7;
   transition: opacity 0.3s, background-color 0.3s;
-  cursor: pointer;
+  cursor: default;
 }
 
-.save-btn.disable {
-  opacity: 0.7;
-  cursor: not-allowed;
+.save-btn.enable {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .logout {
@@ -291,7 +295,7 @@ li.theme1:hover {
     height: 70px;
   }  
   .cart .profile .letter {
-    font-size: 32px;
+    font-size: 35px;
   }  
   .cart .profile i.fa-user {
     font-size: 32px;
@@ -349,6 +353,9 @@ li.theme1:hover {
   } 
   .nm-input input:focus {
     border-width: 1px;
+  }
+  .nm-count{
+    font-size: 10px;
   }
   .save-btn {
     font-size: 14px;

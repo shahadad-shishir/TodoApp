@@ -37,6 +37,12 @@
   height: 34px;
 }
 
+.user {
+  position: relative;
+  padding-right: 0 !important;
+  height: 100%;
+}
+
 .user div{
   background-color: var(--bg1);
   width: 48px;
@@ -49,20 +55,28 @@
   transition: box-shadow 0.15s linear;
 }
 
-.user-icon {
+.user i.fa-user {
   font-size: 25px;
   color: rgb(255, 255, 255);
 }
 
-.user {
-  position: relative;
-  padding-right: 0 !important;
+.user div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user .letter {
+  font-size: 28px;
+  color: #fff;
 }
 
 .tooltip {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
   color: rgb(255, 255, 255);
+  text-transform: capitalize;
   font-size: 13px;
   padding: 9px 14px;
   border-radius: 5px;
@@ -87,6 +101,7 @@
 .empty-task {
   display: none; /*block*/
   text-align: center;
+  color: var(--text);
   position: absolute;
   width: 100%;
   top: 50%;
@@ -851,8 +866,11 @@ span.highlighted-text {
     width: 40px;
     height: 40px;
   }
-  .user-icon {
+  i.fa-user {
     font-size: 20px;
+  }
+  .user .letter {
+    font-size: 24px;
   }
 
   .progress {

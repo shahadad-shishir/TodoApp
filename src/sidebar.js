@@ -1,4 +1,4 @@
-import { taskData } from "./data.js";
+import { taskData, userData } from "./data.js";
 import { scroll } from "./utils/shortcut.js";
 import { navigateTo } from "./route.js";
 
@@ -21,6 +21,7 @@ import { navigateTo } from "./route.js";
     this.logout = el.querySelector('.sidebar-logout');
     this.settings = el.querySelector('.sidebar-settings');
     this.user = el.querySelector('.sidebar-user');
+    this.userNm = el.querySelector('.user-name');
 
     this.bg.addEventListener('click', () => {
       this.close();
@@ -76,6 +77,11 @@ import { navigateTo } from "./route.js";
       }
       this.close();
     });
+
+    //update user name
+    let name = userData.name;
+    if (name === '') name = 'User';
+    this.userNm.innerHTML = name;
   },
 
   open() {

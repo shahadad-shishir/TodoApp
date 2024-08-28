@@ -4,8 +4,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: var(--bg);
+  color: var(--text);
   border-radius: 20px;
   padding: 35px;
   display: flex;
@@ -17,7 +17,7 @@
   transition: opacity 0.3s ease;
 }
 
-.cng-profile.active {
+.cng-profile.visible {
   visibility: visible;
   opacity: 1;
 }
@@ -38,22 +38,22 @@
   padding-bottom: 5px;
 }
 
-.cng-profile .name{
+.cng-profile .link{
   margin-top: 10px;
   width: 100%;
   position: relative;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-brdr);
   padding: 16px 10px;
   border-radius: 10px;
   display: flex;
   align-items: center;
 }
 
-.cng-profile .name:hover {
-  border: 1px solid rgb(34, 34, 34);
+.cng-profile .link:hover {
+  border: 1px solid var(--secondary);
 }
 
-.cng-profile .name svg {
+.cng-profile .link svg {
   margin-right: 8px;
   width: 25px;
   fill: var(--text-min6);
@@ -80,7 +80,7 @@
   z-index: 1;
   top: -8px;
   left: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg);
   padding: 0 5px;
   font-size: 13px;
   color: var(--text-min6);
@@ -180,10 +180,10 @@
     row-gap: 20px;
     padding-bottom: 5px;
   }
-  .cng-profile .name{
+  .cng-profile .link{
     padding: 12px 8px;
   } 
-  .cng-profile .name svg {
+  .cng-profile .link svg {
     margin-right: 6px;
     width: 22px;
   } 

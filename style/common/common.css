@@ -10,22 +10,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* :root {
-  --primary: #F3F8FF;
-  --secondary: var(--secondary); 
-  --secondary-min0: rgba(126, 48, 255, 0);
-  --secondary-min1: rgba(126, 48, 255, 0.1);
-  --secondary-min2: rgba(126, 48, 255, 0.2);
-  --secondary-min3: rgba(126, 48, 255, 0.3);
-  --secondary-min4: rgba(126, 48, 255, 0.4);
-  --secondary-min5: rgba(126, 48, 255, 0.5);
-  --secondary-min6: rgba(126, 48, 255, 0.6);
-  --secondary-min7: rgba(126, 48, 255, 0.7);
-  --secondary-min8: rgba(126, 48, 255, 0.8);
-  --secondary-min9: rgba(126, 48, 255, 0.9);
-  --text: rgb(16, 23, 39);
-} */
-
 html {
   scroll-behavior: smooth;
 }

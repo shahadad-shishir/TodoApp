@@ -1,66 +1,74 @@
 import { generateRandomId } from "./utils/number.js";
 
-const dataFormat = {
-  name: '',
-  createdAt: new Date(),
-  profilePic: null,
-  theme: 0,
+function getDataFormat() {
+  const dataFormat = {
+    name: '',
+    createdAt: new Date(),
+    profilePic: null,
+    theme: 0,
+  
+    tasks: [
+      /*{
+        id: '',
+        name: '',
+        description: '',
+        deadline: '',
+        emoji: '',
+        color: '',
+        category: [],
+        done: false,
+        pinned: false,
+        createDate: '',
+      },*/
+    ],
+  
+    categories: [
+      {
+        id: 1,
+        name: 'Home',
+        emoji: '🏠️',
+        color: '#b624ff',    
+      },
+      {
+        id: 2,
+        name: 'Work',
+        emoji: '🏢',
+        color: '#5061ff',    
+      },
+      {
+        id: 3,
+        name: 'Personal',
+        emoji: '👤',
+        color: '#fb34ff',    
+      },
+      {
+        id: 4,
+        name: 'Fitness',
+        emoji: '💪',
+        color: '#ffea28',    
+      },
+      {
+        id: 5,
+        name: 'Education',
+        emoji: '📚️',
+        color: '#ff9518',    
+      },
+    ],
+  };
 
-  tasks: [
-    /*{
-      id: '',
-      name: '',
-      description: '',
-      deadline: '',
-      emoji: '',
-      color: '',
-      category: [],
-      done: false,
-      pinned: false,
-      createDate: '',
-    },*/
-  ],
+  return dataFormat;
+}
 
-  categories: [
-    {
-      id: 1,
-      name: 'Home',
-      emoji: '🏠️',
-      color: '#b624ff',    
-    },
-    {
-      id: 2,
-      name: 'Work',
-      emoji: '🏢',
-      color: '#5061ff',    
-    },
-    {
-      id: 3,
-      name: 'Personal',
-      emoji: '👤',
-      color: '#fb34ff',    
-    },
-    {
-      id: 4,
-      name: 'Fitness',
-      emoji: '💪',
-      color: '#ffea28',    
-    },
-    {
-      id: 5,
-      name: 'Education',
-      emoji: '📚️',
-      color: '#ff9518',    
-    },
-  ],
-};
-
-const appData = JSON.parse(localStorage.getItem('todoAppData')) || dataFormat;
+let appData = JSON.parse(localStorage.getItem('todoAppData')) || getDataFormat();
 
 export const taskData = {
   items: appData.tasks,
 
   updateStorage: updateStorage,
+
+  loadFromStorage() {
+    this.items = appData.tasks;
+  },
 
   add(emoji, name, description, deadline, category, color, id) {
     class Task {
@@ -217,6 +225,10 @@ export const ctgryData = {
 
   updateStorage: updateStorage,
 
+  loadFromStorage() {
+    this.items = appData.categories;
+  },
+
   getCtgry(ctgryId) {
     let data;
     this.items.forEach(category => {
@@ -262,18 +274,38 @@ export const ctgryData = {
 }
 
 export const userData = {
-  name: appData.name,
-  createdAt: appData.createdAt,
-  theme: appData.theme,
-
   updateStorage: updateStorage,
+
+  loadFromStorage() {
+    this.name = appData.name;
+    this.createdAt = appData.createdAt;
+    this.theme = appData.theme;
+    this.profilePic = appData.profilePic;
+  },
 
   cngTheme(themeId) {
     if (themeId === this.theme) return;
     this.theme = themeId;
     this.updateStorage();
-  }
+  },
+
+  cngProfile(profileLink) {
+    this.profilePic = profileLink;
+    this.updateStorage();
+  },
+
+  deleteProfile() {
+    this.profilePic = null;
+    this.updateStorage();
+  },
+
+  setUserName(nm) {
+    this.name = nm;
+    this.updateStorage();
+  },
 }
+
+userData.loadFromStorage();
 
 function updateStorage() {
   appData.tasks = taskData.items;
@@ -281,7 +313,20 @@ function updateStorage() {
   appData.name = userData.name;
   appData.createdAt = userData.createdAt;
   appData.theme = userData.theme;
+  appData.profilePic = userData.profilePic;
 
   const jsonObj = JSON.stringify(appData);
   localStorage.setItem('todoAppData', jsonObj);
+}
+
+function loadFromStorage() {
+  appData = JSON.parse(localStorage.getItem('todoAppData')) || getDataFormat();
+}
+
+export function removeAppData() {
+  localStorage.removeItem('todoAppData');
+  loadFromStorage();
+  taskData.loadFromStorage();
+  ctgryData.loadFromStorage();
+  userData.loadFromStorage();
 }

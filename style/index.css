@@ -5,5 +5,5 @@
 @import url('./common/header.css');
 @import url(./common/color-picker.css);
 @import url('./common/ctgry-selector.css');
-@import url('common/emoji-picker.css');
-
+@import url('./common/emoji-picker.css');
+@import url('./common/logout-confirm.css');

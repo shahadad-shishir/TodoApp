@@ -4,8 +4,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  color: rgba(0, 0, 0, 0.87);
+  background-color: var(--bg);
+  color: var(--text);
   border-radius: 20px;
   padding: 30px;
   width: 590px;
@@ -13,11 +13,16 @@
   flex-direction: column;
   align-items: center;
   visibility: hidden;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.logout-cnfrm .header {
+.logout-cnfrm.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.logout-cnfrm .logout-header {
   width: 100%;
   display: flex;
   align-items: center;
@@ -28,7 +33,7 @@
   padding-bottom: 20px;
 }
 
-.logout-cnfrm .header i {
+.logout-cnfrm .logout-header i {
   margin-right: 10px;
   color: rgb(105, 105, 105);
   border: 1px solid #ddd;
@@ -41,7 +46,7 @@
   width: 100%;
 }
 
-.logout-cnfrm .footer {
+.logout-cnfrm .logout-footer {
   width: 100%;
   margin-top: 60px;
   display: flex;
@@ -49,7 +54,7 @@
   justify-content: right;
 }
 
-.logout-cnfrm #cancel-btn, #logout-btn {
+.logout-cnfrm #cancel-btn, .logout-cnfrm #logout-btn {
   background-color: transparent;
   border: 0;
   margin-right: 15px;
@@ -94,11 +99,11 @@
   .logout-cnfrm {
     width: 93%;
   }
-  .logout-cnfrm .header {
+  .logout-cnfrm .logout-header {
     font-size: 15px;
     padding-bottom: 18px;
   }
-  .logout-cnfrm .header i {
+  .logout-cnfrm .logout-header i {
     margin-right: 10px;
     padding: 10px;
     border-radius: 8px;
@@ -107,11 +112,11 @@
     margin-top: 18px;
     font-size: 13px;
   } 
-  .logout-cnfrm .footer {
+  .logout-cnfrm .logout-footer {
     margin-top: 40px;
   }
   
-  .logout-cnfrm #cancel-btn, #logout-btn {
+  .logout-cnfrm #cancel-btn, .logout-cnfrm #logout-btn {
     margin-right: 10px;
     font-size: 14px;
     padding: 9px 10px;

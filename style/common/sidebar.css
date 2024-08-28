@@ -187,8 +187,24 @@
   border-radius: 50%;
 }
 
+.sidebar-user div img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar-user .letter {
+  font-size: 25px;
+}
+
+.sidebar-user div i {
+  margin-right: 0 !important;
+}
+
 .sidebar-user .user-name {
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 .sidebar-break {
@@ -257,6 +273,9 @@
     font-size: 25px;
     height: 35px;
     width: 35px;
+  }
+  .sidebar-user .letter {
+    font-size: 22px;
   }
   #sidebar .creator {
     font-size: 11px;
