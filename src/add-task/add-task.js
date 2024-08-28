@@ -53,7 +53,10 @@
       const emoji = emojiPicker.getEmoji();
       const id = generateRandomId();
       taskData.add(emoji, name, descriptionVal, deadline, categoriesId, color, id);
+
       navigateTo('/');
+      const msg = `Added task <b>${name}</b>`;
+      popup.showSuccess(msg);
     }
   
     nameInput.addEventListener('input', () => {
