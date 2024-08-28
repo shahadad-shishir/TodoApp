@@ -3,6 +3,7 @@ import { scroll } from "../utils/shortcut.js";
 import { userData } from "../data.js";
 import { dateTime } from "../utils/dateTime.js";
 import { logout } from "../logout.js";
+import { popup } from "../utils/popup.js";
 
 export function loadProfile() {
   const cart = document.querySelector('.cart');
@@ -49,6 +50,7 @@ export function loadProfile() {
         if (this.saveBtn.classList.contains('enable')) {
           this.cngProfile();
           this.hide();
+          popup.showSuccess('Changed profile picture');
         } else {
           return;
         }
@@ -59,6 +61,7 @@ export function loadProfile() {
         this.input.value = '';
         this.hide();
         this.handleProfilePicCng();
+        popup.showSuccess('Deleted profile picture');
       });
     },
 
@@ -132,6 +135,8 @@ export function loadProfile() {
           this.renderUserName();
           this.mngNmCount();
           handleUserNmCng();
+          const msg = `Changed user name to <b>${name}</b>`;
+          popup.showSuccess(msg);
         }
       });
 
