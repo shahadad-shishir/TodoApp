@@ -1,6 +1,7 @@
 import { taskData, userData } from "./data.js";
 import { scroll } from "./utils/shortcut.js";
 import { navigateTo } from "./route.js";
+import { logout } from "./logout.js";
 
  export const sidebar = {
   init() {
@@ -23,54 +24,70 @@ import { navigateTo } from "./route.js";
     this.user = el.querySelector('.sidebar-user');
     this.userNm = el.querySelector('.user-name');
 
+    logout.init();
+    this.logout.addEventListener('click', async () => {
+      this.close();
+      
+      const timeoutId = setTimeout(()=> {
+        logout.open();
+        clearTimeout(timeoutId);
+      }, 300)
+    });
+
     this.bg.addEventListener('click', () => {
       this.close();
     });
+
     this.sidebarHeader.addEventListener('click', () => {
       this.close();
     });
+
     this.tasks.addEventListener('click', () => {
       if (location.pathname !== '/') {
         navigateTo('/');
       }
       this.close();
     });
+
     this.add.addEventListener('click', () => {
       if (location.pathname !== '/add-task') {
         navigateTo('/add-task');
       }
       this.close();
     });
+
     this.purge.addEventListener('click', () => {
       // if (location.pathname !== '/purge') {
       //   navigateTo('/purge');
       // }
       this.close();
     });
+
     this.ctgry.addEventListener('click', () => {
       if (location.pathname !== '/categories') {
         navigateTo('/categories');
       }
       this.close();
     });
+
     this.transfer.addEventListener('click', () => {
       if (location.pathname !== '/transfer') {
         navigateTo('/transfer');
       }
       this.close();
     });
+
     this.github.addEventListener('click', () => {
       window.open('https://github.com/shahadad-shishir/TodoApp');
     });
+
     this.issue.addEventListener('click', () => {
       window.open('https://github.com/shahadad-shishir/TodoApp/issues/new')
     });
-    this.logout.addEventListener('click', () => {
-      
+
+    this.settings.addEventListener('click', () => {     
     });
-    this.settings.addEventListener('click', () => {
-      
-    });
+
     this.user.addEventListener('click', () => {
       if (location.pathname !== '/profile') {
         navigateTo('/profile');

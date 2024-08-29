@@ -19,7 +19,7 @@ export const logout = {
         <button id="logout-btn"><i class="fa-solid fa-sign-out"></i>Logout</button>
       </div>
     `
-    document.querySelector('#root').appendChild(div);
+    document.querySelector('body').prepend(div);
 
     this.el = div;
     this.cancelBtn = div.querySelector('#cancel-btn');
