@@ -40,9 +40,9 @@ export const categoriesHtml =
       <button id="edit-save-btn"><i class="fa-solid fa-floppy-disk"></i>save</button>
     </div>
   </div>
-  <div id="editCtgry-bg"></div>
+  <div id="editCtgry-bg" class="blur-bg"></div>
 
-  <div class="delete-confirm">
+  <div class="dlt-ctgry">
     <h3>Confirm deletion of <b>Work</b></h3>
     <div class="info">
       This will remove the category from your list and associated tasks.
@@ -52,5 +52,5 @@ export const categoriesHtml =
       <button id="dlt-btn"><i class="fa-solid fa-trash"></i>Delete</button>
     </div>
   </div>
-  <div id="dlt-bg"></div>
+  <div id="dltCtgry-bg" class="blur-bg">></div>
 `;

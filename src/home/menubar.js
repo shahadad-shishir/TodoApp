@@ -6,7 +6,7 @@ import { search } from "./search.js";
 import { renderTask } from "./task.js";
 import { editTask } from "./edit-task.js";
 import { popup } from "../utils/popup.js";
-import { dltCnfrm } from "./dlt-confirmation.js";
+import { dltCnfrm } from "./delete-task.js";
 import { navigateTo, routes } from "../route.js";
 
 export const menubar = {

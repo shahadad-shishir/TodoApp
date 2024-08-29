@@ -22,19 +22,6 @@
   opacity: 1;
 }
 
-#editTask-bg {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: -10px;
-  width: 100%;
-  z-index: 11;
-  filter: brightness(50%);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
 .edit-header {
   font-weight: 500;
   font-size: 20px;
@@ -224,11 +211,5 @@ span.nm-count, span.des-count {
 @media only screen and (max-width: 515px) {
   .edit-task {
     width: 95% !important;
-  }
-}
-
-@media only screen and (max-width: 323px) {
-  .editTask-bg.visible {
-    right: -100px;
   }
 }

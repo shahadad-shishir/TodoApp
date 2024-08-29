@@ -47,6 +47,6 @@ export const profileHtml =
         </div>
       </div>
 
-      <div id="blur-bg"></div>
+      <div id="cngProfile-bg" class="blur-bg"></div>
   </main>
 `;

@@ -25,7 +25,7 @@ export function loadProfile() {
 
     init(callback) {
       this.el = document.querySelector('.cng-profile');
-      this.bg = document.querySelector('#blur-bg');
+      this.bg = document.querySelector('#cngProfile-bg');
       const cnclBtn = this.el.querySelector('#cancel-btn');
       this.saveBtn = this.el.querySelector('#save-btn');
       this.input = this.el.querySelector('input');
@@ -88,7 +88,7 @@ export function loadProfile() {
       this.el.classList.remove('visible');
 
       this.bg.style.removeProperty('bottom');
-      this.bg.style.opacity = 0;
+      this.bg.style.removeProperty('opacity');
       scroll.enable();
     },
 

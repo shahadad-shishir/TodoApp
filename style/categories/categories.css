@@ -183,7 +183,7 @@ span.nm-count{
   box-shadow: var(--secondary-min6) 0px 0px 24px 0px;
 }
 
-.delete-confirm {
+.dlt-ctgry {
   background-color: var(--bg);
   color: var(--text);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
@@ -201,22 +201,22 @@ span.nm-count{
   transition: opacity 0.3s ease;
 }
 
-.delete-confirm.active {
+.dlt-ctgry.active {
   opacity: 1;
   visibility: visible;
 }
 
-.delete-confirm h3 {
+.dlt-ctgry h3 {
   font-weight: 500;
   margin-bottom: 30px;
 }
 
-.delete-confirm .btns {
+.dlt-ctgry .btns {
   text-align: right;
   margin-top: 18px;
 }
 
-.delete-confirm button {
+.dlt-ctgry button {
   background-color: transparent;
   border: 0;
   font-size: 17px;
@@ -228,21 +228,21 @@ span.nm-count{
   transition: background-color 0.3s ease;
 }
 
-.delete-confirm .info {
+.dlt-ctgry .info {
   overflow-x: auto;
   padding-bottom: 30px;
 }
 
-.delete-confirm #cncl-btn {
+.dlt-ctgry #cncl-btn {
   color: var(--secondary);
 }
 
-.delete-confirm #dlt-btn {
+.dlt-ctgry #dlt-btn {
   color: red;
   margin-left: 20px;
 }
 
-.delete-confirm #dlt-btn i {
+.dlt-ctgry #dlt-btn i {
   font-size: 18px;
   margin-right: 10px;
 }
@@ -253,18 +253,6 @@ span.nm-count{
 
 #dlt-btn:hover {
   background-color: rgba(255, 49, 49, 0.04);
-}
-
-#dlt-bg {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: -10px;
-  z-index: 11;
-  filter: brightness(50%);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 #color-picker {
@@ -301,32 +289,32 @@ span.nm-count{
   .edit {
     margin-right: 8px;
   }
-  .delete-confirm {
+  .dlt-ctgry {
     padding: 32px 32px;
     border-radius: 24px;
   } 
-  .delete-confirm h3 {
+  .dlt-ctgry h3 {
     margin-bottom: 25px;
     font-size: 17px;
   }
   
-  .delete-confirm .btns {
+  .dlt-ctgry .btns {
     margin-top: 16px;
   } 
-  .delete-confirm button {
+  .dlt-ctgry button {
     font-size: 15px;
     padding: 9px 11px;
     border-radius: 7px;
   } 
-  .delete-confirm .info {
+  .dlt-ctgry .info {
     padding-bottom: 25px;
   }
   
-  .delete-confirm #dlt-btn {
+  .dlt-ctgry #dlt-btn {
     margin-left: 26px;
   }
   
-  .delete-confirm #dlt-btn i {
+  .dlt-ctgry #dlt-btn i {
     font-size: 15px;
     margin-right: 8px;
   }
@@ -357,7 +345,7 @@ span.nm-count{
 }
 
 @media only screen and (max-width: 760px) {
-  .delete-confirm {
+  .dlt-ctgry {
     width: 88%;
   }
 }

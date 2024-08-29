@@ -3,7 +3,7 @@ import { popup } from "../utils/popup.js";
 import { scroll } from "../utils/shortcut.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
-import { oldCategories } from "./old.js";
+import { oldCategories } from "./old-categories.js";
 
 export const editCtgry = {
   ctgryId: undefined,
@@ -65,6 +65,7 @@ export const editCtgry = {
     this.emojiPicker.close();
 
     this.bg.style.removeProperty('bottom');
+    this.bg.style.removeProperty('opacity');
     this.el.classList.remove('active');
     scroll.enable();
   },

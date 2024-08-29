@@ -1,7 +1,7 @@
 import { ctgryData } from "../data.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
-import { oldCategories } from "./old.js";
+import { oldCategories } from "./old-categories.js";
 import { popup } from "../utils/popup.js";
 
 export function loadCategories() {

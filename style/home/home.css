@@ -640,22 +640,6 @@ main .categories {
   visibility: visible;
 }
 
-.dlt-bg {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -10px;
-  z-index: 11;
-  filter: brightness(50%);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* .blur-bg.visible {
-  visibility: visible;
-} */
-
 span.highlighted-text {
   background-color: rgb(104, 41, 239);
   color: rgb(255, 255, 255);
@@ -668,7 +652,7 @@ span.highlighted-text {
   transition: all 0.3s ease 0s;
 }
 
-.delete-confirm {
+.dlt-task {
   background-color: var(--bg);
   color: var(--text);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
@@ -685,21 +669,21 @@ span.highlighted-text {
   display: none; /*block*/
 }
 
-.delete-confirm .info div {
+.dlt-task .info div {
   margin-top: 10px;
 }
 
-.delete-confirm h3 {
+.dlt-task h3 {
   font-weight: 500;
   margin-bottom: 30px;
 }
 
-.delete-confirm .btns {
+.dlt-task .btns {
   text-align: right;
   margin-top: 30px;
 }
 
-.delete-confirm button {
+.dlt-task button {
   background-color: transparent;
   border: 0;
   font-size: 17px;
@@ -711,21 +695,21 @@ span.highlighted-text {
   transition: background-color 0.3s ease;
 }
 
-.delete-confirm .info {
+.dlt-task .info {
   overflow-x: auto;
   padding-bottom: 30px;
 }
 
-.delete-confirm #cncl-btn {
+.dlt-task #cncl-btn {
   color: var(--secondary);
 }
 
-.delete-confirm #dlt-btn {
+.dlt-task #dlt-btn {
   color: red;
   margin-left: 20px;
 }
 
-.delete-confirm #dlt-btn i {
+.dlt-task #dlt-btn i {
   font-size: 18px;
   margin-right: 10px;
 }
@@ -986,27 +970,27 @@ span.highlighted-text {
     font-size: 14px;
   }
 
-  .delete-confirm {
+  .dlt-task {
     width: 90%;
     white-space: wrap;
     padding: 26px 26px;
   }
-  .delete-confirm h3{
+  .dlt-task h3{
     font-size: 15px;
     margin-bottom: 15px;
   }
-  .delete-confirm .info {
+  .dlt-task .info {
     font-size: 14px;
     padding-bottom: 15px;
   }
-  .delete-confirm button {
+  .dlt-task button {
     font-size: 12px;
   }
-  .delete-confirm #dlt-btn i {
+  .dlt-task #dlt-btn i {
     font-size: 13px;
     margin-right: 6px;
   }
-  .delete-confirm .btns {
+  .dlt-task .btns {
     margin-top: 15px;
   }
 }

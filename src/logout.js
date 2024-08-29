@@ -6,7 +6,7 @@ import { navigateTo } from "./route.js";
 export const logout = {
   init() {
     const div = document.createElement('div');
-    div.classList.add('logout-cnfrm');
+    div.id = 'logout';
     div.innerHTML = 
     `
       <div class="logout-header">
@@ -24,7 +24,7 @@ export const logout = {
     this.el = div;
     this.cancelBtn = div.querySelector('#cancel-btn');
     this.logoutBtn = div.querySelector('#logout-btn');
-    this.bg = document.querySelector('#blur-bg');
+    this.bg = document.querySelector('#logout-bg');
 
     this.cancelBtn.addEventListener('click', () => {
       this.close();

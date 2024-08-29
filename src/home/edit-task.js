@@ -15,7 +15,7 @@ export const editTask = {
     const el = document.querySelector('.edit-task');
     this.el = el;
     this.saveBtn = document.querySelector('#save-btn');
-    this.editTaskBg = document.querySelector('#editTask-bg');
+    this.bg = document.querySelector('#editTask-bg');
     this.cancelBtn = el.querySelector('#cancel-btn');
     this.nameInput = el.querySelector('#name-input');
     this.desInput = el.querySelector('#description');
@@ -28,7 +28,7 @@ export const editTask = {
     this.desCount = el.querySelector('span.des-count');
     this.formEmojiIcon = document.querySelector('#emoji-picker .emoji');
 
-    this.editTaskBg.addEventListener('click', () => {
+    this.bg.addEventListener('click', () => {
       this.hideEditTask();
     });
 
@@ -79,8 +79,8 @@ export const editTask = {
     this.oldData = taskData.getTask(this.taskId);
     this.resize();
     this.el.classList.add('active');
-    this.editTaskBg.style.bottom = 0;
-    this.editTaskBg.style.opacity = 1;
+    this.bg.style.bottom = 0;
+    this.bg.style.opacity = 1;
     scroll.disable();
     this.showEditableData();
     this.updateSaveBtnState();
@@ -91,7 +91,8 @@ export const editTask = {
     this.colorPicker.close();
     this.emojiPicker.close();
 
-    this.editTaskBg.style.removeProperty('bottom');
+    this.bg.style.removeProperty('bottom');
+    this.bg.style.removeProperty('opacity');
     this.el.classList.remove('active');
     scroll.enable();
   },

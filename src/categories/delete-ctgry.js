@@ -1,17 +1,18 @@
 import { taskData, ctgryData } from "../data.js";
 import { scroll } from "../utils/shortcut.js";
-import { oldCategories } from "./old.js";
+import { oldCategories } from "./old-categories.js";
 import { popup } from "../utils/popup.js";
 
 export const dltCnfrm = {
   ctgryId: undefined,
 
   init() {
-    this.dltConfirm = document.querySelector('.delete-confirm');
-    this.cnclBtn = document.querySelector('.delete-confirm #cncl-btn');
-    this.dltBtn = document.querySelector('.delete-confirm #dlt-btn');
-    this.nm = document.querySelector('.delete-confirm h3 b');
-    this.bg = document.querySelector('#dlt-bg');
+    const el = document.querySelector('.dlt-ctgry');
+    this.el = el;
+    this.cnclBtn = el.querySelector('#cncl-btn');
+    this.dltBtn = el.querySelector('#dlt-btn');
+    this.nm = el.querySelector('h3 b');
+    this.bg = document.querySelector('#dltCtgry-bg');
 
     this.bg.addEventListener('click', () => {
       this.close();
@@ -30,7 +31,7 @@ export const dltCnfrm = {
   open(ctgryId) {
     this.ctgryId = ctgryId;
     this.nm.innerHTML = ctgryData.getCtgry(ctgryId).name;
-    this.dltConfirm.classList.add('active');
+    this.el.classList.add('active');
     this.bg.style.bottom = 0;
     this.bg.style.opacity = 1;
     scroll.disable();
@@ -38,8 +39,8 @@ export const dltCnfrm = {
 
   close() {
     this.bg.style.removeProperty('bottom');
-    this.bg.style.opacity = 0;
-    this.dltConfirm.classList.remove('active');
+    this.bg.style.removeProperty('opacity');
+    this.el.classList.remove('active');
     scroll.enable();
   },
 

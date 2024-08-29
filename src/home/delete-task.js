@@ -8,14 +8,14 @@ export const dltCnfrm = {
   taskId: undefined,
 
   init() {
-    const el = document.querySelector('.delete-confirm');
+    const el = document.querySelector('.dlt-task');
     this.el = el;
     this.cnclBtn = el.querySelector('#cncl-btn');
     this.dltBtn = el.querySelector('#dlt-btn');
     this.nmEl = el.querySelector('.nm');
     this.desEl = el.querySelector('.des');
     this.ctgryEl = el.querySelector('.ctgry');
-    this.bg = document.querySelector('.dlt-bg');
+    this.bg = document.querySelector('#dltTask-bg');
 
     this.bg.addEventListener('click', () => {
       this.close();
@@ -36,15 +36,16 @@ export const dltCnfrm = {
     this.updateData(taskId)
     this.el.style.display = 'block';
     mngAnim(this.el, 'opacityAnim', 0.3);
-    this.bg.style.height = document.body.scrollHeight + 10 + 'px';
+    this.bg.style.bottom = 0;
     this.bg.style.opacity = 1;
     scroll.disable();
   },
 
   close() {
-      this.bg.style.height = 0;
-      this.el.style.display = 'none';
-      scroll.enable();
+    this.bg.style.removeProperty('bottom');
+    this.bg.style.removeProperty('opacity');
+    this.el.style.display = 'none';
+    scroll.enable();
   },
 
   updateData(taskId) {

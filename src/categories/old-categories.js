@@ -1,6 +1,6 @@
 import { taskData, ctgryData } from "../data.js";
-import { dltCnfrm } from "./dlt-confirmation.js";
-import { editCtgry } from "./edit.js";
+import { dltCnfrm } from "./delete-ctgry.js";
+import { editCtgry } from "./edit-ctgry.js";
 
 export const oldCategories = {
   init() {

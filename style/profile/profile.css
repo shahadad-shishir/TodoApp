@@ -251,19 +251,6 @@ ul.themes {
   border: 1px solid rgb(255, 49, 49);
 }
 
-#blur-bg {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: -10px;
-  width: 100%;
-  z-index: 11;
-  filter: brightness(50%);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
 
 @keyframes iconAnim {
   0% {

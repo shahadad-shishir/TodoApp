@@ -141,19 +141,6 @@ span.edit-nm-count {
   background-color: #dcd6d6;
 }
 
-#editCtgry-bg {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: -10px;
-  width: 100%;
-  z-index: 11;
-  filter: brightness(50%);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
 #color-picker.CP2 {
   margin-bottom: 5px;
 }

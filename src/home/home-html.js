@@ -151,7 +151,7 @@ export const homeHtml =
   <p>Click on the <b>+</b> button to add one</p>
   </div>
 
-  <div class="delete-confirm">
+  <div class="dlt-task">
     <h3>Are you sure you want to delete the task?</h3>
     <div class="info">
       <div class="nm">
@@ -170,8 +170,8 @@ export const homeHtml =
     </div>
   </div>
 
-  <div class="dlt-bg"></div>
-  <div id="editTask-bg"></div>
+  <div id="dltTask-bg" class="blur-bg"></div>
+  <div id="editTask-bg" class="blur-bg"></div>
   <div id="s-menubar-bg"></div>
   <div id="l-menubar-bg"></div>  
 `;
