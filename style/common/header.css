@@ -60,13 +60,8 @@
   object-fit: cover;
 }
 
-#header .user .letter {
-  font-size: 28px;
-  color: #fff;
-}
-
-#header i.fa-user {
-  font-size: 25px;
+#header .user i.fa-user {
+  font-size: 26px;
   color: rgb(255, 255, 255);
 }
 
@@ -107,11 +102,8 @@
     width: 40px;
     height: 40px;
   }
-  #header .user .letter {
-    font-size: 24px;
-  }
-  #header .user i {
-    font-size: 20px;
+  #header .user i.fa-user {
+    font-size: 21px;
   }
   #header .angle {
     font-size: 20px;
