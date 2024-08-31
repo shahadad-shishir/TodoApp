@@ -60,6 +60,11 @@
   color: rgb(255, 255, 255);
 }
 
+.user .letter {
+  font-size: 27px;
+  color: rgb(255, 255, 255);
+}
+
 .user div img {
   width: 100%;
   height: 100%;
@@ -847,6 +852,10 @@ span.highlighted-text {
   .user i.fa-user {
     font-size: 21px;
   }
+  .user .letter {
+    font-size: 22px;
+  }
+  
 
   .progress {
     padding: 16px 14px;

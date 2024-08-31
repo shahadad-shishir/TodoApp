@@ -69,6 +69,11 @@
   position: relative;
 }
 
+#header .user .letter {
+  font-size: 27px;
+  color: rgb(255, 255, 255);
+}
+
 #header .tooltip {
   position: absolute;
   background-color: var(--bg3);
@@ -107,6 +112,9 @@
   }
   #header .angle {
     font-size: 20px;
+  }
+  #header .user .letter {
+    font-size: 22px;
   }
 }
 
