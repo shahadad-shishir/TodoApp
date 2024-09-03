@@ -93,6 +93,12 @@ export const navbar = {
     } else if (pathname === '/profile') {
       this.profile.classList.add('selected');
     }
+
+    if (pathname === '/add-task' && taskData.items.lenght !== 0) {
+      this.removeAnim();
+    } else {
+      this.addAnim();
+    }
   },
 
   addAnim() {
