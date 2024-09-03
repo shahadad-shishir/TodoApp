@@ -794,6 +794,23 @@ span.highlighted-text {
   }
 }
 
+@keyframes addAnim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: var(--secondary-min7) 0px 0px 0px 0px;
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: var(--secondary-min0) 0px 0px 0px 14px;
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: var(--secondary-min0) 0px 0px 0px 0px;
+  }
+}
+
 
 @media only screen and (max-width: 1025px) {
   .container {

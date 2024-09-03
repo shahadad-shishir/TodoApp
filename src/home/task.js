@@ -1,6 +1,7 @@
 import { taskData, ctgryData } from "../data.js";
 import { dateTime } from "../utils/dateTime.js";
 import { menubar } from "./menubar.js";
+import { navbar } from "../navbar.js";
 
 export let taskContainer;
 let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;
@@ -12,7 +13,6 @@ export function initTask() {
   searchBar = document.querySelector('.main .search-bar');
   addBtnIcon = document.querySelector('.add-btn .icon');
   ctgryFilter = document.querySelector('.main .categories');
-  navAddBtn = document.querySelector('#navbar .add');
 
   renderTask();
 }
@@ -46,14 +46,14 @@ function mngEmptyTask(condition) {
     searchBar.style.display = 'none';
     ctgryFilter.style.display = 'none';
     addBtnIcon.style.animation = '1.2s ease 0s infinite normal none running addAnim';
-    navAddBtn.style.animation = '1.2s ease 0s infinite normal none running addAnim';
+    navbar.addAnim();
   } else {
     emptyTask.style.display = 'none';
     progress.style.display = 'flex';
     searchBar.style.display = 'flex';
     ctgryFilter.style.display = 'flex';
     addBtnIcon.style.removeProperty('animation');
-    navAddBtn.style.removeProperty('animation');;
+    navbar.removeAnim();
   }
 }
 

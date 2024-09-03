@@ -13,6 +13,7 @@ import { loadProfile} from "./profile/profile.js"
 import { header } from "./header.js";
 import { homeHeader } from "./home/homeHeader.js"
 import { navbar } from "./navbar.js";
+import { ripple } from "./ripple-effect.js"
 
 const loading = document.querySelector('.loading');
 const root = document.querySelector('#root');
@@ -125,4 +126,5 @@ function handleRouteCng(pathname, title, heading) {
   }
 
   navbar.selectPage(pathname);
+  ripple.init();
 }

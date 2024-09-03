@@ -10,6 +10,7 @@ export const navbar = {
     this.transfer = el.querySelector('.transfer');
     this.profile = el.querySelector('.profile');
     this.count = el.querySelector('.count');
+    this.addDiv = el.querySelector('.add div');
     
     this.tasks.addEventListener('click', () => {
       if (location.pathname === '/') {
@@ -92,5 +93,13 @@ export const navbar = {
     } else if (pathname === '/profile') {
       this.profile.classList.add('selected');
     }
+  },
+
+  addAnim() {
+    this.addDiv.style.animation = '1.2s ease 0s infinite normal none running navAddAnim';
+  },
+
+  removeAnim() {
+    this.addDiv.style.removeProperty('animation');
   }
 };
