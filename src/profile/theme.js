@@ -170,7 +170,7 @@ export const theme = {
     `
       :root {
         --primary: rgb(${primary});
-        --primary-min8: rgb(${primary});
+        --primary-min8: rgba(${primary}, 0.8);
         --secondary: rgb(${secondary}); 
         --secondary-min0: rgba(${secondary}, 0);
         --secondary-min1: rgba(${secondary}, 0.1);
