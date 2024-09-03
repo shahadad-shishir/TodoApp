@@ -177,8 +177,6 @@ export function loadProfile() {
   });
 
   //logout
-  logout.init();
-
   logoutBtn.addEventListener('click', () => {
     logout.open();
   });

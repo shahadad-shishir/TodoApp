@@ -19,7 +19,6 @@ export function loadCategories() {
   const colorPicker = new ColorPicker('#color-picker.CP1', handleClrCng);
   colorPicker.selectThisClr('#b624ff');
   oldCategories.init();
-  popup.init();
 
   createBtn.addEventListener('click', () => {
     if (createBtn.classList.contains('enable')) {

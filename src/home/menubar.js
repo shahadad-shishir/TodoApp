@@ -26,7 +26,6 @@ export const menubar = {
 
     editTask.init();
     dltCnfrm.init();
-    popup.init();
 
     this.SmenubarBg.addEventListener('click', () => {
       this.hideSmenu();
