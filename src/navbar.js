@@ -1,9 +1,11 @@
 import { taskData } from "./data.js";
+import { ripple } from "./ripple-effect.js";
 import { navigateTo } from "./route.js";
 
 export const navbar = {
   init() {
     const el = document.querySelector('#navbar');
+    this.el = el;
     this.tasks = el.querySelector('.tasks');
     this.categories = el.querySelector('.categories');
     this.addBtn = el.querySelector('.add');
@@ -50,6 +52,12 @@ export const navbar = {
       } else {
         navigateTo('/profile');
       }
+    });
+
+    this.el.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', e => {
+        ripple.add(li, e, 'var(--secondary-min3)');
+      });
     });
   },
   
