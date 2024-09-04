@@ -33,6 +33,11 @@
   transition: background 0.3s;
 }
 
+.cart .profile-pic {
+  width: 100%;
+  height: 100%;
+}
+
 .cart .profile .letter {
   font-size: 50px;
 }
