@@ -5,6 +5,7 @@
   import { generateRandomId } from "../utils/number.js";
   import { popup } from "../utils/popup.js";
   import { navigateTo } from "../route.js";
+import { ripple } from "../ripple-effect.js";
 
   export function loadAddTask() {
     const nameInput = document.querySelector('#name-input');
@@ -32,7 +33,9 @@
       navigateTo('/categories');
     });
 
-    createBtn.addEventListener('click', () => {
+    createBtn.addEventListener('click', e => {
+      ripple.add(createBtn, e);
+      
       if (createBtn.classList.contains('enable')) {
         createTask();
       }
