@@ -72,14 +72,14 @@
   fill: var(--secondary);
 }
 
-#navbar .tasks {
+#navbar .tasks div{
   position: relative;
 }
 
 #navbar .count {
   position: absolute;
-  bottom: 39px;
-  right: 21px;
+  bottom: 18px;
+  right: -14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,8 +162,8 @@
     width: 20px;
   }
   #navbar .count {
-    bottom: 28px;
-    right: 25px;
+    bottom: 10px;
+    right: -11px;
     width: 16px;
     height: 16px;
     font-size: 10px;
