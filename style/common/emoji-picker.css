@@ -17,6 +17,7 @@
   border-radius: 50%;
   font-size: 50px;
   cursor: pointer;
+  transition: background-color .5s ease;
 }
 
 #emoji-picker .emoji svg {
