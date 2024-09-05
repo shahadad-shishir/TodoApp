@@ -1,5 +1,6 @@
 import { navigateTo, routes } from "./route.js";
 import { sidebar } from "./sidebar.js";
+import { getProfilePic, getUserName } from "./profile/profile.js";
 
 export const header = {
   init() {
@@ -8,6 +9,8 @@ export const header = {
     this.backBtn = el.querySelector('.angle');
     this.headerText = el.querySelector('.text');
     this.userIcon = el.querySelector('.user');
+
+    this.renderUserContent();
 
     this.backBtn.addEventListener('click', () => {
       if (routes.lastPathname !== location.pathname) {
@@ -29,5 +32,11 @@ export const header = {
 
   hide() {
     this.el.style.display = 'none';
+  },
+
+  renderUserContent() {
+    this.el.querySelector('.js-profile-pic').innerHTML = getProfilePic();
+
+    this.el.querySelector('.js-user-name').innerHTML = getUserName();
   }
 };

@@ -13,6 +13,10 @@ export function loadProfile() {
 
   theme.init();
 
+  //render name & profile pic
+  cart.querySelector('.js-profile-pic').innerHTML = getProfilePic();
+  cart.querySelector('.js-user-name').innerHTML = getUserName();
+
   //render register date and time
   const createDate = new Date(userData.createdAt);
   const date = dateTime.formateDateTime(createDate).date;
@@ -32,7 +36,6 @@ export function loadProfile() {
       this.deleteBtn = this.el.querySelector('.delete');
 
       this.handleProfilePicCng = callback;
-      this.handleProfilePicCng();
 
       this.bg.addEventListener('click', () => {
         this.hide();
@@ -110,7 +113,7 @@ export function loadProfile() {
   }
 
   cngProfilePic.init(() => {
-    handleProfilePic();
+    renderProfilePic();
   });
 
   profileEl.addEventListener('click', () => {
@@ -123,16 +126,12 @@ export function loadProfile() {
       this.nmInput = document.querySelector('.cart .nm-input input');
       this.saveBtn = document.querySelector('.cart .save-btn');
       this.nmCount = document.querySelector('.nm-count');
-      this.renderUserName = renderUserName;
-
-      this.renderUserName();
 
       this.saveBtn.addEventListener('click', () => {
         if (this.saveBtn.classList.contains('enable')) {
           let name = this.nmInput.value;
           this.nmInput.value = '';
           userData.setUserName(name);      
-          this.renderUserName();
           this.mngNmCount();
           handleUserNmCng();
           const msg = `Changed user name to <b>${name}</b>`;
@@ -173,7 +172,10 @@ export function loadProfile() {
   }
 
   cngUserNm.init(() => {
-    handleProfilePic();
+    renderUserName();
+
+    const profilePic = userData.profilePic;
+    if (!profilePic) renderProfilePic();
   });
 
   //logout
@@ -182,38 +184,44 @@ export function loadProfile() {
   });
 }
 
-export function handleProfilePic() {
+export function renderProfilePic() {
   const profileContent = document.querySelectorAll('.js-profile-pic');
+  const pic = getProfilePic();
+
+  profileContent.forEach(el => {
+    el.innerHTML = pic;
+  });
+}
+
+export function getProfilePic() {
+  let content;
   const img = userData.profilePic;
   const letter = userData.name.charAt(0);
 
   if (img !== null) {
-    profileContent.forEach(el => {
-      el.innerHTML = `<img src="${img}">`;
-    });
+    content = `<img src="${img}">`;
   } else {
     if (userData.name !== '') {
-      profileContent.forEach(el => {
-        el.innerHTML = 
-        `<span class="letter">${letter.toUpperCase()}</span>`;
-      });
+      content = `<span class="letter">${letter.toUpperCase()}</span>`;
     } else {
-      profileContent.forEach(el => {
-        el.innerHTML = 
-        `<i class="js-user-icon fa-solid fa-user"></i>`;
-      });
+      content = `<i class="js-user-icon fa-solid fa-user"></i>`;
     }
   }
+
+  return content;
 }
 
-export function renderUserName() {
+function renderUserName() {
+  const name = getUserName();
+
   document.querySelectorAll('.js-user-name')
   .forEach(el => {
-    let name = userData.name;
-    if (name === '') name = 'User';
-
-    if (el.innerHTML !== name) {
-      el.innerHTML = name;
-    }
+    el.innerHTML = name;
   });
+}
+
+export function getUserName() {
+  let name = userData.name;
+  name = name || 'User';
+  return name;
 }

@@ -2,6 +2,7 @@ import { taskData, userData } from "./data.js";
 import { scroll } from "./utils/shortcut.js";
 import { navigateTo } from "./route.js";
 import { logout } from "./logout.js";
+import { getProfilePic, getUserName } from "./profile/profile.js";
 
  export const sidebar = {
   init() {
@@ -23,6 +24,8 @@ import { logout } from "./logout.js";
     this.settings = el.querySelector('.sidebar-settings');
     this.user = el.querySelector('.sidebar-user');
     this.userNm = el.querySelector('.user-name');
+
+    this.renderUserContent();
 
     logout.init();
     this.logout.addEventListener('click', async () => {
@@ -129,5 +132,11 @@ import { logout } from "./logout.js";
     } else {
       this.taskCount.style.display = 'none';
     }
+  },
+
+  renderUserContent() {
+    this.el.querySelector('.js-profile-pic').innerHTML = getProfilePic();
+
+    this.el.querySelector('.js-user-name').innerHTML = getUserName();
   }
 }

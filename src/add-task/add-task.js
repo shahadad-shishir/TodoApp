@@ -5,7 +5,7 @@
   import { generateRandomId } from "../utils/number.js";
   import { popup } from "../utils/popup.js";
   import { navigateTo } from "../route.js";
-import { ripple } from "../ripple-effect.js";
+  import { ripple } from "../ripple-effect.js";
 
   export function loadAddTask() {
     const nameInput = document.querySelector('#name-input');

@@ -1,5 +1,6 @@
 import { dateTime } from "../utils/dateTime.js";
 import { sidebar } from "../sidebar.js";
+import { getProfilePic, getUserName } from "../profile/profile.js";
 
 export const homeHeader = {
   intervalId: undefined,
@@ -24,12 +25,14 @@ export const homeHeader = {
 
   init() {
     const el = document.querySelector('.header');
+    this.el = el;
     this.quote = el.querySelector('.quote');
     this.greetingEl =  el.querySelector('.greeting');
     this.userIcon = el.querySelector('.user');
 
     this.renderQuotes();
     this.renderGreeting();
+    this.renderUserContent();
 
     this.userIcon.addEventListener('click', () => {
       sidebar.open();
@@ -73,5 +76,11 @@ export const homeHeader = {
   renderGreeting() {
     const greeting = dateTime.getGreeting();
     this.greetingEl.innerText = greeting;
+  },
+
+  renderUserContent() {
+    this.el.querySelector('.js-profile-pic').innerHTML = getProfilePic();
+
+    this.el.querySelector('.js-user-name').innerHTML = getUserName();
   }
 };
