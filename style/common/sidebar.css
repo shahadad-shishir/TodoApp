@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0px 18px 18px;
+  margin: 0px 18px 8px;
 }
 
 #sidebar li {
@@ -221,7 +221,7 @@
 
 #sidebar .creator {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   color: #81858E;
   font-size: 12px;
 }
