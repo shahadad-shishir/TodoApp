@@ -187,5 +187,8 @@ body {
   body::-webkit-scrollbar {
     width: 0px;
     background: transparent;
-  } 
+  }
+  body {
+    font-weight: 500;
+  }
 }

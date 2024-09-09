@@ -58,8 +58,8 @@
   padding: 15px;
   border-radius: 14px;
   background-color: rgba(16, 23, 39, 0.082);
-  border: 2px solid var(--secondary);
-  box-shadow: var(--secondary) 0px 0px 8px 1px;
+  border: 2px solid rgb(182, 36, 255);
+  box-shadow: rgb(182, 36, 255) 0px 0px 8px 1px;
   transition: box-shadow 0.3s;
   width: 300px;
   cursor: pointer;
@@ -155,7 +155,7 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px dashed rgb(182, 36, 255);
+  border: 2px dashed var(--secondary);
   border-radius: 16px;
   padding: 32px 64px;
   text-align: center;
@@ -174,7 +174,7 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
 
 @media only screen and (max-width: 500px) {
   .export h2 {
-    font-size: 16px;
+    font-size: 17px;
   }
   .export h2 i {
     padding-left: 8px;
@@ -188,6 +188,7 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
     padding: 12px;
     border-radius: 12px;
     font-size: 13px;
+    width: 55%;
   }
   .custom-checkbox {
     width: 14px;
@@ -201,23 +202,25 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
     margin-left: 8px;
   }
   .export-selected, .export-all, .select-json-file, .import-from-clipboard, .import-from-link {
+    width: 53%;
     margin-top: 20px;
     border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 12px;
+    padding: 10px 8px;
+    font-size: 10px;
   }
   .export-selected svg, .export-all svg, .select-json-file svg, .import-from-clipboard svg, .import-from-link svg {
-    width: 20px;
-    margin-right: 6px;
+    width: 16px;
+    margin-right: 4px;
   }    
   .import {
     margin-top: 35px;
   }
   
   .import h2 {
-    font-size: 16px;
+    font-size: 17px;
   }
   .drop-file {
+    width: 53%;
     margin-top: 25px;
     border-radius: 14px;
     padding: 25px 50px;
@@ -229,15 +232,15 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
   }
 }
 
-@media only screen and (max-width: 341px) {
+@media only screen and (max-width: 380px) {
   .export ul li {
-    width: 85%;
+    width: 72%;
   }
   .export-selected, .export-all, .select-json-file, .import-from-clipboard, .import-from-link {
-    width: 83%;
+    width: 70%;
   }
   .drop-file {
-    width: 83%;
+    width: 70%;
   }
 }
 
