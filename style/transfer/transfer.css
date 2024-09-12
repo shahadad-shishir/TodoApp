@@ -59,7 +59,7 @@
   border-radius: 14px;
   background-color: rgba(16, 23, 39, 0.082);
   border: 2px solid rgb(182, 36, 255);
-  box-shadow: rgb(182, 36, 255) 0px 0px 8px 1px;
+  /* box-shadow: rgb(182, 36, 255) 0px 0px 8px 1px; */
   transition: box-shadow 0.3s;
   width: 300px;
   cursor: pointer;
@@ -83,6 +83,7 @@ input[type="checkbox"] {
   height: 18px;
   border: 2px solid var(--text);
   border-radius: 3px;
+  margin-right: 8px;
   cursor: pointer;
   position: relative;
 }
@@ -102,8 +103,9 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
   font-size: 15px;
 }
 
-.export .task-nm {
-  margin-left: 10px;
+.export .task-emoji {
+  font-size: 20px;
+  margin-right: 1px;
 }
 
 .export-selected, .export-all, .select-json-file, .import-from-clipboard, .import-from-link {
@@ -112,6 +114,7 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
   border: 1px solid var(--secondary);
   border-radius: 10px;
   padding: 12px 0;
@@ -119,7 +122,7 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
   color: var(--secondary);
   text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .export-selected svg, .export-all svg, .select-json-file svg, .import-from-clipboard svg, .import-from-link svg {
@@ -128,12 +131,28 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
   margin-right: 8px;
 }
 
-.export-selected .count {
-  margin-left: 4px;
-}
-
 .export-selected:hover, .export-all:hover, .select-json-file:hover, .import-from-clipboard:hover, .import-from-link:hover {
   background-color: var(--secondary-min1);
+}
+
+
+.export-selected.disable {
+  color: rgba(240, 240, 240, 0.51);
+  border-color: rgba(240, 240, 240, 0.51);
+  cursor: default;
+}
+
+.export-selected.disable svg {
+  fill: rgba(240, 240, 240, 0.51);
+}
+
+.export-selected.disable:hover {
+  background-color: transparent;
+}
+
+.export-selected .count {
+  margin-left: 4px;
+  display: none;
 }
 
 .import {
@@ -195,7 +214,7 @@ input[type="file"] {
     padding: 12px;
     border-radius: 12px;
     font-size: 13px;
-    width: 55%;
+    width: 57%;
   }
   .custom-checkbox {
     width: 14px;
@@ -205,20 +224,23 @@ input[type="file"] {
   input[type="checkbox"]:checked + .custom-checkbox::before {
     font-size: 12px;
   }
-  .export .task-nm {
-    margin-left: 8px;
+  .export .task-emoji {
+    font-size: 15px;
   }
   .export-selected, .export-all, .select-json-file, .import-from-clipboard, .import-from-link {
-    width: 53%;
+    width: 55%;
     margin-top: 20px;
     border-radius: 8px;
     padding: 10px 8px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .export-selected svg, .export-all svg, .select-json-file svg, .import-from-clipboard svg, .import-from-link svg {
-    width: 17px;
+    width: 18px;
     margin-right: 4px;
-  }    
+  }
+  .export-selected:hover, .export-all:hover, .select-json-file:hover, .import-from-clipboard:hover, .import-from-link:hover {
+    background-color: transparent;
+  }
   .import {
     margin-top: 35px;
   }
@@ -227,7 +249,7 @@ input[type="file"] {
     font-size: 17px;
   }
   .drop-file {
-    width: 53%;
+    width: 55%;
     margin-top: 25px;
     border-radius: 14px;
     padding: 25px 30px;
