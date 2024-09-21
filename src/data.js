@@ -72,8 +72,8 @@ export const taskData = {
 
   add(emoji, name, description, deadline, category, color, id) {
     class Task {
-      constructor(emoji, name, description, deadline, category, color, id) {
-        this.id = id;
+      constructor(emoji, name, description, deadline, category, color) {
+        this.id = generateRandomId();
         this.name = name;
         this.description = description;
         this.deadline = deadline;
@@ -266,10 +266,27 @@ export const ctgryData = {
   },
 
   create(name, emoji, color) {
-    const id = generateRandomId(8);
+    const id =  generateRandomId(8);
     const newCtgry = {id: id, name: name, emoji: emoji, color: color};
     this.items.push(newCtgry);
     this.updateStorage();
+
+    return id;
+  },
+
+  match(ctgry) {
+    const {name, emoji, color} = ctgry;
+    let matchId;
+
+    this.items.forEach(ctgry => {
+      if (name === ctgry.name && emoji === ctgry.emoji 
+        && color === ctgry.color ) {
+        matchId = ctgry.id;
+        return;
+      }
+    });
+
+    return matchId;
   }
 }
 

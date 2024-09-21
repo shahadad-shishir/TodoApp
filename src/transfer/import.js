@@ -42,6 +42,7 @@ export const importTask = {
     this.fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
       this.handleFile(file);
+      this.fileInput.value = null;
     });
 
     //Handle import JSON from clipboard
@@ -60,13 +61,20 @@ export const importTask = {
       reader.onload = e => {
         const jsonData = e.target.result;
         const data = JSON.parse(jsonData);
+        
+        if (!this.validateJsonStructure(data)) {
+          const msg = 'JSON structure does not match the expected format.';
+          popup.showError(msg);
+          return;
+        }
+
         const msg = `Tasks sucessfully imported from <b>${fileNm}</b>`;
         this.import(data, msg);
       };
 
       reader.readAsText(file);
     } else {
-      popup.showError('Please drop a valid JSON file.');
+      popup.showError('Please choose a valid JSON file.');
     }
   },
 
@@ -77,7 +85,19 @@ export const importTask = {
     for (const clipboardItem of clipboardItems) {
       //Check if clipboard item contains JSON MIME type
       if (clipboardItem.types.includes('application/json')) {
-        console.log(clipboardItem.types)
+        const blob = await clipboardItem.getType('application/json');
+        const jsonData = await blob.text();
+        const data = JSON.parse(jsonData);
+
+        if (!this.validateJsonStructure(data)) {
+          const msg = 'JSON structure does not match the expected format.';
+          popup.showError(msg);
+          return;
+        }
+
+        const msg = 'Tasks successfully imported from clipboard.';
+        this.import(data, msg);
+
       } else if (clipboardItem.types.includes('text/plain')) {
         const blob = await clipboardItem.getType('text/plain');
         const text = await blob.text();
@@ -85,7 +105,7 @@ export const importTask = {
         try {
           const data = JSON.parse(text);
 
-          if (!validateJsonStructure(data)) {
+          if (!this.validateJsonStructure(data)) {
             const msg = 'JSON structure does not match the expected format.';
             popup.showError(msg);
             return;
@@ -99,32 +119,32 @@ export const importTask = {
         }
       }
     }
+  },
 
-    function validateJsonStructure(data) {
-      const expectedStructure = {
-          id: 'string',
-          done: 'boolean',
-          pinned: 'boolean',
-          name: 'string',
-          emoji: 'string',
-          color: 'string',
-          description: 'string',
-          createDate: 'string',
-          deadline: 'string',
-          category: 'object'
-        };
-      
-      return data.every(item => {
-        for (const key in expectedStructure) {
-          if (!(key in item) 
-            || typeof(item[key]) !== expectedStructure[key]) {
-              return false;
-          }
+  validateJsonStructure(data) {
+    const expectedStructure = {
+        id: 'string',
+        done: 'boolean',
+        pinned: 'boolean',
+        name: 'string',
+        emoji: 'string',
+        color: 'string',
+        description: 'string',
+        createDate: 'string',
+        deadline: 'string',
+        category: 'object'
+      };
+    
+    return data.every(item => {
+      for (const key in expectedStructure) {
+        if (!(key in item) 
+          || typeof(item[key]) !== expectedStructure[key]) {
+            return false;
         }
+      }
 
-        return true;
-      });
-    }
+      return true;
+    });
   },
 
   import(tasks, msg) {
