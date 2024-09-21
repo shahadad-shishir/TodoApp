@@ -2,7 +2,6 @@
   import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
   import { CtgrySelectorWithTglScroll } from "../category-selector/category-selector.js";
   import { ColorPicker } from "../color-picker/color-picker.js";
-  import { generateRandomId } from "../utils/number.js";
   import { popup } from "../utils/popup.js";
   import { navigateTo } from "../route.js";
   import { ripple } from "../ripple-effect.js";
@@ -54,8 +53,7 @@
       const color = colorPicker.getSelectedClr();
       const categoriesId = ctgrySelector.getAllSelected();
       const emoji = emojiPicker.getEmoji();
-      const id = generateRandomId();
-      taskData.add(emoji, name, descriptionVal, deadline, categoriesId, color, id);
+      taskData.add(emoji, name, descriptionVal, deadline, categoriesId, color);
 
       navigateTo('/');
       const msg = `Added task <b>${name}</b>`;

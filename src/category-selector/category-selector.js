@@ -161,7 +161,7 @@ export class CategorySelector {
   getAllSelected() {
     const ids = [];
     this.selectedUl.querySelectorAll("li").forEach(item => {
-      ids.push(item.dataset.id);
+      ids.push(Number(item.dataset.id));
     });
   
     return ids;

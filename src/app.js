@@ -13,6 +13,7 @@ sidebar.init();
 popup.init();
 
 navigateTo(location.pathname);
+// navigateTo('/transfer');
 
 window.addEventListener('popstate', () => {
   navigateTo(location.pathname);

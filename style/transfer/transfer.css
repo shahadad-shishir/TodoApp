@@ -197,7 +197,6 @@ input[type="file"] {
   text-align: center;
 }
 
-
 @media only screen and (max-width: 500px) {
   .export h2 {
     font-size: 17px;

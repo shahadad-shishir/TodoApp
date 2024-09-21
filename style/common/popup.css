@@ -39,6 +39,10 @@
   word-spacing: normal;
 }
 
+#popup .msg b {
+  font-size: 16px;
+}
+
 @keyframes popupAddAnim {
   0% {
     opacity: 0;
@@ -85,6 +89,9 @@
   }
   #popup .msg {
     font-size: 13px;
+  }
+  #popup .msg b {
+    font-size: 12px;
   }
   #popup i {
     font-size: 17px;
