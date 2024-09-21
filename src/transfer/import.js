@@ -81,44 +81,39 @@ export const importTask = {
   async getJsonFromClipboard() {
     //Read the clipboard contents
     const clipboardItems = await navigator.clipboard.read();
+    let data;
 
     for (const clipboardItem of clipboardItems) {
-      //Check if clipboard item contains JSON MIME type
+      //Check if clipboard item contains JSON data
       if (clipboardItem.types.includes('application/json')) {
         const blob = await clipboardItem.getType('application/json');
         const jsonData = await blob.text();
-        const data = JSON.parse(jsonData);
-
-        if (!this.validateJsonStructure(data)) {
-          const msg = 'JSON structure does not match the expected format.';
-          popup.showError(msg);
-          return;
-        }
-
-        const msg = 'Tasks successfully imported from clipboard.';
-        this.import(data, msg);
+        data = JSON.parse(jsonData);
 
       } else if (clipboardItem.types.includes('text/plain')) {
         const blob = await clipboardItem.getType('text/plain');
         const text = await blob.text();
     
         try {
-          const data = JSON.parse(text);
-
-          if (!this.validateJsonStructure(data)) {
-            const msg = 'JSON structure does not match the expected format.';
-            popup.showError(msg);
-            return;
-          }
-
-          const msg = 'Tasks successfully imported from clipboard.';
-          this.import(data, msg);
+          data = JSON.parse(text);
         } catch {
           const msg = 'Clipboard text is not valid JSON.';
           popup.showError(msg);
+          return;
         }
       }
     }
+
+    if (!data) return;
+
+    if (!this.validateJsonStructure(data)) {
+      const msg = 'JSON structure does not match the expected format.';
+      popup.showError(msg);
+      return;
+    }
+
+    const msg = 'Tasks successfully imported from clipboard.';
+    this.import(data, msg);
   },
 
   validateJsonStructure(data) {
