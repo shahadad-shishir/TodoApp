@@ -1,6 +1,7 @@
 import { scroll } from "./utils/shortcut.js";
-import { removeAppData } from "./data.js";
+import { removeAppData, userData } from "./data.js";
 import { navigateTo } from "./route.js";
+import { popup } from "./utils/popup.js";
 
 
 export const logout = {
@@ -57,7 +58,12 @@ export const logout = {
   },
 
   logout() {
+    const themeId = userData.theme;
+
     removeAppData();
-    navigateTo('/');
+    userData.cngTheme(themeId);
+    navigateTo(location.pathname);
+    const msg = 'You have been successfully logged out.';
+    popup.showSuccess(msg);
   }
 };
