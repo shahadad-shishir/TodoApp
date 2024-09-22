@@ -1,6 +1,6 @@
 export const ripple = {
   add(el, e, color) {
-    if (el.querySelector('.ripple')) return;
+    if (el.querySelector('.ripple') || el.classList.contains('disable')) return;
 
     if (!color) {
       const rgbClr = getComputedStyle(el).color;

@@ -2,6 +2,7 @@ import { ctgryData, taskData } from "../data.js";
 import { navbar } from "../navbar.js";
 import { sidebar } from "../sidebar.js";
 import { popup } from "../utils/popup.js";
+import { ripple } from "../ripple-effect.js";
 import { exportTask } from "./export.js";
 
 export const importTask = {
@@ -12,6 +13,14 @@ export const importTask = {
     this.selectFile = el.querySelector('.select-json-file');
     this.fileInput = el.querySelector('input[type="file"]');
     this.clipboardBtn = el.querySelector('.import-from-clipboard');
+    this.linkBtn = el.querySelector('.import-from-link');
+
+    //Adding ripple effect on all buttons
+    [this.selectFile, this.clipboardBtn, this.linkBtn].forEach(btn => {
+      btn.addEventListener('click', e => {
+        ripple.add(btn, e);
+      });
+    });
 
     //Prevent default drag behaviors
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {

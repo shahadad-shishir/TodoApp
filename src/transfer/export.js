@@ -1,4 +1,5 @@
 import { ctgryData, taskData } from "../data.js";
+import { ripple } from "../ripple-effect.js";
 
 export const exportTask = {
   init() {
@@ -11,6 +12,14 @@ export const exportTask = {
 
     this.renderTasks();
 
+    //Add ripple effect on all buttons
+    [this.exportSelectedBtn, this.exportAllBtn].forEach(btn => {
+      btn.addEventListener('click', e => {
+        ripple.add(btn, e);
+      });
+    });
+
+    //Handle click events
     this.exportSelectedBtn.addEventListener('click', () => {
       if (!this.exportSelectedBtn.classList.contains('disable')) {
         this.exportSelectedTasks();
