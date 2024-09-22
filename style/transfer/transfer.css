@@ -26,6 +26,7 @@
 
 .export .tooltip {
   position: absolute;
+  z-index: 2;
   background-color: var(--bg3);
   color: var(--text);
   text-transform: capitalize;
@@ -49,6 +50,14 @@
   margin-top: 30px;
   row-gap: 20px;
   width: 100%;
+}
+
+.export ul .empty {
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text);
+  opacity: 0.7;
 }
 
 .export ul li {
@@ -136,17 +145,18 @@ input[type="checkbox"]:checked + .custom-checkbox::before {
 }
 
 
-.export-selected.disable {
-  color: rgba(240, 240, 240, 0.51);
-  border-color: rgba(240, 240, 240, 0.51);
+.export-selected.disable, .export-all.disable {
+  color: var(--text);
+  border-color: var(--text);
   cursor: default;
+  opacity: 0.5;
 }
 
-.export-selected.disable svg {
-  fill: rgba(240, 240, 240, 0.51);
+.export-selected.disable svg, .export-all.disable svg {
+  fill: var(--text);
 }
 
-.export-selected.disable:hover {
+.export-selected.disable:hover, .export-all.disable:hover {
   background-color: transparent;
 }
 
@@ -209,6 +219,9 @@ input[type="file"] {
     margin-top: 25px;
     row-gap: 18px;
   } 
+  .export ul .empty {
+    font-size: 13px;
+  }  
   .export ul li {
     padding: 12px;
     border-radius: 12px;

@@ -18,12 +18,19 @@ export const exportTask = {
     });
 
     this.exportAllBtn.addEventListener('click', () => {
+      if (this.exportAllBtn.classList.contains('disable')) return;
       this.exportAllTasks();
     });
   },
 
   renderTasks() { 
-    this.ul.innerHTML = '';
+    if (taskData.items.length == 0) {
+      this.exportAllBtn.classList.add('disable');
+      this.ul.innerHTML = `<span class="empty">You don't have any tasks to export</span>`;
+    } else {
+      this.exportAllBtn.classList.remove('disable');
+      this.ul.innerHTML = '';
+    }
 
     taskData.items.forEach(task => {
       const {id, name, emoji} = task;

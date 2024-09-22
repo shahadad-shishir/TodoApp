@@ -73,7 +73,7 @@ export const taskData = {
   add(emoji, name, description, deadline, category, color, id) {
     class Task {
       constructor(emoji, name, description, deadline, category, color) {
-        this.id = generateRandomId();
+        this.id = String(generateRandomId());
         this.name = name;
         this.description = description;
         this.deadline = deadline;
