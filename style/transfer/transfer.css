@@ -1,5 +1,5 @@
 .main {
-  margin-top: 100px;
+  margin-top: 95px;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -208,6 +208,9 @@ input[type="file"] {
 }
 
 @media only screen and (max-width: 500px) {
+  .main {
+    margin-top: 85px;
+}
   .export h2 {
     font-size: 17px;
   }

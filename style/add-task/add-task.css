@@ -152,6 +152,7 @@ span.nm-count, span.des-count {
   #create-btn {
     font-size: 19px;
     padding: 8px 32px;
+    margin-bottom: 10px;
   }
 }
 
