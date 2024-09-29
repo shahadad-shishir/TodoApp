@@ -1,3 +1,5 @@
+import { ripple } from "../ripple-effect.js";
+
 export class EmojiPicker {
   constructor(elSelector, handleEmojiCng) {
     if(handleEmojiCng) {
@@ -26,7 +28,8 @@ export class EmojiPicker {
       if (this.handleEmojiCng) this.handleEmojiCng();
     });
 
-    this.removeEmojiEl.addEventListener('click', () => {
+    this.removeEmojiEl.addEventListener('click', e => {
+      ripple.add(this.removeEmojiEl, e);
       this.removeEmoji();
       if (this.handleEmojiCng) this.handleEmojiCng();
     });

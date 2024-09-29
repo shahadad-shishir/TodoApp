@@ -4,6 +4,7 @@ import { scroll } from "../utils/shortcut.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
 import { oldCategories } from "./old-categories.js";
+import { ripple } from "../ripple-effect.js";
 
 export const editCtgry = {
   ctgryId: undefined,
@@ -30,12 +31,14 @@ export const editCtgry = {
       this.updateSaveBtnState();
     });
 
-    this.cancelBtn.addEventListener('click', () => {
+    this.cancelBtn.addEventListener('click', e => {
+      ripple.add(this.cancelBtn, e);
       this.hide();
     });
 
-    this.saveBtn.addEventListener('click', () => {
+    this.saveBtn.addEventListener('click', e => {
       if (this.saveBtn.classList.contains('enable')) {
+        ripple.add(this.saveBtn, e);
         this.saveEditedData();
       }
     });

@@ -28,7 +28,8 @@
     });
     colorPicker.selectThisClr('#b624ff'); 
 
-    modifyCtgry.addEventListener('click', () => {
+    modifyCtgry.addEventListener('click', e => {
+      ripple.add(modifyCtgry, e);
       navigateTo('/categories');
     });
 

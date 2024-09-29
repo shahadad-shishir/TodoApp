@@ -1,6 +1,7 @@
 import { taskData, ctgryData } from "../data.js";
 import { dltCnfrm } from "./delete-ctgry.js";
 import { editCtgry } from "./edit-ctgry.js";
+import { ripple } from "../ripple-effect.js";
 
 export const oldCategories = {
   init() {
@@ -37,14 +38,17 @@ export const oldCategories = {
     document.querySelectorAll('.old-categories .item .edit')
       .forEach(el => {
         const id = el.dataset.id;
-        el.addEventListener('click', () => {
+        el.addEventListener('click', e => {
+          ripple.add(el, e);
           editCtgry.show(id);
         });
       });
 
     document.querySelectorAll('.old-categories .item .delete')
     .forEach(el => {
-      el.addEventListener('click', () => {
+      el.addEventListener('click', e => {
+        ripple.add(el, e);
+
         const id = el.dataset.id;
         dltCnfrm.open(id);
       });
