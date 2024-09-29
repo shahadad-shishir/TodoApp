@@ -81,7 +81,7 @@ export const homeHtml =
         <i class="fa-solid fa-thumbtack"></i>
         <span>Pin</span>
       </div>
-      <div>
+      <div id="select">
         <i class="fa-regular fa-circle-dot"></i>
         <span>Select</span>
       </div>
@@ -89,7 +89,7 @@ export const homeHtml =
         <i class="fa-solid fa-circle-info"></i>
         <span>Task details</span>
       </div>
-      <div>
+      <div id="share">
         <i class="fa-regular fa-share-from-square"></i>
         <span>Share</span>
       </div>

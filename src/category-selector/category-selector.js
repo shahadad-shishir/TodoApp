@@ -1,6 +1,7 @@
 import { ctgryData } from '../data.js';
 import { string } from '../utils/string.js';
 import { scroll } from '../utils/shortcut.js';
+import { ripple } from '../ripple-effect.js';
 
 export class CategorySelector {
   constructor(elSelector, handleSelectCtgry) {
@@ -63,7 +64,9 @@ export class CategorySelector {
       `
       this.selectUl.appendChild(li);
 
-      li.addEventListener('click', () => {
+      li.addEventListener('click', e => {
+        ripple.add(li, e);
+
         if (li.dataset.selected !== 'true') {
           this.selectItem(li, id);
         } else {
@@ -132,10 +135,12 @@ export class CategorySelector {
         //Disable items 
         item.style.opacity = '0.6';
         item.style.cursor = 'no-drop';
+        item.classList.add('disable');
       } else {
         //Enable items 
         item.style.opacity = '1';
         item.style.cursor = 'pointer';
+        item.classList.remove('disable');
       }
     });
   }
@@ -161,7 +166,7 @@ export class CategorySelector {
   getAllSelected() {
     const ids = [];
     this.selectedUl.querySelectorAll("li").forEach(item => {
-      ids.push(Number(item.dataset.id));
+      ids.push(String(item.dataset.id));
     });
   
     return ids;

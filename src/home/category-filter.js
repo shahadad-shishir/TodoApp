@@ -99,7 +99,7 @@ function mngClick(category, taskData) {
 
   taskData.forEach(task => {
     const taskId = task.id;
-    const thisTask = document.querySelector(`.task[data-id="${taskId}"]`)
+    const thisTask = document.querySelector(`.task[data-id="${taskId}"]`);
     if (thisTask.style.display !== 'none') {
       if (!task.category.includes(id)) {
         thisTask.style.display = 'none';

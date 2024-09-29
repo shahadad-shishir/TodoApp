@@ -3,6 +3,7 @@ import { scroll } from "../utils/shortcut.js";
 import { mngAnim } from "../utils/shortcut.js";
 import { string } from "../utils/string.js";
 import { menubar } from "./menubar.js";
+import { ripple } from "../ripple-effect.js";
 
 export const dltCnfrm = {
   taskId: undefined,
@@ -17,6 +18,14 @@ export const dltCnfrm = {
     this.ctgryEl = el.querySelector('.ctgry');
     this.bg = document.querySelector('#dltTask-bg');
 
+    //Add ripple effect
+    [this.dltBtn, this.cnclBtn].forEach(btn => {
+      btn.addEventListener('click', e => {
+        ripple.add(btn, e);
+      });
+    });
+
+    //Handle click events
     this.bg.addEventListener('click', () => {
       this.close();
     });

@@ -2,6 +2,7 @@ import { taskData, ctgryData } from "../data.js";
 import { dateTime } from "../utils/dateTime.js";
 import { menubar } from "./menubar.js";
 import { navbar } from "../navbar.js";
+import { ripple } from "../ripple-effect.js";
 
 export let taskContainer;
 let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;
@@ -158,7 +159,8 @@ function createATask(task) {
   const divOptions = makeEl('div', ['options']);
   const optnBtn = makeEl('button');
 
-  optnBtn.addEventListener('click', () => {
+  optnBtn.addEventListener('click', e => {
+    ripple.add(optnBtn, e);
     menubar.showMenu(id);
   });
 

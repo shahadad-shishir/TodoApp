@@ -3,6 +3,7 @@ import { scroll } from "./utils/shortcut.js";
 import { navigateTo } from "./route.js";
 import { logout } from "./logout.js";
 import { getProfilePic, getUserName } from "./profile/profile.js";
+import { ripple } from "./ripple-effect.js";
 
  export const sidebar = {
   init() {
@@ -20,6 +21,7 @@ import { getProfilePic, getUserName } from "./profile/profile.js";
     this.transfer = el.querySelector('.sidebar-transfer');
     this.github = el.querySelector('.sidebar-github');
     this.issue = el.querySelector('.sidebar-issue');
+    this.install = el.querySelector('.sidebar-install');
     this.logout = el.querySelector('.sidebar-logout');
     this.settings = el.querySelector('.sidebar-settings');
     this.user = el.querySelector('.sidebar-user');
@@ -37,6 +39,15 @@ import { getProfilePic, getUserName } from "./profile/profile.js";
       }, 300)
     });
 
+    
+    //Add ripple effect
+    [this.tasks, this.add, this.purge, this.ctgry, this.transfer, this.github, this.issue, this.install, this.logout, this.settings, this.user].forEach(btn => {
+      btn.addEventListener('click', e => {
+        ripple.add(btn, e);
+      });
+    });
+
+    //Handle click events
     this.bg.addEventListener('click', () => {
       this.close();
     });

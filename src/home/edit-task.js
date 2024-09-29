@@ -7,6 +7,7 @@ import { taskContainer, renderTask } from "./task.js";
 import { search } from "./search.js";
 import { mngCategoryFilter } from "./category-filter.js";
 import { popup } from "../utils/popup.js";
+import { ripple } from "../ripple-effect.js";
 
 export const editTask = {
   taskId: undefined,
@@ -28,6 +29,14 @@ export const editTask = {
     this.desCount = el.querySelector('span.des-count');
     this.formEmojiIcon = document.querySelector('#emoji-picker .emoji');
 
+    //Add ripple effect
+    [this.saveBtn, this.cancelBtn].forEach(btn => {
+      btn.addEventListener('click', e => {
+        ripple.add(btn, e);
+      });
+    });
+
+    //Handle click events
     this.bg.addEventListener('click', () => {
       this.hideEditTask();
     });

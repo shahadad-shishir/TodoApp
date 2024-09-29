@@ -8,6 +8,7 @@ import { editTask } from "./edit-task.js";
 import { popup } from "../utils/popup.js";
 import { dltCnfrm } from "./delete-task.js";
 import { navigateTo, routes } from "../route.js";
+import { ripple } from "../ripple-effect.js";
 
 export const menubar = {
   taskId: undefined,
@@ -19,7 +20,9 @@ export const menubar = {
     this.lMenubarBg = document.querySelector('#l-menubar-bg');
     this.doneBtn = document.querySelector('#mark-done');
     this.pinBtn = document.querySelector('#pin');
+    this.selectBtn = document.querySelector('#select');
     this.detailsBtn = document.querySelector('#details');
+    this.shareBtn = document.querySelector('#share');
     this.editBtn = document.querySelector('#edit');
     this.dublicate = document.querySelector('#dublicate');
     this.deleteBtn = document.querySelector('#delete');
@@ -27,6 +30,14 @@ export const menubar = {
     editTask.init();
     dltCnfrm.init();
 
+    //Add ripple effect
+    [this.doneBtn, this.pinBtn, this.selectBtn, this.detailsBtn, this.shareBtn, this.editBtn, this.dublicate, this.deleteBtn].forEach(btn => {
+      btn.addEventListener('click', e => {
+        ripple.add(btn, e);
+      });
+    });
+
+    //Handle click events
     this.SmenubarBg.addEventListener('click', () => {
       this.hideSmenu();
     });
