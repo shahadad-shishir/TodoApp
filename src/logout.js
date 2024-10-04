@@ -2,6 +2,7 @@ import { scroll } from "./utils/shortcut.js";
 import { removeAppData, userData } from "./data.js";
 import { navigateTo } from "./route.js";
 import { popup } from "./utils/popup.js";
+import { ripple } from "./ripple-effect.js";
 
 
 export const logout = {
@@ -27,7 +28,8 @@ export const logout = {
     this.logoutBtn = div.querySelector('#logout-btn');
     this.bg = document.querySelector('#logout-bg');
 
-    this.cancelBtn.addEventListener('click', () => {
+    this.cancelBtn.addEventListener('click', e => {
+      ripple.add(this.cancelBtn, e);
       this.close();
     });
 
@@ -35,7 +37,8 @@ export const logout = {
       this.close();
     });
 
-    this.logoutBtn.addEventListener('click', () => {
+    this.logoutBtn.addEventListener('click', e => {
+      ripple.add(this.logoutBtn, e);
       this.logout();
       this.close();
     });

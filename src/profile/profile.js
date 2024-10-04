@@ -4,6 +4,7 @@ import { userData } from "../data.js";
 import { dateTime } from "../utils/dateTime.js";
 import { logout } from "../logout.js";
 import { popup } from "../utils/popup.js";
+import { ripple } from "../ripple-effect.js";
 
 export function loadProfile() {
   const cart = document.querySelector('.cart');
@@ -41,7 +42,8 @@ export function loadProfile() {
         this.hide();
       });
 
-      cnclBtn.addEventListener('click', () => {
+      cnclBtn.addEventListener('click', e => {
+        ripple.add(cnclBtn, e);
         this.hide();
       });
 
@@ -49,8 +51,9 @@ export function loadProfile() {
         this.updateSaveBtnState();
       });
 
-      this.saveBtn.addEventListener('click', () => {
+      this.saveBtn.addEventListener('click', e => {
         if (this.saveBtn.classList.contains('enable')) {
+          ripple.add(this.saveBtn, e);
           this.cngProfile();
           this.hide();
           popup.showSuccess('Changed profile picture');
@@ -59,7 +62,8 @@ export function loadProfile() {
         }
       });
 
-      this.deleteBtn.addEventListener('click', () => {
+      this.deleteBtn.addEventListener('click', e => {
+        ripple.add(this.deleteBtn, e);
         userData.deleteProfile();
         this.input.value = '';
         this.hide();
@@ -127,8 +131,9 @@ export function loadProfile() {
       this.saveBtn = document.querySelector('.cart .save-btn');
       this.nmCount = document.querySelector('.nm-count');
 
-      this.saveBtn.addEventListener('click', () => {
+      this.saveBtn.addEventListener('click', e => {
         if (this.saveBtn.classList.contains('enable')) {
+          ripple.add(this.saveBtn, e);
           let name = this.nmInput.value;
           this.nmInput.value = '';
           userData.setUserName(name);      
@@ -179,7 +184,8 @@ export function loadProfile() {
   });
 
   //logout
-  logoutBtn.addEventListener('click', () => {
+  logoutBtn.addEventListener('click', e => {
+    ripple.add(logoutBtn, e);
     logout.open();
   });
 }
