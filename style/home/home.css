@@ -1,4 +1,5 @@
 @import url('./edit-task.css');
+@import url('./share-task.css');
 
 .container {
   display: flex;
@@ -718,7 +719,6 @@ span.highlighted-text {
 #dlt-btn:hover {
   background-color: rgba(255, 49, 49, 0.04);
 }
-
 
 @keyframes popupAddAnim {
   0% {
