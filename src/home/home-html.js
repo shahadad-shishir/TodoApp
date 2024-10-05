@@ -163,11 +163,11 @@ export const homeHtml =
           <span>Demo</span>
         </div>
         <div class="options">
-          <button class="link selected">
+          <button data-id="link" class="link">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5"></path></svg>
             <span>Link</span>
           </button>
-          <button class="qr-code">
+          <button data-id="qr" class="qr-code">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 21h-2v-2h2zm-2-7h-2v5h2zm8-2h-2v4h2zm-2-2h-2v2h2zM7 12H5v2h2zm-2-2H3v2h2zm7-5h2V3h-2zm-7.5-.5v3h3v-3zM8 9H4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1m-3.5 7.5v3h3v-3zM8 21H4c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1m8.5-16.5v3h3v-3zM20 9h-4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1m-1 10v-3h-4v2h2v3h4v-2zm-2-7h-4v2h4zm-4-2H7v2h2v2h2v-2h2zm1-1V7h-2V5h-2v4zM6.75 5.25h-1.5v1.5h1.5zm0 12h-1.5v1.5h1.5zm12-12h-1.5v1.5h1.5z"></path></svg>
             <span>QR Code</span>
           </button>
@@ -211,6 +211,88 @@ export const homeHtml =
         <button id="share-btn"><i class="fa-solid fa-share"></i>save</button>
       </div>
     </div>
+
+    <div class="recieved-task">
+      <div class="recieved-header">
+        <span class="svg">
+          <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="m21.29 5.89-10 10c-.39.39-1.02.39-1.41 0l-2.83-2.83a.9959.9959 0 0 1 0-1.41c.39-.39 1.02-.39 1.41 0l2.12 2.12 9.29-9.29c.39-.39 1.02-.39 1.41 0 .4.39.4 1.02.01 1.41M12 20c-4.71 0-8.48-4.09-7.95-8.9.39-3.52 3.12-6.41 6.61-6.99 1.81-.3 3.53.02 4.99.78.39.2.86.13 1.17-.18.48-.48.36-1.29-.24-1.6-1.47-.75-3.13-1.16-4.9-1.11-5.14.16-9.41 4.34-9.67 9.47C1.72 17.24 6.3 22 12 22c1.2 0 2.34-.21 3.41-.6.68-.25.87-1.13.35-1.65-.27-.27-.68-.37-1.04-.23-.85.31-1.77.48-2.72.48m7-5h-2c-.55 0-1 .45-1 1s.45 1 1 1h2v2c0 .55.45 1 1 1s1-.45 1-1v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2v-2c0-.55-.45-1-1-1s-1 .45-1 1z">
+            </path>
+          </svg>
+        </span>
+        <div class="heading">
+          <h3>Recieved Task</h3>
+          <span>You can now include this task in your list</span>
+        </div>
+      </div>
+      <div class="recieved-body">
+        <div class="user-nm"><span>User</span> shared you a task.</div>
+
+        <div class="task">
+          <div class="task-details">
+            <div class="pinned">
+              <i class="fa-solid fa-thumbtack"></i>
+              Pinned
+            </div>
+            <div class="top-area">
+              <div class="top-left">
+                <h3>Demo task</h3>
+              </div>
+              <div class="top-right">
+                <span class="create-time">09/24/2024</span>
+              </div>
+            </div>
+
+            <div class="bottom-area">
+              <p>This is a demo task.</p>
+              <div class="deadline">
+                <span>
+                  <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                    <path
+                      d="m22 5.72-4.6-3.86-1.29 1.53 4.6 3.86zM7.88 3.39 6.6 1.86 2 5.71l1.29 1.53zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7">
+                    </path>
+                  </svg>
+                </span>
+                <span>3/15/2024 • 11:04:00 AM</span>
+              </div>
+
+              <div class="task-categories">
+                <div class="item">
+                  <span class="category-emoji">🏠️</span>
+                  Home
+                </div>
+                <div class="item">
+                  <span class="category-emoji">🏢</span>
+                  Work
+                </div>
+                <div class="item">
+                  <span class="category-emoji">👤</span>
+                  Personal
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="recieved-fotter">
+        <button id="decline-btn">
+          <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2M4 12c0-4.4 3.6-8 8-8 1.8 0 3.5.6 4.9 1.7L5.7 16.9C4.6 15.5 4 13.8 4 12m8 8c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1C19.4 8.5 20 10.2 20 12c0 4.4-3.6 8-8 8"></path></svg>
+          
+          Decline
+        </button>
+        <button id="add-btn">
+          <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="m21.29 5.89-10 10c-.39.39-1.02.39-1.41 0l-2.83-2.83a.9959.9959 0 0 1 0-1.41c.39-.39 1.02-.39 1.41 0l2.12 2.12 9.29-9.29c.39-.39 1.02-.39 1.41 0 .4.39.4 1.02.01 1.41M12 20c-4.71 0-8.48-4.09-7.95-8.9.39-3.52 3.12-6.41 6.61-6.99 1.81-.3 3.53.02 4.99.78.39.2.86.13 1.17-.18.48-.48.36-1.29-.24-1.6-1.47-.75-3.13-1.16-4.9-1.11-5.14.16-9.41 4.34-9.67 9.47C1.72 17.24 6.3 22 12 22c1.2 0 2.34-.21 3.41-.6.68-.25.87-1.13.35-1.65-.27-.27-.68-.37-1.04-.23-.85.31-1.77.48-2.72.48m7-5h-2c-.55 0-1 .45-1 1s.45 1 1 1h2v2c0 .55.45 1 1 1s1-.45 1-1v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2v-2c0-.55-.45-1-1-1s-1 .45-1 1z">
+            </path>
+          </svg>
+        
+          Add Task
+        </button>
+      </div>
+   </div>
+
   </div>
   
   <div class="empty-task">

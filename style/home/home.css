@@ -1,5 +1,6 @@
 @import url('./edit-task.css');
 @import url('./share-task.css');
+@import url('./recieved-task.css');
 
 .container {
   display: flex;

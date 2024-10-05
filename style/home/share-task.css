@@ -17,6 +17,11 @@
   transition: opacity 0.3s ease;
 }
 
+.share-task.active {
+  visibility: visible;
+  opacity: 1;
+}
+
 .share-header {
   width: 100%;
   display: flex;
@@ -292,6 +297,8 @@
 
 #share-btn {
   margin-left: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .share-fotter #close-btn:hover, #share-btn:hover {
@@ -448,8 +455,6 @@
   }
   #share-btn {
     margin-left: 25px;
-    display: flex;
-    align-items: center;
   }
   #share-btn i {
     font-size: 14px;
