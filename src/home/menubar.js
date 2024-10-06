@@ -5,6 +5,7 @@ import { handleProgress } from "./progress.js";
 import { search } from "./search.js";
 import { renderTask } from "./task.js";
 import { editTask } from "./edit-task.js";
+import { shareTask } from "./share-task.js";
 import { popup } from "../utils/popup.js";
 import { dltCnfrm } from "./delete-task.js";
 import { navigateTo, routes } from "../route.js";
@@ -29,6 +30,7 @@ export const menubar = {
 
     editTask.init();
     dltCnfrm.init();
+    shareTask.init();
 
     //Add ripple effect
     [this.doneBtn, this.pinBtn, this.selectBtn, this.detailsBtn, this.shareBtn, this.editBtn, this.dublicate, this.deleteBtn].forEach(btn => {
@@ -64,6 +66,11 @@ export const menubar = {
       this.hideMenu();
       routes['/task'].data.taskId = this.taskId;
       navigateTo('/task');
+    });
+
+    this.shareBtn.addEventListener('click', () => {   
+      this.hideMenu();
+      shareTask.open(this.taskId);
     });
 
     this.editBtn.addEventListener('click', () => {   

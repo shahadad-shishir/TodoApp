@@ -163,30 +163,34 @@ export const homeHtml =
           <span>Demo</span>
         </div>
         <div class="options">
-          <button data-id="link" class="link">
+          <button data-id="link" class="link-btn">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5"></path></svg>
             <span>Link</span>
           </button>
-          <button data-id="qr" class="qr-code">
+          <button data-id="qr" class="qr-code-btn">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 21h-2v-2h2zm-2-7h-2v5h2zm8-2h-2v4h2zm-2-2h-2v2h2zM7 12H5v2h2zm-2-2H3v2h2zm7-5h2V3h-2zm-7.5-.5v3h3v-3zM8 9H4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1m-3.5 7.5v3h3v-3zM8 21H4c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1m8.5-16.5v3h3v-3zM20 9h-4c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1m-1 10v-3h-4v2h2v3h4v-2zm-2-7h-4v2h4zm-4-2H7v2h2v2h2v-2h2zm1-1V7h-2V5h-2v4zM6.75 5.25h-1.5v1.5h1.5zm0 12h-1.5v1.5h1.5zm12-12h-1.5v1.5h1.5z"></path></svg>
             <span>QR Code</span>
           </button>
         </div>
 
-        <div class="option1">
+        <div class="link">
           <label class="label1" for="link-input">Shareable Link</label>
           <span class="svg">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M17 7h-3c-.55 0-1 .45-1 1s.45 1 1 1h3c1.65 0 3 1.35 3 3s-1.35 3-3 3h-3c-.55 0-1 .45-1 1s.45 1 1 1h3c2.76 0 5-2.24 5-5s-2.24-5-5-5m-9 5c0 .55.45 1 1 1h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1m2 3H7c-1.65 0-3-1.35-3-3s1.35-3 3-3h3c.55 0 1-.45 1-1s-.45-1-1-1H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h3c.55 0 1-.45 1-1s-.45-1-1-1"></path></svg>
           </span>
-          <input type="text" id="link-input" autocomplete="off">
-          <div class="copy">
-            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 20H5V7c0-.55-.45-1-1-1s-1 .45-1 1v13c0 1.1.9 2 2 2h10c.55 0 1-.45 1-1s-.45-1-1-1m5-4V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2m-2 0H9V4h9z"></path></svg>
-            <span>copy</span>
+          <input type="text" id="link-input" autocomplete="off" disabled>
+          <div class="copy">  
+            <span>
+              <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M15 20H5V7c0-.55-.45-1-1-1s-1 .45-1 1v13c0 1.1.9 2 2 2h10c.55 0 1-.45 1-1s-.45-1-1-1m5-4V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2m-2 0H9V4h9z"></path>
+              </svg>
+            </span>
+            copy
           </div>
         </div>
 
-        <div class="option2">
-          <img src="../assets/images/QR-code.png">
+        <div class="qr-code">
+          <canvas></canvas>
 
           <button class="download">
             <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7zM5 18v2h14v-2z"></path></svg>
@@ -208,7 +212,7 @@ export const homeHtml =
 
       <div class="share-fotter">
         <button id="close-btn">close</button>
-        <button id="share-btn"><i class="fa-solid fa-share"></i>save</button>
+        <button id="share-btn"><i class="fa-solid fa-share"></i>share</button>
       </div>
     </div>
 

@@ -140,26 +140,7 @@ export const exportTask = {
     const allTasks = [];
 
     taskIds.forEach(id => {
-      const task = {};
-      const {done, pinned, name, emoji, color, description, createDate, deadline, category} = taskData.getTask(id);
-
-      task.id = id;
-      task.done = done;
-      task.pinned = pinned;
-      task.name = name;
-      task.emoji = emoji;
-      task.color = color;
-      task.description = description;
-      task.createDate = createDate;
-      task.deadline = deadline;
-
-      const categories = [];
-      category.forEach(id => {
-        categories.push(ctgryData.getCtgry(id));
-      });
-      task.category = categories;
-
-      allTasks.push(task);
+      allTasks.push(this.makeExportableTask(id));
     });
 
     const jsonData = JSON.stringify(allTasks, null, 2);
@@ -178,5 +159,28 @@ export const exportTask = {
     link.click();
 
     URL.revokeObjectURL(url);
+  },
+
+  makeExportableTask(id) {
+    const task = {};
+    const {done, pinned, name, emoji, color, description, createDate, deadline, category} = taskData.getTask(id);
+
+    task.id = id;
+    task.done = done;
+    task.pinned = pinned;
+    task.name = name;
+    task.emoji = emoji;
+    task.color = color;
+    task.description = description;
+    task.createDate = createDate;
+    task.deadline = deadline;
+
+    const categories = [];
+    category.forEach(id => {
+      categories.push(ctgryData.getCtgry(id));
+    });
+    task.category = categories;
+
+    return task;
   }
 };

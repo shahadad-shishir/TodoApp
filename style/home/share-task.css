@@ -142,7 +142,7 @@
   fill: var(--secondary);
 }
 
-.share-body .option1 {
+.share-body .link {
   margin-top: 30px;
   width: 100%;
   position: relative;
@@ -153,22 +153,22 @@
   align-items: center;
 }
 
-.share-body .option1:hover {
+.share-body .link:hover {
   border: 1px solid var(--secondary);
 }
 
-.share-body .option1 span.svg {
+.share-body .link span.svg {
   display: flex;
   align-items: center;
 }
 
-.share-body .option1 svg {
+.share-body .link svg {
   margin-right: 6px;
   width: 24px;
   fill: var(--text-min6);
 }
 
-.share-body .option1 input {
+.share-body .link input {
   width: 100%;
   outline: 0;
   border: 0;
@@ -179,7 +179,7 @@
   letter-spacing: 0.03em;
 }
 
-.share-body .option1 .label1 {
+.share-body .link .label1 {
   position: absolute;
   z-index: 1;
   top: -8px;
@@ -191,37 +191,35 @@
   font-weight: 400;
 }
 
-.share-body .option1 .copy {
+.share-body .link .copy {
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  padding: 10px 15px;
+  padding: 10px 16px;
   color: var(--secondary);
   font-size: 14px;
   border-radius: 13px;
+  margin-left: 5px;
+  overflow: hidden;
   cursor: pointer;
 }
 
-.share-body .option1 .copy svg {
+.share-body .link .copy svg {
   width: 23px;
   fill: var(--secondary);
 }
 
-.share-body .option2 {
+.share-body .qr-code {
   margin-top: 30px;
   width: 100%;
-  display: flex;
+  display: none; /*flex*/
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.share-body .option2 img {
-  width: 60%;
-}
-
-.share-body .option2 .download {
+.share-body .qr-code .download {
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -237,13 +235,13 @@
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.share-body .option2 .download svg {
+.share-body .qr-code .download svg {
   width: 25px;
   fill: var(--secondary);
   margin-right: 8px;
 }
 
-.share-body .option2 .download:hover {
+.share-body .qr-code .download:hover {
   background-color: var(--secondary-min1);
 }
 
@@ -385,42 +383,42 @@
   .share-body .options button.selected {
     border-bottom: 2px solid var(--secondary);
   } 
-  .share-body .option1 {
+  .share-body .link {
     margin-top: 25px;
     padding: 4px 6px;
     border-radius: 8px;
   }
-  .share-body .option1 svg {
+  .share-body .link svg {
     margin-right: 4px;
     width: 20px;
   }
-  .share-body .option1 input {
+  .share-body .link input {
     font-size: 12px;
     letter-spacing: 0.02em;
   }
-  .share-body .option1 .label1 {
+  .share-body .link .label1 {
     top: -7px;
     padding: 0 3px;
     font-size: 11px;
   }
-  .share-body .option1 .copy {
-    padding: 6px 10px;
+  .share-body .link .copy {
+    padding: 6px 11px;
     font-size: 12px;
     border-radius: 10px;
   } 
-  .share-body .option1 .copy svg {
+  .share-body .link .copy svg {
     width: 19px;
   }
-  .share-body .option2 {
+  .share-body .qr-code {
     margin-top: 25px;
   } 
-  .share-body .option2 .download {
+  .share-body .qr-code .download {
     margin-top: 8px;
     border-radius: 10px;
     padding: 8px 17px;
     font-size: 12px;
   }
-  .share-body .option2 .download svg {
+  .share-body .qr-code .download svg {
     width: 20px;
     margin-right: 6px;
   }
