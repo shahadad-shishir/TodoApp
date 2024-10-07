@@ -54,3 +54,16 @@ export function arraysEqual(arr1, arr2) {
 
   return true;
 }
+
+export function makeEl(elName, classes, text) {
+  const element = document.createElement(elName);
+  if (classes) {
+    classes.forEach(cls => {
+      element.classList.add(cls);
+    });
+  }
+  if (text) {
+    element.innerText = text;
+  }
+  return element;
+};

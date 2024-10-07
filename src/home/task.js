@@ -3,6 +3,7 @@ import { dateTime } from "../utils/dateTime.js";
 import { menubar } from "./menubar.js";
 import { navbar } from "../navbar.js";
 import { ripple } from "../ripple-effect.js";
+import { makeEl } from "../utils/shortcut.js";
 
 export let taskContainer;
 let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;
@@ -58,121 +59,107 @@ function mngEmptyTask(condition) {
   }
 }
 
+export function createATask(taskData) {
+  const {id, name, description, deadline, emoji, color, category, done, pinned, createDate} = taskData;
 
+  const taskDiv = makeEl('div', ['task']);
+  taskDiv.dataset.id = id;
+  taskDiv.style.backgroundColor = color;
+  taskDiv.style.boxShadow = `${color} 0px 0px 128px -20px`;
 
-function createATask(task) {
-  const {id, name, description, deadline, emoji, color, category, done, pinned, createDate} = task;
+  taskDiv.innerHTML =
+  ` 
+    <div class="task-details">
+      <div class="pinned">
+        <i class="fa-solid fa-thumbtack"></i>
+        Pinned
+      </div>
+      <div class="top-area">
+        <div class="top-left">
+          <h3>${name}</h3>
+        </div>
+        <div class="top-right">
+          <span class="create-time">${formatCreateTime(new Date(createDate))}</span>
+        </div>
+      </div>
 
-  const makeEl = (el, classes, text) => {
-    const element = document.createElement(el);
-    if (classes) {
-      classes.forEach(cls => {
-        element.classList.add(cls);
-      });
-    }
-    if (text) {
-      element.innerText = text;
-    }
-    return element;
-  };
+      <div class="bottom-area">
+        <p>${description}</p>
+        <div class="deadline">
+          <span>
+            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+              <path
+                d="m22 5.72-4.6-3.86-1.29 1.53 4.6 3.86zM7.88 3.39 6.6 1.86 2 5.71l1.29 1.53zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7">
+              </path>
+            </svg>
+          </span>
+          <span>${formatDeadline(deadline, done)}</span>
+        </div>
 
-  const divTask = makeEl('div', ['task']);
-  divTask.dataset.id = id;
-  divTask.style.backgroundColor = color;
-  divTask.style.boxShadow = `${color} 0px 0px 128px -20px`;
-
-  if (!description && !deadline && category.length == 0) {
-    divTask.style.alignItems = 'center';
-  }
+        <div class="task-categories"></div>     
+      </div>
+    </div>
+    <div class="menu">
+      <button>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+    </div>
+  `
 
   if (done) {
-    divTask.classList.add('done');
-    const divCheckIcon = makeEl('div', ['check-icon']);
-    const icon = makeEl('i', ['fa-solid', 'fa-check']);
-    divCheckIcon.append(icon);
-    divTask.append(divCheckIcon);
+    const doneDiv = makeEl('div', ['check-icon']);
+    doneDiv.innerHTML = '<i class="fa-solid fa-check"></i>';
+    
+    taskDiv.prepend(doneDiv);
+    taskDiv.classList.add('done');
+
   } else if (emoji) {
-    const divEmoji = makeEl('div', ['task-emoji']);
-    const emojiSpan = makeEl('span', '', emoji);
-    divEmoji.append(emojiSpan);
-    divTask.append(divEmoji);
-  }
-  const divDetails = makeEl('div', ['task-details']);
+    const emojiDiv = makeEl('div', ['task-emoji']);
+    emojiDiv.innerHTML = `<span>${emoji}</span>`
 
-  if (pinned) {
-    const divPin = makeEl('div', ['pinned'], 'Pinned');
-    const icon = makeEl('i', ['fa-solid', 'fa-thumbtack']);
-    divPin.prepend(icon);
-    divDetails.prepend(divPin);
+    taskDiv.prepend(emojiDiv);
   }
 
-  const detailsTop = makeEl('div', ['top-area']); 
-  const topLeft = makeEl('div', ['top-left']);
-  const leftH3 = makeEl('h3', '' , name);
-  topLeft.append(leftH3);
-  const topRight = makeEl('div', ['top-right']);
-  const rightSpan = makeEl('span', ['create-time'],
-    formatCreateTime(new Date(createDate)));
-  topRight.append(rightSpan);
-  detailsTop.append(topLeft);
-  detailsTop.append(topRight);
-  divDetails.append(detailsTop);
-
-  const detailsBtm = makeEl('div', ['bottom-area']);    
-  if (description) {
-    const P = makeEl('p', '', description);
-    detailsBtm.append(P);
-  }
-  if (deadline) {
-    const divDeadline = makeEl('div', ['deadline']);
-    const svg = makeEl('span');
-    svg.innerHTML = '<svg focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path d="m22 5.72-4.6-3.86-1.29 1.53 4.6 3.86zM7.88 3.39 6.6 1.86 2 5.71l1.29 1.53zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7"></path></svg>';
-    const text = makeEl('span', ['text'],
-     formatDeadline(deadline, done));
-    divDeadline.append(svg);
-    divDeadline.append(text);
-    detailsBtm.append(divDeadline);
-  }
-  const addCategory = category => {
-    const divCategory = makeEl('div', ['task-categories']);
-    category.forEach(id => {
-      const dataObj = ctgryData.getCtgry(id);
-      const {name, emoji, color} = dataObj;
-      const divItem = makeEl('div', ['item'], name);
-      divItem.dataset.id = id;
-      divItem.style.backgroundColor = color;
-      const spanEmoji = makeEl('span', ['category-emoji'], emoji);
-      divItem.prepend(spanEmoji);
-      divCategory.append(divItem);
-    });
-    return divCategory; 
-  };
+  if (!pinned) taskDiv.querySelector('.pinned').remove();
+  if (!description) taskDiv.querySelector('.bottom-area p').remove();
+  if (!deadline) taskDiv.querySelector('.deadline').remove();
 
   if (category.length !== 0) {
-    detailsBtm.append(addCategory(category));
+    category.forEach(item => {
+      if (typeof(item) !== 'object') item = ctgryData.getCtgry(item);
+      const {name, emoji, color} = item;
+
+      const itemDiv = makeEl('div', ['item'], name);
+      itemDiv.dataset.id = id;
+      itemDiv.style.backgroundColor = color;
+      itemDiv.innerHTML = 
+      `
+        <span class="category-emoji">${emoji}</span> ${name}
+      `;
+
+      taskDiv.querySelector('.task-categories').append(itemDiv);
+    });
+  } else {
+    taskDiv.querySelector('.task-categories').remove();
   }
-  divDetails.append(detailsBtm);
 
-  divTask.append(divDetails);
+  if (!description && !deadline && category.length == 0) {
+    taskDiv.style.alignItems = 'center';
+    taskDiv.querySelector('.bottom-area').remove();
+  }
 
-
-  const divOptions = makeEl('div', ['options']);
-  const optnBtn = makeEl('button');
-
-  optnBtn.addEventListener('click', e => {
-    ripple.add(optnBtn, e);
+  const menuBtn =  taskDiv.querySelector('.menu button');
+  menuBtn.addEventListener('click', e => {
+    ripple.add(menuBtn, e);
     menubar.showMenu(id);
   });
 
-  const optnIcon = makeEl('i', ['fa-solid', 'fa-ellipsis-vertical']);
-  optnBtn.append(optnIcon);
-  divOptions.append(optnBtn);
-  divTask.append(divOptions);
-
-  return divTask;
+  return taskDiv;
 }
 
 function formatDeadline(deadline, done) {
+  if(!deadline) return;
+
   //'3/15/2024 • 11:04:00 AM • tomorrow'
   deadline = new Date(deadline);
   const date = dateTime.formateDateTime(deadline).date;

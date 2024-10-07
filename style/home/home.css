@@ -481,14 +481,14 @@ main .categories {
   cursor: pointer;
 }
 
-.task .options {
+.task .menu {
   width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.task .options button {
+.task .menu button {
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -504,7 +504,7 @@ main .categories {
   cursor: pointer;
 }
 
-.task .options button:hover {
+.task .menu button:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
@@ -926,10 +926,10 @@ span.highlighted-text {
   .task .top-right span {
     font-size: 11px;
   }
-  .task .options {
+  .task .menu {
     width: 30px;
   }
-  .task .options button {
+  .task .menu button {
     font-size: 12px;
     width: 30px;
     height: 30px;
