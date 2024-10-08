@@ -59,6 +59,10 @@ export const importTask = {
       this.getJsonFromClipboard();
     });
 
+    //Handle import task from link
+    this.linkBtn.addEventListener('click', () => {
+      this.getFromLink();
+    });
   },
 
   handleFile(file) {
@@ -125,9 +129,28 @@ export const importTask = {
     this.import(data, msg);
   },
 
+  async getFromLink() {
+    const clipboardItems = await navigator.clipboard.read();
+
+    try {
+      const blob = await clipboardItems[0].getType('text/plain');
+      const text = await blob.text();
+
+      if (text.includes(`${location.origin}/share?`)) {
+        window.location.href = text;
+      } else {
+        popup.showError('There are no valid link on the clipboard.');
+        return;
+      }
+    } catch (err) {
+      popup.showError('There are no valid link on the clipboard.');
+      return;
+    }
+  },
+
   validateJsonStructure(data) {
     const expectedStructure = {
-        id: 'string',
+        // id: 'string',
         done: 'boolean',
         pinned: 'boolean',
         name: 'string',

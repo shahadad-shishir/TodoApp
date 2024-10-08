@@ -72,8 +72,8 @@ export const taskData = {
 
   add(emoji, name, description, deadline, category, color, id) {
     class Task {
-      constructor(emoji, name, description, deadline, category, color) {
-        this.id = String(generateRandomId());
+      constructor(emoji, name, description, deadline, category, color, id) {
+        this.id = id || taskData.generateId();
         this.name = name;
         this.description = description;
         this.deadline = deadline;
@@ -89,6 +89,24 @@ export const taskData = {
     this.items.push(task);
     this.updateStorage();
   }, 
+
+  generateId() {
+    const id = String(generateRandomId());
+    
+    taskData.items.forEach(item => {
+      if (item.id === id) {
+        this.generateId();
+        return;
+      }
+    });
+
+    return id;
+  },
+
+  makeShared(id, userName) {
+    this.getTask(id).sharedBy = userName;
+    this.updateStorage();
+  },
 
   delete(taskId) {
     const index = this.getIndex(taskId);

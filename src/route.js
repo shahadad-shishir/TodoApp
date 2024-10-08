@@ -25,6 +25,13 @@ export const routes = {
     title: 'Todo App',
   },
 
+  '/share': {
+    html: homeHtml,
+    css: './style/home/home.css',
+    loadJs: loadHome,
+    title: 'Todo App - Recieved Task',
+  },
+
   '/add-task': {
     html: addTaskHtml,
     css: './style/add-task/add-task.css',
@@ -75,7 +82,11 @@ export function navigateTo(pathname) {
   root.style.opacity = 0;
   routes.lastPathname = location.pathname;
   const route = routes[pathname] || routes['/'];
-  history.pushState(null, null,  pathname);
+
+  if (pathname !== '/share') {
+    history.pushState(null, null,  pathname);
+  }
+
   handleRouteCng(pathname, route.title, route.heading);
   loadContent(route);
 }
@@ -112,7 +123,7 @@ function loadCSS(url) {
 function handleRouteCng(pathname, title, heading) {
   const titleEl = document.querySelector('title');
 
-  if (pathname !== '/' && pathname !== '/index.html') {
+  if (pathname !== '/' && pathname !== '/index.html' && pathname !== '/share') {
     titleEl.innerText = title;
     header.show();
     header.cngHeading(heading);

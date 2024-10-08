@@ -453,6 +453,20 @@ main .categories {
   word-break: break-word;
 }
 
+.task .shared {
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.task .shared svg {
+  width: 21px;
+  fill: rgb(240, 240, 240);
+  margin-right: 5px;
+}
+
 .task-categories {
   display: flex;
   align-items: center;
@@ -925,6 +939,13 @@ span.highlighted-text {
   }
   .task .top-right span {
     font-size: 11px;
+  }
+  .task .shared {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .task .shared svg {
+    width: 19px;
   }
   .task .menu {
     width: 30px;

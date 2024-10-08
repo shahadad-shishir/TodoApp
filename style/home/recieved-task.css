@@ -22,6 +22,19 @@
   opacity: 1;
 }
 
+#recievedTask-bg {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0px;
+  bottom: 0;
+  width: 100%;
+  z-index: 11;
+  filter: brightness(50%);
+  backdrop-filter: blur(6px);
+  display: none;
+}
+
 .recieved-header {
   width: 100%;
   display: flex;
@@ -82,7 +95,7 @@
 
 .recieved-body .task {
   padding: 20px;
-  box-shadow: none;
+  box-shadow: none !important;
   margin: 20px 0 10px;
 }
 
@@ -195,8 +208,28 @@
     font-size: 12px;
   }
   .recieved-body .task {
-    padding: 15px;
+    padding: 13px;
     margin: 15px 0 6px;
+  }
+  .recieved-body .task .top-left h3 {
+    font-size: 13px;
+  }
+  .recieved-body .task .bottom-area p {
+    font-size: 12px;
+  }
+  .recieved-body .task .deadline {
+    font-size: 12px;
+  }
+  .recieved-body .task .deadline svg {
+    width: 14px;
+  }
+  .recieved-body .task-emoji span {
+    padding: 5px 5px;
+    font-size: 22px;
+    border-radius: 10px;
+  }
+  .recieved-body .task-emoji {
+    margin-right: 15px;
   }
   .recieved-fotter {
     padding: 20px 10px 5px;

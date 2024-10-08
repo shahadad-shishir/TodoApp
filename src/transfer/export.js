@@ -165,7 +165,7 @@ export const exportTask = {
     const task = {};
     const {done, pinned, name, emoji, color, description, createDate, deadline, category} = taskData.getTask(id);
 
-    task.id = id;
+    // task.id = id;
     task.done = done;
     task.pinned = pinned;
     task.name = name;

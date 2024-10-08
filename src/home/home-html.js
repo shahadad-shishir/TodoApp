@@ -232,52 +232,6 @@ export const homeHtml =
       </div>
       <div class="recieved-body">
         <div class="user-nm"><span>User</span> shared you a task.</div>
-
-        <div class="task">
-          <div class="task-details">
-            <div class="pinned">
-              <i class="fa-solid fa-thumbtack"></i>
-              Pinned
-            </div>
-            <div class="top-area">
-              <div class="top-left">
-                <h3>Demo task</h3>
-              </div>
-              <div class="top-right">
-                <span class="create-time">09/24/2024</span>
-              </div>
-            </div>
-
-            <div class="bottom-area">
-              <p>This is a demo task.</p>
-              <div class="deadline">
-                <span>
-                  <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
-                    <path
-                      d="m22 5.72-4.6-3.86-1.29 1.53 4.6 3.86zM7.88 3.39 6.6 1.86 2 5.71l1.29 1.53zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7">
-                    </path>
-                  </svg>
-                </span>
-                <span>3/15/2024 • 11:04:00 AM</span>
-              </div>
-
-              <div class="task-categories">
-                <div class="item">
-                  <span class="category-emoji">🏠️</span>
-                  Home
-                </div>
-                <div class="item">
-                  <span class="category-emoji">🏢</span>
-                  Work
-                </div>
-                <div class="item">
-                  <span class="category-emoji">👤</span>
-                  Personal
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="recieved-fotter">
         <button id="decline-btn">
@@ -326,6 +280,7 @@ export const homeHtml =
   <div id="dltTask-bg" class="blur-bg"></div>
   <div id="editTask-bg" class="blur-bg"></div>
   <div id="shareTask-bg" class="blur-bg"></div>
+  <div id="recievedTask-bg"></div>
   <div id="s-menubar-bg"></div>
   <div id="l-menubar-bg"></div>  
 `;
