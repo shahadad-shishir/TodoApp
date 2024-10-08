@@ -3,6 +3,7 @@ import { removeAppData, userData } from "./data.js";
 import { navigateTo } from "./route.js";
 import { popup } from "./utils/popup.js";
 import { ripple } from "./ripple-effect.js";
+import { renderProfilePic, renderUserName } from "./profile/profile.js";
 
 
 export const logout = {
@@ -65,7 +66,12 @@ export const logout = {
 
     removeAppData();
     userData.cngTheme(themeId);
+
+    renderProfilePic();
+    renderUserName();
+
     navigateTo(location.pathname);
+
     const msg = 'You have been successfully logged out.';
     popup.showSuccess(msg);
   }

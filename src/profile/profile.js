@@ -217,7 +217,7 @@ export function getProfilePic() {
   return content;
 }
 
-function renderUserName() {
+export function renderUserName() {
   const name = getUserName();
 
   document.querySelectorAll('.js-user-name')
