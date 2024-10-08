@@ -467,6 +467,10 @@ main .categories {
   margin-right: 5px;
 }
 
+.task .shared span span{
+  text-transform: capitalize;
+}
+
 .task-categories {
   display: flex;
   align-items: center;

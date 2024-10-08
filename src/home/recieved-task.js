@@ -42,7 +42,7 @@ export const recievedTask = {
 
   open(taskData, userName) {
     this.renderData(taskData, userName);
-    
+
     this.el.classList.add('active');
     this.bg.style.display = 'block';
     scroll.disable();
@@ -78,22 +78,29 @@ export const recievedTask = {
   validateData() {
     //Get data from URL
     const urlParams = new URLSearchParams(window.location.search);
-    let taskParam, userNameParam, decodedTask, taskObj;
 
     //Validate data
-    try {
-      taskParam = urlParams.get('task');
-      userNameParam = urlParams.get('user');
+    const taskParam = urlParams.get('task');
+    const userNameParam = urlParams.get('user');
+    let decodedTask, taskObj;
 
+    if (!taskParam || !userNameParam) {
+      navigateTo('/');
+      popup.showError("The shared link isn't valid.");
+      return;
+    }
+
+    try {
       decodedTask = decodeURIComponent(taskParam);
       taskObj = JSON.parse(decodedTask);
-
     } catch (err) {
+      navigateTo('/');
       popup.showError("The shared link isn't valid.");
       return;
     }
 
     if (!validateJsonStructure(taskObj)) {
+      navigateTo('/');
       popup.showError("The shared task structure does not match the expected format.");
       return;
     }

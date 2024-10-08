@@ -13,6 +13,7 @@ import { loadProfile} from "./profile/profile.js"
 import { header } from "./header.js";
 import { homeHeader } from "./home/homeHeader.js"
 import { navbar } from "./navbar.js";
+import { scroll } from "./utils/shortcut.js"
 
 const loading = document.querySelector('.loading');
 const root = document.querySelector('#root');
@@ -83,9 +84,7 @@ export function navigateTo(pathname) {
   routes.lastPathname = location.pathname;
   const route = routes[pathname] || routes['/'];
 
-  if (pathname !== '/share') {
-    history.pushState(null, null,  pathname);
-  }
+  history.pushState(null, null,  pathname);
 
   handleRouteCng(pathname, route.title, route.heading);
   loadContent(route);
@@ -136,4 +135,5 @@ function handleRouteCng(pathname, title, heading) {
   }
 
   navbar.selectPage(pathname);
+  scroll.enable();
 }

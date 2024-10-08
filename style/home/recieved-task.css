@@ -89,8 +89,9 @@
   overflow-y: auto;
 }
 
-.recieved-body .user-nm span{
+.recieved-body .user-nm span {
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 .recieved-body .task {

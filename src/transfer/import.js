@@ -134,10 +134,10 @@ export const importTask = {
 
     try {
       const blob = await clipboardItems[0].getType('text/plain');
-      const text = await blob.text();
+      const link = await blob.text();
 
-      if (text.includes(`${location.origin}/share?`)) {
-        window.location.href = text;
+      if (link.includes(`${location.origin}/share?`)) {
+        window.location.href = link;
       } else {
         popup.showError('There are no valid link on the clipboard.');
         return;
