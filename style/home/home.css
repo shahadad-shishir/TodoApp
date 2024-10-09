@@ -357,13 +357,13 @@ main .categories {
   filter: blur(2px);
 }
 
-.task.done .check-icon {
+.task .check-icon {
   margin-right: 20px;
   display: flex;
   align-items: center;
 }
 
-.done .check-icon i {
+.task .check-icon i {
   font-size: 30px;
   background-color: rgba(221, 221, 221, 0.616);
   padding: 18px 20px;
@@ -372,6 +372,7 @@ main .categories {
 
 .task.done {
   border-left: 8px solid rgba(0, 255, 30, 0.89);
+  filter: brightness(70%);
 }
 
 .task.done .top-left h3, .task.done .bottom-area p, .task.done .deadline{
@@ -969,12 +970,12 @@ span.highlighted-text {
     font-size: 12px;
     margin-right: 2px;
   }
-  .done .check-icon i {
+  .task .check-icon i {
     font-size: 16px;
     padding: 18px 17px;
     border-radius: 14px;
   }
-  .task.done .check-icon {
+  .task .check-icon {
     margin-right: 12px;
   }
   .task {

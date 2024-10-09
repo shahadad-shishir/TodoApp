@@ -208,6 +208,13 @@ body {
   body {
     font-weight: 500;
   }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 7px;
+  }
 }
 
 @media only screen and (min-width: 501px) {

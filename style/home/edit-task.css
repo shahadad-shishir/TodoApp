@@ -48,13 +48,13 @@
 .date-time, .name, .description {
   width: 100%;
   position: relative;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-brdr);
   padding: 16px 10px;
   border-radius: 10px;
 }
 
 .date-time:hover, .name:hover, .description:hover {
-  border: 1px solid rgb(34, 34, 34);
+  border: 1px solid var(--text);
 }
 
 .form input, .form textarea{
@@ -99,7 +99,7 @@ span.nm-count, span.des-count {
 }
 
 #ctgry-selector:hover {
-  border-color: rgb(34, 34, 34);
+  border-color: var(--text);
 }
 
 #ctgry-selector .select {
@@ -115,7 +115,7 @@ span.nm-count, span.des-count {
 }
 
 #color-picker:hover {
-  border-color: rgb(34, 34, 34);
+  border-color: var(--text);
 }
 
 .edit-task .fotter {
