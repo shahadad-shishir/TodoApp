@@ -1,6 +1,8 @@
 #sidebar {
   width: 330px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: var(--bg);
   border-radius: 24px 0 0;
   position: fixed;
@@ -47,6 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
   margin: 0px 18px 8px;
 }
 
@@ -151,6 +154,10 @@
 
 .sidebar-logout {
   color: red!important;
+}
+
+.sidebar-space {
+  flex: 1;
 }
 
 .sidebar-settings {
