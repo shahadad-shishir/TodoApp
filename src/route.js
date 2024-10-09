@@ -82,9 +82,12 @@ export function navigateTo(pathname) {
   loading.style.display = 'flex';
   root.style.opacity = 0;
   routes.lastPathname = location.pathname;
-  const route = routes[pathname] || routes['/'];
 
-  if (location.pathname !== '/share') {
+  if (!routes[pathname]) pathname = '/';
+
+  const route = routes[pathname];
+
+  if (location.pathname !== '/share' && pathname !== location.pathname) {
     history.pushState(null, null,  pathname);
   }
 
