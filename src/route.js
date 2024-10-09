@@ -84,7 +84,9 @@ export function navigateTo(pathname) {
   routes.lastPathname = location.pathname;
   const route = routes[pathname] || routes['/'];
 
-  history.pushState(null, null,  pathname);
+  if (location.pathname !== '/share') {
+    history.pushState(null, null,  pathname);
+  }
 
   handleRouteCng(pathname, route.title, route.heading);
   loadContent(route);
