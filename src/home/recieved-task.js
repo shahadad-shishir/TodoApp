@@ -53,6 +53,8 @@ export const recievedTask = {
     this.el.classList.remove('active');
     this.body.querySelector('.task').remove();
     scroll.enable();
+
+    history.replaceState(null, '',  '/');
     navigateTo('/');
   },
 
@@ -85,7 +87,9 @@ export const recievedTask = {
     let decodedTask, taskObj;
 
     if (!taskParam || !userNameParam) {
+      history.replaceState(null, '',  '/');
       navigateTo('/');
+      
       popup.showError("The shared link isn't valid.");
       return;
     }
@@ -94,13 +98,17 @@ export const recievedTask = {
       decodedTask = decodeURIComponent(taskParam);
       taskObj = JSON.parse(decodedTask);
     } catch (err) {
+      history.replaceState(null, '',  '/');
       navigateTo('/');
+
       popup.showError("The shared link isn't valid.");
       return;
     }
 
     if (!validateJsonStructure(taskObj)) {
+      history.replaceState(null, '',  '/');
       navigateTo('/');
+
       popup.showError("The shared task structure does not match the expected format.");
       return;
     }
