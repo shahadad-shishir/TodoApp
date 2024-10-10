@@ -4,6 +4,7 @@ import { sidebar } from "../sidebar.js";
 import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
 import { exportTask } from "./export.js";
+import { navigateTo } from "../route.js";
 
 export const importTask = {
   init() {
@@ -137,7 +138,10 @@ export const importTask = {
       const link = await blob.text();
 
       if (link.includes(`${location.origin}/share?`)) {
-        window.location.href = link;
+        const url = new URL(link);
+        const search = url.search;
+        history.pushState(null, null, `share${search}`);
+        navigateTo('/');
       } else {
         popup.showError('There are no valid link on the clipboard.');
         return;

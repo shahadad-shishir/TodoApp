@@ -8,7 +8,7 @@ import { editTask } from "./edit-task.js";
 import { shareTask } from "./share-task.js";
 import { popup } from "../utils/popup.js";
 import { dltCnfrm } from "./delete-task.js";
-import { navigateTo, routes } from "../route.js";
+import { navigateTo } from "../route.js";
 import { ripple } from "../ripple-effect.js";
 
 export const menubar = {
@@ -64,7 +64,7 @@ export const menubar = {
 
     this.detailsBtn.addEventListener('click', () => {
       this.hideMenu();
-      routes['/task'].data.taskId = this.taskId;
+      history.pushState(null, null, `/task?id=${this.taskId}`);
       navigateTo('/task');
     });
 

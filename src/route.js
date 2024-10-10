@@ -14,6 +14,7 @@ import { header } from "./header.js";
 import { homeHeader } from "./home/homeHeader.js"
 import { navbar } from "./navbar.js";
 import { scroll } from "./utils/shortcut.js"
+import { popup } from "./utils/popup.js"
 
 const loading = document.querySelector('.loading');
 const root = document.querySelector('#root');
@@ -24,13 +25,6 @@ export const routes = {
     css: './style/home/home.css',
     loadJs: loadHome,
     title: 'Todo App',
-  },
-
-  '/share': {
-    html: homeHtml,
-    css: './style/home/home.css',
-    loadJs: loadHome,
-    title: 'Todo App - Recieved Task',
   },
 
   '/add-task': {
@@ -53,7 +47,6 @@ export const routes = {
     html: taskHtml,
     css: 'style/task/task.css',
     loadJs: loadTask,
-    data: {},
     heading: 'Task Details',
     title: 'Todo App - Task',
   },
@@ -74,28 +67,28 @@ export const routes = {
     title: 'Todo App - User Profile',
   },
 
-  lastPathname: undefined,
+  lastPathname: '/',
 }
 
 export function navigateTo(pathname) {
-  root.style.visibility = 'hidden';
-  loading.style.display = 'flex';
-  root.style.opacity = 0;
-  routes.lastPathname = location.pathname;
-
   if (!routes[pathname]) pathname = '/';
 
-  const route = routes[pathname];
-
-  if (location.pathname !== '/share' && pathname !== location.pathname) {
+  if (pathname !== location.pathname  && location.pathname !== '/share') {
+    routes.lastPathname = location.pathname;
     history.pushState(null, null,  pathname);
   }
+
+  const route = routes[pathname];
 
   handleRouteCng(pathname, route.title, route.heading);
   loadContent(route);
 }
 
 async function loadContent(route) {
+  root.style.visibility = 'hidden';
+  loading.style.display = 'flex';
+  root.style.opacity = 0;
+
   try {
     await loadCSS(route.css);
     root.innerHTML = route.html;
@@ -105,6 +98,7 @@ async function loadContent(route) {
     route.loadJs();  
   } catch (error) {
     console.error('Error during initialization:', error);
+    popup.showError('Error during loading content.');
   }
 }
 
@@ -114,6 +108,7 @@ function loadCSS(url) {
       if (oldLink) {
         oldLink.parentNode.removeChild(oldLink);
       }
+      
       const link = document.createElement('link');
       link.id = 'style';
       link.rel = 'stylesheet';
@@ -127,7 +122,7 @@ function loadCSS(url) {
 function handleRouteCng(pathname, title, heading) {
   const titleEl = document.querySelector('title');
 
-  if (pathname !== '/' && pathname !== '/index.html' && pathname !== '/share') {
+  if (pathname !== '/' && pathname !== '/index.html') {
     titleEl.innerText = title;
     header.show();
     header.cngHeading(heading);

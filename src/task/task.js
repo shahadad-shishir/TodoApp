@@ -17,7 +17,7 @@ export function loadTask() {
   renderTaskData();
 
   function renderTaskData() {
-  const taskId = routes['/task'].data.taskId;
+  const taskId = new URLSearchParams(location.search).get('id');
   let {name, emoji, id, description, color, createDate, deadline, done, pinned, category} = taskData.getTask(taskId);
 
   heading.innerText = name;

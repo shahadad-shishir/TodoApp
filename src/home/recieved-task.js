@@ -4,9 +4,7 @@ import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
 import { createATask } from "./task.js";
 import { dateTime } from "../utils/dateTime.js";
-import { navigateTo } from "../route.js";
-import { sidebar } from "../sidebar.js";
-import { navbar } from "../navbar.js";
+import { menubar } from "./menubar.js";
 
 export const recievedTask = {
   taskData: undefined,
@@ -41,6 +39,7 @@ export const recievedTask = {
   },
 
   open(taskData, userName) {
+    document.querySelector('title').innerText = 'Todo App - Recieved Task';
     this.renderData(taskData, userName);
 
     this.el.classList.add('active');
@@ -54,8 +53,8 @@ export const recievedTask = {
     this.body.querySelector('.task').remove();
     scroll.enable();
 
+    document.querySelector('title').innerText = 'Todo App';
     history.replaceState(null, '',  '/');
-    navigateTo('/');
   },
 
   renderData(taskData, userName) {
@@ -88,7 +87,6 @@ export const recievedTask = {
 
     if (!taskParam || !userNameParam) {
       history.replaceState(null, '',  '/');
-      navigateTo('/');
       
       popup.showError("The shared link isn't valid.");
       return;
@@ -99,7 +97,6 @@ export const recievedTask = {
       taskObj = JSON.parse(decodedTask);
     } catch (err) {
       history.replaceState(null, '',  '/');
-      navigateTo('/');
 
       popup.showError("The shared link isn't valid.");
       return;
@@ -107,7 +104,6 @@ export const recievedTask = {
 
     if (!validateJsonStructure(taskObj)) {
       history.replaceState(null, '',  '/');
-      navigateTo('/');
 
       popup.showError("The shared task structure does not match the expected format.");
       return;
@@ -163,9 +159,8 @@ export const recievedTask = {
     taskData.add(emoji, name, description, deadline, category, color, id);
     taskData.makeShared(id, this.userName);
 
-    sidebar.showNotDoneTask();
-    navbar.showNotDoneTask();
     this.close();
+    menubar.renderChanges();
 
     const msg = `Added shared task - ${name}`;
     popup.showSuccess(msg);

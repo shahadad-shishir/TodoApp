@@ -13,10 +13,9 @@ export const header = {
     this.renderUserContent();
 
     this.backBtn.addEventListener('click', () => {
-      if (routes.lastPathname !== location.pathname) {
-        navigateTo(routes.lastPathname);
-      }
+      navigateTo(routes.lastPathname);
     });
+
     this.userIcon.addEventListener('click', () => {
       sidebar.open();
     });
