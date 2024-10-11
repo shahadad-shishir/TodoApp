@@ -1,17 +1,10 @@
-import { homeHtml } from "./home/home-html.js"
-import { addTaskHtml } from "./add-task/add-task-html.js"
-import { categoriesHtml } from "./categories/categories-html.js"
-import { taskHtml } from "./task/task-html.js"
-import { transferHtml } from "./transfer/transfer-html.js"
-import { profileHtml } from "./profile/profile-html.js"
-import { loadHome } from "./home/home.js"
-import { loadAddTask } from "./add-task/add-task.js"
-import { loadCategories } from "./categories/categories.js"
-import { loadTask} from "./task/task.js"
-import { loadTransfer} from "./transfer/transfer.js"
-import { loadProfile} from "./profile/profile.js"
+import { home } from "./home/home.js"
+import { addTask } from "./add-task/add-task.js"
+import { categories } from "./categories/categories.js"
+import { task} from "./task/task.js"
+import { transfer} from "./transfer/transfer.js"
+import { profile} from "./profile/profile.js"
 import { header } from "./header.js";
-import { homeHeader } from "./home/homeHeader.js"
 import { navbar } from "./navbar.js";
 import { scroll } from "./utils/shortcut.js"
 import { popup } from "./utils/popup.js"
@@ -21,48 +14,48 @@ const root = document.querySelector('#root');
 
 export const routes = {
   '/': {
-    html: homeHtml,
+    html: home.template,
     css: './style/home/home.css',
-    loadJs: loadHome,
+    initJs: home.init,
     title: 'Todo App',
   },
 
   '/add-task': {
-    html: addTaskHtml,
+    html: addTask.template,
     css: './style/add-task/add-task.css',
-    loadJs: loadAddTask,
+    initJs: addTask.init,
     heading: 'Add New Task',
     title: 'Todo App  - Add Task'
   },
 
   '/categories': {
-    html: categoriesHtml,
+    html: categories.template,
     css: 'style/categories/categories.css',
-    loadJs: loadCategories,
+    initJs: categories.init,
     heading: 'Categories',
     title: 'Todo App - Categories',
   },
 
   '/task': {
-    html: taskHtml,
+    html: task.template,
     css: 'style/task/task.css',
-    loadJs: loadTask,
+    initJs: task.init,
     heading: 'Task Details',
     title: 'Todo App - Task',
   },
 
   '/transfer': {
-    html: transferHtml,
+    html: transfer.template,
     css: 'style/transfer/transfer.css',
-    loadJs: loadTransfer,
+    initJs: transfer.init,
     heading: 'Transfer Tasks',
     title: 'Todo App - Transfer Tasks',
   },
 
   '/profile': {
-    html: profileHtml,
+    html: profile.template,
     css: 'style/profile/profile.css',
-    loadJs: loadProfile,
+    initJs: profile.init,
     heading: 'User Profile',
     title: 'Todo App - User Profile',
   },
@@ -95,10 +88,10 @@ async function loadContent(route) {
     loading.style.display = 'none';
     root.style.visibility = 'visible';
     root.style.opacity = 1;
-    route.loadJs();  
+    route.initJs();  
   } catch (error) {
     console.error('Error during initialization:', error);
-    popup.showError('Error during loading content.');
+    popup.error('Error during loading content.');
   }
 }
 
@@ -127,7 +120,7 @@ function handleRouteCng(pathname, title, heading) {
     header.show();
     header.cngHeading(heading);
     navbar.showNotDoneTask();
-    homeHeader.clearInterval();
+    home.header.clearInterval();
   } else {
     titleEl.innerText = title;
     header.hide();

@@ -1,7 +1,7 @@
 import { taskData } from "../data.js";
-import { mngCategoryFilter } from "./category-filter.js";
 import { mngAnim } from "../utils/shortcut.js";
-import { renderTask } from "./task.js";
+import { ctgryFilter } from "./category-filter.js";
+import { tasks } from "./tasks.js";
 
 export const search = {
   init() {
@@ -11,17 +11,17 @@ export const search = {
     this.srcRsltCount = document.querySelector('.search-result .count');
     this.srcRsltEmpty = document.querySelector('.search-result .empty');
 
-    this.searchInput.addEventListener('keyup', e => {
+    this.searchInput.addEventListener('keyup', () => {
       const searchTxt = this.searchInput.value;
       this.searchBtn.style.display = 'flex';
       this.mngHighliting(searchTxt);
-      mngCategoryFilter();
+      ctgryFilter.handle();
     });
 
     this.searchBtn.addEventListener('click', () => {
-      renderTask();
-      mngCategoryFilter();
-      this.dismiss();
+      tasks.render();
+      ctgryFilter.handle();
+      this.clear();
     });
   },
 
@@ -31,7 +31,7 @@ export const search = {
     if (searchTxt === '') {
       this.searchResult.style.display = 'none';
       this.searchBtn.style.display = 'none';
-      renderTask();
+      tasks.render();
       return;
     }
 
@@ -110,7 +110,7 @@ export const search = {
     return highlightedTxt;
   },
 
-  dismiss() {
+  clear() {
     if (this.searchResult.style.display === 'flex') {
       this.searchInput.value = '';
       this.searchResult.style.display = 'none';

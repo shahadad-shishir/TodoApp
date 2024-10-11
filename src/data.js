@@ -135,23 +135,17 @@ export const taskData = {
     this.updateStorage();
   },
 
-  markDone(taskId) {
-    this.items[this.getIndex(taskId)].done = true;
+  toggleDone(taskId) {
+    this.items[this.getIndex(taskId)].done = 
+    !this.items[this.getIndex(taskId)].done;
+
     this.updateStorage();
   },
 
-  markNotDone(taskId) {
-    this.items[this.getIndex(taskId)].done = false;
-    this.updateStorage();
-  },
+  togglePin(taskId) {
+    this.items[this.getIndex(taskId)].pinned = 
+    !this.items[this.getIndex(taskId)].pinned;
 
-  makePinned(taskId) {
-    this.items[this.getIndex(taskId)].pinned = true;
-    this.updateStorage();
-  },
-
-  makeNotPinned(taskId) {
-    this.items[this.getIndex(taskId)].pinned = false;
     this.updateStorage();
   },
 

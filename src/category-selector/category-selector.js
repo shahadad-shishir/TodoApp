@@ -47,7 +47,7 @@ export class CategorySelector {
     this.bg.style.display = 'none';
   }
 
-  renderCategories(preSelected) {
+  render(preSelected) {
     this.selectUl.innerHTML = '';
     this.selectedUl.innerHTML = '';
 

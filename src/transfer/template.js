@@ -1,4 +1,4 @@
-export const transferHtml = 
+export const template = 
 `
   <main class="main">
     <div class="export">

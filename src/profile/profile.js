@@ -1,3 +1,4 @@
+import { template } from "./template.js";
 import { theme } from "./theme.js";
 import { scroll } from "../utils/shortcut.js";
 import { userData } from "../data.js";
@@ -6,7 +7,7 @@ import { logout } from "../logout.js";
 import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
 
-export function loadProfile() {
+function initProfile() {
   const cart = document.querySelector('.cart');
   const profileEl = cart.querySelector('.profile');
   const register = cart.querySelector('.register span');
@@ -56,7 +57,7 @@ export function loadProfile() {
           ripple.add(this.saveBtn, e);
           this.cngProfile();
           this.hide();
-          popup.showSuccess('Changed profile picture');
+          popup.success('Changed profile picture');
         } else {
           return;
         }
@@ -68,7 +69,7 @@ export function loadProfile() {
         this.input.value = '';
         this.hide();
         this.handleProfilePicCng();
-        popup.showSuccess('Deleted profile picture');
+        popup.success('Deleted profile picture');
       });
     },
 
@@ -140,7 +141,7 @@ export function loadProfile() {
           this.mngNmCount();
           handleUserNmCng();
           const msg = `Changed user name to <b>${name}</b>`;
-          popup.showSuccess(msg);
+          popup.success(msg);
         }
       });
 
@@ -231,3 +232,8 @@ export function getUserName() {
   name = name || 'User';
   return name;
 }
+
+export const profile = {
+  template: template,
+  init: initProfile,
+};

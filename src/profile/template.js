@@ -1,4 +1,4 @@
-export const profileHtml = 
+export const template = 
 `
   <main class="main">
     <div class="cart">

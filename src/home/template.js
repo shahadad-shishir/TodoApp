@@ -2,7 +2,7 @@ import { emojiPickerHtml } from "../emoji-picker/emoji-picker-html.js";
 import { clrPickerHtml } from "../color-picker/clr-picker-html.js";
 import { ctgrySelectorHtml } from "../category-selector/ctgry-selector-html.js";
 
-export const homeHtml =
+export const template =
   `
   <div class="container">
     <header class="header">

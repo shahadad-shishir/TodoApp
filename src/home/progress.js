@@ -2,7 +2,7 @@ import { taskData } from "../data.js";
 
 let circle, percentEl, complete, completeMsg;
 
-export function initProgress() {
+function initProgress() {
   circle = document.querySelector('.progress .draw-circle');
   percentEl = document.querySelector('.circle-container .number');
   complete = document.querySelector('.progress .details h3');
@@ -11,7 +11,7 @@ export function initProgress() {
   handleProgress();
 }
 
-export function handleProgress() {
+function handleProgress() {
   const totalTask = taskData.items.length;
   let doneTask = 0;
   taskData.items.forEach(task => {
@@ -57,3 +57,8 @@ function mngText(totalTask, doneTask, percent) {
     completeMsg.innerText = "Congratulations! All tasks completed!";
   }
 }
+
+export const progress = {
+  init: initProgress,
+  handle: handleProgress,
+};

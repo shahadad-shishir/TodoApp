@@ -1,4 +1,4 @@
-export const taskHtml = 
+export const template = 
 `
   <main class="main">
     <div class="card">

@@ -73,6 +73,6 @@ export const logout = {
     navigateTo(location.pathname);
 
     const msg = 'You have been successfully logged out.';
-    popup.showSuccess(msg);
+    popup.success(msg);
   }
 };

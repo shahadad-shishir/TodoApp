@@ -81,9 +81,9 @@ export const editCtgry = {
     this.nmCount.style.display = 'block';
     this.nmCount.innerHTML = `${this.nmInput.value.length}/20`;
 
-    this.colorPicker.selectThisClr(color);
+    this.colorPicker.select(color);
     if (emoji) {
-      this.emojiPicker.selectEmoji(emoji);
+      this.emojiPicker.select(emoji);
     } else {
       this.emojiPicker.removeEmoji();
     }
@@ -120,7 +120,7 @@ export const editCtgry = {
     this.hide();
     oldCategories.render();
     const msg = `Updated category - <b>${name}</b>`;
-    popup.showSuccess(msg)
+    popup.success(msg)
   },
 
   updateSaveBtnState() {

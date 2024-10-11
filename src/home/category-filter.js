@@ -2,13 +2,13 @@ import { taskData, ctgryData } from "../data.js";
 
 let categories, srcRsltCount;
 
-export function initCtgryFilter() {
+function initCtgryFilter() {
   categories = document.querySelector('.main .categories');
   srcRsltCount = document.querySelector('.search-result .count');
-  mngCategoryFilter();
+  handleCategoryFilter();
 }
 
-export function mngCategoryFilter() {
+function handleCategoryFilter() {
   let allCategories = [];
 
   const addCategories = task => {
@@ -130,3 +130,8 @@ function mngAnim(element, anim) {
     clearTimeout(timeoutId);
   }, 1000)
 }
+
+export const ctgryFilter = {
+  init: initCtgryFilter,
+  handle: handleCategoryFilter,
+};

@@ -1,9 +1,6 @@
 import { taskData } from "../data.js";
+import { home } from "./home.js";
 import { scroll, mngAnim } from "../utils/shortcut.js";
-import { mngCategoryFilter } from "./category-filter.js";
-import { handleProgress } from "./progress.js";
-import { search } from "./search.js";
-import { renderTask } from "./task.js";
 import { editTask } from "./edit-task.js";
 import { shareTask } from "./share-task.js";
 import { popup } from "../utils/popup.js";
@@ -45,20 +42,12 @@ export const menubar = {
     });
 
     this.doneBtn.addEventListener('click', () => {
-      if (!taskData.getTask(this.taskId).done) {
-        taskData.markDone(this.taskId);
-      } else {
-        taskData.markNotDone(this.taskId);
-      }
+      taskData.toggleDone(this.taskId);
       this.renderChanges();
     });
 
     this.pinBtn.addEventListener('click', () => {
-      if (!taskData.getTask(this.taskId).pinned) {
-        taskData.makePinned(this.taskId);
-      } else {
-        taskData.makeNotPinned(this.taskId);
-      }
+      taskData.togglePin(this.taskId);
       this.renderChanges();
     });
 
@@ -82,7 +71,7 @@ export const menubar = {
       taskData.dublicate(this.taskId);
       this.renderChanges();
       const msg = `Dublicated task - <b>${taskData.getTask(this.taskId).name}</b>`;
-      popup.showSuccess(msg);
+      popup.success(msg);
     });
 
     this.deleteBtn.addEventListener('click', () => {
@@ -288,14 +277,11 @@ export const menubar = {
     taskData.delete(this.taskId);
     this.renderChanges();
     const msg = `Deleted Task - <b>${name}</b>`;
-    popup.showSuccess(msg);
+    popup.success(msg);
   },
 
   renderChanges() {
     this.hideMenu();
-    renderTask();
-    handleProgress();
-    mngCategoryFilter();
-    search.dismiss();
+    home.render();
   }
 };

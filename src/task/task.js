@@ -1,8 +1,8 @@
 import { taskData, ctgryData } from "../data.js";
+import { template } from "./template.js";
 import { dateTime } from "../utils/dateTime.js";
-import { routes } from "../route.js";
 
-export function loadTask() {
+function initTask() {
   const heading = document.querySelector('.heading span');
   const emojiEl = document.querySelector('#emoji td');
   const idEl = document.querySelector('#id td');
@@ -84,11 +84,6 @@ export function loadTask() {
   addCategory();
   }
 
-  function getIdFromUrl(value) {
-  const queryParams = new URLSearchParams(window.location.search);
-  return queryParams.get(value);
-  }
-
   function formateDate(createDate) {
   //3/13/2024, 11:37:17 AM
   createDate = new Date(createDate);
@@ -96,3 +91,8 @@ export function loadTask() {
   return `${date}, ${time}`;
   }
 }
+
+export const task = {
+  init: initTask,
+  template: template,
+};

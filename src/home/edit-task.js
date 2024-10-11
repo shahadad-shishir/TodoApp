@@ -3,9 +3,9 @@ import { arraysEqual, scroll } from "../utils/shortcut.js";
 import { CategorySelector } from "../category-selector/category-selector.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
-import { taskContainer, renderTask } from "./task.js";
+import { tasks } from "./tasks.js";
 import { search } from "./search.js";
-import { mngCategoryFilter } from "./category-filter.js";
+import { ctgryFilter } from "./category-filter.js";
 import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
 
@@ -122,11 +122,11 @@ export const editTask = {
     }
     this.dateInput.value = deadline;
 
-    this.colorPicker.selectThisClr(color);
-    this.ctgrySelector.renderCategories(category);
+    this.colorPicker.select(color);
+    this.ctgrySelector.render(category);
 
     if (emoji) {
-      this.emojiPicker.selectEmoji(emoji);
+      this.emojiPicker.select(emoji);
     } else {
       this.emojiPicker.removeEmoji();
     }
@@ -136,11 +136,11 @@ export const editTask = {
     const {name, emoji, description, color, deadline, category} = this.getNewData();
     taskData.update(this.taskId, emoji, name, description, deadline, category, color);
     this.hideEditTask();
-    renderTask();
-    mngCategoryFilter();
-    search.dismiss();
+    tasks.render();
+    ctgryFilter.handle();
+    search.clear();
     const msg = `Task <b>${name}</b> updated.`;
-    popup.showSuccess(msg);
+    popup.success(msg);
   },
 
   getNewData() {
@@ -218,7 +218,7 @@ export const editTask = {
   },
 
   resize() {
-    const width = taskContainer.offsetWidth;
+    const width = tasks.container.offsetWidth;
     this.el.style.width = (width - 64) + 'px';
   },
 };

@@ -5,10 +5,9 @@ import { navbar } from "../navbar.js";
 import { ripple } from "../ripple-effect.js";
 import { makeEl } from "../utils/shortcut.js";
 
-export let taskContainer;
-let emptyTask, progress, searchBar, addBtnIcon, ctgryFilter, navAddBtn;
+let taskContainer, emptyTask, progress, searchBar, addBtnIcon, ctgryFilter;
 
-export function initTask() {
+function initTasks() {
   taskContainer = document.querySelector('.tasks-container');
   emptyTask = document.querySelector('.empty-task');
   progress = document.querySelector('.main .progress');
@@ -16,10 +15,12 @@ export function initTask() {
   addBtnIcon = document.querySelector('.add-btn .icon');
   ctgryFilter = document.querySelector('.main .categories');
 
-  renderTask();
+  tasks.container = taskContainer;
+
+  renderTasks();
 }
 
-export function renderTask() {
+function renderTasks() {
   taskContainer.innerHTML = '';
 
   if (taskData.items.length == 0) {
@@ -59,7 +60,7 @@ function mngEmptyTask(condition) {
   }
 }
 
-export function createATask(taskData) {
+function createATask(taskData) {
   const {id, name, description, deadline, emoji, color, category, done, pinned, createDate, sharedBy} = taskData;
 
   const taskDiv = makeEl('div', ['task']);
@@ -236,3 +237,10 @@ function formatCreateTime(createDate) {
 
   return formatedDate;
 }
+
+export const tasks = {
+  container: taskContainer,
+  init: initTasks,
+  render: renderTasks,
+  create: createATask,
+};

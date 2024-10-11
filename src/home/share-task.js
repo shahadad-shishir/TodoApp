@@ -126,9 +126,9 @@ export const shareTask = {
   copyLink() {
     const link = this.linkInput.value;
     navigator.clipboard.writeText(link).then(() => {
-      popup.showSuccess('Copied link to clipboard.');
+      popup.success('Copied link to clipboard.');
     }).catch(() => {
-      popup.showError('Failed to copy link');
+      popup.error('Failed to copy link');
     });
   },
   
@@ -152,7 +152,7 @@ export const shareTask = {
 
   shareLink() {
     if (!navigator.share) {
-      popup.showError('Web Share API is not supported in your browser.');
+      popup.error('Web Share API is not supported in your browser.');
       return;
     }
 

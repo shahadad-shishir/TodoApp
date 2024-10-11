@@ -1,7 +1,7 @@
 import { emojiPickerHtml } from '../emoji-picker/emoji-picker-html.js';
 import { clrPickerHtml } from '../color-picker/clr-picker-html.js'
 
-export const categoriesHtml = 
+export const template = 
 `
   <main class="main">
     <div class="old-categories"></div>

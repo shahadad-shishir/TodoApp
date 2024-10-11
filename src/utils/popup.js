@@ -9,17 +9,17 @@ export const popup = {
 
   },
 
-  showSuccess(msg) {
-    const template = this.createOne(msg, 'circle-check', 'var(--secondary)');
+  success(msg) {
+    const template = this.create(msg, 'circle-check', 'var(--secondary)');
     this.render(template);
   },
 
-  showError(msg) {
-    const template = this.createOne(msg, 'circle-xmark', 'rgb(255, 49, 49)', 'rgb(255, 49, 49)');
+  error(msg) {
+    const template = this.create(msg, 'circle-xmark', 'rgb(255, 49, 49)', 'rgb(255, 49, 49)');
     this.render(template);
   },
 
-  createOne(text, icon, mainClr, txtClr, bgClr) {
+  create(text, icon, mainClr, txtClr, bgClr) {
     const msgArea = document.createElement('div');
     msgArea.classList.add('msg-area');
     msgArea.style.border = `2px solid ${mainClr}`;

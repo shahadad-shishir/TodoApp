@@ -23,7 +23,7 @@ export class ColorPicker {
     this.renderColors();
 
     this.clrInput.addEventListener('input', () => {
-      this.selectThisClr(this.clrInput.value);
+      this.select(this.clrInput.value);
     });
 
     this.randomClrBtn.addEventListener('click', () => {
@@ -35,7 +35,7 @@ export class ColorPicker {
         }
         return color;
       };
-      this.selectThisClr(randomClr());
+      this.select(randomClr());
     });
 
     this.selectedClr.addEventListener('click', () => {
@@ -57,7 +57,7 @@ export class ColorPicker {
       this.addShadowOnHover(btn, color);
 
       btn.addEventListener('click', () => {
-        this.selectThisClr(color);
+        this.select(color);
       });
     });
   }
@@ -71,7 +71,7 @@ export class ColorPicker {
     });
   }
 
-  selectThisClr(color) {
+  select(color) {
     const checkIcon = this.clrOptions.querySelector('i.fa-check');
     if (checkIcon) {
       checkIcon.remove();

@@ -51,6 +51,6 @@ export const dltCnfrm = {
     oldCategories.render();
 
     const msg = `Deleted category - <b>${nm}</b>`;
-    popup.showSuccess(msg);
+    popup.success(msg);
   }
 }

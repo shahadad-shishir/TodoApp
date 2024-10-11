@@ -2,9 +2,9 @@ import { taskData, ctgryData } from "../data.js";
 import { scroll } from "../utils/shortcut.js";
 import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
-import { createATask } from "./task.js";
+import { tasks } from "./tasks.js";
 import { dateTime } from "../utils/dateTime.js";
-import { menubar } from "./menubar.js";
+import { home } from "./home.js";
 
 export const recievedTask = {
   taskData: undefined,
@@ -62,7 +62,7 @@ export const recievedTask = {
 
     //Create a task to show as a sample
     const {createDate, deadline} = taskData;
-    const task = createATask(taskData);
+    const task = tasks.create(taskData);
 
     task.querySelector('.menu').remove();
     task.querySelector('.create-time').innerHTML = 
@@ -88,7 +88,7 @@ export const recievedTask = {
     if (!taskParam || !userNameParam) {
       history.replaceState(null, '',  '/');
       
-      popup.showError("The shared link isn't valid.");
+      popup.error("The shared link isn't valid.");
       return;
     }
 
@@ -98,14 +98,14 @@ export const recievedTask = {
     } catch (err) {
       history.replaceState(null, '',  '/');
 
-      popup.showError("The shared link isn't valid.");
+      popup.error("The shared link isn't valid.");
       return;
     }
 
     if (!validateJsonStructure(taskObj)) {
       history.replaceState(null, '',  '/');
 
-      popup.showError("The shared task structure does not match the expected format.");
+      popup.error("The shared task structure does not match the expected format.");
       return;
     }
 
@@ -160,9 +160,9 @@ export const recievedTask = {
     taskData.makeShared(id, this.userName);
 
     this.close();
-    menubar.renderChanges();
+    home.render();
 
     const msg = `Added shared task - ${name}`;
-    popup.showSuccess(msg);
+    popup.success(msg);
   }
 };

@@ -1,3 +1,4 @@
+import { template } from "./template.js";
 import { ctgryData } from "../data.js";
 import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
@@ -5,7 +6,7 @@ import { oldCategories } from "./old-categories.js";
 import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
 
-export function loadCategories() {
+function initCategories() {
   const nmEl = document.querySelector('.new-ctgry .category-name');
   const nmLabel = document.querySelector('.new-ctgry .label1');
   const nmInput = document.querySelector('.new-ctgry #name-input');
@@ -18,7 +19,7 @@ export function loadCategories() {
     formEmojiIcon.style.backgroundColor = clr;
   }
   const colorPicker = new ColorPicker('#color-picker.CP1', handleClrCng);
-  colorPicker.selectThisClr('#b624ff');
+  colorPicker.select('#b624ff');
   oldCategories.init();
 
   createBtn.addEventListener('click', e => {
@@ -32,7 +33,7 @@ export function loadCategories() {
     const nm = nmInput.value;
 
     if (nm === '') {
-      popup.showError('Category name is required.');
+      popup.error('Category name is required.');
       return;
     }
 
@@ -42,7 +43,7 @@ export function loadCategories() {
     oldCategories.render();
     emojiPicker.removeEmoji();
     emojiPicker.close();
-    colorPicker.selectThisClr('#7e30e1');
+    colorPicker.select('#7e30e1');
     nmInput.value = '';
     if (nmCount.style.display === 'block') {
       nmCount.style.display = 'none';
@@ -51,7 +52,7 @@ export function loadCategories() {
     }
 
     const msg = `Added category - <b>${nm}</b>`;
-    popup.showSuccess(msg);
+    popup.success(msg);
   }
 
   nmInput.addEventListener('input', () => {
@@ -83,3 +84,8 @@ export function loadCategories() {
     }
   }
 }
+
+export const categories = {
+  template: template,
+  init: initCategories,
+};

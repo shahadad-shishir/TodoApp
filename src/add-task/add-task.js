@@ -1,3 +1,4 @@
+  import { template } from "./template.js";
   import { taskData } from "../data.js";
   import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
   import { CtgrySelectorWithTglScroll } from "../category-selector/category-selector.js";
@@ -6,7 +7,7 @@
   import { navigateTo } from "../route.js";
   import { ripple } from "../ripple-effect.js";
 
-  export function loadAddTask() {
+  function initAddTask() {
     const nameInput = document.querySelector('#name-input');
     const description = document.querySelector('#description');
     const dateInput = document.querySelector('#date-input');
@@ -22,11 +23,11 @@
   
     const emojiPicker = new EmojiPicker('#emoji-picker');
     const ctgrySelector = new CtgrySelectorWithTglScroll('#ctgry-selector');
-    ctgrySelector.renderCategories();
+    ctgrySelector.render();
     const colorPicker = new ColorPicker('#color-picker', (clr) => {
       formEmojiIcon.style.backgroundColor = clr;
     });
-    colorPicker.selectThisClr('#b624ff'); 
+    colorPicker.select('#b624ff'); 
 
     modifyCtgry.addEventListener('click', e => {
       ripple.add(modifyCtgry, e);
@@ -45,7 +46,7 @@
       const name = nameInput.value;
       if (name === '') {
         const msg = 'Task name is required.';
-        popup.showError(msg);
+        popup.error(msg);
         return;
       }
   
@@ -58,7 +59,7 @@
 
       navigateTo('/');
       const msg = `Added task <b>${name}</b>`;
-      popup.showSuccess(msg);
+      popup.success(msg);
     }
   
     nameInput.addEventListener('input', () => {
@@ -129,3 +130,8 @@
       }
     }
   }
+
+  export const addTask = {
+    template: template,
+    init: initAddTask,
+  };

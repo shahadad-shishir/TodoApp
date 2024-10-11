@@ -78,7 +78,7 @@ export const importTask = {
         
         if (!this.validateJsonStructure(data)) {
           const msg = 'JSON structure does not match the expected format.';
-          popup.showError(msg);
+          popup.error(msg);
           return;
         }
 
@@ -88,7 +88,7 @@ export const importTask = {
 
       reader.readAsText(file);
     } else {
-      popup.showError('Please choose a valid JSON file.');
+      popup.error('Please choose a valid JSON file.');
     }
   },
 
@@ -112,7 +112,7 @@ export const importTask = {
           data = JSON.parse(text);
         } catch {
           const msg = 'Clipboard text is not valid JSON.';
-          popup.showError(msg);
+          popup.error(msg);
           return;
         }
       }
@@ -122,7 +122,7 @@ export const importTask = {
 
     if (!this.validateJsonStructure(data)) {
       const msg = 'JSON structure does not match the expected format.';
-      popup.showError(msg);
+      popup.error(msg);
       return;
     }
 
@@ -143,11 +143,11 @@ export const importTask = {
         history.pushState(null, null, `share${search}`);
         navigateTo('/');
       } else {
-        popup.showError('There are no valid link on the clipboard.');
+        popup.error('There are no valid link on the clipboard.');
         return;
       }
     } catch (err) {
-      popup.showError('There are no valid link on the clipboard.');
+      popup.error('There are no valid link on the clipboard.');
       return;
     }
   },
@@ -200,6 +200,6 @@ export const importTask = {
     sidebar.showNotDoneTask();
     navbar.showNotDoneTask();
     navbar.removeAnim();
-    popup.showSuccess(msg);
+    popup.success(msg);
   },
 };

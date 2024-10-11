@@ -24,7 +24,7 @@ export class EmojiPicker {
 
     el.querySelector('emoji-picker').addEventListener('emoji-click', e => {
       const emojiCode = e.detail.unicode;
-      this.selectEmoji(emojiCode);
+      this.select(emojiCode);
       if (this.handleEmojiCng) this.handleEmojiCng();
     });
 
@@ -43,7 +43,7 @@ export class EmojiPicker {
     this.picker.classList.remove('active');
   }
 
-  selectEmoji(emoji) {
+  select(emoji) {
     this.emojiIcon.children[1].innerText = emoji;
     this.emojiIcon.children[1].style.opacity = 1;
     this.emojiIcon.children[0].style.display = 'none';
