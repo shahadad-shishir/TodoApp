@@ -6,10 +6,13 @@ export const scroll = {
     document.body.style.paddingRight = '0px';
     this.userIcon.style.paddingRight = '0px';
     this.navBar.style.marginRight = '0px';
-    document.body.style.overflowY = 'scroll';
+    document.body.style.overflowY = 'auto';
   },
   
   disable: function () {
+    const emptyTask = document.querySelector('.empty-task');
+    if (location.pathname === '/' &&emptyTask.style.display === 'block') return;
+
     if (window.innerWidth > 500) {
       document.body.style.paddingRight = '8px';
 
