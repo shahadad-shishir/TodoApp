@@ -118,7 +118,11 @@
   right: 13%;
 }
 
-.add-btn .icon{
+body.no-scroll .add-btn {
+  padding-right: 8px;
+}
+
+.add-btn .icon {
   height: 72px;
   width: 72px;
   background-color: var(--secondary);

@@ -19,7 +19,13 @@ body {
   letter-spacing: 0.02em;
   transition: filter 0.3s;
   overflow-x: hidden;
+  overflow-y: auto;
   transition: background-color 0.3s ease;
+}
+
+body.no-scroll {
+  padding-right: 8px;
+  overflow-y: hidden;
 }
 
 .loading {

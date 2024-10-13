@@ -1,30 +1,11 @@
 export const scroll = {
-  userIcon: document.querySelector('.user'),
-  navBar: document.querySelector('#navbar'),
-
   enable: function () {
-    document.body.style.paddingRight = '0px';
-    this.userIcon.style.paddingRight = '0px';
-    this.navBar.style.marginRight = '0px';
-    document.body.style.overflowY = 'auto';
+    document.body.classList.remove('no-scroll');
   },
   
   disable: function () {
-    const emptyTask = document.querySelector('.empty-task');
-    if (location.pathname === '/' &&emptyTask.style.display === 'block') return;
-
-    if (window.innerWidth > 500) {
-      document.body.style.paddingRight = '8px';
-
-      if (window.innerWidth < 1026) {
-        this.userIcon.style.paddingRight = '8px';
-      } else {
-        this.userIcon.style.paddingRight = '7px';
-      }
-      
-      this.navBar.style.marginRight = '8px';
-    }
-    document.body.style.overflowY = 'hidden';
+    if (document.body.scrollHeight <= window.innerHeight || window.innerWidth < 501) return;
+    document.body.classList.add('no-scroll');
   }
 };
 
