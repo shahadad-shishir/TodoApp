@@ -46,7 +46,7 @@ export const dltCnfrm = {
 
   dltCtgry() {
     const nm = ctgryData.getCtgry(this.ctgryId).name;
-    taskData.removeActgryFromTasks(this.ctgryId);
+    taskData.removeCtgryFromTasks(this.ctgryId);
     ctgryData.delete(this.ctgryId);
     oldCategories.render();
 

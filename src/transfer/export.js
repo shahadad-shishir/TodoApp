@@ -162,25 +162,10 @@ export const exportTask = {
   },
 
   makeExportableTask(id) {
-    const task = {};
-    const {done, pinned, name, emoji, color, description, createDate, deadline, category} = taskData.getTask(id);
-
-    // task.id = id;
-    task.done = done;
-    task.pinned = pinned;
-    task.name = name;
-    task.emoji = emoji;
-    task.color = color;
-    task.description = description;
-    task.createDate = createDate;
-    task.deadline = deadline;
-
-    const categories = [];
-    category.forEach(id => {
-      categories.push(ctgryData.getCtgry(id));
-    });
-    task.category = categories;
-
-    return task;
+    const task = taskData.getTask(id);
+    return {
+      ...task,
+      category: task.category.map(id => ctgryData.getCtgry(id))
+    };
   }
 };

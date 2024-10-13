@@ -154,7 +154,7 @@ export const importTask = {
 
   validateJsonStructure(data) {
     const expectedStructure = {
-        // id: 'string',
+        id: 'string',
         done: 'boolean',
         pinned: 'boolean',
         name: 'string',
@@ -180,20 +180,10 @@ export const importTask = {
 
   import(tasks, msg) {
     tasks.forEach(task => {
-      const {emoji, name, description, deadline, category, color} = task;
-
-      category.forEach((ctgry, index) => {
-        const matchId = ctgryData.match(ctgry);
-        if (matchId) {
-          category[index] = matchId;
-        } else {
-          const {name, emoji, color} = ctgry;
-          const id = ctgryData.create(name, emoji, color);
-          category[index] = id;
-        }
+      task.category = task.category.map(ctgry => {
+        return (ctgryData.matchId(ctgry) || ctgryData.create(ctgry));
       });
-
-      taskData.add(emoji, name, description, deadline, category, color);
+      taskData.add(task);
     });
 
     exportTask.renderTasks();

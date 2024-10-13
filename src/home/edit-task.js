@@ -133,25 +133,25 @@ export const editTask = {
   },
 
   saveEditedData() {
-    const {name, emoji, description, color, deadline, category} = this.getNewData();
-    taskData.update(this.taskId, emoji, name, description, deadline, category, color);
+    const updates = this.getUpdates();
+    taskData.update(this.taskId, { ...updates });
     this.hideEditTask();
     tasks.render();
     ctgryFilter.handle();
     search.clear();
-    const msg = `Task <b>${name}</b> updated.`;
+    const msg = `Task <b>${updates.name}</b> updated.`;
     popup.success(msg);
   },
 
-  getNewData() {
-    const data = {};
-    data.emoji = this.emojiPicker.getEmoji();
-    data.name = this.nameInput.value;
-    data.description = this.desInput.value;
-    data.deadline = this.dateInput.value;
-    data.category = this.ctgrySelector.getAllSelected();
-    data.color = this.colorPicker.getSelectedClr();
-    return data;
+  getUpdates() {
+    return  {
+      emoji: this.emojiPicker.getEmoji(),
+      name: this.nameInput.value,
+      description: this.desInput.value,
+      deadline: this.dateInput.value,
+      category: this.ctgrySelector.getAllSelected(),
+      color: this.colorPicker.getSelectedClr(),
+    };
   },
 
   mngNmCount() {
@@ -201,7 +201,7 @@ export const editTask = {
   },
 
   updateSaveBtnState() {
-    const {name, emoji, description, color, deadline, category} = this.getNewData();
+    const {name, emoji, description, color, deadline, category} = this.getUpdates();
 
     const oldnm = this.oldData.name;
     const oldEmj = this.oldData.emoji;

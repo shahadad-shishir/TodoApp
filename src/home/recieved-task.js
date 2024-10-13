@@ -7,8 +7,8 @@ import { dateTime } from "../utils/dateTime.js";
 import { home } from "./home.js";
 
 export const recievedTask = {
-  taskData: undefined,
-  userName: undefined,
+  task: {},
+  userName: '',
 
   init() {
     const el = document.querySelector('.recieved-task');
@@ -109,13 +109,13 @@ export const recievedTask = {
       return;
     }
 
-    this.taskData = taskObj;
+    this.task = taskObj;
     this.userName = userNameParam;
     this.open(taskObj, userNameParam);
 
     function validateJsonStructure(task) {
       const expectedStructure = {
-          // id: 'string',
+          id: 'string',
           done: 'boolean',
           pinned: 'boolean',
           name: 'string',
@@ -142,27 +142,15 @@ export const recievedTask = {
   },
 
   addTask() {
-    const {emoji, name, description, deadline, category, color} = this.taskData;
-
-    category.forEach((ctgry, index) => {
-      const matchId = ctgryData.match(ctgry);
-      if (matchId) {
-        category[index] = matchId;
-      } else {
-        const {name, emoji, color} = ctgry;
-        const id = ctgryData.create(name, emoji, color);
-        category[index] = id;
-      }
+    this.task.category = this.task.category.map(ctgry => {
+      return (ctgryData.matchId(ctgry) || ctgryData.create(ctgry));
     });
-
-    const id = taskData.generateId();
-    taskData.add(emoji, name, description, deadline, category, color, id);
-    taskData.makeShared(id, this.userName);
+    taskData.add({...this.task, sharedBy: this.userName});
 
     this.close();
     home.render();
 
-    const msg = `Added shared task - ${name}`;
+    const msg = `Added shared task - ${this.task.name}`;
     popup.success(msg);
   }
 };

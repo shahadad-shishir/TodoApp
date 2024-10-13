@@ -30,16 +30,16 @@ function initCategories() {
   });
 
   function createCtgry() {
-    const nm = nmInput.value;
+    const name = nmInput.value;
 
-    if (nm === '') {
+    if (name === '') {
       popup.error('Category name is required.');
       return;
     }
 
     const emoji = emojiPicker.getEmoji();
     const color = colorPicker.getSelectedClr();
-    ctgryData.create(nm, emoji, color);
+    ctgryData.create({name, emoji, color});
     oldCategories.render();
     emojiPicker.removeEmoji();
     emojiPicker.close();
@@ -51,7 +51,7 @@ function initCategories() {
       nmLabel.style.color = 'var(--secondary)';
     }
 
-    const msg = `Added category - <b>${nm}</b>`;
+    const msg = `Added category - <b>${name}</b>`;
     popup.success(msg);
   }
 

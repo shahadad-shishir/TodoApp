@@ -112,11 +112,14 @@ export const editCtgry = {
   },
 
   saveEditedData() {
-    const emoji = this.emojiPicker.getEmoji();
     const name = this.nmInput.value;
-    const color = this.colorPicker.getSelectedClr();
   
-    ctgryData.update(this.ctgryId, name, emoji, color);
+    ctgryData.update(this.ctgryId, {
+      name,
+      emoji: this.emojiPicker.getEmoji(),
+      color: this.colorPicker.getSelectedClr(),
+    });
+    
     this.hide();
     oldCategories.render();
     const msg = `Updated category - <b>${name}</b>`;

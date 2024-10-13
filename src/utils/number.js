@@ -7,7 +7,7 @@
       }
       randomNumber = Math.floor(Math.random() * Number(number));
     } else {
-      randomNumber = Math.floor(Math.random() * 1000000000000);
+      randomNumber = Math.floor(Math.random() * 10000000000000);
     }
     return randomNumber;
   }

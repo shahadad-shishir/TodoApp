@@ -49,13 +49,15 @@
         popup.error(msg);
         return;
       }
-  
-      const descriptionVal = description.value;
-      const deadline = dateInput.value;
-      const color = colorPicker.getSelectedClr();
-      const categoriesId = ctgrySelector.getAllSelected();
-      const emoji = emojiPicker.getEmoji();
-      taskData.add(emoji, name, descriptionVal, deadline, categoriesId, color);
+
+      taskData.add({
+        name,
+        description: description.value,
+        deadline: dateInput.value,
+        color: colorPicker.getSelectedClr(),
+        category: ctgrySelector.getAllSelected(),
+        emoji: emojiPicker.getEmoji(),
+      });
 
       navigateTo('/');
       const msg = `Added task <b>${name}</b>`;
