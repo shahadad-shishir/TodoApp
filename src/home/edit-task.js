@@ -1,4 +1,4 @@
-import { taskData } from "../data.js";
+import { taskData, userData } from "../data.js";
 import { arraysEqual, scroll } from "../utils/shortcut.js";
 import { CategorySelector } from "../category-selector/category-selector.js";
 import { ColorPicker } from "../color-picker/color-picker.js";
@@ -8,6 +8,7 @@ import { search } from "./search.js";
 import { ctgryFilter } from "./category-filter.js";
 import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
+import { theme } from "../profile/theme.js";
 
 export const editTask = {
   taskId: undefined,
@@ -68,6 +69,12 @@ export const editTask = {
         this.saveEditedData();
       }
     });
+
+    if (theme.themes[userData.theme].mode === 'dark') {
+      this.dateInput.style.colorScheme = 'dark';
+    } else {
+      this.dateInput.style.removeProperty('color-scheme');
+    }
 
     this.emojiPicker = new EmojiPicker('#emoji-picker', () => {
       this.updateSaveBtnState();

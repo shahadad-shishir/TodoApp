@@ -1,11 +1,12 @@
   import { template } from "./template.js";
-  import { taskData } from "../data.js";
+  import { taskData, userData } from "../data.js";
   import { EmojiPicker } from "../emoji-picker/emoji-picker.js";
   import { CtgrySelectorWithTglScroll } from "../category-selector/category-selector.js";
   import { ColorPicker } from "../color-picker/color-picker.js";
   import { popup } from "../utils/popup.js";
   import { navigateTo } from "../route.js";
   import { ripple } from "../ripple-effect.js";
+import { theme } from "../profile/theme.js";
 
   function initAddTask() {
     const nameInput = document.querySelector('#name-input');
@@ -20,6 +21,12 @@
     const createBtn =  document.querySelector('#create-btn');
     const modifyCtgry = document.querySelector('.modify-category');
     const formEmojiIcon = document.querySelector('#emoji-picker .emoji');
+
+    if (theme.themes[userData.theme].mode === 'dark') {
+      dateInput.style.colorScheme = 'dark';
+    } else {
+      dateInput.style.removeProperty('color-scheme');
+    }
   
     const emojiPicker = new EmojiPicker('#emoji-picker');
     const ctgrySelector = new CtgrySelectorWithTglScroll('#ctgry-selector');
