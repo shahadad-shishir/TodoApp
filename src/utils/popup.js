@@ -19,6 +19,11 @@ export const popup = {
     this.render(template);
   },
 
+  info(msg) {
+    const template = this.create(msg, 'circle-info', 'rgb(200, 200, 200)');
+    this.render(template);
+  },
+
   create(text, icon, mainClr, txtClr, bgClr) {
     const msgArea = document.createElement('div');
     msgArea.classList.add('msg-area');

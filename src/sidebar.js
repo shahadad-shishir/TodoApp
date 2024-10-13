@@ -4,6 +4,7 @@ import { navigateTo } from "./route.js";
 import { logout } from "./logout.js";
 import { getProfilePic, getUserName } from "./profile/profile.js";
 import { ripple } from "./ripple-effect.js";
+import { popup } from "./utils/popup.js";
 
  export const sidebar = {
   init() {
@@ -74,7 +75,8 @@ import { ripple } from "./ripple-effect.js";
       // if (location.pathname !== '/purge') {
       //   navigateTo('/purge');
       // }
-      this.close();
+      // this.close();
+      popup.info('The Purge Task feature is under development.');
     });
 
     this.ctgry.addEventListener('click', () => {
@@ -99,7 +101,12 @@ import { ripple } from "./ripple-effect.js";
       window.open('https://github.com/shahadad-shishir/TodoApp/issues/new')
     });
 
-    this.settings.addEventListener('click', () => {     
+    this.install.addEventListener('click', () => {   
+      popup.info('Install App feature is coming soon.');
+    });
+
+    this.settings.addEventListener('click', () => {   
+      popup.info('Settings are coming soon.');
     });
 
     this.user.addEventListener('click', () => {

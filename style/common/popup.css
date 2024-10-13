@@ -11,7 +11,7 @@
   width: 100%;
   padding: 0 30px;
   white-space: wrap;
-  z-index: 13;
+  z-index: 999;
   visibility: hidden;
 }
 

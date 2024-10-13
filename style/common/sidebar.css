@@ -6,7 +6,7 @@
   background-color: var(--bg);
   border-radius: 24px 0 0;
   position: fixed;
-  z-index: 999;
+  z-index: 99;
   right: -400px;
   top: 0;
   bottom: 0;

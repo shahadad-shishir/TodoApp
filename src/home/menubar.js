@@ -51,6 +51,10 @@ export const menubar = {
       this.renderChanges();
     });
 
+    this.selectBtn.addEventListener('click', () => {
+      popup.info('Task selection will be available soon.');
+    });
+
     this.detailsBtn.addEventListener('click', () => {
       this.hideMenu();
       history.pushState(null, null, `/task?id=${this.taskId}`);
