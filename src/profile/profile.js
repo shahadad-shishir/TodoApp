@@ -8,16 +8,16 @@ import { popup } from "../utils/popup.js";
 import { ripple } from "../ripple-effect.js";
 
 function initProfile() {
-  const cart = document.querySelector('.cart');
-  const profileEl = cart.querySelector('.profile');
-  const register = cart.querySelector('.register span');
-  const logoutBtn = cart.querySelector('.logout');
+  const card = document.querySelector('.card');
+  const profileEl = card.querySelector('.profile');
+  const register = card.querySelector('.register span');
+  const logoutBtn = card.querySelector('.logout');
 
   theme.init();
 
   //render name & profile pic
-  cart.querySelector('.js-profile-pic').innerHTML = getProfilePic();
-  cart.querySelector('.js-user-name').innerHTML = getUserName();
+  card.querySelector('.js-profile-pic').innerHTML = getProfilePic();
+  card.querySelector('.js-user-name').innerHTML = getUserName();
 
   //render register date and time
   const createDate = new Date(userData.createdAt);
@@ -128,8 +128,8 @@ function initProfile() {
   //User name change
   const cngUserNm = {
     init(handleUserNmCng) {
-      this.nmInput = document.querySelector('.cart .nm-input input');
-      this.saveBtn = document.querySelector('.cart .save-btn');
+      this.nmInput = document.querySelector('.card .nm-input input');
+      this.saveBtn = document.querySelector('.card .save-btn');
       this.nmCount = document.querySelector('.nm-count');
 
       this.saveBtn.addEventListener('click', e => {

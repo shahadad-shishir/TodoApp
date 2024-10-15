@@ -149,33 +149,41 @@ span.edit-nm-count {
 @media only screen and (max-width: 500px) { 
   .edit-category {
     width: 88%;
+    padding: 27px 9px 0px;
+  }
+  .edit-category .edit-header {
+    font-size: 15px;
+  }
+  .remove-emoji {
+    padding: 8px 15px;
+    font-size: 12px;
+    border-radius: 11px;
   }
   .edit-name {
-    padding: 14px 10px;
+    padding: 11px 10px;
     border-radius: 13px;
-  }
-  
+  }  
   .edit-form input {
-    font-size: 14px;
+    font-size: 13px;
   }
-  
    .edit-label1 {
-    top: -7px;
+    top: -9px;
     left: 5px;
     padding: 0 2px;
-    font-size: 12px;
-  }
-  
+    font-size: 11px;
+  }  
   span.edit-nm-count {
     margin-top: 4px;
     font-size: 11px;
     margin-left: 20px;
   }
-  
   #edit-cancel-btn, #edit-save-btn {
-    margin-right: 30px;
-    font-size: 15px;
-    padding: 9px 11px;
+    margin-right: 25px;
+    font-size: 14px;
+    padding: 8px 11px;
     border-radius: 7px;
+  }
+  .edit-category .fotter {
+    padding: 0 0 20px;
   }
 }

@@ -4,7 +4,7 @@
   margin-bottom: 0;
 }
 
-.cart {
+.card {
   margin: 90px auto 30px;
   max-width: 404px;
   padding: 64px 48px;
@@ -19,7 +19,7 @@
   transition: border 0.3s ease 0s, box-shadow 0.3s ease 0s, background-color 0.3s ease;
 }
 
-.cart .profile {
+.card .profile {
   position: relative;
   background-color: var(--bg1);
   width: 96px;
@@ -33,7 +33,7 @@
   transition: background-color 0.3s;
 }
 
-.cart .profile-pic {
+.card .profile-pic {
   width: 100%;
   height: 100%;
   display: flex;
@@ -41,22 +41,22 @@
   justify-content: center;
 }
 
-.cart .profile .letter {
+.card .profile .letter {
   font-size: 50px;
 }
 
-.cart img {
+.card img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.cart .profile i.fa-user {
+.card .profile i.fa-user {
   font-size: 40px;
 }
 
-.cart .profile .icon {
+.card .profile .icon {
   position: absolute;
   bottom: -8px;
   right: -5px;
@@ -69,12 +69,12 @@
   justify-content: center;
 }
 
-.cart .profile svg {
+.card .profile svg {
   width: 23px;
   fill: #ffffff;
 }
 
-.cart .profile .tooltip {
+.card .profile .tooltip {
   position: absolute;
   background-color: #dedede;
   color: var(--text);
@@ -88,11 +88,11 @@
   color: #000;
 }
 
-.cart .profile:hover .tooltip {
+.card .profile:hover .tooltip {
   opacity: 1;
 }
 
-.cart .nm {
+.card .nm {
   font-size: 18px;
   font-weight: 500;
   text-transform: capitalize;
@@ -271,43 +271,62 @@ ul.themes {
 
 
 @media only screen and (max-width: 760px) {
-  .cart {
+  .card {
     margin: 90px auto 135px;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .cart {
-    margin: 90px auto 113px;
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  #root {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 72px;
+    margin-bottom: 95px;
+  }
+
+  .card {
+    margin: 0;
     width: 80%;
     padding: 55px 30px;
     border-radius: 40px;
     border-width: 3px;
     row-gap: 15px;
   }
-  .cart .profile {
+  .card .profile {
     width: 70px;
     height: 70px;
   }  
-  .cart .profile .letter {
+  .card .profile .letter {
     font-size: 35px;
   }  
-  .cart .profile i.fa-user {
+  .card .profile i.fa-user {
     font-size: 32px;
   }  
-  .cart .profile .icon {
+  .card .profile .icon {
     bottom: -9px;
     right: -4px;
     width: 32px;
     height: 32px;
   }
-  .cart .profile svg {
+  .card .profile svg {
     width: 18px;
   } 
-  .cart .profile .tooltip {
+  .card .profile .tooltip {
     display: none;
   }
-  .cart .nm {
+  .card .nm {
     font-size: 15px;
   } 
   .register {
@@ -369,7 +388,11 @@ ul.themes {
 }
 
 @media only screen and (max-width: 400px) {
-  .cart {
+  #header {
+    background-color: transparent;
+  }
+  
+  .card {
     width: 90%;
     padding: 45px 25px;
     border-radius: 36px;
@@ -396,7 +419,7 @@ ul.themes {
 }
 
 @media only screen and (max-width: 345px) {
-  .cart {
+  .card {
     width: 96%;
   }
 }
@@ -416,7 +439,7 @@ ul.themes {
     position: absolute;
     margin-top: 9px;
   }
-  .cart {
+  .card {
     margin: -9px auto 135px;
     padding: 68px 48px;
   }

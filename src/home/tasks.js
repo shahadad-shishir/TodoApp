@@ -155,14 +155,13 @@ function createATask(taskData) {
   }
 
   if (!description && !deadline && !sharedBy && category.length == 0) {
-    taskDiv.style.alignItems = 'center';
     taskDiv.querySelector('.bottom-area').remove();
   }
 
   const menuBtn =  taskDiv.querySelector('.menu button');
   menuBtn.addEventListener('click', e => {
     ripple.add(menuBtn, e);
-    menubar.showMenu(id);
+    menubar.open(id);
   });
 
   return taskDiv;

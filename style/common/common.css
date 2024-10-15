@@ -20,12 +20,12 @@ body {
   transition: filter 0.3s;
   overflow-x: hidden;
   overflow-y: auto;
+  min-height: 100vh;
   transition: background-color 0.3s ease;
 }
 
 body.no-scroll {
   padding-right: 8px;
-  overflow-y: hidden;
 }
 
 .loading {
@@ -210,9 +210,6 @@ body.no-scroll {
   body::-webkit-scrollbar {
     width: 0px;
     background: transparent;
-  }
-  body {
-    font-weight: 500;
   }
 
   ::-webkit-scrollbar {

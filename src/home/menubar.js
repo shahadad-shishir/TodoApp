@@ -38,7 +38,7 @@ export const menubar = {
 
     //Handle click events
     this.SmenubarBg.addEventListener('click', () => {
-      this.hideSmenu();
+      this.closeSmall();
     });
 
     this.doneBtn.addEventListener('click', () => {
@@ -53,21 +53,22 @@ export const menubar = {
 
     this.selectBtn.addEventListener('click', () => {
       popup.info('Task selection will be available soon.');
+      this.close();
     });
 
     this.detailsBtn.addEventListener('click', () => {
-      this.hideMenu();
+      this.close();
       history.pushState(null, null, `/task?id=${this.taskId}`);
       navigateTo('/task');
     });
 
     this.shareBtn.addEventListener('click', () => {   
-      this.hideMenu();
+      this.close();
       shareTask.open(this.taskId);
     });
 
     this.editBtn.addEventListener('click', () => {   
-      this.hideMenu();
+      this.close();
       editTask.showEditTask(this.taskId);
     });
     
@@ -79,24 +80,24 @@ export const menubar = {
     });
 
     this.deleteBtn.addEventListener('click', () => {
-      this.hideMenu();
+      this.close();
       dltCnfrm.open(this.taskId);
     });
 
     this.lMenubarBg.addEventListener('click', () => {
-      this.hideLmenu();
+      this.closeLarge();
     });
 
     window.addEventListener('resize', () => {
       const screenWidth = window.innerWidth;
       if (screenWidth < 761 && this.el.classList.contains('small')) {
-        this.hideSmenu();
+        this.closeSmall();
       } else if (screenWidth > 761 && this.el.classList.contains('large')) {
-        this.hideLmenu();
+        this.closeLarge();
       }
     });
 
-    //Large-menubar up-down functionality
+    //Large-menubar swipe gesture functionality
     const isMobile = navigator.userAgentData.mobile;
     let isMouseDown = false;
     let clickPosition;
@@ -111,6 +112,8 @@ export const menubar = {
         }
       });
       this.el.addEventListener('mousemove', e => {
+        e.preventDefault();
+
         if (isMouseDown) {
           difference = (e.pageY - clickPosition);
           if (difference > -1) {
@@ -136,6 +139,8 @@ export const menubar = {
       });
 
       this.el.addEventListener('touchmove', e => {
+        e.preventDefault();
+
         if (isMouseDown) {
           difference = e.touches[0].pageY - clickPosition + 10;
           if (difference > -1) {
@@ -155,7 +160,7 @@ export const menubar = {
 
     function release() {
       if (difference > 250) {
-        menubar.hideLmenu();
+        menubar.closeLarge();
       } else if (difference <= 250) {
         menubar.el.animate(
           [
@@ -175,28 +180,28 @@ export const menubar = {
     }
   },
 
-  showMenu(taskId) {
+  open(taskId) {
     const screenWidth = window.innerWidth;
     this.taskId = taskId;
     this.updateData(taskId);
 
     if (screenWidth > 760) {
-      this.showSmenu(taskId);
+      this.openSmall(taskId);
     } else {
-      this.showLmenu(taskId);
+      this.openLarge(taskId);
     }
   },
 
-  hideMenu() {
+  close() {
     const screenWidth = window.innerWidth;
     if (screenWidth > 760) {
-      this.hideSmenu();
+      this.closeSmall();
     } else {
-      this.hideLmenu();
+      this.closeLarge();
     }
   },
 
-  showSmenu(taskId) {
+  openSmall(taskId) {
     const allTask = document.querySelectorAll('.task');
 
     allTask.forEach(task => {
@@ -211,7 +216,7 @@ export const menubar = {
     scroll.disable();
   },
 
-  hideSmenu() {
+  closeSmall() {
     const allTask = document.querySelectorAll('.task');
     allTask.forEach(task => {
         task.classList.remove('blur');
@@ -228,7 +233,7 @@ export const menubar = {
     }, 200);
   },
 
-  showLmenu() {
+  openLarge() {
     this.el.classList.add('active', 'large');
     this.distanceFromTop = this.el.getBoundingClientRect().top;
     this.el.style.top = this.distanceFromTop;
@@ -239,7 +244,7 @@ export const menubar = {
     scroll.disable();
   },
 
-  hideLmenu() {
+  closeLarge() {
     scroll.enable();
     this.el.style.animation = 'largeMenuDown .4s ease';
     this.lMenubarBg.style.animation = 'opacityAnimRvrs .4s ease';
@@ -285,7 +290,7 @@ export const menubar = {
   },
 
   renderChanges() {
-    this.hideMenu();
+    this.close();
     home.render();
   }
 };

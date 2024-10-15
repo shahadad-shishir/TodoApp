@@ -155,7 +155,7 @@ body.no-scroll .add-btn {
   border: 1px solid var(--secondary);
   border-radius: 24px;
   color: #fff;
-  margin-top: 30px;
+  margin-top: 20px;
   word-break: break-word;
 }
 
@@ -174,26 +174,29 @@ body.no-scroll .add-btn {
 
 .progress svg {
   transform: rotate(-90deg);
+  width: 80px;
+  height: 80px;
 }
 
 .progress circle {
   stroke: var(--secondary);
   stroke-linecap: round;
+  stroke-width: 10px;
 }
 
 .progress .number {
   color: #fff;
   position: absolute;
   top: 50%;
-  left: 52%;
+  left: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
   font-size: 14px;
 }
 
 .draw-circle {
-  stroke-dasharray: 176;
-  stroke-dashoffset: 176;
+  stroke-dasharray: 234;
+  stroke-dashoffset: 234;
   transition: stroke-dashoffset 0.5s ease;
   /* animation: drawCircle 0.5s ease-in-out forwards; */
   filter: drop-shadow(var(--secondary-min7) 0px 0px 6px);
@@ -350,8 +353,9 @@ main .categories {
 .task {
   color: #fff;
   display: flex;
+  align-items: center;
   width: 100%;
-  padding: 20px 10px 20px 20px;
+  padding: 18px 10px 20px 18px;
   border-radius: 20px;
   background-color: var(--secondary);
   box-shadow: var(--secondary) 0px 0px 128px -20px;
@@ -402,14 +406,15 @@ main .categories {
 }
 
 .task .pinned {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   color: #f0f0f0;
+  opacity: 0.8;
 }
 
 .pinned i {
   margin-right: 5px;
+  font-size: 15px;
 }
-
 
 .top-area {
   display: flex;
@@ -431,7 +436,7 @@ main .categories {
 
 .task .bottom-area p {
   font-size: 18px;
-  margin-top: 5px;
+  margin-top: 3px;
   color: #f0f0f0;
   word-break: break-word;
 }
@@ -440,8 +445,7 @@ main .categories {
   display: flex;
   align-items: center;
   color: rgb(240, 240, 240);
-  margin-top: 5px;
-  font-size: 14px;
+  margin-top: 2px;
 }
 
 .deadline svg {
@@ -453,7 +457,9 @@ main .categories {
   fill: currentColor;
 }
 
-.deadline .text {
+.deadline .date {
+  font-size: 14px;
+  letter-spacing: 0.1px;
   font-style: italic;
   word-break: break-word;
 }
@@ -463,7 +469,7 @@ main .categories {
   align-items: center;
   opacity: 0.8;
   font-size: 16px;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .task .shared svg {
@@ -481,7 +487,7 @@ main .categories {
   align-items: center;
   column-gap: 10px;
   row-gap: 10px;
-  margin-top: 10px;
+  margin-top: 7px;
   flex-wrap: wrap;
   word-break: break-word;
 }
@@ -561,11 +567,17 @@ main .categories {
   overflow-y: auto;
 }
 
+.menubar .options::-webkit-scrollbar {
+  width: 0px !important;
+  background: transparent;
+}
+
+
 .menubar .options div {
   display: flex;
   align-items: center;
   margin: 0 12px;
-  padding: 14px 8px;
+  padding: 14px 15px;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.15s;
@@ -785,7 +797,6 @@ span.highlighted-text {
   }
 }
 
-
 @keyframes drawCircle {
   0% {
     stroke-dashoffset: 176;
@@ -873,6 +884,10 @@ span.highlighted-text {
 }
 
 @media only screen and (max-width: 500px) {
+  .tasks-container {
+    margin-top: 20px;
+    row-gap: 16px;
+  }
   .message h2 img {
     width: 20px;
     margin-right: 1px;
@@ -894,67 +909,111 @@ span.highlighted-text {
     font-size: 22px;
   }
   
-
   .progress {
-    padding: 16px 14px;
+    padding: 12px 10px;
+    margin-top: 10px;
+    border-radius: 18px;
+    min-height: 100px;
   }
-  .progress .details h3, .progress .details p {
-    font-size: 14px;
+  .progress .circle-container {
+    width: 66px;
+    height: 66px;
+  }
+  .progress svg {
+    width: 66px;
+    height: 66px;
+  }
+  .progress circle {
+    stroke-width: 8;
+  }
+  .progress .number {
+    font-size: 12px;
+  }
+  .progress .details h3 {
+    font-size: 13px;
+  }
+  .progress .details p {
+    font-size: 12px;
+  }
+  .progress .details {
+    margin-left: 13px;
   }
 
+  .search-bar {
+    margin-top: 16px;
+    border-radius: 13px;
+  }
   .search-bar input, .search-bar input::placeholder {
-    font-size: 14px;
+    font-size: 13px;
+  }
+  .search-bar input {
+    padding: 14px 0;
   }
   .search-bar button {
     font-size: 17px;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
   .search-bar i.fa-search {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  main .categories {
+    margin-top: 16px;
   }
   .categories div {
-    padding: 5px 9px;
-    border-radius: 13px;
-    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
   }
   .categories .category-emoji {
-    font-size: 14px;
+    font-size: 13px;
   }
   .categories .x-btn {
-    font-size: 14px;
+    font-size: 13px;
   }
+
   .empty-task h3 {
     font-size: 15px;
   }
   .empty-task p {
     font-size: 14px;
   }
+
+  .task .task-emoji {
+    margin-right: 12px;
+  }
   .task .pinned {
     font-size: 12px;
+    margin-bottom: 2px;
+  }
+  .pinned i {
+    margin-right: 3px;
+    font-size: 11px;
   }
   .task .top-left h3 {
-    font-size: 15px;
-  }
-  .task .bottom-area p {
     font-size: 14px;
   }
-  .deadline .text {
+  .task .bottom-area p {
+    font-size: 13px;
+    margin-top: 0;
+  }
+  .deadline .date {
     font-size: 12px;
   }
   .deadline svg {
-    width: 16px;
-    font-size: 16px;
+    width: 18px;
+    margin-right: 3px;
   }
   .task .top-right span {
     font-size: 11px;
   }
   .task .shared {
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 12px;
+    margin-top: 3px;
   }
   .task .shared svg {
-    width: 19px;
+    width: 17px;
   }
   .task .menu {
     width: 30px;
@@ -964,6 +1023,9 @@ span.highlighted-text {
     width: 30px;
     height: 30px;
     margin-left: 3px;
+  }
+  .task-categories {
+    margin-top: 4px;
   }
   .task-categories .item {
     font-size: 11px;
@@ -992,7 +1054,8 @@ span.highlighted-text {
   }
 
   .search-result {
-    font-size: 15px;
+    font-size: 14px;
+    margin-top: 20px;
   }
   .search-result .empty h3 {
     font-size: 15px;
@@ -1005,6 +1068,10 @@ span.highlighted-text {
     height: 280px;
   }
 
+  .menubar.large {
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+  }
   .menubar .top {
     font-size: 15px;
   }
@@ -1012,7 +1079,9 @@ span.highlighted-text {
     font-size: 15px;
   }
   .menubar .options div {
-    font-size: 14px;
+    font-size: 13px;
+    padding: 11px 15px;
+    border-radius: 8px;
   }
 
   .dlt-task {
@@ -1020,7 +1089,7 @@ span.highlighted-text {
     white-space: wrap;
     padding: 26px 26px;
   }
-  .dlt-task h3{
+  .dlt-task h3 {
     font-size: 15px;
     margin-bottom: 15px;
   }

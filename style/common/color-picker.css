@@ -127,18 +127,18 @@
 
 @media only screen and (max-width: 500px) {
   #color-picker {
-    border-radius: 17px;
+    border-radius: 13px;
   }
   #color-picker .selected-clr .left {
-    font-size: 14px;
+    font-size: 13px;
   }
   #color-picker .selected-clr .color {
-    width: 20px;
-    height: 20px;
-    border-radius: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
   }
   #color-picker .selected-clr {
-    padding: 14px 19px;
+    padding: 12px 14px;
   }
   .select-clr .clr-code {
     padding: 7px 0;

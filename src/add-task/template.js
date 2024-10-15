@@ -26,7 +26,7 @@ export const template =
       </div>
       
       <div class="category">
-        <span>Category</span>
+        <span class="heading">Category</span>
         ${ctgrySelectorHtml()}
 
         <div class="modify-category">

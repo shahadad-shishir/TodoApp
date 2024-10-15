@@ -210,7 +210,8 @@ input[type="file"] {
 @media only screen and (max-width: 500px) {
   .main {
     margin-top: 85px;
-}
+    margin-bottom: 0;
+  }
   .export h2 {
     font-size: 17px;
   }
@@ -273,6 +274,9 @@ input[type="file"] {
   .drop-file svg {
     width: 30px;
     margin-bottom: 4px;
+  }
+  .import-from-link {
+    margin-bottom: 95px;
   }
 }
 

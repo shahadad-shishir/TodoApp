@@ -1,7 +1,7 @@
 export const template = 
 `
   <main class="main">
-    <div class="cart">
+    <div class="card">
       <div class="profile">
         <div class="js-profile-pic profile-pic">
         </div>

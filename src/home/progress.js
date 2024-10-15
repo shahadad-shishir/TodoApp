@@ -28,8 +28,10 @@ function handleProgress() {
 }
 
 function drawCircle(percent) {
-  const value = 176 - (176 * (percent / 100));
-  circle.style.strokeDashoffset = value;
+  const value = 234 - (234 * (percent / 100));
+  requestAnimationFrame(() => {
+    circle.style.strokeDashoffset = value;
+  });
 }
 
 function mngText(totalTask, doneTask, percent) {
