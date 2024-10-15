@@ -61,7 +61,7 @@ export const recievedTask = {
     this.userNameEl.innerHTML = userName;
 
     //Create a task to show as a sample
-    const {createDate, deadline} = taskData;
+    const {createDate, deadline, sharedBy} = taskData;
     const task = tasks.create(taskData);
 
     task.querySelector('.menu').remove();
@@ -72,6 +72,7 @@ export const recievedTask = {
       task.querySelector('.deadline .date').innerHTML = 
       `${dateTime.formateDateTime(new Date(deadline)).date} • ${dateTime.formateDateTime(new Date(deadline)).time}`;
     }
+    if (sharedBy) task.querySelector('.shared').remove();
  
     this.body.appendChild(task);
   },
