@@ -20,7 +20,7 @@ export const popup = {
   },
 
   info(msg) {
-    const template = this.create(msg, 'circle-info', 'rgb(200, 200, 200)');
+    const template = this.create(msg, 'circle-info', 'rgb(255, 193, 7)');
     this.render(template);
   },
 

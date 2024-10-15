@@ -1,11 +1,18 @@
 export const scroll = {
   enable: function () {
-    document.body.classList.remove('no-scroll');
+    if (document.body.style.overflowY !== 'hidden') return;
+    document.body.style.overflowY = 'auto';
+    if (window.innerWidth > 500) {
+      document.body.classList.remove('no-scroll');
+    }
   },
   
   disable: function () {
-    if (document.body.scrollHeight <= window.innerHeight || window.innerWidth < 501) return;
-    document.body.classList.add('no-scroll');
+    if (document.body.scrollHeight <= window.innerHeight && window.innerWidth > 500) return;
+    document.body.style.overflowY = 'hidden';
+    if (window.innerWidth > 500) {
+      document.body.classList.add('no-scroll');
+    }
   }
 };
 
