@@ -75,8 +75,8 @@ import { popup } from "./utils/popup.js";
       // if (location.pathname !== '/purge') {
       //   navigateTo('/purge');
       // }
-      // this.close();
       popup.info('The Purge Task feature is under development.');
+      this.close();
     });
 
     this.ctgry.addEventListener('click', () => {
@@ -103,10 +103,12 @@ import { popup } from "./utils/popup.js";
 
     this.install.addEventListener('click', () => {   
       popup.info('Install App feature is coming soon.');
+      this.close();
     });
 
     this.settings.addEventListener('click', () => {   
       popup.info('Settings are coming soon.');
+      this.close();
     });
 
     this.user.addEventListener('click', () => {
