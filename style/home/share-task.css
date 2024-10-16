@@ -259,13 +259,16 @@
 .share-body .info svg {
   width: 20px;
   fill: rgb(2, 136, 209);
+  margin-top: 3px;
 }
 
 .share-body .info div {
   margin-left: 13px;
-  margin-top: 3px;
 }
 
+.share-body .info div span {
+  font-weight: 500;
+}
 
 .share-body .info div p {
   font-size: 14px;
@@ -430,16 +433,16 @@
   }
   .share-body .info svg {
     width: 16px;
+    margin-top: 6px;
   }
   .share-body .info div {
     margin-left: 8px;
-    margin-top: 0px;
   }
   .share-body .info span {
     font-size: 13px;
   }
   .share-body .info div p {
-    font-size: 12px;
+    font-size: 11px;
     margin-top: 5px;
   }
   .share-fotter {
