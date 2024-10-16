@@ -1,4 +1,6 @@
 import { ripple } from "../ripple-effect.js";
+import { theme } from "../profile/theme.js";
+import { userData } from "../data.js";
 
 export class EmojiPicker {
   constructor(elSelector, handleEmojiCng) {
@@ -12,7 +14,18 @@ export class EmojiPicker {
     const el = document.querySelector(elSelector);
     this.emojiIcon = el.querySelector('.emoji');
     this.picker = el.querySelector('.picker');
+    this.emojiPicker = el.querySelector('emoji-picker');
     this.removeEmojiEl = el.querySelector('.remove-emoji');
+
+    if (theme.themes[userData.theme].mode === 'dark') {
+      this.picker.style.backgroundColor = 'rgb(34, 34, 34)';
+      this.emojiPicker.classList.remove('light');
+      this.emojiPicker.classList.add('dark');
+    } else {
+      this.picker.style.backgroundColor = 'rgb(255, 255, 255)';
+      this.emojiPicker.classList.remove('dark');
+      this.emojiPicker.classList.add('light');
+    }
 
     this.emojiIcon.addEventListener('click', () => {
       if (this.picker.classList.contains('active')) {

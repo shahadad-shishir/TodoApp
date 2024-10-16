@@ -15,7 +15,7 @@ export function emojiPickerHtml(className) {
       </div>   
       
       <div class="picker">
-        <emoji-picker class="dark"></emoji-picker>
+        <emoji-picker></emoji-picker>
       </div>
 
       <div class="remove-emoji">
