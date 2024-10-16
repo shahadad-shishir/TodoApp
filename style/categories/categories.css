@@ -85,20 +85,6 @@
   background-color: rgba(240, 240, 240, 0.8);
 }
 
-.old-categories::-webkit-scrollbar-track {
-  background-color: rgba(131, 135, 146, 0.5);
-  border-radius: 8px;
-}
-
-.old-categories::-webkit-scrollbar-thumb {
-  background-color: rgba(131, 135, 146, 0.8);
-  border-radius: 10px;
-}
-
-.old-categories::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(131, 135, 146);
-}
-
 .new-ctgry {
   width: 360px;
   display: flex;

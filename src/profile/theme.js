@@ -75,6 +75,9 @@ export const theme = {
       inptBrdr: '0, 0, 0, 0.23',
       hover: '0, 0, 0, 0.04',
       popup: '240, 240, 245, 0.58',
+      scrollTrack: '0, 0, 0, 0.082',
+      scrollThumb: '0, 0, 0, 0.19',
+      scrollHover: '0, 0, 0, 0.25',
     },
 
     dark: {
@@ -86,6 +89,9 @@ export const theme = {
       inptBrdr: '255, 255, 255, 0.23',
       hover: '255, 255, 255, 0.08',
       popup: '20, 20, 49, 0.88',
+      scrollTrack: '240, 240, 240, 0.082',
+      scrollThumb: '240, 240, 240, 0.19',
+      scrollHover: '240, 240, 240, 0.25',
     }
   },
 
@@ -163,7 +169,7 @@ export const theme = {
   cngAppTheme(themeId) {
     //inserting color variables of this theme dynamically
     const {primary, secondary, mode} = this.themes[themeId];
-    const {text, bg, bg1, bg2, bg3, inptBrdr, hover, popup} = this.mode[mode];
+    const {text, bg, bg1, bg2, bg3, inptBrdr, hover, popup, scrollTrack, scrollThumb, scrollHover} = this.mode[mode];
 
     const style = document.querySelector('style#theme');
     style.innerHTML =
@@ -195,6 +201,9 @@ export const theme = {
         --input-brdr: rgb(${inptBrdr});
         --hover: rgb(${hover});
         --popup: rgb(${popup});
+        --scrollTrack: rgb(${scrollTrack});
+        --scrollThumb: rgb(${scrollThumb});
+        --scrollHover: rgb(${scrollHover});
       }
     `
   },
