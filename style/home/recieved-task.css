@@ -202,8 +202,11 @@
     padding: 13px;
     margin: 15px 0 6px;
   }
-  .recieved-body .task .top-left h3 {
+  .recieved-body .task .top-area h3 {
     font-size: 13px;
+  }
+  .recieved-body .task .top-area .create-date {
+    font-size: 10px;
   }
   .recieved-body .task .bottom-area p {
     font-size: 12px;

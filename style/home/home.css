@@ -383,7 +383,7 @@ main .categories {
   filter: brightness(70%);
 }
 
-.task.done .top-left h3, .task.done .bottom-area p, .task.done .deadline{
+.task.done .top-area h3, .task.done .bottom-area p, .task.done .deadline{
   text-decoration: line-through;
 }
 
@@ -418,17 +418,15 @@ main .categories {
 
 .top-area {
   display: flex;
+  align-items: center;
 }
 
-.task .top-left {
+.task .top-area h3 {
   flex: 1;
-}
-
-.task .top-left h3 {
   word-break: break-word;
 }
 
-.task .top-right span {
+.task .top-area .create-date {
   font-size: 14px;
   font-style: italic;
   word-break: break-word;
@@ -981,7 +979,7 @@ span.highlighted-text {
     margin-right: 3px;
     font-size: 11px;
   }
-  .task .top-left h3 {
+  .task .top-area h3 {
     font-size: 14px;
   }
   .task .bottom-area p {
@@ -995,7 +993,7 @@ span.highlighted-text {
     width: 18px;
     margin-right: 3px;
   }
-  .task .top-right span {
+  .task .top-area .create-date {
     font-size: 11px;
   }
   .task .shared {

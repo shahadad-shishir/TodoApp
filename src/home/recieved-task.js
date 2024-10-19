@@ -65,7 +65,7 @@ export const recievedTask = {
     const task = tasks.create(taskData);
 
     task.querySelector('.menu').remove();
-    task.querySelector('.create-time').innerHTML = 
+    task.querySelector('.create-date').innerHTML = 
       dateTime.formateDateTime(new Date(createDate)).date;
     
     if (deadline) {

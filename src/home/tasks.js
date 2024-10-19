@@ -76,12 +76,8 @@ function createATask(taskData) {
         Pinned
       </div>
       <div class="top-area">
-        <div class="top-left">
-          <h3>${name}</h3>
-        </div>
-        <div class="top-right">
-          <span class="create-time">${formatCreateTime(new Date(createDate))}</span>
-        </div>
+        <h3>${name}</h3>
+        <span class="create-date">${formatCreateTime(new Date(createDate))}</span>
       </div>
 
       <div class="bottom-area">

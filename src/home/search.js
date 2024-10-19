@@ -44,7 +44,7 @@ export const search = {
       const highlightedDes = this.highlightText(des, searchTxt);
 
       const taskEl = document.querySelector(`.task[data-id='${id}']`);
-      const nameEl = document.querySelector(`.task[data-id='${id}'] .top-left h3`);
+      const nameEl = document.querySelector(`.task[data-id='${id}'] .top-area h3`);
       const desEl = document.querySelector(`.task[data-id='${id}'] .bottom-area p`);
 
       if (!highlightedNm && !highlightedDes) {
