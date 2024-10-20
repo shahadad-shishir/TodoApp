@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./assets/icons/apple-touch-icon.png" width="128px" />
+<img src="./assets/icons/icon192.png" width="128px" />
 <h1>📝Vanilla JS Todo App</h1>
 </p>
 
