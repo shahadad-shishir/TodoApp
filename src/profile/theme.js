@@ -206,5 +206,8 @@ export const theme = {
         --scrollHover: rgb(${scrollHover});
       }
     `
+
+    document.querySelector("meta[name='theme-color']")
+    .setAttribute("content", `rgb(${primary})`);
   },
 };

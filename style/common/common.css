@@ -12,6 +12,8 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--primary);
+  padding-top: env(safe-area-inset-top);
 }
 
 body {
