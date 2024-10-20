@@ -3,7 +3,7 @@ import { taskData } from "../data.js";
 let circle, percentEl, complete, completeMsg;
 
 function initProgress() {
-  circle = document.querySelector('.progress .draw-circle');
+  circle = document.querySelector('.progress circle');
   percentEl = document.querySelector('.circle-container .number');
   complete = document.querySelector('.progress .details h3');
   completeMsg = document.querySelector('.progress .details p');

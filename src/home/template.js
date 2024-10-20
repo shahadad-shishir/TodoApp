@@ -21,7 +21,7 @@ export const template =
       <div class="progress">
         <div class="circle-container">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle viewBox="0 0 50 50" cx="50" cy="50" r="37" fill="none" stroke="#F2EBD3" class="draw-circle"/>
+            <circle viewBox="0 0 50 50" cx="50" cy="50" r="37" fill="none"/>
           </svg>
           <span class="number"><!--50%--></span>
         </div>

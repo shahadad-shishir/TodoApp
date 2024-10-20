@@ -174,8 +174,6 @@ body.no-scroll .add-btn {
 
 .progress svg {
   transform: rotate(-90deg);
-  width: 80px;
-  height: 80px;
 }
 
 .progress circle {
@@ -194,7 +192,7 @@ body.no-scroll .add-btn {
   font-size: 14px;
 }
 
-.draw-circle {
+.progress circle {
   stroke-dasharray: 234;
   stroke-dashoffset: 234;
   transition: stroke-dashoffset 0.5s ease;
@@ -903,10 +901,6 @@ span.highlighted-text {
     min-height: 100px;
   }
   .progress .circle-container {
-    width: 66px;
-    height: 66px;
-  }
-  .progress svg {
     width: 66px;
     height: 66px;
   }
