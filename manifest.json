@@ -1,0 +1,74 @@
+{
+  "name": "Todo App",
+  "short_name": "TodoApp",
+  "description": "JS todo app with many features, including local storage, sharing tasks via link, themes, and many more.",
+  "id": "/index.html",
+  "start_url": "/index.html",
+  "theme_color": "#7764E8",
+  "background_color": "#171D34",
+  "orientation": "portrait-primary",
+  "display": "standalone",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/assets/icons/icon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icons/icon256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/assets/icons/icon384.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "/assets/icons/icon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/assets/icons/iconMaskable.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Task",
+      "description": "Add Task",
+      "url": "/add-task",
+      "icons": [{ "src": "/assets/icons/add.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Categories",
+      "description": "Categories",
+      "url": "/categories",
+      "icons": [{ "src": "/assets/icons/categories.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Transfer",
+      "description": "Transfer",
+      "url": "/transfer",
+      "icons": [{ "src": "/assets/icons/transfer.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/ss.png",
+      "type": "image/png",
+      "sizes": "440x956",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/sspc1.png",
+      "type": "image/png",
+      "sizes": "3292x2044",
+      "form_factor": "wide"
+    }
+  ]
+}
