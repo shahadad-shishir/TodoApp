@@ -1,7 +1,7 @@
 {
   "name": "Todo App",
   "short_name": "TodoApp",
-  "description": "JS todo app with many features, including local storage, sharing tasks via link, themes, and many more.",
+  "description": "A Vanilla JavaScript Todo App with task management, custom categories, transfer, sharing tasks via link or QR code, themes, and more.",
   "id": "/index.html",
   "start_url": "/index.html",
   "theme_color": "#7764E8",
