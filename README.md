@@ -65,7 +65,7 @@
 
 - **🔄 Single Page Application (SPA)**: Enjoy fast page transitions without reloading.
 - **⚙️ Lazy loading**: Improve performance by loading content only when needed.
-- **📱 Progressive Web App (PWA)**: Install the app like a native mobile app, use it offline, and receive push notifications. *(Feature coming soon.)*
+- **📱 Progressive Web App (PWA)**: Install the app like a native mobile app, use it offline, and receive push notifications. *(Push notifications coming soon.)*
 
 ### 🎁 Additional Features
 
