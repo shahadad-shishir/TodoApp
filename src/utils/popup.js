@@ -6,7 +6,6 @@ export const popup = {
     popupEl.id = 'popup';
     document.body.prepend(popupEl);
     this.popupEl = popupEl;
-
   },
 
   success(msg) {
@@ -52,17 +51,15 @@ export const popup = {
     this.popupEl.appendChild(msgArea);
     this.popupEl.style.visibility = 'visible';
     msgArea.style.animation = 'popupAddAnim 0.3s ease';
-    const timeoutId1 = setTimeout(() => {
+    setTimeout(() => {
       msgArea.style.removeProperty('animation');
-      clearTimeout(timeoutId1);
     }, 300)
     this.vibrate();
 
-    const timeoutId2 = setTimeout(() => {
+    setTimeout(() => {
       if (msgArea) {
         this.rmvPopup(msgArea);
       }
-      clearTimeout(timeoutId2);
     }, 4000)
 
     msgArea.addEventListener('click', () => {
@@ -72,12 +69,11 @@ export const popup = {
 
   rmvPopup(msgArea) {
     msgArea.style.animation = 'popupRmvAnim 0.23s ease';
-    const timeoutId = setTimeout(() => {
+    setTimeout(() => {
       msgArea.remove();
       if (this.popupEl.innerHTML === '') {
         this.popupEl.style.visibility = 'hidden';
       }
-      clearTimeout(timeoutId);
     }, 200)
   },
 

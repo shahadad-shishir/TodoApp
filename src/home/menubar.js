@@ -172,9 +172,8 @@ export const menubar = {
           400
         );
 
-        const timeoutId = setTimeout(()=> {
+        setTimeout(()=> {
           menubar.el.style.removeProperty('top');
-          clearTimeout(timeoutId);
         }, 400);
       }
     }

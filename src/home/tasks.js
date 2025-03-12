@@ -136,7 +136,7 @@ function createATask(taskData) {
       if (typeof(item) !== 'object') item = ctgryData.getCtgry(item);
       const {name, emoji, color} = item;
 
-      const itemDiv = makeEl('div', ['item'], name);
+      const itemDiv = makeEl('div', ['item']);
       itemDiv.dataset.id = id;
       itemDiv.style.backgroundColor = color;
       itemDiv.innerHTML = 
@@ -234,7 +234,6 @@ function formatCreateTime(createDate) {
 }
 
 export const tasks = {
-  container: taskContainer,
   init: initTasks,
   render: renderTasks,
   create: createATask,

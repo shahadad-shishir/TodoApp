@@ -59,9 +59,8 @@ export const homeHeader = {
         this.quote.innerHTML = this.quotes[random];
       }
       
-      const timeoutId = setTimeout(() => {
+      setTimeout(() => {
         this.quote.style.removeProperty('animation');
-        clearTimeout(timeoutId);
       }, 600)
     }, 5000);
   },

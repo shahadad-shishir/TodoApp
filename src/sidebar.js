@@ -31,12 +31,11 @@ import { popup } from "./utils/popup.js";
     this.renderUserContent();
 
     logout.init();
-    this.logout.addEventListener('click', async () => {
+    this.logout.addEventListener('click', () => {
       this.close();
       
-      const timeoutId = setTimeout(()=> {
+      setTimeout(()=> {
         logout.open();
-        clearTimeout(timeoutId);
       }, 300)
     });
 
@@ -136,10 +135,9 @@ import { popup } from "./utils/popup.js";
     this.el.classList.remove('active');
     this.bg.style.opacity = 0;
 
-    const timeoutId = setTimeout(()=> {
+    setTimeout(()=> {
       this.bg.style.removeProperty('bottom');
       scroll.enable();
-      clearTimeout(timeoutId);
     }, 300)
   },
 

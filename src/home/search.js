@@ -104,7 +104,7 @@ export const search = {
     });
   
     if (highlightedTxt === originalTxt) {
-      return false;
+      return null;
     }
   
     return highlightedTxt;
