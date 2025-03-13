@@ -47,6 +47,13 @@ import { popup } from "./utils/popup.js";
       });
     });
 
+    //Store the event that tiggers the PWA installation prompt
+    let installPrompt;
+    window.addEventListener("beforeinstallprompt", evt => {
+      evt.preventDefault();
+      installPrompt = evt;
+    });
+
     //Handle click events
     this.bg.addEventListener('click', () => {
       this.close();
@@ -100,8 +107,20 @@ import { popup } from "./utils/popup.js";
       window.open('https://github.com/shahadad-shishir/TodoApp/issues/new')
     });
 
-    this.install.addEventListener('click', () => {   
-      popup.info('Install App feature is coming soon.');
+    this.install.addEventListener('click', () => {
+      //Check if the app is already installed
+      if (window.matchMedia('(display-mode: standalone)').matches 
+          || navigator.standalone) {
+        popup.success('The app is already installed!');
+        return;
+      }
+
+      if (!installPrompt) {
+        popup.info('The app is not yet ready to install or maybe already installed.');
+        return;
+      }
+      
+      installPrompt.prompt();
       this.close();
     });
 
